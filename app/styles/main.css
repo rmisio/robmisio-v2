@@ -7636,100 +7636,22 @@ td.visible-print {
   padding: 0.2em 0;
 }
 
-/* Space out content a bit */
-/* line 13, main.scss */
+/* line 12, main.scss */
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-  background-color: green;
+  background-color: #fff;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-/* line 22, main.scss */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+/* Blog page */
+/* line 20, main.scss */
+.blog-list {
+  background-color: #CCC;
 }
 
-/* Custom page header */
-/* line 28, main.scss */
-.header {
-  border-bottom: 1px solid #e5e5e5;
+/* line 24, main.scss */
+.blog-entry {
+  background-color: #DDD;
 }
 
-/* Make the masthead heading the same height as the navigation */
-/* line 33, main.scss */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-/* Custom page footer */
-/* line 41, main.scss */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-/* line 47, main.scss */
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
-/* line 52, main.scss */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-/* line 57, main.scss */
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-/* line 63, main.scss */
-.marketing {
-  margin: 40px 0;
-}
-
-/* line 67, main.scss */
-.marketing p + h4 {
-  margin-top: 28px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* line 73, main.scss */
-  .container {
-    max-width: 730px;
-  }
-
-  /* Remove the padding we set earlier */
-  /* line 80, main.scss */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* Space out the masthead */
-  /* line 85, main.scss */
-  .header {
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  /* line 89, main.scss */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
+/* END - Blog page */

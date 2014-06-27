@@ -1,7 +1,6 @@
 /*global require*/
 'use strict';
 
-console.log('hello');
 require.config({
     shim: {
         bootstrap: {
@@ -17,14 +16,14 @@ require.config({
     }
 });
 
-console.log('world');
 require([
     'backbone',
+    'app',
+    'routes/app',
     'views/app'
-], function (Backbone, AppView) {
-    console.log('sugah');
-    Backbone.history.start();
+], function (Backbone, app, AppRouter, AppView) {
+    app.appView = new AppView();
+    app.router = new AppRouter();
 
-    new AppView();
+    Backbone.history.start({ pushState: true });    
 });
-console.log('how');
