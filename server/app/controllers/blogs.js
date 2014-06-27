@@ -2,13 +2,14 @@ var mongoose = require('mongoose'),
     Blog = mongoose.model('Blog');
 
 exports.index = function(req, res) {
-    return Blog.find(function(err, blogs) {
-        if (!err) {
-            return res.send(blogs);            
-        } else {
-            return res.send(500, err);
-        }
-    });
+    return Blog.find({}, null, { sort: { createdAt: -1 }},
+        function(err, blogs) {
+            if (!err) {
+                return res.send(blogs);            
+            } else {
+                return res.send(500, err);
+            }
+        });
 }
 
 exports.show = function(req, res) {
