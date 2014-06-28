@@ -28,12 +28,18 @@ define([
             });
 
             this.render();
-
-            this.$pageContainer = this.$('#page-container');            
         },
 
-        renderPage: function (pageView) {
-            this.$pageContainer.append(pageView.render().el);
+        showPage: function (pageView, context) {
+            // todo: consider caching some or all pages
+            if (this.curPageView) {
+                this.curPageView.remove();
+            }
+
+            this.curPageView = pageView;
+            this.$pageContainer = this.$pageContainer ||
+                this.$('#page-container');
+            this.$pageContainer.append(pageView.render(context).el);
         },
 
         render: function () {

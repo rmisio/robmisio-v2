@@ -21,6 +21,11 @@ body {
     background-color: #CCC;
 }
 
+.blog-list li:hover {
+    cursor: pointer;
+    background-color: orange;
+}
+
 .blog-entry {
     background-color: #DDD;
 }

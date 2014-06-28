@@ -1,12 +1,13 @@
 /*global define*/
 
 define([
+    'app',
     'jquery',
     'underscore',
     'backbone',
     'templates',
     'collections/blog'
-], function ($, _, Backbone, JST, BlogCollection) {
+], function (app, $, _, Backbone, JST, BlogCollection) {
     'use strict';
 
     var BlogView = Backbone.View.extend({
@@ -14,39 +15,60 @@ define([
 
         templateBlogListItem: JST['app/scripts/templates/blog-list-item.ejs'],
 
-        events: {},
+        events: {
+            'click .blog-list li': 'blogListItemSelect'
+        },
 
-        initialize: function () {
+        initialize: function (options) {
+            this.options = options || {};
+            // show progress bar
             this.collection = new BlogCollection();
-            this.collection.on('reset', this.renderBlogList, this);
-
-            this.$blogListContainer = this.$('.blog-list');
-            this.$blogEntryContainer = this.$('.blog-entry');
-
+            this.collection.on('reset', this.onBlogListReset, this);
             this.collection.fetch({ reset: true });
         },
 
-        createdAtVerbose: function(createdAt) {
-            return '10 minutes ago';
+        blogListItemSelect: function(e) {
+            var self = this,
+                $target = $(e.target).eq(0),
+                index = $target[0].tagName.toUpperCase() === 'LI' ?
+                    $target.index() : $target.parents('li').index();
+
+            this.$blogEntryContainer = this.$blogEntryContainer ||
+                this.$('.blog-entry');
+            this.$blogEntryContainer.html(
+                app.util.template('app/scripts/templates/blog-entry.ejs',
+                    self.collection.at(index).toJSON()));
         },
 
-        addBlogListItem: function (blog) {
-            this.$blogListContainer.append(this.templateBlogListItem(
-                _.extend(blog.toJSON(), { createdAtVerbose: this.createdAtVerbose() })
-            ));
-        },
+        onBlogListReset: function() {
+            var blog,
+                self = this;
 
-        renderBlogList: function() {
-            console.log('wilber');
-            this.collection.each(this.addBlogListItem, this);
+            if (this.collection.length) {
+                blog = this.options.blogId ?
+                    (this.collection.get(this.options.blogId) ||
+                    this.collection.at(0)) :
+                    this.collection.at(0)
+            }
+
+            blog.fetch({
+                success: function(blog) {
+                    app.appView.showPage(self, {
+                        collection: self.collection.toJSON(),
+                        blog: blog.toJSON()
+                    });
+                }
+            });
         },
 
         renderBlogEntry: function() {
 
         },
 
-        render: function () {
-            this.$el.html(this.template());
+        // todo: consider putting this functionality in a 
+        // view base class
+        render: function (context) {
+            this.$el.html(app.util.template(this.template, context));
 
             return this;
         }

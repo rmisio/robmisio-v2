@@ -7650,6 +7650,12 @@ body {
 }
 
 /* line 24, main.scss */
+.blog-list li:hover {
+  cursor: pointer;
+  background-color: orange;
+}
+
+/* line 29, main.scss */
 .blog-entry {
   background-color: #DDD;
 }

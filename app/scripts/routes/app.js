@@ -11,11 +11,16 @@ define([
     var AppRouter = Backbone.Router.extend({
         routes: {
             '': 'index',
+            'blog/:id': 'blog',
             'truth': 'truth'
         },
 
         index: function() {
-            app.appView.renderPage(new BlogPage());
+            new BlogPage();
+        },
+
+        blog: function(id) {
+            new BlogPage({ blogId: id });
         },
 
         truth: function() {

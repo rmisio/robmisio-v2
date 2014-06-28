@@ -7,8 +7,6 @@ define([
     'use strict';
 
     var BlogModel = Backbone.Model.extend({
-        url: '',
-
         initialize: function() {
         },
 

@@ -1,6 +1,9 @@
-define(function(require, exports, module) {
-    "use strict";
+define([
+    'util',
+], function (util) {
+    'use strict';
 
-    // The root path to run the application through.
-    // exports.root = "/";
+    return {
+        util: util
+    }
 });

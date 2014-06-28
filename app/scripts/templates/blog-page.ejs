@@ -1,8 +1,13 @@
 <div class="row">
-    <ul class="col-md-4 blog-list">
+    <ul class="col-md-4 blog-list list-unstyled">
+        <% for (var i=0; i < collection.length; i++) {
+            print(template('app/scripts/templates/blog-list-item.ejs',
+                collection[i]));
+        } %>
     </ul>
 
-    <div class="col-md-8 blog-entry">
-    </div>
+    <section class="col-md-8 blog-entry">
+        <% print(template('app/scripts/templates/blog-entry.ejs',
+                blog)); %>
+    </section>
 </div>
-
