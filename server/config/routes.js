@@ -16,7 +16,7 @@ module.exports = function (app, passport) {
 
     // blog routes
     app.get('/blogs', blogs.index);
-    app.get('/blogs/:id', blogs.show);
+    app.get('/blogs/:year/:month/:slug', blogs.show);
     app.post('/blogs', blogs.create);
     app.put('/blogs/:id', blogs.update);
     // app.del('/blogs/:id', blogs.destroy);

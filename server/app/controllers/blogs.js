@@ -13,17 +13,23 @@ exports.index = function (req, res) {
 }
 
 exports.show = function (req, res) {
-    return Blog.findById(req.params.id, function(err, blog) {
-        if (!err) {
-            return blog ? res.send(blog) : res.send(404);
-        } else {
-            if (err.name === 'CastError') {
-                return res.send(404);
-            }
+    var year = req.params.year,
+        month = req.params.month,
+        slug = req.params.slug,
+        startDate = new Date(year, month - 1, 1),
+        endDate = new Date(year, month, 1);
 
-            return res.send(500, err);
-        }
-    });
+    return Blog.findOne({'slug' : slug})
+        .where('createdAt')
+        .gte(startDate)
+        .lt(endDate)
+        .exec(function (err, blog) {
+            if (!err) {
+                return blog ? res.send(blog) : res.send(404);
+            } else {
+                return res.send(500, err);
+            }
+        });
 }
 
 exports.create = function (req, res) {

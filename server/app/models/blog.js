@@ -48,7 +48,6 @@ blogSchema = new Schema({
 
 blogSchema.pre('save', function (next) {
     this.slug = util.slugify(this.title);
-    console.log('the slug is: ' + this.slug);
     next(); 
 });
 

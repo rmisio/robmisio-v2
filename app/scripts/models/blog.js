@@ -7,16 +7,20 @@ define([
     'use strict';
 
     var BlogModel = Backbone.Model.extend({
-        initialize: function() {
+        url: function () {
+            return '/blogs/' + this.get('url');
+        },
+
+        initialize: function () {
         },
 
         defaults: {
         },
 
-        validate: function(attrs, options) {
+        validate: function (attrs, options) {
         },
 
-        parse: function(response, options)  {
+        parse: function (response, options)  {
             return response;
         }
     });
