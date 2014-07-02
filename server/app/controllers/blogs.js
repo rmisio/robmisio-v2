@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     Blog = mongoose.model('Blog');
 
-exports.index = function(req, res) {
+exports.index = function (req, res) {
     return Blog.find({}, null, { sort: { createdAt: -1 }},
         function(err, blogs) {
             if (!err) {
@@ -12,7 +12,7 @@ exports.index = function(req, res) {
         });
 }
 
-exports.show = function(req, res) {
+exports.show = function (req, res) {
     return Blog.findById(req.params.id, function(err, blog) {
         if (!err) {
             return blog ? res.send(blog) : res.send(404);
@@ -26,7 +26,7 @@ exports.show = function(req, res) {
     });
 }
 
-exports.create = function(req, res) {
+exports.create = function (req, res) {
     var blog;
 
     blog = new Blog(req.body);
@@ -39,7 +39,7 @@ exports.create = function(req, res) {
     });
 }
 
-exports.update = function(req, res) {
+exports.update = function (req, res) {
     return Blog.findByIdAndUpdate(req.params.id, req.body, function(err, blog) {
         if (!err) {
             if (!blog) {

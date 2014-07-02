@@ -21,7 +21,7 @@ __p += '<h1>' +
 '</h1>\n<p class="author-time-tagline">\n    By <span>Rob Misiorowski</span>\n    <time datetime="' +
 ((__t = ( createdAt )) == null ? '' : __t) +
 '">' +
-((__t = ( createdAtVerbose() )) == null ? '' : __t) +
+((__t = ( timeAgo(createdAt) )) == null ? '' : __t) +
 '</time>\n</p>\n<div>' +
 ((__t = ( content )) == null ? '' : __t) +
 '</div>\n';
@@ -39,7 +39,7 @@ __p += '<li>\n    <h2><a href="#">' +
 '</a></h2>\n    <time datetime="' +
 ((__t = ( createdAt )) == null ? '' : __t) +
 '">' +
-((__t = ( createdAtVerbose() )) == null ? '' : __t) +
+((__t = ( timeAgo(createdAt) )) == null ? '' : __t) +
 '</time>\n</li>';
 
 }

@@ -4,31 +4,29 @@
   "scripts": {
     "start": "NODE_PATH=./server/config:./server/app/controllers NODE_ENV=development ./node_modules/.bin/nodemon ./server/server.js",
     "test": "make test"
-  },  
+  },
   "dependencies": {
+    "async": "latest",
+    "body-parser": "latest",
+    "compression": "latest",
+    "connect-flash": "latest",
+    "connect-mongo": "latest",
+    "cookie-parser": "latest",
+    "csurf": "latest",
     "express": "latest",
     "express-session": "latest",
-    "compression": "latest",
-    "cookie-parser": "latest",
-    "morgan": "latest",
-    "body-parser": "latest",
+    "forever": "latest",
     "method-override": "latest",
-    "csurf": "latest",
-    "serve-static": "latest",
-
+    "moment": "^2.7.0",
     "mongoose": "latest",
-    "swig": "latest",
-
+    "mongoose-user": "latest",
+    "morgan": "latest",
     "passport": "latest",
     "passport-local": "latest",
-
-    "winston": "latest",
+    "serve-static": "latest",
+    "swig": "latest",
     "view-helpers": "latest",
-    "async": "latest",
-    "forever": "latest",
-    "connect-mongo": "latest",
-    "connect-flash": "latest",
-    "mongoose-user": "latest"    
+    "winston": "latest"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -57,7 +55,7 @@
     "nodemon": "latest",
     "mocha": "latest",
     "should": "latest",
-    "supertest": "latest"    
+    "supertest": "latest"
   },
   "engines": {
     "node": ">=0.10.0"

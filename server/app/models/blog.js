@@ -3,7 +3,9 @@
  * Module dependencies
  */
 
-var mongoose = require('mongoose'),
+var util = require('../../util'),
+    moment = require('moment'), 
+    mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     blogSchema;
 
@@ -24,9 +26,14 @@ blogSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    slug: {
+        type: String
     }
+}, {
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true }
 });
-
 
 /**
  * Add your
@@ -36,31 +43,26 @@ blogSchema = new Schema({
  */
 
 /**
+ * Pre-save hooks
+ */
+
+blogSchema.pre('save', function (next) {
+    this.slug = util.slugify(this.title);
+    console.log('the slug is: ' + this.slug);
+    next(); 
+});
+
+/**
  * Virtuals
  */
 
-// *** will do client side ***
-// blogSchema.virtual('createdAtVerbose')
-//     .get(function () {
-//         var str = '',
-//             now = new Date(),
-//             daysElapsed,
-//             secElapsed = (new Date() - this.createdAt) / 1000;
+blogSchema.virtual('url').get(function () {
+    var date = moment(this.createdAt),
+        formatted = date.format('YYYY[/]MM[/]');
 
-//         daysElapsed = Math.round(Math.abs(
-//             (now.getTime() - this.createdAt) / (24*60*60*1000)
-//         ));
-
-//         if (daysElapsed > 1) {
-//             str = 
-//         }
-//         if (secElapsed > 60) {
-//             str = secElapsed + 'minute' +
-//                 (secElapsed > 60 : 's' : '') + 'ago';
-//         } 
-
-//         return str;
-//     });
+    // formatted results in the format '2012/10/'
+    return formatted + this.slug;
+});
 
 /**
  * Register

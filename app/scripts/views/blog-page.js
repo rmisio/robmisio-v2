@@ -49,16 +49,16 @@ define([
                     (this.collection.get(this.options.blogId) ||
                     this.collection.at(0)) :
                     this.collection.at(0)
-            }
 
-            blog.fetch({
-                success: function(blog) {
-                    app.appView.showPage(self, {
-                        collection: self.collection.toJSON(),
-                        blog: blog.toJSON()
-                    });
-                }
-            });
+                blog.fetch({
+                    success: function(blog) {
+                        app.appView.showPage(self, {
+                            collection: self.collection.toJSON(),
+                            blog: blog.toJSON()
+                        });
+                    }
+                });
+            }
         },
 
         renderBlogEntry: function() {
