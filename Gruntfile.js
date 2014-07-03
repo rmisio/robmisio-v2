@@ -5,6 +5,7 @@ var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
+var popBlogEntries;
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -51,13 +52,20 @@ module.exports = function (grunt) {
             },
             jst: {
                 files: [
-                    '<%= yeoman.app %>/scripts/templates/*.ejs'
+                    '<%= yeoman.app %>/scripts/templates/*.ejs',
+                    // '!<%= yeoman.app %>/scripts/templates/blog-entries/**',
                 ],
                 tasks: ['jst']
             },
             test: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'test/spec/**/*.js'],
                 tasks: ['test:true']
+            },
+            popBlogEntries: {
+                files: [
+                    '<%= yeoman.app %>/scripts/templates/blog-entries/{,*/}*.ejs'
+                ],
+                tasks: ['popBlogEntries']
             }
         },
         connect: {
@@ -276,6 +284,12 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.registerTask('popBlogEntries', function () {
+        console.log('========', __dirname);
+        popBlogEntries = popBlogEntries ||
+            require('./bin/populate-blog-entries')(__dirname + '/app/scripts/templates/blog-entries');
+    });
+    
     grunt.registerTask('createDefaultTemplate', function () {
         grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
     });

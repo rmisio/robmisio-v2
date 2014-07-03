@@ -6,7 +6,7 @@ this["JST"]["app/scripts/templates/app.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<p>The weasle and the proper one - alert</p>\n<a href="/truth">Can you handle the truth?</a>\n<div id="page-container"></div>\n\n';
+__p += '<p>tweedle and do</p>\n<a href="/truth">Can you handle the truth?</a>\n<div id="page-container"></div>\n\n';
 
 }
 return __p
