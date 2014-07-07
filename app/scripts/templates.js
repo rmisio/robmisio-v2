@@ -40,7 +40,7 @@ __p += '<li>\n    <h2><a href="#">' +
 ((__t = ( createdAt )) == null ? '' : __t) +
 '">' +
 ((__t = ( timeAgo(createdAt) )) == null ? '' : __t) +
-'</time>\n</li>';
+'</time>\n    <div class="spinner"></div>\n</li>';
 
 }
 return __p

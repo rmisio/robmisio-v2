@@ -17,13 +17,63 @@ body {
 
 /* Blog page */
 
-.blog-list {
-    background-color: #CCC;
+@-ms-keyframes blog-list-loading-on {
+    from { background-position: center -10px; }
+    to { background-position: center; }
 }
 
-.blog-list li:hover {
-    cursor: pointer;
-    background-color: orange;
+@-o-keyframes blog-list-loading-on {
+    from { background-position: center -10px; }
+    to { background-position: center; }
+}
+
+@-moz-keyframes blog-list-loading-on {
+    from { background-position: center -10px; }
+    to { background-position: center; }
+} 
+
+@-webkit-keyframes blog-list-loading-on {
+    from { background-position: center -10px; }
+    to { background-position: center; }
+} 
+
+@keyframes blog-list-loading-on {
+    from { background-position: center -10px; }
+    to { background-position: center; }
+}
+
+.blog-list {
+    background-color: #CCC;
+
+    li {
+
+        position: relative;
+
+        &:hover {
+            cursor: pointer;
+            background-color: orange;
+        }
+
+        .spinner {
+            display: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgb(255, 255, 255) transparent;
+            background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
+        }
+
+        &.loading .spinner {
+            display: block;
+            -ms-animation: blog-list-loading-on ease-in-out 0.2s;
+            -o-animation: blog-list-loading-on ease-in-out 0.2s;
+            -moz-animation: blog-list-loading-on ease-in-out 0.2s;
+            -webkit-animation: blog-list-loading-on ease-in-out 0.2s;
+            animation: blog-list-loading-on ease-in-out 0.2s;
+        }
+    }
 }
 
 .blog-entry {

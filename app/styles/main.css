@@ -7644,18 +7644,101 @@ body {
 }
 
 /* Blog page */
-/* line 20, main.scss */
+@-ms-keyframes blog-list-loading-on {
+  /* line 21, main.scss */
+  from {
+    background-position: center -10px;
+  }
+
+  /* line 22, main.scss */
+  to {
+    background-position: center;
+  }
+}
+
+@-o-keyframes blog-list-loading-on {
+  /* line 26, main.scss */
+  from {
+    background-position: center -10px;
+  }
+
+  /* line 27, main.scss */
+  to {
+    background-position: center;
+  }
+}
+
+@-moz-keyframes blog-list-loading-on {
+  /* line 31, main.scss */
+  from {
+    background-position: center -10px;
+  }
+
+  /* line 32, main.scss */
+  to {
+    background-position: center;
+  }
+}
+
+@-webkit-keyframes blog-list-loading-on {
+  /* line 36, main.scss */
+  from {
+    background-position: center -10px;
+  }
+
+  /* line 37, main.scss */
+  to {
+    background-position: center;
+  }
+}
+
+@keyframes blog-list-loading-on {
+  /* line 41, main.scss */
+  from {
+    background-position: center -10px;
+  }
+
+  /* line 42, main.scss */
+  to {
+    background-position: center;
+  }
+}
+
+/* line 45, main.scss */
 .blog-list {
   background-color: #CCC;
 }
-
-/* line 24, main.scss */
+/* line 48, main.scss */
+.blog-list li {
+  position: relative;
+}
+/* line 52, main.scss */
 .blog-list li:hover {
   cursor: pointer;
   background-color: orange;
 }
+/* line 57, main.scss */
+.blog-list li .spinner {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white transparent;
+  background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
+}
+/* line 68, main.scss */
+.blog-list li.loading .spinner {
+  display: block;
+  -ms-animation: blog-list-loading-on ease-in-out 0.2s;
+  -o-animation: blog-list-loading-on ease-in-out 0.2s;
+  -moz-animation: blog-list-loading-on ease-in-out 0.2s;
+  -webkit-animation: blog-list-loading-on ease-in-out 0.2s;
+  animation: blog-list-loading-on ease-in-out 0.2s;
+}
 
-/* line 29, main.scss */
+/* line 79, main.scss */
 .blog-entry {
   background-color: #DDD;
 }
