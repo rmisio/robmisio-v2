@@ -48,6 +48,32 @@ body {
     li {
 
         position: relative;
+        padding: 10px 0;
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .time-bar {
+            time, p {
+                margin: 0;
+            }
+
+            time {
+                float: left;
+            }
+
+            p {
+                display: none;
+                float: right;
+            }
+        }
+
+        &.active {
+            .time-bar p {
+                display: block;
+            }
+        }
 
         &:hover {
             cursor: pointer;

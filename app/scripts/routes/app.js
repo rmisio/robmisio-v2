@@ -19,10 +19,6 @@ define([
             new BlogPage();
         },
 
-        blog: function(id) {
-            new BlogPage({ blogId: id });
-        },
-
         truth: function() {
             console.log('can you dig it?');
         }        

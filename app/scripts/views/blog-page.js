@@ -16,7 +16,7 @@ define([
         templateBlogListItem: JST['app/scripts/templates/blog-list-item.ejs'],
 
         events: {
-            'click .blog-list li': 'blogListItemSelect'
+            'click .blog-list li:not(.active)': 'onBlogListItemSelect'
         },
 
         initialize: function (options) {
@@ -27,42 +27,43 @@ define([
             this.collection.fetch({ reset: true });
         },
 
-        blogListItemSelect: function(e) {
-            var self = this,
-                $target = $(e.target).eq(0),
-                index = $target[0].tagName.toUpperCase() === 'LI' ?
-                    $target.index() : $target.parents('li').index();
+        blogListItemSelect: function(index) {
+            var self = this;
 
             this.$blogEntryContainer = this.$blogEntryContainer ||
                 this.$('.blog-entry');
-            this.$blogEntryContainer.html(
-                app.util.template('app/scripts/templates/blog-entry.ejs',
-                    self.collection.at(index).toJSON()));
+            this.$('.blog-list li.active')
+                .removeClass('active'); 
+            
+            // todo: can't we do some type of client-side caching?
+            this.collection.at(index).fetch({
+                success: function(blog) {
+                    self.$blogEntryContainer.html(
+                        app.util.template('app/scripts/templates/blog-entry.ejs',
+                            blog.toJSON()));
+                    self.$('.blog-list li:eq(' + index + ')')
+                        .addClass('active');
+                }
+            });
+        },
+
+        onBlogListItemSelect: function(e) {
+            console.log('can you handle it?');
+            var $target = $(e.target).eq(0),
+                index = $target[0].tagName.toUpperCase() === 'LI' ?
+                    $target.index() : $target.parents('li').index();
+
+                this.blogListItemSelect(index);
         },
 
         onBlogListReset: function() {
-            var blog,
-                self = this;
+            app.appView.showPage(this, {
+                collection: this.collection.toJSON()
+            });
 
             if (this.collection.length) {
-                blog = this.options.blogId ?
-                    (this.collection.get(this.options.blogId) ||
-                    this.collection.at(0)) :
-                    this.collection.at(0)
-
-                blog.fetch({
-                    success: function(blog) {
-                        app.appView.showPage(self, {
-                            collection: self.collection.toJSON(),
-                            blog: blog.toJSON()
-                        });
-                    }
-                });
+                this.blogListItemSelect(0);
             }
-        },
-
-        renderBlogEntry: function() {
-
         },
 
         // todo: consider putting this functionality in a 

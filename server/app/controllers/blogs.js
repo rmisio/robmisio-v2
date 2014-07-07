@@ -4,8 +4,19 @@ var mongoose = require('mongoose'),
 exports.index = function (req, res) {
     return Blog.find({}, null, { sort: { createdAt: -1 }},
         function(err, blogs) {
+            var blogsToReturn = [];
+
             if (!err) {
-                return res.send(blogs);            
+                for (var i=0; i < blogs.length; i++) {
+                    blogsToReturn.push({
+                        id: blogs[i]['id'], 
+                        title: blogs[i]['title'],
+                        createdAt: blogs[i]['createdAt'],
+                        url: blogs[i]['url']
+                    });
+                }
+
+                return res.send(blogsToReturn);
             } else {
                 return res.send(500, err);
             }

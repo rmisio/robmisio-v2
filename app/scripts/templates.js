@@ -34,13 +34,13 @@ this["JST"]["app/scripts/templates/blog-list-item.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<li>\n    <h2><a href="#">' +
+__p += '<li class="clearfix">\n    <h2><a href="#">' +
 ((__t = ( title )) == null ? '' : __t) +
-'</a></h2>\n    <time datetime="' +
+'</a></h2>\n    <div class="time-bar">\n        <time datetime="' +
 ((__t = ( createdAt )) == null ? '' : __t) +
 '">' +
 ((__t = ( timeAgo(createdAt) )) == null ? '' : __t) +
-'</time>\n    <div class="spinner"></div>\n</li>';
+'</time>\n        <p>reading now</p>\n    </div>\n    <div class="spinner"></div>\n</li>';
 
 }
 return __p
@@ -56,10 +56,7 @@ __p += '<div class="row">\n    <ul class="col-md-4 blog-list list-unstyled">\n  
             print(template('app/scripts/templates/blog-list-item.ejs',
                 collection[i]));
         } ;
-__p += '\n    </ul>\n\n    <section class="col-md-8 blog-entry">\n        ';
- print(template('app/scripts/templates/blog-entry.ejs',
-                blog)); ;
-__p += '\n    </section>\n</div>';
+__p += '\n    </ul>\n\n    <section class="col-md-8 blog-entry"></section>\n</div>';
 
 }
 return __p

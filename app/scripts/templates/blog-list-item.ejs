@@ -1,5 +1,8 @@
-<li>
+<li class="clearfix">
     <h2><a href="#"><%= title %></a></h2>
-    <time datetime="<%= createdAt %>"><%= timeAgo(createdAt) %></time>
+    <div class="time-bar">
+        <time datetime="<%= createdAt %>"><%= timeAgo(createdAt) %></time>
+        <p>reading now</p>
+    </div>
     <div class="spinner"></div>
 </li>
