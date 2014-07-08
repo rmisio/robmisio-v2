@@ -2,6 +2,16 @@ define(function(){
 
 this["JST"] = this["JST"] || {};
 
+this["JST"]["app/scripts/templates/about-page.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="row">\n    <section class="col-md-4">\n        <p>be happy</p>\n    </section>\n    <section class="col-md-8">\n        <p>be snappy</p>\n    </section>\n</div>';
+
+}
+return __p
+};
+
 this["JST"]["app/scripts/templates/app.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;

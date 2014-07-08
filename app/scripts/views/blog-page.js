@@ -10,7 +10,7 @@ define([
 ], function (app, $, _, Backbone, JST, BlogCollection) {
     'use strict';
 
-    var BlogView = Backbone.View.extend({
+    var BlogPageView = Backbone.View.extend({
         template: JST['app/scripts/templates/blog-page.ejs'],
 
         templateBlogListItem: JST['app/scripts/templates/blog-list-item.ejs'],
@@ -75,5 +75,5 @@ define([
         }
     });
 
-    return BlogView;
+    return BlogPageView;
 });
