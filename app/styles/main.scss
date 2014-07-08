@@ -2,6 +2,10 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
+// colors
+$brand-primary: #fd6500;
+$link-color:    $brand-primary;
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -10,12 +14,63 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 }
 
 body {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #fff;
+    padding: 10px 0;
+    background: white url(../images/page-bg.png) repeat-x 0 3px;
 }
 
-/* Blog page */
+
+a {
+    color:  $link-color;
+
+    &:hover {
+        text-decoration: none;
+        color: $link-color;
+    }
+}
+
+header {
+    margin-bottom: 20px;
+
+    .logo {
+        float: left;
+
+        a {
+            display: block;
+            text-indent: -999px;
+            width: 36px;
+            height: 43px;
+            background: transparent url(../images/logo.png) no-repeat center;
+        }
+    }
+
+    nav {
+        margin: 0 10px;
+
+        li {
+
+            a {
+                float: left;
+                text-transform: uppercase;
+                margin: 13px 5px 8px;
+                padding-bottom: 18px;
+                border-bottom: 2px solid transparent;
+                color: #aaa;
+
+                &.active, &:hover {
+                    border-bottom: 2px solid $brand-primary;
+                }
+            }
+
+            &:first-child a {
+                margin-left: 10px;
+            }
+        }
+
+
+    }
+}
+
+// Blog page
 
 @-ms-keyframes blog-list-loading-on {
     from { background-position: center -10px; }
@@ -43,8 +98,6 @@ body {
 }
 
 .blog-list {
-    background-color: #CCC;
-
     li {
 
         position: relative;
@@ -103,7 +156,6 @@ body {
 }
 
 .blog-entry {
-    background-color: #DDD;
 }
 
-/* END - Blog page */
+// END - Blog page

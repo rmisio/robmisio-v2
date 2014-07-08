@@ -7628,7 +7628,7 @@ td.visible-print {
     display: none !important;
   }
 }
-/* line 5, main.scss */
+/* line 9, main.scss */
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -7636,110 +7636,152 @@ td.visible-print {
   padding: 0.2em 0;
 }
 
-/* line 12, main.scss */
+/* line 16, main.scss */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #fff;
+  padding: 10px 0;
+  background: white url(../images/page-bg.png) repeat-x 0 3px;
 }
 
-/* Blog page */
+/* line 22, main.scss */
+a {
+  color: #fd6500;
+}
+/* line 25, main.scss */
+a:hover {
+  text-decoration: none;
+  color: #fd6500;
+}
+
+/* line 31, main.scss */
+header {
+  margin-bottom: 20px;
+}
+/* line 34, main.scss */
+header .logo {
+  float: left;
+}
+/* line 37, main.scss */
+header .logo a {
+  display: block;
+  text-indent: -999px;
+  width: 36px;
+  height: 43px;
+  background: transparent url(../images/logo.png) no-repeat center;
+}
+/* line 46, main.scss */
+header nav {
+  margin: 0 10px;
+}
+/* line 51, main.scss */
+header nav li a {
+  float: left;
+  text-transform: uppercase;
+  margin: 13px 5px 8px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid transparent;
+  color: #aaa;
+}
+/* line 59, main.scss */
+header nav li a.active, header nav li a:hover {
+  border-bottom: 2px solid #fd6500;
+}
+/* line 64, main.scss */
+header nav li:first-child a {
+  margin-left: 10px;
+}
+
 @-ms-keyframes blog-list-loading-on {
-  /* line 21, main.scss */
+  /* line 76, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 22, main.scss */
+  /* line 77, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-o-keyframes blog-list-loading-on {
-  /* line 26, main.scss */
+  /* line 81, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 27, main.scss */
+  /* line 82, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-moz-keyframes blog-list-loading-on {
-  /* line 31, main.scss */
+  /* line 86, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 32, main.scss */
+  /* line 87, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-webkit-keyframes blog-list-loading-on {
-  /* line 36, main.scss */
+  /* line 91, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 37, main.scss */
+  /* line 92, main.scss */
   to {
     background-position: center;
   }
 }
 
 @keyframes blog-list-loading-on {
-  /* line 41, main.scss */
+  /* line 96, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 42, main.scss */
+  /* line 97, main.scss */
   to {
     background-position: center;
   }
 }
 
-/* line 45, main.scss */
-.blog-list {
-  background-color: #CCC;
-}
-/* line 48, main.scss */
+/* line 101, main.scss */
 .blog-list li {
   position: relative;
   padding: 10px 0;
 }
-/* line 53, main.scss */
+/* line 106, main.scss */
 .blog-list li h2 {
   margin-top: 0;
 }
-/* line 58, main.scss */
+/* line 111, main.scss */
 .blog-list li .time-bar time, .blog-list li .time-bar p {
   margin: 0;
 }
-/* line 62, main.scss */
+/* line 115, main.scss */
 .blog-list li .time-bar time {
   float: left;
 }
-/* line 66, main.scss */
+/* line 119, main.scss */
 .blog-list li .time-bar p {
   display: none;
   float: right;
 }
-/* line 73, main.scss */
+/* line 126, main.scss */
 .blog-list li.active .time-bar p {
   display: block;
 }
-/* line 78, main.scss */
+/* line 131, main.scss */
 .blog-list li:hover {
   cursor: pointer;
   background-color: orange;
 }
-/* line 83, main.scss */
+/* line 136, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -7750,7 +7792,7 @@ body {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 94, main.scss */
+/* line 147, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -7759,10 +7801,3 @@ body {
   -webkit-animation: blog-list-loading-on ease-in-out 0.2s;
   animation: blog-list-loading-on ease-in-out 0.2s;
 }
-
-/* line 105, main.scss */
-.blog-entry {
-  background-color: #DDD;
-}
-
-/* END - Blog page */
