@@ -7628,7 +7628,7 @@ td.visible-print {
     display: none !important;
   }
 }
-/* line 9, main.scss */
+/* line 21, main.scss */
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -7636,152 +7636,199 @@ td.visible-print {
   padding: 0.2em 0;
 }
 
-/* line 16, main.scss */
+/* line 28, main.scss */
 body {
   padding: 10px 0;
   background: white url(../images/page-bg.png) repeat-x 0 3px;
+  font: normal 18px/150% "Raleway", sans-serif;
+  color: #222222;
 }
 
-/* line 22, main.scss */
+/* line 35, main.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+}
+
+/* line 40, main.scss */
+h1 {
+  font-size: 40px;
+  color: #222222;
+}
+
+/* line 45, main.scss */
 a {
   color: #fd6500;
 }
-/* line 25, main.scss */
+/* line 48, main.scss */
 a:hover {
   text-decoration: none;
   color: #fd6500;
 }
 
-/* line 31, main.scss */
-header {
-  margin-bottom: 20px;
+/* line 55, main.scss */
+article a {
+  border-bottom: 2px solid transparent;
+  padding-bottom: 1px;
 }
-/* line 34, main.scss */
-header .logo {
+/* line 59, main.scss */
+article a:hover {
+  border-bottom: 2px solid #fd6500;
+}
+
+/* line 66, main.scss */
+#header-main .logo {
   float: left;
 }
-/* line 37, main.scss */
-header .logo a {
+/* line 69, main.scss */
+#header-main .logo a {
   display: block;
   text-indent: -999px;
   width: 36px;
   height: 43px;
   background: transparent url(../images/logo.png) no-repeat center;
 }
-/* line 46, main.scss */
-header nav {
-  margin: 0 10px;
+/* line 78, main.scss */
+#header-main nav {
+  margin: 0 10px 10px;
 }
-/* line 51, main.scss */
-header nav li a {
+/* line 83, main.scss */
+#header-main nav li a {
   float: left;
   text-transform: uppercase;
-  margin: 13px 5px 8px;
+  margin: 13px 5px 0;
   padding-bottom: 18px;
   border-bottom: 2px solid transparent;
-  color: #aaa;
+  color: #afafaf;
+  font: 16px "Droid Sans", sans-serif;
+  letter-spacing: -1px;
 }
-/* line 59, main.scss */
-header nav li a.active, header nav li a:hover {
+/* line 93, main.scss */
+#header-main nav li a.active, #header-main nav li a:hover {
   border-bottom: 2px solid #fd6500;
 }
-/* line 64, main.scss */
-header nav li:first-child a {
+/* line 98, main.scss */
+#header-main nav li:first-child a {
   margin-left: 10px;
 }
 
 @-ms-keyframes blog-list-loading-on {
-  /* line 76, main.scss */
+  /* line 110, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 77, main.scss */
+  /* line 111, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-o-keyframes blog-list-loading-on {
-  /* line 81, main.scss */
+  /* line 115, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 82, main.scss */
+  /* line 116, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-moz-keyframes blog-list-loading-on {
-  /* line 86, main.scss */
+  /* line 120, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 87, main.scss */
+  /* line 121, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-webkit-keyframes blog-list-loading-on {
-  /* line 91, main.scss */
+  /* line 125, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 92, main.scss */
+  /* line 126, main.scss */
   to {
     background-position: center;
   }
 }
 
 @keyframes blog-list-loading-on {
-  /* line 96, main.scss */
+  /* line 130, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 97, main.scss */
+  /* line 131, main.scss */
   to {
     background-position: center;
   }
 }
 
-/* line 101, main.scss */
+/* line 134, main.scss */
+.blog-list {
+  margin-top: 20px;
+  font-size: 16px;
+}
+/* line 138, main.scss */
 .blog-list li {
   position: relative;
-  padding: 10px 0;
+  padding: 12px 8px;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
-/* line 106, main.scss */
+/* line 144, main.scss */
+.blog-list li:last-child {
+  border-bottom: none;
+}
+/* line 148, main.scss */
 .blog-list li h2 {
-  margin-top: 0;
+  margin: 0 0 3px;
+  line-height: 18px;
 }
-/* line 111, main.scss */
-.blog-list li .time-bar time, .blog-list li .time-bar p {
+/* line 152, main.scss */
+.blog-list li h2 a {
+  font-size: 18px;
+  color: #010101;
+}
+/* line 159, main.scss */
+.blog-list li time {
+  font-style: italic;
+  color: #afafaf;
   margin: 0;
 }
-/* line 115, main.scss */
-.blog-list li .time-bar time {
-  float: left;
+/* line 166, main.scss */
+.blog-list li.active:hover a {
+  cursor: default;
 }
-/* line 119, main.scss */
-.blog-list li .time-bar p {
-  display: none;
-  float: right;
+/* line 171, main.scss */
+.blog-list li:hover, .blog-list li.active {
+  background-color: #edd1bf;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
 }
-/* line 126, main.scss */
-.blog-list li.active .time-bar p {
-  display: block;
+/* line 179, main.scss */
+.blog-list li:hover a, .blog-list li:hover time, .blog-list li.active a, .blog-list li.active time {
+  color: #fd6500;
 }
-/* line 131, main.scss */
-.blog-list li:hover {
+/* line 183, main.scss */
+.blog-list li:hover time, .blog-list li.active time {
+  font-weight: lighter;
+}
+/* line 187, main.scss */
+.blog-list li:hover:not(.active), .blog-list li.active:not(.active) {
   cursor: pointer;
-  background-color: orange;
 }
-/* line 136, main.scss */
+/* line 192, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -7792,7 +7839,7 @@ header nav li:first-child a {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 147, main.scss */
+/* line 203, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -7800,4 +7847,18 @@ header nav li:first-child a {
   -moz-animation: blog-list-loading-on ease-in-out 0.2s;
   -webkit-animation: blog-list-loading-on ease-in-out 0.2s;
   animation: blog-list-loading-on ease-in-out 0.2s;
+}
+
+/* line 215, main.scss */
+.blog-entry .author-time-tagline {
+  font-size: 15px;
+  color: #afafaf;
+  font-style: italic;
+}
+/* line 220, main.scss */
+.blog-entry .author-time-tagline span {
+  font-family: "Droid Sans", sans-serif;
+  color: #222222;
+  text-transform: uppercase;
+  font-style: normal;
 }

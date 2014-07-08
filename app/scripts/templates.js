@@ -16,7 +16,7 @@ this["JST"]["app/scripts/templates/app.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<header>\n    <div class="logo">\n        <a href="/">robmisio.com</a>\n    </div>\n    <nav class="clearfix">\n        <ul class="list-unstyled">\n            <li>\n                <a href="/blog">blog</a>\n            </li>\n            <li>\n                <a href="/about">about</a>\n            </li>                \n        </ul>\n    </nav>\n</header>\n<div id="page-container"></div>\n\n';
+__p += '<header id="header-main">\n    <div class="logo">\n        <a href="/">robmisio.com</a>\n    </div>\n    <nav class="clearfix">\n        <ul class="list-unstyled">\n            <li>\n                <a href="/blog">blog</a>\n            </li>\n            <li>\n                <a href="/about">about</a>\n            </li>                \n        </ul>\n    </nav>\n</header>\n<div id="page-container"></div>\n\n';
 
 }
 return __p
@@ -26,15 +26,15 @@ this["JST"]["app/scripts/templates/blog-entry.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<h1>' +
+__p += '<article>\n    <header>\n        <h1>' +
 ((__t = ( title )) == null ? '' : __t) +
-'</h1>\n<p class="author-time-tagline">\n    By <span>Rob Misiorowski</span>\n    <time datetime="' +
+'</h1>\n        <p class="author-time-tagline">\n            By <span>Rob Misiorowski</span>\n            <time datetime="' +
 ((__t = ( createdAt )) == null ? '' : __t) +
-'">' +
+'" pubdate>' +
 ((__t = ( timeAgo(createdAt) )) == null ? '' : __t) +
-'</time>\n</p>\n<div>' +
+'</time>\n        </p>\n    </header>\n    ' +
 ((__t = ( content )) == null ? '' : __t) +
-'</div>\n';
+'\n</article>\n';
 
 }
 return __p
@@ -46,11 +46,11 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<li class="clearfix">\n    <h2><a href="#">' +
 ((__t = ( title )) == null ? '' : __t) +
-'</a></h2>\n    <div class="time-bar">\n        <time datetime="' +
+'</a></h2>\n    <time datetime="' +
 ((__t = ( createdAt )) == null ? '' : __t) +
 '">' +
 ((__t = ( timeAgo(createdAt) )) == null ? '' : __t) +
-'</time>\n        <p>reading now</p>\n    </div>\n    <div class="spinner"></div>\n</li>';
+'</time>\n    <div class="spinner"></div>\n</li>';
 
 }
 return __p

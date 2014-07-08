@@ -3,8 +3,20 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 @import 'sass-bootstrap/lib/bootstrap';
 
 // colors
-$brand-primary: #fd6500;
-$link-color:    $brand-primary;
+$gray-dark:  #010101;
+$gray-light:   #afafaf;
+$orange-dark:  #8d4c20;
+$orange:  #fd6500;
+$orange-light:  #edd1bf;
+$brand-primary: $orange;
+$link-color: $brand-primary;
+$text-color: #222;
+
+// fonts
+$font-family-raleway: 'Raleway', sans-serif;
+$font-family-droid: 'Droid Sans', sans-serif;
+$font-family-base: $font-family-raleway;
+$font-family-headings: $font-family-raleway;
 
 .browsehappy {
     margin: 0.2em 0;
@@ -16,8 +28,19 @@ $link-color:    $brand-primary;
 body {
     padding: 10px 0;
     background: white url(../images/page-bg.png) repeat-x 0 3px;
+    font: normal 18px/150% $font-family-base;
+    color: $text-color;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-headings;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 40px;
+    color: $gray-darker;
+}
 
 a {
     color:  $link-color;
@@ -28,9 +51,18 @@ a {
     }
 }
 
-header {
-    margin-bottom: 20px;
+article {
+    a {
+        border-bottom: 2px solid transparent;
+        padding-bottom: 1px;
 
+        &:hover {
+            border-bottom: 2px solid $link-color;
+        }
+    }
+}
+
+#header-main {
     .logo {
         float: left;
 
@@ -44,17 +76,19 @@ header {
     }
 
     nav {
-        margin: 0 10px;
+        margin: 0 10px 10px;
 
         li {
 
             a {
                 float: left;
                 text-transform: uppercase;
-                margin: 13px 5px 8px;
+                margin: 13px 5px 0;
                 padding-bottom: 18px;
                 border-bottom: 2px solid transparent;
-                color: #aaa;
+                color: $gray-light;
+                font: 16px $font-family-droid;
+                letter-spacing: -1px;
 
                 &.active, &:hover {
                     border-bottom: 2px solid $brand-primary;
@@ -98,39 +132,61 @@ header {
 }
 
 .blog-list {
+    margin-top: 20px;
+    font-size: 16px;    
+
     li {
 
         position: relative;
-        padding: 10px 0;
+        padding: 12px 8px;
+        border-bottom: 1px dotted rgba(0,0,0,.2);
 
-        h2 {
-            margin-top: 0;
+        &:last-child {
+            border-bottom: none;            
         }
 
-        .time-bar {
-            time, p {
-                margin: 0;
+        h2 {
+            margin: 0 0 3px;
+            line-height: 18px;            
+
+            a {
+                font-size: 18px;
+                color: $gray-dark;
             }
 
-            time {
-                float: left;
-            }
+        }
 
-            p {
-                display: none;
-                float: right;
-            }
+        time {
+            font-style: italic;
+            color: $gray-light;
+            margin: 0;
         }
 
         &.active {
-            .time-bar p {
-                display: block;
+            &:hover a {
+                cursor: default;
             }
         }
 
-        &:hover {
-            cursor: pointer;
-            background-color: orange;
+        &:hover, &.active {
+            background-color: $orange-light;
+            -webkit-transition: all .3s ease;
+            -moz-transition: all .3s ease;
+            -ms-transition: all .3s ease;
+            -o-transition: all .3s ease;
+            transition: all .3s ease;
+
+            a, time {
+                color: $orange;
+            }
+
+            time {
+                font-weight: lighter;
+            }            
+
+            &:not(.active) {
+                cursor: pointer;
+            }
         }
 
         .spinner {
@@ -156,6 +212,18 @@ header {
 }
 
 .blog-entry {
+    .author-time-tagline {
+        font-size: 15px;
+        color: $gray-light;
+        font-style: italic;
+
+        span {
+            font-family: $font-family-droid;
+            color: $text-color;
+            text-transform: uppercase;
+            font-style: normal;
+        }
+    }
 }
 
 // END - Blog page

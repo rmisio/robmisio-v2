@@ -1,6 +1,10 @@
-<h1><%= title %></h1>
-<p class="author-time-tagline">
-    By <span>Rob Misiorowski</span>
-    <time datetime="<%= createdAt %>"><%= timeAgo(createdAt) %></time>
-</p>
-<div><%= content %></div>
+<article>
+    <header>
+        <h1><%= title %></h1>
+        <p class="author-time-tagline">
+            By <span>Rob Misiorowski</span>
+            <time datetime="<%= createdAt %>" pubdate><%= timeAgo(createdAt) %></time>
+        </p>
+    </header>
+    <%= content %>
+</article>
