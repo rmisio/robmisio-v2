@@ -1,10 +1,12 @@
 <div class="row">
-    <ul class="col-md-4 blog-list list-unstyled">
-        <% for (var i=0; i < collection.length; i++) {
-            print(template('app/scripts/templates/blog-list-item.ejs',
-                collection[i]));
-        } %>
-    </ul>
+    <div class="col-md-4">
+        <ul class="blog-list list-unstyled">
+            <% for (var i=0; i < collection.length; i++) {
+                print(template('app/scripts/templates/blog-list-item.ejs',
+                    collection[i]));
+            } %>
+        </ul>
+    </div>
 
-    <section class="col-md-8 blog-entry"></section>
+    <section class="1111col-md-offset-4 col-md-8 blog-entry"></section>
 </div>

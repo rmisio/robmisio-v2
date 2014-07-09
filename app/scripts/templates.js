@@ -61,12 +61,12 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class="row">\n    <ul class="col-md-4 blog-list list-unstyled">\n        ';
+__p += '<div class="row">\n    <div class="col-md-4">\n        <ul class="blog-list list-unstyled">\n            ';
  for (var i=0; i < collection.length; i++) {
-            print(template('app/scripts/templates/blog-list-item.ejs',
-                collection[i]));
-        } ;
-__p += '\n    </ul>\n\n    <section class="col-md-8 blog-entry"></section>\n</div>';
+                print(template('app/scripts/templates/blog-list-item.ejs',
+                    collection[i]));
+            } ;
+__p += '\n        </ul>\n    </div>\n\n    <section class="1111col-md-offset-4 col-md-8 blog-entry"></section>\n</div>';
 
 }
 return __p
