@@ -3,7 +3,8 @@
  * Module dependencies.
  */
 
-var mongoose = require('mongoose'),
+var path = require('path'),
+    mongoose = require('mongoose'),
     home = require('home'),
     blogs = require('blogs');
 
@@ -12,19 +13,14 @@ var mongoose = require('mongoose'),
  */
 
 module.exports = function (app, passport) {
-    app.get('/', home.index);
-
     // blog routes
-    app.get('/blogs', blogs.index);
-    app.get('/blogs/:year/:month/:slug', blogs.show);
-    app.post('/blogs', blogs.create);
-    app.put('/blogs/:id', blogs.update);
+    app.get('/api/blogs', blogs.index);
+    app.get('/api/blogs/:year/:month/:slug', blogs.show);
+    app.post('/api/blogs', blogs.create);
+    app.put('/api/blogs/:id', blogs.update);
     // app.del('/blogs/:id', blogs.destroy);
 
-    /**
-     * Error handling
-     */
-
+   // Error handling
     app.use(function (err, req, res, next) {
         // treat as 404
         if (err.message
@@ -35,6 +31,12 @@ module.exports = function (app, passport) {
         console.error(err.stack);
         // error page
         res.status(500).render('500', { error: err.stack });
+    });
+
+    // route all requests to single page
+    app.get('*', function (req, res, next) {
+        res.sendfile(path.resolve(__dirname +
+            '../../../app/index.html'));
     });
 
     // assume 404 since no middleware responded

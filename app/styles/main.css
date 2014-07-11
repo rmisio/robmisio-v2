@@ -7780,20 +7780,21 @@ article a:hover {
 /* line 138, main.scss */
 .blog-list li {
   position: relative;
-  padding: 12px 8px;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
-/* line 144, main.scss */
+/* line 143, main.scss */
 .blog-list li:last-child {
   border-bottom: none;
 }
-/* line 148, main.scss */
+/* line 147, main.scss */
+.blog-list li a {
+  display: block;
+  padding: 12px 8px;
+}
+/* line 152, main.scss */
 .blog-list li h2 {
   margin: 0 0 3px;
   line-height: 18px;
-}
-/* line 152, main.scss */
-.blog-list li h2 a {
   font-size: 18px;
   color: #010101;
 }
@@ -7817,7 +7818,7 @@ article a:hover {
   transition: all .3s ease;
 }
 /* line 179, main.scss */
-.blog-list li:hover a, .blog-list li:hover time, .blog-list li.active a, .blog-list li.active time {
+.blog-list li:hover h2, .blog-list li:hover time, .blog-list li.active h2, .blog-list li.active time {
   color: #fd6500;
 }
 /* line 183, main.scss */

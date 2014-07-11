@@ -13,7 +13,6 @@ define([
             template = typeof template === 'string' ?
                 JST[template] : template;
             context = context || {};
-            
             return template(_.extend(context, templateHelpers));
         }
     }

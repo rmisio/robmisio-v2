@@ -27,6 +27,7 @@
     "passport-local": "latest",
     "serve-static": "latest",
     "swig": "latest",
+    "underscore": "^1.6.0",
     "view-helpers": "latest",
     "winston": "latest"
   },

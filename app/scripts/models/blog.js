@@ -8,7 +8,7 @@ define([
 
     var BlogModel = Backbone.Model.extend({
         url: function () {
-            return '/blogs/' + this.get('url');
+            return '/api/blogs/' + this.get('url');
         },
 
         initialize: function () {

@@ -138,22 +138,22 @@ article {
     li {
 
         position: relative;
-        padding: 12px 8px;
         border-bottom: 1px dotted rgba(0,0,0,.2);
 
         &:last-child {
             border-bottom: none;            
         }
 
+        a {
+            display: block;
+            padding: 12px 8px;
+        }
+
         h2 {
             margin: 0 0 3px;
             line-height: 18px;            
-
-            a {
-                font-size: 18px;
-                color: $gray-dark;
-            }
-
+            font-size: 18px;
+            color: $gray-dark;            
         }
 
         time {
@@ -176,7 +176,7 @@ article {
             -o-transition: all .3s ease;
             transition: all .3s ease;
 
-            a, time {
+            h2, time {
                 color: $orange;
             }
 

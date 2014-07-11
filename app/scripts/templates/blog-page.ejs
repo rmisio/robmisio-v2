@@ -1,12 +1,13 @@
 <div class="row">
-    <div class="col-md-4">
-        <ul class="blog-list list-unstyled">
-            <% for (var i=0; i < collection.length; i++) {
-                print(template('app/scripts/templates/blog-list-item.ejs',
-                    collection[i]));
-            } %>
-        </ul>
-    </div>
-
-    <section class="1111col-md-offset-4 col-md-8 blog-entry"></section>
+    <ul class="col-md-4 blog-list list-unstyled">
+        <%
+            var context = {};
+            for (var i=0; i < collection.length; i++) {
+                var context = collection[i];
+                context['BLOG_ENTRY_URL_PREFIX'] = BLOG_ENTRY_URL_PREFIX;                 
+                print(template('app/scripts/templates/blog-list-item.ejs', context));
+            }
+        %>
+    </ul>
+    <section class="col-md-8 blog-entry"></section>
 </div>

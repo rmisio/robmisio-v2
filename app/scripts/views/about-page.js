@@ -18,7 +18,7 @@ define([
         initialize: function (options) {
             this.options = options || {};
 
-            app.appView.showPage(this);            
+            app.appView.renderPage(this);            
         },
 
         render: function (context) {

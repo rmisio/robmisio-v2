@@ -44,13 +44,17 @@ this["JST"]["app/scripts/templates/blog-list-item.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<li class="clearfix">\n    <h2><a href="#">' +
+__p += '<li class="clearfix">\n    <a href="' +
+((__t = ( BLOG_ENTRY_URL_PREFIX )) == null ? '' : __t) +
+'' +
+((__t = ( url )) == null ? '' : __t) +
+'">\n        <h2>' +
 ((__t = ( title )) == null ? '' : __t) +
-'</a></h2>\n    <time datetime="' +
+'</h2>\n        <time datetime="' +
 ((__t = ( createdAt )) == null ? '' : __t) +
 '">' +
 ((__t = ( timeAgo(createdAt) )) == null ? '' : __t) +
-'</time>\n    <div class="spinner"></div>\n</li>';
+'</time>\n        <div class="spinner"></div>\n    </a>\n</li>';
 
 }
 return __p
@@ -61,12 +65,16 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class="row">\n    <div class="col-md-4">\n        <ul class="blog-list list-unstyled">\n            ';
- for (var i=0; i < collection.length; i++) {
-                print(template('app/scripts/templates/blog-list-item.ejs',
-                    collection[i]));
-            } ;
-__p += '\n        </ul>\n    </div>\n\n    <section class="1111col-md-offset-4 col-md-8 blog-entry"></section>\n</div>';
+__p += '<div class="row">\n    <ul class="col-md-4 blog-list list-unstyled">\n        ';
+
+            var context = {};
+            for (var i=0; i < collection.length; i++) {
+                var context = collection[i];
+                context['BLOG_ENTRY_URL_PREFIX'] = BLOG_ENTRY_URL_PREFIX;                 
+                print(template('app/scripts/templates/blog-list-item.ejs', context));
+            }
+        ;
+__p += '\n    </ul>\n    <section class="col-md-8 blog-entry"></section>\n</div>';
 
 }
 return __p

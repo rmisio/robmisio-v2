@@ -8,7 +8,7 @@ define([
     'use strict';
 
     var BlogCollection = Backbone.Collection.extend({
-        url: '/blogs',
+        url: '/api/blogs',
         
         model: BlogModel
     });

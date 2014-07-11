@@ -30,7 +30,7 @@ define([
             this.render();
         },
 
-        showPage: function (pageView, context) {
+        renderPage: function (pageView, context) {
             // todo: consider caching some or all pages
             if (this.curPageView) {
                 this.curPageView.remove();

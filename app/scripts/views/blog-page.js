@@ -16,19 +16,27 @@ define([
         templateBlogListItem: JST['app/scripts/templates/blog-list-item.ejs'],
 
         events: {
-            'click .blog-list li:not(.active)': 'onBlogListItemSelect'
+            'click .blog-list li a': 'onBlogListItemSelect'
         },
 
         initialize: function (options) {
             this.options = options || {};
-            // show progress bar
             this.collection = new BlogCollection();
             this.collection.on('reset', this.onBlogListReset, this);
             this.collection.fetch({ reset: true });
         },
 
-        blogListItemSelect: function(index) {
-            var self = this;
+        blogListItemSelect: function(blog) {
+            var self = this,
+                index;
+
+            // blog arg can arrive as index or model
+            if (typeof blog === 'number') {
+                index = blog;
+                blog = this.collection.at(blog);
+            } else {
+                index = this.collection.indexOf(blog);
+            }
 
             this.$blogEntryContainer = this.$blogEntryContainer ||
                 this.$('.blog-entry');
@@ -36,39 +44,67 @@ define([
                 .removeClass('active'); 
             
             // todo: can't we do some type of client-side caching?
-            this.collection.at(index).fetch({
+            blog.fetch({
                 success: function(blog) {
+                    var curUrl = window.location.pathname,
+                        url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
+
                     self.$blogEntryContainer.html(
                         app.util.template('app/scripts/templates/blog-entry.ejs',
-                            blog.toJSON()));
+                            _.extend(blog.toJSON(), {
+                                'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
+                            }))
+                    );
+                    
                     self.$('.blog-list li:eq(' + index + ')')
                         .addClass('active');
+
+                    if (window.location.pathname !== url) {
+                        app.router.navigate(url,
+                            { replace: curUrl === '/' || curUrl === '/blog' });
+                    }
                 }
             });
         },
 
         onBlogListItemSelect: function(e) {
-            console.log('can you handle it?');
             var $target = $(e.target).eq(0),
-                index = $target[0].tagName.toUpperCase() === 'LI' ?
-                    $target.index() : $target.parents('li').index();
+                $li = $target[0].tagName.toUpperCase() === 'LI' ?
+                    $target : $target.parents('li');
 
-                this.blogListItemSelect(index);
+                if ($li.hasClass('active')) { return };
+                this.blogListItemSelect($li.index());
+                
+                return false;
         },
 
         onBlogListReset: function() {
-            app.appView.showPage(this, {
+            var activeBlog;
+
+            app.appView.renderPage(this, {
                 collection: this.collection.toJSON()
             });
 
             if (this.collection.length) {
-                this.blogListItemSelect(0);
+                if (this.options.urlParams) {
+                    activeBlog = this.collection.findWhere({
+                        url: this.options.urlParams.year + '/' +
+                            this.options.urlParams.month + '/' +
+                            this.options.urlParams.slug
+                    });
+                }
+
+                this.blogListItemSelect(activeBlog || 0);
             }
         },
 
         // todo: consider putting this functionality in a 
         // view base class
         render: function (context) {
+            context = context || {};
+            context = _.extend(context, {
+                'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
+            });
             this.$el.html(app.util.template(this.template, context));
 
             return this;
