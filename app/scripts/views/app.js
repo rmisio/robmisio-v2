@@ -30,6 +30,13 @@ define([
             this.render();
         },
 
+        navBarActivePage: function(index) {
+            this.$('#header-main nav li a')
+                .removeClass('active')
+                .eq(index)
+                .addClass('active');
+        },
+
         renderPage: function (pageView, context) {
             // todo: consider caching some or all pages
             if (this.curPageView) {

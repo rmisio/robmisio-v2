@@ -21,6 +21,7 @@ define([
 
         initialize: function (options) {
             this.options = options || {};
+            app.appView.navBarActivePage(0);
             this.collection = new BlogCollection();
             this.collection.on('reset', this.onBlogListReset, this);
             this.collection.fetch({ reset: true });

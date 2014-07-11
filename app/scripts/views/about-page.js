@@ -17,7 +17,7 @@ define([
 
         initialize: function (options) {
             this.options = options || {};
-
+            app.appView.navBarActivePage(1);
             app.appView.renderPage(this);            
         },
 

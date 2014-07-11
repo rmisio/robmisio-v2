@@ -91,6 +91,7 @@ article {
                 letter-spacing: -1px;
 
                 &.active, &:hover {
+                    color: $brand-primary;
                     border-bottom: 2px solid $brand-primary;
                 }
             }
