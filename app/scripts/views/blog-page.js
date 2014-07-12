@@ -21,7 +21,6 @@ define([
         },
 
         initialize: function (options) {
-            alert('im a new blog page - yay!');
             this.options = options || {};
             app.appView.navBarActivePage(0);
             this.collection = new BlogCollection();
@@ -49,7 +48,8 @@ define([
             // todo: can't we do some type of client-side caching?
             blog.fetch({
                 success: function(blog) {
-                    var url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
+                    var curUrl = window.location.pathname,
+                        url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
 
                     self.$blogEntryContainer.html(
                         util.template('app/scripts/templates/blog-entry.ejs',
@@ -61,23 +61,15 @@ define([
                     self.$('.blog-list li:eq(' + index + ')')
                         .addClass('active');
                     
-                    self.updateUrl(url);
+                    if (curUrl !== url) {
+                        app.router.navigate(url,
+                            { replace: curUrl === '/' || curUrl === '/blog' });
+                    }                                
 
-                    if (util.mq.maxPhoneLandscape()) {
-                        self.$el.removeClass('blog-list-on')
-                            .addClass('blog-entry-on');
-                    }
+                    self.$el.removeClass('blog-list-on')
+                        .addClass('blog-entry-on');
                 }
             });
-        },
-
-        updateUrl: function(url) {
-            var curUrl = window.location.pathname;
-
-            if (window.location.pathname !== url) {
-                app.router.navigate(url,
-                    { replace: curUrl === '/' || curUrl === '/blog' });
-            }            
         },
 
         onBlogListItemSelect: function(e) {
@@ -107,9 +99,7 @@ define([
                     });
                 }
 
-                if (!util.mq.maxPhoneLandscape()) {
-                    this.blogListItemSelect(activeBlog || 0);
-                }
+                this.blogListItemSelect(activeBlog || 0);
             }
         },
 

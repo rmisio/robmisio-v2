@@ -7871,18 +7871,3 @@ article a:hover {
     width: 100%;
   }
 }
-@media only screen and (max-width: 768px) {
-  /* line 242, main.scss */
-  .blog-entry {
-    display: none;
-  }
-
-  /* line 247, main.scss */
-  .blog-entry-on .blog-entry {
-    display: block;
-  }
-  /* line 251, main.scss */
-  .blog-entry-on .blog-list {
-    display: none;
-  }
-}

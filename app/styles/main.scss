@@ -239,17 +239,9 @@ article {
 
 // Phone landscape and down
 @media only screen and (max-width : 768px) {
-    .blog-entry {
-        display: none;
-    }
-
-    .blog-entry-on {
-        .blog-entry {
-            display: block;
-        }
-
-        .blog-list {
-            display: none;
-        }
+    .blog-list {
+        // max-height: 200px;
+        // overflow: auto;
+        // margin-bottom: 30px;
     }
 }
