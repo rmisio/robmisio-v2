@@ -6,8 +6,9 @@ define([
     'underscore',
     'backbone',
     'templates',
+    'util',
     'collections/blog'
-], function (app, $, _, Backbone, JST, BlogCollection) {
+], function (app, $, _, Backbone, JST, util, BlogCollection) {
     'use strict';
 
     var BlogPageView = Backbone.View.extend({
@@ -20,6 +21,7 @@ define([
         },
 
         initialize: function (options) {
+            alert('im a new blog page - yay!');
             this.options = options || {};
             app.appView.navBarActivePage(0);
             this.collection = new BlogCollection();
@@ -47,11 +49,10 @@ define([
             // todo: can't we do some type of client-side caching?
             blog.fetch({
                 success: function(blog) {
-                    var curUrl = window.location.pathname,
-                        url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
+                    var url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
 
                     self.$blogEntryContainer.html(
-                        app.util.template('app/scripts/templates/blog-entry.ejs',
+                        util.template('app/scripts/templates/blog-entry.ejs',
                             _.extend(blog.toJSON(), {
                                 'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
                             }))
@@ -59,13 +60,24 @@ define([
                     
                     self.$('.blog-list li:eq(' + index + ')')
                         .addClass('active');
+                    
+                    self.updateUrl(url);
 
-                    if (window.location.pathname !== url) {
-                        app.router.navigate(url,
-                            { replace: curUrl === '/' || curUrl === '/blog' });
+                    if (util.mq.maxPhoneLandscape()) {
+                        self.$el.removeClass('blog-list-on')
+                            .addClass('blog-entry-on');
                     }
                 }
             });
+        },
+
+        updateUrl: function(url) {
+            var curUrl = window.location.pathname;
+
+            if (window.location.pathname !== url) {
+                app.router.navigate(url,
+                    { replace: curUrl === '/' || curUrl === '/blog' });
+            }            
         },
 
         onBlogListItemSelect: function(e) {
@@ -95,7 +107,9 @@ define([
                     });
                 }
 
-                this.blogListItemSelect(activeBlog || 0);
+                if (!util.mq.maxPhoneLandscape()) {
+                    this.blogListItemSelect(activeBlog || 0);
+                }
             }
         },
 
@@ -106,7 +120,7 @@ define([
             context = _.extend(context, {
                 'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
             });
-            this.$el.html(app.util.template(this.template, context));
+            this.$el.html(util.template(this.template, context));
 
             return this;
         }

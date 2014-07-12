@@ -5,8 +5,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'templates'
-], function (app, $, _, Backbone, JST) {
+    'templates',
+    'util'
+], function (app, $, _, Backbone, JST, util) {
     'use strict';
 
     var AboutPageView = Backbone.View.extend({
@@ -22,7 +23,7 @@ define([
         },
 
         render: function (context) {
-            this.$el.html(app.util.template(this.template, context));
+            this.$el.html(util.template(this.template, context));
 
             return this;
         }

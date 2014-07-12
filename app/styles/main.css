@@ -1429,7 +1429,7 @@ pre code {
     margin-left: 100%;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 769px) {
   /* line 63, ../bower_components/sass-bootstrap/lib/_grid.scss */
   .container {
     width: 970px;
@@ -7108,7 +7108,7 @@ td.visible-xs {
     display: table-cell !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 768px) {
   /* line 569, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .visible-xs.visible-sm {
     display: block !important;
@@ -7125,7 +7125,7 @@ td.visible-xs {
     display: table-cell !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   /* line 569, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .visible-xs.visible-md {
     display: block !important;
@@ -7184,7 +7184,7 @@ td.visible-sm {
     display: table-cell !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 768px) {
   /* line 569, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .visible-sm {
     display: block !important;
@@ -7201,7 +7201,7 @@ td.visible-sm {
     display: table-cell !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   /* line 569, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .visible-sm.visible-md {
     display: block !important;
@@ -7260,7 +7260,7 @@ td.visible-md {
     display: table-cell !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 768px) {
   /* line 569, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .visible-md.visible-sm {
     display: block !important;
@@ -7277,7 +7277,7 @@ td.visible-md {
     display: table-cell !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   /* line 569, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .visible-md {
     display: block !important;
@@ -7336,7 +7336,7 @@ td.visible-lg {
     display: table-cell !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 768px) {
   /* line 569, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .visible-lg.visible-sm {
     display: block !important;
@@ -7353,7 +7353,7 @@ td.visible-lg {
     display: table-cell !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   /* line 569, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .visible-lg.visible-md {
     display: block !important;
@@ -7412,7 +7412,7 @@ td.hidden-xs {
     display: none !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 768px) {
   /* line 580, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .hidden-xs.hidden-sm,
   tr.hidden-xs.hidden-sm,
@@ -7421,7 +7421,7 @@ td.hidden-xs {
     display: none !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   /* line 580, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .hidden-xs.hidden-md,
   tr.hidden-xs.hidden-md,
@@ -7464,7 +7464,7 @@ td.hidden-sm {
     display: none !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 768px) {
   /* line 580, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .hidden-sm,
   tr.hidden-sm,
@@ -7473,7 +7473,7 @@ td.hidden-sm {
     display: none !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   /* line 580, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .hidden-sm.hidden-md,
   tr.hidden-sm.hidden-md,
@@ -7516,7 +7516,7 @@ td.hidden-md {
     display: none !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 768px) {
   /* line 580, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .hidden-md.hidden-sm,
   tr.hidden-md.hidden-sm,
@@ -7525,7 +7525,7 @@ td.hidden-md {
     display: none !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   /* line 580, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .hidden-md,
   tr.hidden-md,
@@ -7568,7 +7568,7 @@ td.hidden-lg {
     display: none !important;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 768px) {
   /* line 580, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .hidden-lg.hidden-sm,
   tr.hidden-lg.hidden-sm,
@@ -7577,7 +7577,7 @@ td.hidden-lg {
     display: none !important;
   }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 769px) and (max-width: 1199px) {
   /* line 580, ../bower_components/sass-bootstrap/lib/_mixins.scss */
   .hidden-lg.hidden-md,
   tr.hidden-lg.hidden-md,
@@ -7628,7 +7628,7 @@ td.visible-print {
     display: none !important;
   }
 }
-/* line 21, main.scss */
+/* line 22, main.scss */
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -7636,7 +7636,7 @@ td.visible-print {
   padding: 0.2em 0;
 }
 
-/* line 28, main.scss */
+/* line 29, main.scss */
 body {
   padding: 10px 0;
   background: white url(../images/page-bg.png) repeat-x 0 3px;
@@ -7644,43 +7644,43 @@ body {
   color: #222222;
 }
 
-/* line 35, main.scss */
+/* line 36, main.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Raleway", sans-serif;
   font-weight: 300;
 }
 
-/* line 40, main.scss */
+/* line 41, main.scss */
 h1 {
   font-size: 40px;
   color: #222222;
 }
 
-/* line 45, main.scss */
+/* line 46, main.scss */
 a {
   color: #fd6500;
 }
-/* line 48, main.scss */
+/* line 49, main.scss */
 a:hover {
   text-decoration: none;
   color: #fd6500;
 }
 
-/* line 55, main.scss */
+/* line 56, main.scss */
 article a {
   border-bottom: 2px solid transparent;
   padding-bottom: 1px;
 }
-/* line 59, main.scss */
+/* line 60, main.scss */
 article a:hover {
   border-bottom: 2px solid #fd6500;
 }
 
-/* line 66, main.scss */
+/* line 67, main.scss */
 #header-main .logo {
   float: left;
 }
-/* line 69, main.scss */
+/* line 70, main.scss */
 #header-main .logo a {
   display: block;
   text-indent: -999px;
@@ -7688,11 +7688,11 @@ article a:hover {
   height: 43px;
   background: transparent url(../images/logo.png) no-repeat center;
 }
-/* line 78, main.scss */
+/* line 79, main.scss */
 #header-main nav {
   margin: 0 10px 10px;
 }
-/* line 83, main.scss */
+/* line 84, main.scss */
 #header-main nav li a {
   float: left;
   text-transform: uppercase;
@@ -7703,113 +7703,113 @@ article a:hover {
   font: 16px "Droid Sans", sans-serif;
   letter-spacing: -1px;
 }
-/* line 93, main.scss */
+/* line 94, main.scss */
 #header-main nav li a.active, #header-main nav li a:hover {
   color: #fd6500;
   border-bottom: 2px solid #fd6500;
 }
-/* line 99, main.scss */
+/* line 100, main.scss */
 #header-main nav li:first-child a {
   margin-left: 10px;
 }
 
 @-ms-keyframes blog-list-loading-on {
-  /* line 111, main.scss */
+  /* line 112, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 112, main.scss */
+  /* line 113, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-o-keyframes blog-list-loading-on {
-  /* line 116, main.scss */
+  /* line 117, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 117, main.scss */
+  /* line 118, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-moz-keyframes blog-list-loading-on {
-  /* line 121, main.scss */
+  /* line 122, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 122, main.scss */
+  /* line 123, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-webkit-keyframes blog-list-loading-on {
-  /* line 126, main.scss */
+  /* line 127, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 127, main.scss */
+  /* line 128, main.scss */
   to {
     background-position: center;
   }
 }
 
 @keyframes blog-list-loading-on {
-  /* line 131, main.scss */
+  /* line 132, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 132, main.scss */
+  /* line 133, main.scss */
   to {
     background-position: center;
   }
 }
 
-/* line 135, main.scss */
+/* line 136, main.scss */
 .blog-list {
   margin-top: 20px;
   font-size: 16px;
 }
-/* line 139, main.scss */
+/* line 140, main.scss */
 .blog-list li {
   position: relative;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
-/* line 144, main.scss */
+/* line 145, main.scss */
 .blog-list li:last-child {
   border-bottom: none;
 }
-/* line 148, main.scss */
+/* line 149, main.scss */
 .blog-list li a {
   display: block;
   padding: 12px 8px;
 }
-/* line 153, main.scss */
+/* line 154, main.scss */
 .blog-list li h2 {
   margin: 0 0 3px;
   line-height: 18px;
   font-size: 18px;
   color: #010101;
 }
-/* line 160, main.scss */
+/* line 161, main.scss */
 .blog-list li time {
   font-style: italic;
   color: #afafaf;
   margin: 0;
 }
-/* line 167, main.scss */
+/* line 168, main.scss */
 .blog-list li.active:hover a {
   cursor: default;
 }
-/* line 172, main.scss */
+/* line 173, main.scss */
 .blog-list li:hover, .blog-list li.active {
   background-color: #edd1bf;
   -webkit-transition: all .3s ease;
@@ -7818,19 +7818,19 @@ article a:hover {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
-/* line 180, main.scss */
+/* line 181, main.scss */
 .blog-list li:hover h2, .blog-list li:hover time, .blog-list li.active h2, .blog-list li.active time {
   color: #fd6500;
 }
-/* line 184, main.scss */
+/* line 185, main.scss */
 .blog-list li:hover time, .blog-list li.active time {
   font-weight: lighter;
 }
-/* line 188, main.scss */
+/* line 189, main.scss */
 .blog-list li:hover:not(.active), .blog-list li.active:not(.active) {
   cursor: pointer;
 }
-/* line 193, main.scss */
+/* line 194, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -7841,7 +7841,7 @@ article a:hover {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 204, main.scss */
+/* line 205, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -7851,16 +7851,38 @@ article a:hover {
   animation: blog-list-loading-on ease-in-out 0.2s;
 }
 
-/* line 216, main.scss */
+/* line 217, main.scss */
 .blog-entry .author-time-tagline {
   font-size: 15px;
   color: #afafaf;
   font-style: italic;
 }
-/* line 221, main.scss */
+/* line 222, main.scss */
 .blog-entry .author-time-tagline span {
   font-family: "Droid Sans", sans-serif;
   color: #222222;
   text-transform: uppercase;
   font-style: normal;
+}
+
+@media only screen and (max-width: 1170px) {
+  /* line 235, main.scss */
+  .container {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* line 242, main.scss */
+  .blog-entry {
+    display: none;
+  }
+
+  /* line 247, main.scss */
+  .blog-entry-on .blog-entry {
+    display: block;
+  }
+  /* line 251, main.scss */
+  .blog-entry-on .blog-list {
+    display: none;
+  }
 }

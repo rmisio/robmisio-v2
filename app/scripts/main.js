@@ -18,12 +18,16 @@ require.config({
 
 require([
     'backbone',
+    'underscore',
     'app',
+    'util',
     'routes/app',
     'views/app'
-], function (Backbone, app, AppRouter, AppView) {
+], function (Backbone, _, app, util, AppRouter, AppView) {
     app.appView = new AppView();
     app.router = new AppRouter();
+    app.eventEmitter = _.extend({}, Backbone.Events);
+    util.initMqChangeEvents(app.eventEmitter);
 
     Backbone.history.start({ pushState: true });    
 });

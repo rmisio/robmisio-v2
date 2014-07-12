@@ -1,12 +1,13 @@
-define([
-    'util',
-], function (util) {
+define([], function () {
     'use strict';
 
-    var BLOG_ENTRY_URL_PREFIX = 'posts/';
+    var BLOG_ENTRY_URL_PREFIX = 'posts/',
+        e = {
+            MQ_CHANGE: 'MQ_CHANGE'
+        };
 
     return {
-        util: util,
-        BLOG_ENTRY_URL_PREFIX: BLOG_ENTRY_URL_PREFIX
+        e: e,
+        BLOG_ENTRY_URL_PREFIX: BLOG_ENTRY_URL_PREFIX,
     }
 });
