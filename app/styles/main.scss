@@ -79,6 +79,47 @@ article {
     nav {
         margin: 0 10px 10px;
 
+        .button-mobile-menu {
+            position: relative;
+            width: 21px;
+            height: 45px;
+            float: left;
+            text-indent: -999px;
+            margin-right: 14px;
+
+            // todo: only apply to .touch; variabalize color
+            &:active {
+                background-color: #DDD;
+            }
+            
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 16px;
+                width: 20px;
+                height: 4px;
+                background: $gray-light;
+                box-shadow: 
+                    0 6px 0 0 $gray-light,
+                    0 12px 0 0 $gray-light;    
+                -webkit-transition: width .3s ease;
+                -moz-transition: width .3s ease;
+                -ms-transition: width .3s ease;
+                -o-transition: width .3s ease;
+                transition: width .3s ease;                    
+            }
+
+            &.mobile-menu-open:before {
+                width: 13px;
+                -webkit-transition: width .3s ease;
+                -moz-transition: width .3s ease;
+                -ms-transition: width .3s ease;
+                -o-transition: width .3s ease;
+                transition: width .3s ease;                    
+            }                        
+        }
+
         li {
 
             a {
