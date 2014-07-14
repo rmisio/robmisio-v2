@@ -10,6 +10,7 @@ $orange-dark:  #8d4c20;
 $orange:  #fd6500;
 $orange-light:  #edd1bf;
 $brand-primary: $orange;
+$page-bg-color: white;
 $link-color: $brand-primary;
 $text-color: #222;
 
@@ -28,7 +29,7 @@ $font-family-headings: $font-family-raleway;
 
 body {
     padding: 10px 0;
-    background: white url(../images/page-bg.png) repeat-x 0 3px;
+    background: $page-bg-color url(../images/page-bg.png) repeat-x 0 3px;
     font: normal 18px/150% $font-family-base;
     color: $text-color;
 }
@@ -80,44 +81,7 @@ article {
         margin: 0 10px 10px;
 
         .button-mobile-menu {
-            position: relative;
-            width: 21px;
-            height: 45px;
-            float: left;
-            text-indent: -999px;
-            margin-right: 14px;
-
-            // todo: only apply to .touch; variabalize color
-            &:active {
-                background-color: #DDD;
-            }
-            
-            &:before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 16px;
-                width: 20px;
-                height: 4px;
-                background: $gray-light;
-                box-shadow: 
-                    0 6px 0 0 $gray-light,
-                    0 12px 0 0 $gray-light;    
-                -webkit-transition: width .3s ease;
-                -moz-transition: width .3s ease;
-                -ms-transition: width .3s ease;
-                -o-transition: width .3s ease;
-                transition: width .3s ease;                    
-            }
-
-            &.mobile-menu-open:before {
-                width: 13px;
-                -webkit-transition: width .3s ease;
-                -moz-transition: width .3s ease;
-                -ms-transition: width .3s ease;
-                -o-transition: width .3s ease;
-                transition: width .3s ease;                    
-            }                        
+            display: none;
         }
 
         li {
@@ -280,9 +244,75 @@ article {
 
 // Phone landscape and down
 @media only screen and (max-width : 768px) {
+    #header-main nav {
+        .button-mobile-menu {
+            display: block;
+            position: relative;
+            width: 21px;
+            height: 45px;
+            float: left;
+            text-indent: -999px;
+            margin-right: 14px;
+
+            // todo: only apply to .touch; variabalize color
+            &:active {
+                background-color: #DDD;
+            }
+            
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 15px;
+                width: 20px;
+                height: 4px;
+                background: $gray-light;
+                box-shadow: 
+                    0 6px 0 0 $gray-light,
+                    0 12px 0 0 $gray-light;    
+                -webkit-transition: width .3s ease;
+                -moz-transition: width .3s ease;
+                -ms-transition: width .3s ease;
+                -o-transition: width .3s ease;
+                transition: width .3s ease;                    
+            }
+        }
+    }
+
     .blog-list {
-        // max-height: 200px;
-        // overflow: auto;
-        // margin-bottom: 30px;
+        background-color: $page-bg-color;
+        z-index: 1000;
+        position: absolute;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-top: 0;
+        margin-left: -50%;
+        -webkit-transition: margin-left .2s ease;
+        -moz-transition: margin-left .2s ease;
+        -ms-transition: margin-left .2s ease;
+        -o-transition: margin-left .2s ease;
+        transition: margin-left .2s ease;        
+    }
+
+    .mobile-menu-open {
+        #header-main nav {
+            .button-mobile-menu:before {
+                width: 13px;
+                -webkit-transition: width .2s ease;
+                -moz-transition: width .2s ease;
+                -ms-transition: width .2s ease;
+                -o-transition: width .2s ease;
+                transition: width .2s ease;                    
+            }
+        }
+
+        .blog-list {
+            margin-left: 0;
+            -webkit-transition: margin-left .2s ease;
+            -moz-transition: margin-left .2s ease;
+            -ms-transition: margin-left .2s ease;
+            -o-transition: margin-left .2s ease;
+            transition: margin-left .2s ease;
+        }
     }
 }

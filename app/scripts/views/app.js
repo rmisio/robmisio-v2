@@ -14,7 +14,9 @@ define([
 
         el: '#main-container',
 
-        events: {},
+        events: {
+            'click #header-main .button-mobile-menu': 'toggleMobileNavMenu'
+        },
 
         initialize: function () {
             $(document).on('click', 'a:not([data-bypass])', function (evt) {
@@ -28,13 +30,19 @@ define([
             });
 
             this.render();
+            this.$body = $('body');
         },
 
-        navBarActivePage: function(index) {
+        navBarActivePage: function (index) {
             this.$('#header-main nav li a')
                 .removeClass('active')
                 .eq(index)
                 .addClass('active');
+        },
+
+        toggleMobileNavMenu: function (e) {
+            this.$body.toggleClass('mobile-menu-open');
+            return false;
         },
 
         renderPage: function (pageView, context) {

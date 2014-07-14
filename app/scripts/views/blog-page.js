@@ -22,6 +22,7 @@ define([
 
         initialize: function (options) {
             this.options = options || {};
+            $('body').addClass('blog-page');
             app.appView.navBarActivePage(0);
             this.collection = new BlogCollection();
             this.collection.on('reset', this.onBlogListReset, this);
