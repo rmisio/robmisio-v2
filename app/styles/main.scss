@@ -32,6 +32,7 @@ body {
     background: $page-bg-color url(../images/page-bg.png) repeat-x 0 3px;
     font: normal 18px/150% $font-family-base;
     color: $text-color;
+    position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -51,6 +52,17 @@ a {
         text-decoration: none;
         color: $link-color;
     }
+}
+
+#page-overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    top: 62px;
+    left: 0;
+    opacity: 0.3;
 }
 
 article {
@@ -244,7 +256,7 @@ article {
 
 // Phone landscape and down
 @media only screen and (max-width : 768px) {
-    #header-main nav {
+    .blog-page #header-main nav {
         .button-mobile-menu {
             display: block;
             position: relative;
@@ -281,17 +293,23 @@ article {
 
     .blog-list {
         background-color: $page-bg-color;
-        z-index: 1000;
-        position: absolute;
         padding-top: 15px;
         padding-bottom: 15px;
-        margin-top: 0;
-        margin-left: -50%;
-        -webkit-transition: margin-left .2s ease;
-        -moz-transition: margin-left .2s ease;
-        -ms-transition: margin-left .2s ease;
-        -o-transition: margin-left .2s ease;
-        transition: margin-left .2s ease;        
+        margin-top: 0;        
+        z-index: 1000;
+        overflow: auto;        
+        position: absolute;
+        top: 62px;
+        left: -100%;
+        -webkit-transition: left .2s ease;
+        -moz-transition: left .2s ease;
+        -ms-transition: left .2s ease;
+        -o-transition: left .2s ease;
+        transition: left .2s ease;        
+    }
+
+    body.mobile-menu-open {
+        overflow: hidden;
     }
 
     .mobile-menu-open {
@@ -306,13 +324,17 @@ article {
             }
         }
 
+        #page-overlay {
+            display: block;
+        }
+
         .blog-list {
-            margin-left: 0;
-            -webkit-transition: margin-left .2s ease;
-            -moz-transition: margin-left .2s ease;
-            -ms-transition: margin-left .2s ease;
-            -o-transition: margin-left .2s ease;
-            transition: margin-left .2s ease;
+            left: 0;
+            -webkit-transition: left .2s ease;
+            -moz-transition: left .2s ease;
+            -ms-transition: left .2s ease;
+            -o-transition: left .2s ease;
+            transition: left .2s ease;
         }
     }
 }

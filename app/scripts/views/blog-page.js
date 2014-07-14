@@ -20,9 +20,10 @@ define([
             'click .blog-list li a': 'onBlogListItemSelect'
         },
 
+        pageClass: 'blog-page',
+
         initialize: function (options) {
             this.options = options || {};
-            $('body').addClass('blog-page');
             app.appView.navBarActivePage(0);
             this.collection = new BlogCollection();
             this.collection.on('reset', this.onBlogListReset, this);
@@ -67,8 +68,7 @@ define([
                             { replace: curUrl === '/' || curUrl === '/blog' });
                     }                                
 
-                    self.$el.removeClass('blog-list-on')
-                        .addClass('blog-entry-on');
+                    app.appView.closeMobileNavMenu();
                 }
             });
         },
