@@ -6,6 +6,7 @@ $screen-md: 769px;
 // colors
 $gray-dark:  #010101;
 $gray-light:   #afafaf;
+$gray-lighter:  #ccc;
 $orange-dark:  #8d4c20;
 $orange:  #fd6500;
 $orange-light:  #edd1bf;
@@ -52,6 +53,20 @@ a {
         text-decoration: none;
         color: $link-color;
     }
+}
+
+input[type="radio"] {
+    margin-top: 8px;
+}
+
+figcaption {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.container {
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #page-overlay {
@@ -245,7 +260,23 @@ article {
     }
 }
 
-// END - Blog page
+// About Me Page
+.quiz {
+    figure {
+        float: right;
+        width: 300px;
+        transform:  rotate(6deg);
+        -ms-transform:  rotate(6deg);
+        -webkit-transform:  rotate(6deg);        
+
+        img {
+            width: 100%; // todo: temp - temp - temp!
+            padding: 10px;
+            border: 1px solid $gray-lighter;
+            margin: 20px 0 10px;
+        }
+    }
+}
 
 // * Responsive *
 @media only screen and (max-width : 1170px) {
