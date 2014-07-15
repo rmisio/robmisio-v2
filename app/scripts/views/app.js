@@ -37,18 +37,6 @@ define([
                 }
             });
 
-            $(window).resize(function (e) {
-                setTimeout(function () {
-                    self.setMobileNavMenuHeight();
-                    // if (self.$body.hasClass('mobile-menu-open')) {
-                    //     self.setMobileNavMenuHeight.call(self);
-                    // }
-                    // todo: should remove max-height setting if
-                    // not .mobile-menu-open or possibly on
-                    // mq change event
-                }, 0);
-            });
-
             this.render();
             this.$body = $('body');
         },
@@ -58,15 +46,6 @@ define([
                 .removeClass('active')
                 .eq(index)
                 .addClass('active');
-        },
-
-        setMobileNavMenuHeight: function () {
-            this.$blogList =  this.$blogList || this.$('.blog-list');
-
-            if (this.$body.hasClass('mobile-menu-open')) {
-                this.$blogList.css('maxHeight', $(window).height() -
-                    parseInt(this.$blogList.css('top')));
-            }            
         },
 
         toggleMobileNavMenu: function (e) {
@@ -90,6 +69,11 @@ define([
             this.$pageContainer = this.$pageContainer ||
                 this.$('#page-container');
             this.$pageContainer.append(pageView.render(context).el);
+            // todo: make a base class and put onPageAppend (at
+            // least a stub) in and skip the if
+            if (typeof pageView.onPageAppend === 'function') {
+                pageView.onPageAppend();
+            }
         },
 
         render: function () {

@@ -26,8 +26,29 @@ define([
             this.options = options || {};
             app.appView.navBarActivePage(0);
             this.collection = new BlogCollection();
-            this.collection.on('reset', this.onBlogListReset, this);
+            this.listenTo(this.collection, 'reset', this.onBlogListReset);
             this.collection.fetch({ reset: true });
+            this.listenTo(app.eventEmitter, app.e.MQ_CHANGE, this.onMqChange);            
+        },
+
+        onMqChange: function (on, off) {
+            if (on.indexOf('maxPhoneLandscape') !== -1) {
+                this.setMobileNavMenuHeight();
+            } if (off.indexOf('maxPhoneLandscape') !== -1) {
+                this.clearMobileNavMenuHeight();
+            }
+        },
+
+        setMobileNavMenuHeight: function () {
+            this.$blogList.css('maxHeight', $(window).height() -
+                parseInt(this.$blogList.css('top')));
+        },        
+
+        clearMobileNavMenuHeight: function () {
+            this.$blogList.attr('style', function (i, style) {
+                return style ? style.replace(/max-height[^;]+;?/g, '') :
+                    '';
+            });
         },
 
         blogListItemSelect: function(blog) {
@@ -104,6 +125,18 @@ define([
             }
         },
 
+        onPageAppend: function () {
+            if (util.mq.maxPhoneLandscape()) {
+                this.setMobileNavMenuHeight();
+            }
+        },
+
+        remove: function () {
+            this.clearMobileNavMenuHeight();
+
+            Backbone.View.prototype.remove.call(this);
+        },
+
         // todo: consider putting this functionality in a 
         // view base class
         render: function (context) {
@@ -112,6 +145,9 @@ define([
                 'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
             });
             this.$el.html(util.template(this.template, context));
+
+            // cache selectors
+            this.$blogList =  this.$('.blog-list');
 
             return this;
         }
