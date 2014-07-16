@@ -80,17 +80,6 @@ figcaption {
     opacity: 0.3;
 }
 
-.error-msg {
-    display: none;
-    color: $brand-danger;
-}
-
-.has-error-required {
-    .error-msg.error-required {
-        display: block;
-    }
-}
-
 article {
     a {
         border-bottom: 2px solid transparent;
@@ -285,6 +274,49 @@ article {
             padding: 10px;
             border: 1px solid $gray-lighter;
             margin: 20px 0 10px;
+        }
+    }
+
+    .main-error, .quiz-results {
+        display: none;
+    }
+
+    form {
+        .error-msg {
+            display: none;
+            color: $brand-danger;
+        }
+
+        .has-error-required {
+            .error-msg.error-required {
+                display: block;
+            }
+        }
+
+        .glyphicon {
+            display: none;
+        }
+
+        .correct-answer {
+            label {
+                color: $brand-success;
+            }
+
+            .glyphicon-ok {
+                display: inline;
+                color: $brand-success;
+            }
+        }
+
+        .incorrect-answer {
+            label {
+                color: $brand-danger;
+            }
+
+            .glyphicon-remove {
+                display: inline;
+                color: $brand-danger;
+            }
         }
     }
 }

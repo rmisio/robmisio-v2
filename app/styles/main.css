@@ -7696,32 +7696,21 @@ figcaption {
   opacity: 0.3;
 }
 
-/* line 83, main.scss */
-.error-msg {
-  display: none;
-  color: #d9534f;
-}
-
-/* line 89, main.scss */
-.has-error-required .error-msg.error-required {
-  display: block;
-}
-
-/* line 95, main.scss */
+/* line 84, main.scss */
 article a {
   border-bottom: 2px solid transparent;
   padding-bottom: 1px;
 }
-/* line 99, main.scss */
+/* line 88, main.scss */
 article a:hover {
   border-bottom: 2px solid #fd6500;
 }
 
-/* line 106, main.scss */
+/* line 95, main.scss */
 #header-main .logo {
   float: left;
 }
-/* line 109, main.scss */
+/* line 98, main.scss */
 #header-main .logo a {
   display: block;
   text-indent: -999px;
@@ -7729,15 +7718,15 @@ article a:hover {
   height: 43px;
   background: transparent url(../images/logo.png) no-repeat center;
 }
-/* line 118, main.scss */
+/* line 107, main.scss */
 #header-main nav {
   margin: 0 10px 10px;
 }
-/* line 121, main.scss */
+/* line 110, main.scss */
 #header-main nav .button-mobile-menu {
   display: none;
 }
-/* line 127, main.scss */
+/* line 116, main.scss */
 #header-main nav li a {
   float: left;
   text-transform: uppercase;
@@ -7748,113 +7737,113 @@ article a:hover {
   font: 16px "Droid Sans", sans-serif;
   letter-spacing: -1px;
 }
-/* line 137, main.scss */
+/* line 126, main.scss */
 #header-main nav li a.active, #header-main nav li a:hover {
   color: #fd6500;
   border-bottom: 2px solid #fd6500;
 }
-/* line 143, main.scss */
+/* line 132, main.scss */
 #header-main nav li:first-child a {
   margin-left: 10px;
 }
 
 @-ms-keyframes blog-list-loading-on {
-  /* line 155, main.scss */
+  /* line 144, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 156, main.scss */
+  /* line 145, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-o-keyframes blog-list-loading-on {
-  /* line 160, main.scss */
+  /* line 149, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 161, main.scss */
+  /* line 150, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-moz-keyframes blog-list-loading-on {
-  /* line 165, main.scss */
+  /* line 154, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 166, main.scss */
+  /* line 155, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-webkit-keyframes blog-list-loading-on {
-  /* line 170, main.scss */
+  /* line 159, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 171, main.scss */
+  /* line 160, main.scss */
   to {
     background-position: center;
   }
 }
 
 @keyframes blog-list-loading-on {
-  /* line 175, main.scss */
+  /* line 164, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 176, main.scss */
+  /* line 165, main.scss */
   to {
     background-position: center;
   }
 }
 
-/* line 179, main.scss */
+/* line 168, main.scss */
 .blog-list {
   margin-top: 20px;
   font-size: 16px;
 }
-/* line 183, main.scss */
+/* line 172, main.scss */
 .blog-list li {
   position: relative;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
-/* line 188, main.scss */
+/* line 177, main.scss */
 .blog-list li:last-child {
   border-bottom: none;
 }
-/* line 192, main.scss */
+/* line 181, main.scss */
 .blog-list li a {
   display: block;
   padding: 12px 8px;
 }
-/* line 197, main.scss */
+/* line 186, main.scss */
 .blog-list li h2 {
   margin: 0 0 3px;
   line-height: 18px;
   font-size: 18px;
   color: #010101;
 }
-/* line 204, main.scss */
+/* line 193, main.scss */
 .blog-list li time {
   font-style: italic;
   color: #afafaf;
   margin: 0;
 }
-/* line 211, main.scss */
+/* line 200, main.scss */
 .blog-list li.active:hover a {
   cursor: default;
 }
-/* line 216, main.scss */
+/* line 205, main.scss */
 .blog-list li:hover, .blog-list li.active {
   background-color: #edd1bf;
   -webkit-transition: all .3s ease;
@@ -7863,19 +7852,19 @@ article a:hover {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
-/* line 224, main.scss */
+/* line 213, main.scss */
 .blog-list li:hover h2, .blog-list li:hover time, .blog-list li.active h2, .blog-list li.active time {
   color: #fd6500;
 }
-/* line 228, main.scss */
+/* line 217, main.scss */
 .blog-list li:hover time, .blog-list li.active time {
   font-weight: lighter;
 }
-/* line 232, main.scss */
+/* line 221, main.scss */
 .blog-list li:hover:not(.active), .blog-list li.active:not(.active) {
   cursor: pointer;
 }
-/* line 237, main.scss */
+/* line 226, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -7886,7 +7875,7 @@ article a:hover {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 248, main.scss */
+/* line 237, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -7896,13 +7885,13 @@ article a:hover {
   animation: blog-list-loading-on ease-in-out 0.2s;
 }
 
-/* line 260, main.scss */
+/* line 249, main.scss */
 .blog-entry .author-time-tagline {
   font-size: 15px;
   color: #afafaf;
   font-style: italic;
 }
-/* line 265, main.scss */
+/* line 254, main.scss */
 .blog-entry .author-time-tagline span {
   font-family: "Droid Sans", sans-serif;
   color: #222222;
@@ -7910,7 +7899,7 @@ article a:hover {
   font-style: normal;
 }
 
-/* line 276, main.scss */
+/* line 265, main.scss */
 .quiz figure {
   float: right;
   width: 300px;
@@ -7918,22 +7907,57 @@ article a:hover {
   -ms-transform: rotate(6deg);
   -webkit-transform: rotate(6deg);
 }
-/* line 283, main.scss */
+/* line 272, main.scss */
 .quiz figure img {
   width: 100%;
   padding: 10px;
   border: 1px solid #cccccc;
   margin: 20px 0 10px;
 }
+/* line 280, main.scss */
+.quiz .main-error, .quiz .quiz-results {
+  display: none;
+}
+/* line 285, main.scss */
+.quiz form .error-msg {
+  display: none;
+  color: #d9534f;
+}
+/* line 291, main.scss */
+.quiz form .has-error-required .error-msg.error-required {
+  display: block;
+}
+/* line 296, main.scss */
+.quiz form .glyphicon {
+  display: none;
+}
+/* line 301, main.scss */
+.quiz form .correct-answer label {
+  color: #5cb85c;
+}
+/* line 305, main.scss */
+.quiz form .correct-answer .glyphicon-ok {
+  display: inline;
+  color: #5cb85c;
+}
+/* line 312, main.scss */
+.quiz form .incorrect-answer label {
+  color: #d9534f;
+}
+/* line 316, main.scss */
+.quiz form .incorrect-answer .glyphicon-remove {
+  display: inline;
+  color: #d9534f;
+}
 
 @media only screen and (max-width: 1170px) {
-  /* line 294, main.scss */
+  /* line 326, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 302, main.scss */
+  /* line 334, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -7943,11 +7967,11 @@ article a:hover {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 312, main.scss */
+  /* line 344, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 316, main.scss */
+  /* line 348, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -7964,7 +7988,7 @@ article a:hover {
     transition: width .3s ease;
   }
 
-  /* line 336, main.scss */
+  /* line 368, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -7982,12 +8006,12 @@ article a:hover {
     transition: left .2s ease;
   }
 
-  /* line 353, main.scss */
+  /* line 385, main.scss */
   body.mobile-menu-open {
     overflow: hidden;
   }
 
-  /* line 359, main.scss */
+  /* line 391, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width .2s ease;
@@ -7996,11 +8020,11 @@ article a:hover {
     -o-transition: width .2s ease;
     transition: width .2s ease;
   }
-  /* line 369, main.scss */
+  /* line 401, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 373, main.scss */
+  /* line 405, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left .2s ease;
