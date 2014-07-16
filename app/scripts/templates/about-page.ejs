@@ -6,23 +6,24 @@
             <figcaption>A cheeky macaque, Lower Kintaganban River, Borneo. Original by <a href="http://www.flickr.com/photos/rclark/">Richard Clark</a></figcaption>
         </figure>        
         <p>
-            I was finding the idea of writing an about me narrative a bit
+            I was finding the idea of writing an &quot;about me&quot; narrative a bit
             awkward and uncomfortable, so I thought a little quiz could be
             kind of fun!
         </p>
         <form action="#">
             <div class="form-group">
-                <p>What was my favorite TV show growing up?</p>
+                <p class="control-label">What was my favorite TV show growing up?</p>
+                <p class="error-msg error-required">This field is required. Please select a value.</p>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="question1"
-                            value="option1" />
+                        <input type="radio" name="question1" value="option1" />
                         The Cosby Show
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input type="radio" name="question1" value="option2" />
+                        <input type="radio" name="question1" value="option2"
+                            data-answer="answer" />
                         Perfect Strangers
                     </label>
                 </div>
@@ -40,7 +41,8 @@
                 </div>                
             </div>
             <div class="form-group">
-                <p>What Eastern European city do my parents hail from?</p>
+                <p class="control-label">What Eastern European city do my parents hail from?</p>
+                <p class="error-msg error-required">This field is required. Please select a value.</p>
                 <div class="radio">
                     <label>
                         <input type="radio" name="question2"
@@ -68,7 +70,8 @@
                 </div>                
             </div>
             <div class="form-group">
-                <p>If green is green, then what is seen?</p>
+                <p class="control-label">If green is green, then what is seen?</p>
+                <p class="error-msg error-required">This field is required. Please select a value.</p>
                 <div class="radio">
                     <label>
                         <input type="radio" name="question3"
@@ -94,7 +97,9 @@
                         Trial &amp; Error, y'all
                     </label>
                 </div>                
-            </div>                        
+            </div>
+            <button type="reset" class="btn btn-default">Reset</button>
+            <button type="submit" class="btn btn-default">Submit</button>                  
         </form>
     </section>
 </div>

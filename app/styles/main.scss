@@ -80,6 +80,17 @@ figcaption {
     opacity: 0.3;
 }
 
+.error-msg {
+    display: none;
+    color: $brand-danger;
+}
+
+.has-error-required {
+    .error-msg.error-required {
+        display: block;
+    }
+}
+
 article {
     a {
         border-bottom: 2px solid transparent;

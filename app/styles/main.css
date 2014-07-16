@@ -7696,21 +7696,32 @@ figcaption {
   opacity: 0.3;
 }
 
-/* line 84, main.scss */
+/* line 83, main.scss */
+.error-msg {
+  display: none;
+  color: #d9534f;
+}
+
+/* line 89, main.scss */
+.has-error-required .error-msg.error-required {
+  display: block;
+}
+
+/* line 95, main.scss */
 article a {
   border-bottom: 2px solid transparent;
   padding-bottom: 1px;
 }
-/* line 88, main.scss */
+/* line 99, main.scss */
 article a:hover {
   border-bottom: 2px solid #fd6500;
 }
 
-/* line 95, main.scss */
+/* line 106, main.scss */
 #header-main .logo {
   float: left;
 }
-/* line 98, main.scss */
+/* line 109, main.scss */
 #header-main .logo a {
   display: block;
   text-indent: -999px;
@@ -7718,15 +7729,15 @@ article a:hover {
   height: 43px;
   background: transparent url(../images/logo.png) no-repeat center;
 }
-/* line 107, main.scss */
+/* line 118, main.scss */
 #header-main nav {
   margin: 0 10px 10px;
 }
-/* line 110, main.scss */
+/* line 121, main.scss */
 #header-main nav .button-mobile-menu {
   display: none;
 }
-/* line 116, main.scss */
+/* line 127, main.scss */
 #header-main nav li a {
   float: left;
   text-transform: uppercase;
@@ -7737,113 +7748,113 @@ article a:hover {
   font: 16px "Droid Sans", sans-serif;
   letter-spacing: -1px;
 }
-/* line 126, main.scss */
+/* line 137, main.scss */
 #header-main nav li a.active, #header-main nav li a:hover {
   color: #fd6500;
   border-bottom: 2px solid #fd6500;
 }
-/* line 132, main.scss */
+/* line 143, main.scss */
 #header-main nav li:first-child a {
   margin-left: 10px;
 }
 
 @-ms-keyframes blog-list-loading-on {
-  /* line 144, main.scss */
+  /* line 155, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 145, main.scss */
+  /* line 156, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-o-keyframes blog-list-loading-on {
-  /* line 149, main.scss */
+  /* line 160, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 150, main.scss */
+  /* line 161, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-moz-keyframes blog-list-loading-on {
-  /* line 154, main.scss */
+  /* line 165, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 155, main.scss */
+  /* line 166, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-webkit-keyframes blog-list-loading-on {
-  /* line 159, main.scss */
+  /* line 170, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 160, main.scss */
+  /* line 171, main.scss */
   to {
     background-position: center;
   }
 }
 
 @keyframes blog-list-loading-on {
-  /* line 164, main.scss */
+  /* line 175, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 165, main.scss */
+  /* line 176, main.scss */
   to {
     background-position: center;
   }
 }
 
-/* line 168, main.scss */
+/* line 179, main.scss */
 .blog-list {
   margin-top: 20px;
   font-size: 16px;
 }
-/* line 172, main.scss */
+/* line 183, main.scss */
 .blog-list li {
   position: relative;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
-/* line 177, main.scss */
+/* line 188, main.scss */
 .blog-list li:last-child {
   border-bottom: none;
 }
-/* line 181, main.scss */
+/* line 192, main.scss */
 .blog-list li a {
   display: block;
   padding: 12px 8px;
 }
-/* line 186, main.scss */
+/* line 197, main.scss */
 .blog-list li h2 {
   margin: 0 0 3px;
   line-height: 18px;
   font-size: 18px;
   color: #010101;
 }
-/* line 193, main.scss */
+/* line 204, main.scss */
 .blog-list li time {
   font-style: italic;
   color: #afafaf;
   margin: 0;
 }
-/* line 200, main.scss */
+/* line 211, main.scss */
 .blog-list li.active:hover a {
   cursor: default;
 }
-/* line 205, main.scss */
+/* line 216, main.scss */
 .blog-list li:hover, .blog-list li.active {
   background-color: #edd1bf;
   -webkit-transition: all .3s ease;
@@ -7852,19 +7863,19 @@ article a:hover {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
-/* line 213, main.scss */
+/* line 224, main.scss */
 .blog-list li:hover h2, .blog-list li:hover time, .blog-list li.active h2, .blog-list li.active time {
   color: #fd6500;
 }
-/* line 217, main.scss */
+/* line 228, main.scss */
 .blog-list li:hover time, .blog-list li.active time {
   font-weight: lighter;
 }
-/* line 221, main.scss */
+/* line 232, main.scss */
 .blog-list li:hover:not(.active), .blog-list li.active:not(.active) {
   cursor: pointer;
 }
-/* line 226, main.scss */
+/* line 237, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -7875,7 +7886,7 @@ article a:hover {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 237, main.scss */
+/* line 248, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -7885,13 +7896,13 @@ article a:hover {
   animation: blog-list-loading-on ease-in-out 0.2s;
 }
 
-/* line 249, main.scss */
+/* line 260, main.scss */
 .blog-entry .author-time-tagline {
   font-size: 15px;
   color: #afafaf;
   font-style: italic;
 }
-/* line 254, main.scss */
+/* line 265, main.scss */
 .blog-entry .author-time-tagline span {
   font-family: "Droid Sans", sans-serif;
   color: #222222;
@@ -7899,7 +7910,7 @@ article a:hover {
   font-style: normal;
 }
 
-/* line 265, main.scss */
+/* line 276, main.scss */
 .quiz figure {
   float: right;
   width: 300px;
@@ -7907,7 +7918,7 @@ article a:hover {
   -ms-transform: rotate(6deg);
   -webkit-transform: rotate(6deg);
 }
-/* line 272, main.scss */
+/* line 283, main.scss */
 .quiz figure img {
   width: 100%;
   padding: 10px;
@@ -7916,13 +7927,13 @@ article a:hover {
 }
 
 @media only screen and (max-width: 1170px) {
-  /* line 283, main.scss */
+  /* line 294, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 291, main.scss */
+  /* line 302, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -7932,11 +7943,11 @@ article a:hover {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 301, main.scss */
+  /* line 312, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 305, main.scss */
+  /* line 316, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -7953,7 +7964,7 @@ article a:hover {
     transition: width .3s ease;
   }
 
-  /* line 325, main.scss */
+  /* line 336, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -7971,12 +7982,12 @@ article a:hover {
     transition: left .2s ease;
   }
 
-  /* line 342, main.scss */
+  /* line 353, main.scss */
   body.mobile-menu-open {
     overflow: hidden;
   }
 
-  /* line 348, main.scss */
+  /* line 359, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width .2s ease;
@@ -7985,11 +7996,11 @@ article a:hover {
     -o-transition: width .2s ease;
     transition: width .2s ease;
   }
-  /* line 358, main.scss */
+  /* line 369, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 362, main.scss */
+  /* line 373, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left .2s ease;
