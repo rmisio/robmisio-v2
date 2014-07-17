@@ -16,7 +16,15 @@ define([
         events: {
             'submit form': 'submitQuiz',
             'reset form': 'resetQuiz',
-            'change form input': 'inputChange'
+            'click .try-again': 'resetQuiz',
+            'change form input': 'inputChange',
+            'click .show-correct': 'toggleCorrect'
+        },
+
+        gradeMessage: {
+            0: "There's always next time...",
+            60: "Not too shabby!",
+            80: "Wah Wah Wee Wah! Great Success!"
         },
 
         initialize: function (options) {
@@ -25,9 +33,17 @@ define([
             app.appView.renderPage(this);            
         },
 
+        toggleCorrect: function (e) {
+            // todo: toggle text!
+            // todo: handle bubbling
+            // todo: put bar or some space inbweteen links
+            this.$('.quiz').toggleClass('show-correct');
+            return false;
+        },
+
         quizScrollTop: function () {
             $('html, body').animate({
-                scrollTop: this.$('#quiz-results-container').offset().top
+                scrollTop: this.$('#quiz-results-container').offset().top - 10
             }, 500);
         },
 
@@ -42,7 +58,13 @@ define([
                 .find('input[type=radio]')
                 .prop('disabled', false);
             this.$submitButton.prop('disabled', false);
-            this.$('.quiz-results').hide();
+            this.$('.main-error').hide();
+            this.$('.quiz').removeClass('graded');
+            this.quizScrollTop();
+
+            if (e.type === 'click') {
+                return false;
+            }            
         },
 
         inputChange: function (e) {
@@ -57,10 +79,14 @@ define([
         submitQuiz: function (e) {
             var self = this,
                 requiredError = false,
-                score;
+                score,
+                gradeMsg,
+                gradeMsgIndex,
+                $mainError;
 
             e.preventDefault();
             this.$submitButton.prop('disabled', true);
+            $mainError = this.$('.main-error').hide();
 
             // makes sure all fields have a selection
             this.$('.form-group').each(function (i, val) {
@@ -71,7 +97,8 @@ define([
                         requiredError = true;
                         self.$submitButton.prop('disabled', true);
                     }
-                    $(this).addClass('has-error-required');                    
+                    $(this).addClass('has-error-required');
+                    $mainError.show();
                 }
             });
 
@@ -93,9 +120,17 @@ define([
 
                 score = Math.round(this.$('.correct-answer').length /
                     this.$('.form-group').length * 100);
+                
+                for (var index in this.gradeMessage) {
+                    if (score >= index) {
+                        gradeMsgIndex = index;
+                    }
+                }
+
+                gradeMsg = '<span>' + score + '%</span> ' + this.gradeMessage[gradeMsgIndex];
                 this.$('.quiz-results')
-                    .text(score + '%')
-                    .show();
+                    .prepend(gradeMsg);
+                this.$('.quiz').addClass('graded');
             }
 
             this.quizScrollTop();

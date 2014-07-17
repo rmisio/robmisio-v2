@@ -59,9 +59,18 @@ input[type="radio"] {
     margin-top: 8px;
 }
 
+input[disabled] + label {
+    color: $gray-lighter;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
 figcaption {
     font-size: 16px;
     line-height: 20px;
+    font-weight: 200;
 }
 
 .container {
@@ -80,14 +89,18 @@ figcaption {
     opacity: 0.3;
 }
 
+@mixin link-underline($borderSize: 2px) {
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+
+    &:hover {
+        border-bottom: $borderSize solid $link-color;
+    }
+}
+
 article {
     a {
-        border-bottom: 2px solid transparent;
-        padding-bottom: 1px;
-
-        &:hover {
-            border-bottom: 2px solid $link-color;
-        }
+        @include link-underline;
     }
 }
 
@@ -265,6 +278,7 @@ article {
     figure {
         float: right;
         width: 300px;
+        margin: 20px 30px;
         transform:  rotate(6deg);
         -ms-transform:  rotate(6deg);
         -webkit-transform:  rotate(6deg);        
@@ -273,7 +287,28 @@ article {
             width: 100%; // todo: temp - temp - temp!
             padding: 10px;
             border: 1px solid $gray-lighter;
-            margin: 20px 0 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .error-msg {
+        display: none;
+        color: $brand-danger;
+    }
+
+    .quiz-results {
+        font: normal 28px/28px cursive;
+        color: $gray-light;
+
+        span {
+            font-size: 32px;
+        }
+
+        a {
+            display: inline;
+            font-size: 16px;
+            font-family: $font-family-base;
+            @include link-underline(1px);
         }
     }
 
@@ -281,12 +316,23 @@ article {
         display: none;
     }
 
-    form {
-        .error-msg {
-            display: none;
-            color: $brand-danger;
+    &.graded {
+        .quiz-results {
+            display: block;
         }
 
+        &.show-correct {
+            .answer-explain {
+                display: block;
+            }
+
+            input[data-answer] + label {
+                color: $brand-success;
+            }
+        }
+    }    
+
+    form {
         .has-error-required {
             .error-msg.error-required {
                 display: block;
@@ -295,6 +341,11 @@ article {
 
         .glyphicon {
             display: none;
+        }
+
+        .answer-explain {
+            display: none;
+            font-weight: 200;
         }
 
         .correct-answer {
@@ -306,6 +357,8 @@ article {
                 display: inline;
                 color: $brand-success;
             }
+
+            .answer-explain { display: block }
         }
 
         .incorrect-answer {

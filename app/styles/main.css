@@ -7673,18 +7673,28 @@ input[type="radio"] {
 }
 
 /* line 62, main.scss */
+input[disabled] + label {
+  color: #cccccc;
+}
+/* line 65, main.scss */
+input[disabled] + label:hover {
+  cursor: not-allowed;
+}
+
+/* line 70, main.scss */
 figcaption {
   font-size: 16px;
   line-height: 20px;
+  font-weight: 200;
 }
 
-/* line 67, main.scss */
+/* line 76, main.scss */
 .container {
   padding-left: 20px;
   padding-right: 20px;
 }
 
-/* line 72, main.scss */
+/* line 81, main.scss */
 #page-overlay {
   display: none;
   width: 100%;
@@ -7696,21 +7706,21 @@ figcaption {
   opacity: 0.3;
 }
 
-/* line 84, main.scss */
+/* line 102, main.scss */
 article a {
   border-bottom: 2px solid transparent;
   padding-bottom: 1px;
 }
-/* line 88, main.scss */
+/* line 96, main.scss */
 article a:hover {
   border-bottom: 2px solid #fd6500;
 }
 
-/* line 95, main.scss */
+/* line 108, main.scss */
 #header-main .logo {
   float: left;
 }
-/* line 98, main.scss */
+/* line 111, main.scss */
 #header-main .logo a {
   display: block;
   text-indent: -999px;
@@ -7718,15 +7728,15 @@ article a:hover {
   height: 43px;
   background: transparent url(../images/logo.png) no-repeat center;
 }
-/* line 107, main.scss */
+/* line 120, main.scss */
 #header-main nav {
   margin: 0 10px 10px;
 }
-/* line 110, main.scss */
+/* line 123, main.scss */
 #header-main nav .button-mobile-menu {
   display: none;
 }
-/* line 116, main.scss */
+/* line 129, main.scss */
 #header-main nav li a {
   float: left;
   text-transform: uppercase;
@@ -7737,113 +7747,113 @@ article a:hover {
   font: 16px "Droid Sans", sans-serif;
   letter-spacing: -1px;
 }
-/* line 126, main.scss */
+/* line 139, main.scss */
 #header-main nav li a.active, #header-main nav li a:hover {
   color: #fd6500;
   border-bottom: 2px solid #fd6500;
 }
-/* line 132, main.scss */
+/* line 145, main.scss */
 #header-main nav li:first-child a {
   margin-left: 10px;
 }
 
 @-ms-keyframes blog-list-loading-on {
-  /* line 144, main.scss */
+  /* line 157, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 145, main.scss */
+  /* line 158, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-o-keyframes blog-list-loading-on {
-  /* line 149, main.scss */
+  /* line 162, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 150, main.scss */
+  /* line 163, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-moz-keyframes blog-list-loading-on {
-  /* line 154, main.scss */
+  /* line 167, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 155, main.scss */
+  /* line 168, main.scss */
   to {
     background-position: center;
   }
 }
 
 @-webkit-keyframes blog-list-loading-on {
-  /* line 159, main.scss */
+  /* line 172, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 160, main.scss */
+  /* line 173, main.scss */
   to {
     background-position: center;
   }
 }
 
 @keyframes blog-list-loading-on {
-  /* line 164, main.scss */
+  /* line 177, main.scss */
   from {
     background-position: center -10px;
   }
 
-  /* line 165, main.scss */
+  /* line 178, main.scss */
   to {
     background-position: center;
   }
 }
 
-/* line 168, main.scss */
+/* line 181, main.scss */
 .blog-list {
   margin-top: 20px;
   font-size: 16px;
 }
-/* line 172, main.scss */
+/* line 185, main.scss */
 .blog-list li {
   position: relative;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
-/* line 177, main.scss */
+/* line 190, main.scss */
 .blog-list li:last-child {
   border-bottom: none;
 }
-/* line 181, main.scss */
+/* line 194, main.scss */
 .blog-list li a {
   display: block;
   padding: 12px 8px;
 }
-/* line 186, main.scss */
+/* line 199, main.scss */
 .blog-list li h2 {
   margin: 0 0 3px;
   line-height: 18px;
   font-size: 18px;
   color: #010101;
 }
-/* line 193, main.scss */
+/* line 206, main.scss */
 .blog-list li time {
   font-style: italic;
   color: #afafaf;
   margin: 0;
 }
-/* line 200, main.scss */
+/* line 213, main.scss */
 .blog-list li.active:hover a {
   cursor: default;
 }
-/* line 205, main.scss */
+/* line 218, main.scss */
 .blog-list li:hover, .blog-list li.active {
   background-color: #edd1bf;
   -webkit-transition: all .3s ease;
@@ -7852,19 +7862,19 @@ article a:hover {
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
-/* line 213, main.scss */
+/* line 226, main.scss */
 .blog-list li:hover h2, .blog-list li:hover time, .blog-list li.active h2, .blog-list li.active time {
   color: #fd6500;
 }
-/* line 217, main.scss */
+/* line 230, main.scss */
 .blog-list li:hover time, .blog-list li.active time {
   font-weight: lighter;
 }
-/* line 221, main.scss */
+/* line 234, main.scss */
 .blog-list li:hover:not(.active), .blog-list li.active:not(.active) {
   cursor: pointer;
 }
-/* line 226, main.scss */
+/* line 239, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -7875,7 +7885,7 @@ article a:hover {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 237, main.scss */
+/* line 250, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -7885,13 +7895,13 @@ article a:hover {
   animation: blog-list-loading-on ease-in-out 0.2s;
 }
 
-/* line 249, main.scss */
+/* line 262, main.scss */
 .blog-entry .author-time-tagline {
   font-size: 15px;
   color: #afafaf;
   font-style: italic;
 }
-/* line 254, main.scss */
+/* line 267, main.scss */
 .blog-entry .author-time-tagline span {
   font-family: "Droid Sans", sans-serif;
   color: #222222;
@@ -7899,65 +7909,108 @@ article a:hover {
   font-style: normal;
 }
 
-/* line 265, main.scss */
+/* line 278, main.scss */
 .quiz figure {
   float: right;
   width: 300px;
+  margin: 20px 30px;
   transform: rotate(6deg);
   -ms-transform: rotate(6deg);
   -webkit-transform: rotate(6deg);
 }
-/* line 272, main.scss */
+/* line 286, main.scss */
 .quiz figure img {
   width: 100%;
   padding: 10px;
   border: 1px solid #cccccc;
-  margin: 20px 0 10px;
+  margin-bottom: 10px;
 }
-/* line 280, main.scss */
-.quiz .main-error, .quiz .quiz-results {
-  display: none;
-}
-/* line 285, main.scss */
-.quiz form .error-msg {
+/* line 294, main.scss */
+.quiz .error-msg {
   display: none;
   color: #d9534f;
 }
-/* line 291, main.scss */
+/* line 299, main.scss */
+.quiz .quiz-results {
+  font: normal 28px/28px cursive;
+  color: #afafaf;
+}
+/* line 303, main.scss */
+.quiz .quiz-results span {
+  font-size: 32px;
+}
+/* line 307, main.scss */
+.quiz .quiz-results a {
+  display: inline;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 1px;
+}
+/* line 96, main.scss */
+.quiz .quiz-results a:hover {
+  border-bottom: 1px solid #fd6500;
+}
+/* line 315, main.scss */
+.quiz .main-error, .quiz .quiz-results {
+  display: none;
+}
+/* line 320, main.scss */
+.quiz.graded .quiz-results {
+  display: block;
+}
+/* line 325, main.scss */
+.quiz.graded.show-correct .answer-explain {
+  display: block;
+}
+/* line 329, main.scss */
+.quiz.graded.show-correct input[data-answer] + label {
+  color: #5cb85c;
+}
+/* line 337, main.scss */
 .quiz form .has-error-required .error-msg.error-required {
   display: block;
 }
-/* line 296, main.scss */
+/* line 342, main.scss */
 .quiz form .glyphicon {
   display: none;
 }
-/* line 301, main.scss */
+/* line 346, main.scss */
+.quiz form .answer-explain {
+  display: none;
+  font-weight: 200;
+}
+/* line 352, main.scss */
 .quiz form .correct-answer label {
   color: #5cb85c;
 }
-/* line 305, main.scss */
+/* line 356, main.scss */
 .quiz form .correct-answer .glyphicon-ok {
   display: inline;
   color: #5cb85c;
 }
-/* line 312, main.scss */
+/* line 361, main.scss */
+.quiz form .correct-answer .answer-explain {
+  display: block;
+}
+/* line 365, main.scss */
 .quiz form .incorrect-answer label {
   color: #d9534f;
 }
-/* line 316, main.scss */
+/* line 369, main.scss */
 .quiz form .incorrect-answer .glyphicon-remove {
   display: inline;
   color: #d9534f;
 }
 
 @media only screen and (max-width: 1170px) {
-  /* line 326, main.scss */
+  /* line 379, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 334, main.scss */
+  /* line 387, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -7967,11 +8020,11 @@ article a:hover {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 344, main.scss */
+  /* line 397, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 348, main.scss */
+  /* line 401, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -7988,7 +8041,7 @@ article a:hover {
     transition: width .3s ease;
   }
 
-  /* line 368, main.scss */
+  /* line 421, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8006,12 +8059,12 @@ article a:hover {
     transition: left .2s ease;
   }
 
-  /* line 385, main.scss */
+  /* line 438, main.scss */
   body.mobile-menu-open {
     overflow: hidden;
   }
 
-  /* line 391, main.scss */
+  /* line 444, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width .2s ease;
@@ -8020,11 +8073,11 @@ article a:hover {
     -o-transition: width .2s ease;
     transition: width .2s ease;
   }
-  /* line 401, main.scss */
+  /* line 454, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 405, main.scss */
+  /* line 458, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left .2s ease;
