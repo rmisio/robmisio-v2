@@ -35,7 +35,9 @@ module.exports = function (app, passport) {
     }));
 
     // Static files middleware
-    app.use(serveStatic(config.root + '/app'));
+    app.use(serveStatic(config.root +
+        (process.env.NODE_ENV === 'production' ?
+            '/dist' : '/app')));
 
     // Use winston on production
     var log;
@@ -64,7 +66,9 @@ module.exports = function (app, passport) {
 
     // set views path, template engine and default layout
     app.engine('html', swig.renderFile);
-    app.set('views', config.root + '/server/app/views');
+    app.set('views', config.root + 
+        (process.env.NODE_ENV === 'production' ?
+            '/server/dist/views' : '/server/app/views'));
     app.set('view engine', 'html');
 
     // expose package.json to views

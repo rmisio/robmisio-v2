@@ -6,7 +6,8 @@
 var path = require('path'),
     mongoose = require('mongoose'),
     home = require('home'),
-    blogs = require('blogs');
+    blogs = require('blogs'),
+    indexUrl;
 
 /**
  * Expose
@@ -34,9 +35,10 @@ module.exports = function (app, passport) {
     });
 
     // route all requests to single page
+    indexUrl = process.env.NODE_ENV === 'production' ?
+        '../../../dist/index.html' : '../../../app/index.html';
     app.get('*', function (req, res, next) {
-        res.sendfile(path.resolve(__dirname +
-            '../../../app/index.html'));
+        res.sendfile(path.resolve(__dirname + indexUrl));
     });
 
     // assume 404 since no middleware responded
