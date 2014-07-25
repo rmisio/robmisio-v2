@@ -6,6 +6,8 @@ var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
 var popBlogEntries;
+var blogEntryPath = __dirname + (process.env.NODE_ENV === 'production' ?
+        '/dist/blog-entries' : '/app/scripts/templates/blog-entries');
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -165,7 +167,7 @@ module.exports = function (grunt) {
                     baseUrl: '<%= yeoman.app %>/scripts',
                     optimize: 'none',
                     paths: {
-                        'templates': '../../.tmp/scripts/templates',
+                        'templates': '../../<%= yeoman.app %>/scripts/templates',
                         'jquery': '../../<%= yeoman.app %>/bower_components/jquery/dist/jquery',
                         'underscore': '../../<%= yeoman.app %>/bower_components/underscore/underscore',
                         'backbone': '../../<%= yeoman.app %>/bower_components/backbone/backbone'
@@ -250,7 +252,15 @@ module.exports = function (grunt) {
                         'styles/fonts/{,*/}*.*',
                         'bower_components/sass-bootstrap/fonts/*.*'
                     ]
-                }]
+                },
+                {
+                    expand: true,
+                    flatten: true,
+                    filter: 'isFile',
+                    src: ['<%= yeoman.app %>/scripts/templates/blog-entries/**'],
+                    dest: '<%= yeoman.dist %>/blog-entries'
+                }
+                ]
             }
         },
         bower: {
@@ -285,9 +295,11 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('popBlogEntries', function () {
-        console.log('========', __dirname);
+        var done = this.async();
+
+        console.log('-----> Checking', blogEntryPath);
         popBlogEntries = popBlogEntries ||
-            require('./bin/populate-blog-entries')(__dirname + '/app/scripts/templates/blog-entries');
+            require('./bin/populate-blog-entries')(blogEntryPath, done);
     });
     
     grunt.registerTask('createDefaultTemplate', function () {
@@ -366,6 +378,11 @@ module.exports = function (grunt) {
         'copy',
         'rev',
         'usemin'
+    ]);
+
+    grunt.registerTask('heroku', [
+        'build',
+        'popBlogEntries'
     ]);
 
     grunt.registerTask('default', [
