@@ -299,6 +299,7 @@ article {
     .quiz-results {
         font: normal 28px/28px cursive;
         color: $gray-light;
+        margin: 20px 0;
 
         span {
             font-size: 32px;
@@ -321,7 +322,7 @@ article {
             display: block;
         }
 
-        &.show-correct {
+        &.correct-on {
             .answer-explain {
                 display: block;
             }

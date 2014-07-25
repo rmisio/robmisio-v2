@@ -34,10 +34,17 @@ define([
         },
 
         toggleCorrect: function (e) {
-            // todo: toggle text!
-            // todo: handle bubbling
             // todo: put bar or some space inbweteen links
-            this.$('.quiz').toggleClass('show-correct');
+            if (this.$quiz.hasClass('correct-on')) {
+                this.$quiz.removeClass('correct-on');
+                this.$quiz.find('.show-correct')
+                    .text('show correct');
+            } else {
+                this.$quiz.addClass('correct-on');
+                this.$quiz.find('.show-correct')
+                    .text('hide correct');
+            }
+
             return false;
         },
 
@@ -48,7 +55,12 @@ define([
         },
 
         resetQuiz: function (e) {
-            this.$('form')
+            if (e.type !== 'reset') {
+                this.$('form').trigger('reset');
+                return false;
+            }
+
+            this.$quiz
                 .find('.correct-answer, .incorrect-answer')
                 .removeClass('correct-answer incorrect-answer')
                 .end()
@@ -59,12 +71,8 @@ define([
                 .prop('disabled', false);
             this.$submitButton.prop('disabled', false);
             this.$('.main-error').hide();
-            this.$('.quiz').removeClass('graded');
+            this.$quiz.removeClass('graded');
             this.quizScrollTop();
-
-            if (e.type === 'click') {
-                return false;
-            }            
         },
 
         inputChange: function (e) {
@@ -129,8 +137,13 @@ define([
 
                 gradeMsg = '<span>' + score + '%</span> ' + this.gradeMessage[gradeMsgIndex];
                 this.$('.quiz-results')
-                    .prepend(gradeMsg);
-                this.$('.quiz').addClass('graded');
+                    .html(util.template(
+                        JST['app/scripts/templates/quiz-results.ejs'],
+                        {
+                            message: gradeMsg,
+                            correctOn: this.$quiz.hasClass('correct-on')
+                        }));
+                this.$quiz.addClass('graded');
             }
 
             this.quizScrollTop();
@@ -141,6 +154,7 @@ define([
 
             // cache selectors
             this.$submitButton = this.$('button[type=submit]');
+            this.$quiz = this.$('.quiz');
 
             return this;
         }
