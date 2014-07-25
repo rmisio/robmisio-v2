@@ -14,10 +14,13 @@ var util = require('../../util'),
  */
 
 blogSchema = new Schema({
+    // title needs to be unique because of current implementation
+    // of populate-blog-entries script
     title: {
         type: String,
         trim: true,
-        required: true    
+        required: true,
+        unique: true    
     },
     content: {
         type: String,
