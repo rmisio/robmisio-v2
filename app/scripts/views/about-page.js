@@ -18,8 +18,11 @@ define([
             'reset form': 'resetQuiz',
             'click .try-again': 'resetQuiz',
             'change form input': 'inputChange',
-            'click .show-correct': 'toggleCorrect'
+            'click .show-correct': 'toggleCorrect',
+            'click #thanksManoj': 'thanksManoj'
         },
+
+        pageClass: 'about-page',
 
         gradeMessage: {
             0: "There's always next time...",
@@ -31,6 +34,12 @@ define([
             this.options = options || {};
             app.appView.navBarActivePage(1);
             app.appView.renderPage(this);            
+        },
+
+        thanksManoj: function () {
+            // alert('thanks manoj');
+            
+            // return false;
         },
 
         toggleCorrect: function (e) {

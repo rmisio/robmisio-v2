@@ -25,6 +25,11 @@ define([
                 var href = $(this).attr('href'),
                     protocol = this.protocol + '//';
 
+                // ignore absolute links
+                if (href.slice(0, 4) === 'http') {
+                    return;
+                }
+
                 if (href.slice(protocol.length) !== protocol) {
                   evt.preventDefault();
                   app.router.navigate(href, true);

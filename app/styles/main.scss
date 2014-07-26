@@ -21,6 +21,21 @@ $font-family-droid: 'Droid Sans', sans-serif;
 $font-family-base: $font-family-raleway;
 $font-family-headings: $font-family-raleway;
 
+// mixins
+@mixin link-underline($borderSize: 2px) {
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+
+    &:hover {
+        border-bottom: $borderSize solid $link-color;
+    }
+}
+
+@mixin border-frame($borderColor: $gray-lighter, $padding: 10px) {
+    padding: $padding;
+    border: 1px solid $gray-lighter;
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -46,12 +61,19 @@ h1 {
     color: $gray-darker;
 }
 
-a {
+a, .btn-link {
+    padding: 0;
     color:  $link-color;
 
-    &:hover {
+    &:hover, &:focus {
         text-decoration: none;
         color: $link-color;
+    }
+}
+
+article {
+    a {
+        @include link-underline;
     }
 }
 
@@ -89,19 +111,17 @@ figcaption {
     opacity: 0.3;
 }
 
-@mixin link-underline($borderSize: 2px) {
-    border-bottom: 2px solid transparent;
-    padding-bottom: 1px;
 
-    &:hover {
-        border-bottom: $borderSize solid $link-color;
-    }
+.scrollbar-measure {
+  width: 1px;
+  height: 1px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
 }
 
-article {
-    a {
-        @include link-underline;
-    }
+.border-frame {
+    @include border-frame;
 }
 
 #header-main {
@@ -274,103 +294,117 @@ article {
 }
 
 // About Me Page
-.quiz {
-    figure {
-        float: right;
-        width: 300px;
-        margin: 20px 30px;
-        transform:  rotate(6deg);
-        -ms-transform:  rotate(6deg);
-        -webkit-transform:  rotate(6deg);        
-
-        img {
-            width: 100%; // todo: temp - temp - temp!
-            padding: 10px;
-            border: 1px solid $gray-lighter;
-            margin-bottom: 10px;
-        }
-    }
-
-    .error-msg {
-        display: none;
-        color: $brand-danger;
-    }
-
-    .quiz-results {
-        font: normal 28px/28px cursive;
-        color: $gray-light;
-        margin: 20px 0;
-
-        span {
-            font-size: 32px;
+.about-page {
+    .quiz {
+        .error-msg {
+            display: none;
+            color: $brand-danger;
         }
 
-        a {
-            display: inline;
-            font-size: 16px;
-            font-family: $font-family-base;
-            @include link-underline(1px);
-        }
-    }
-
-    .main-error, .quiz-results {
-        display: none;
-    }
-
-    &.graded {
         .quiz-results {
-            display: block;
+            font: normal 28px/28px cursive;
+            color: $gray-light;
+            margin: 20px 0;
+
+            span {
+                font-size: 32px;
+            }
+
+            a {
+                display: inline;
+                font-size: 16px;
+                font-family: $font-family-base;
+                @include link-underline(1px);
+            }
         }
 
-        &.correct-on {
+        .main-error, .quiz-results {
+            display: none;
+        }
+
+        &.graded {
+            .quiz-results {
+                display: block;
+            }
+
+            &.correct-on {
+                .answer-explain {
+                    display: block;
+                }
+
+                input[data-answer] + label {
+                    color: $brand-success;
+                }
+            }
+        }    
+
+        form {
+            .has-error-required {
+                .error-msg.error-required {
+                    display: block;
+                }
+            }
+
+            .glyphicon {
+                display: none;
+            }
+
             .answer-explain {
-                display: block;
+                display: none;
+                font-weight: 200;
             }
 
-            input[data-answer] + label {
-                color: $brand-success;
+            .correct-answer {
+                label {
+                    color: $brand-success;
+                }
+
+                .glyphicon-ok {
+                    display: inline;
+                    color: $brand-success;
+                }
+
+                .answer-explain { display: block }
+            }
+
+            .incorrect-answer {
+                label {
+                    color: $brand-danger;
+                }
+
+                .glyphicon-remove {
+                    display: inline;
+                    color: $brand-danger;
+                }
             }
         }
-    }    
+    }
 
-    form {
-        .has-error-required {
-            .error-msg.error-required {
-                display: block;
-            }
-        }
+    .photos {
+        figure {
+            margin: 40px 0;
 
-        .glyphicon {
-            display: none;
-        }
-
-        .answer-explain {
-            display: none;
-            font-weight: 200;
-        }
-
-        .correct-answer {
-            label {
-                color: $brand-success;
+            img {
+                max-width: 96%;
+                margin: 0 auto 10px;
+                @include border-frame;
             }
 
-            .glyphicon-ok {
-                display: inline;
-                color: $brand-success;
+            &:first-child {
+                margin-top: 25px;
             }
 
-            .answer-explain { display: block }
-        }
-
-        .incorrect-answer {
-            label {
-                color: $brand-danger;
+            &:nth-child(odd) {
+                transform:  rotate(6deg);
+                -ms-transform:  rotate(6deg);
+                -webkit-transform:  rotate(6deg);
             }
 
-            .glyphicon-remove {
-                display: inline;
-                color: $brand-danger;
-            }
+            &:nth-child(even) {
+                transform:  rotate(-3deg);
+                -ms-transform:  rotate(-3deg);
+                -webkit-transform:  rotate(-3deg);
+            }            
         }
     }
 }
