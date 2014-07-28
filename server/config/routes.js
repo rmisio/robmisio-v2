@@ -38,8 +38,6 @@ module.exports = function (app, passport) {
     indexUrl = process.env.NODE_ENV === 'production' ?
         '../../../dist/index.html' : '../../../app/index.html';
     app.get('*', function (req, res, next) {
-        console.log('============--------> boom: ' +
-            path.resolve(__dirname + indexUrl));
         res.sendfile(path.resolve(__dirname + indexUrl));
     });
 
