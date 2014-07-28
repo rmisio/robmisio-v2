@@ -17,8 +17,8 @@ module.exports = function (app, passport) {
     // blog routes
     app.get('/api/blogs', blogs.index);
     app.get('/api/blogs/:year/:month/:slug', blogs.show);
-    app.post('/api/blogs', blogs.create);
-    app.put('/api/blogs/:id', blogs.update);
+    // app.post('/api/blogs', blogs.create);
+    // app.put('/api/blogs/:id', blogs.update);
     // app.del('/blogs/:id', blogs.destroy);
 
    // Error handling
