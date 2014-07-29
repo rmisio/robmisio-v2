@@ -27,7 +27,8 @@ define([
         gradeMessage: {
             0: "There's always next time...",
             60: "Not too shabby!",
-            80: "Wah Wah Wee Wah! Great Success!"
+            80: "Wah Wah Wee Wah! Great Success!",
+            100: "Whoa, perfect score! Mom, is that you?"
         },
 
         initialize: function (options) {

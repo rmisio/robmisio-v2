@@ -44,7 +44,7 @@ $font-family-headings: $font-family-raleway;
 }
 
 body {
-    padding: 10px 0;
+    padding: 10px 0 20px;
     background: $page-bg-color url(../images/page-bg.png) repeat-x 0 3px;
     font: normal 18px/150% $font-family-base;
     color: $text-color;
@@ -380,6 +380,26 @@ footer {
         }    
 
         form {
+            .radio {
+                padding-left: 23px;
+            }
+
+            label {
+                display: block;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .radio:first-of-type {
+                margin-top: 5px;
+            }
+
+            .control-label, .error-msg {
+                margin-bottom: 5px;
+            }
+
             .has-error-required {
                 .error-msg.error-required {
                     display: block;
@@ -448,6 +468,11 @@ footer {
             }            
         }
     }
+}
+
+.no-touch .quiz .radio:hover, .touch .quiz .radio:active {
+    background-color: $orange-light;
+    border-radius: 3px;
 }
 
 // * Responsive *
