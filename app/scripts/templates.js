@@ -14,9 +14,14 @@ return __p
 
 this["JST"]["app/scripts/templates/app.ejs"] = function(obj) {
 obj || (obj = {});
-var __t, __p = '', __e = _.escape;
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<header id="header-main">\n    <nav class="clearfix">\n        <a href="#menu" class="button-mobile-menu">Menu</a>\n        <div class="logo">\n            <a href="/">robmisio.com</a>\n        </div>        \n        <ul class="list-unstyled">\n            <li>\n                <a href="/blog">blog</a>\n            </li>\n            <li>\n                <a href="/about">about</a>\n            </li>                \n        </ul>\n    </nav>\n</header>\n<div id="page-container"></div>\n<div id="page-overlay"></div>\n\n';
+__p += '<header id="header-main">\n    <nav class="clearfix">\n        <a href="#menu" class="button-mobile-menu">Menu</a>\n        <div class="logo">\n            <a href="/">robmisio.com</a>\n        </div>        \n        <ul class="list-unstyled site-nav">\n            <li>\n                <a href="/blog">blog</a>\n            </li>\n            <li>\n                <a href="/about">about</a>\n            </li>                \n        </ul>\n        ';
+ print(template('app/scripts/templates/social.ejs')) ;
+__p += '\n    </nav>\n</header>\n<div id="page-container"></div>\n<footer>\n    ';
+ print(template('app/scripts/templates/social.ejs')) ;
+__p += '\n</footer>\n<div id="page-overlay"></div>\n\n';
 
 }
 return __p
@@ -90,6 +95,16 @@ __p +=
 '\n<br />\n<a href="#" class="try-again" data-bypass>try again</a>\n<a href="#" class="show-correct">\n    ';
  print(correctOn ? 'hide' : 'show') ;
 __p += ' correct\n</a>';
+
+}
+return __p
+};
+
+this["JST"]["app/scripts/templates/social.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<ul class="social-links list-unstyled">\n    <li>\n        <a href="https://github.com/rmisio" target="_blank" alt="GitHub" class="github"></a>\n    </li>\n    <li>\n        <a href="https://www.linkedin.com/in/robmisio" target="_blank" alt="LinkedIn" class="linkedin"></a>\n    </li>\n    <li>\n        <a href="http://stackoverflow.com/users/632806/robmisio" target="_blank" alt="Stack Overflow" class="stackoverflow"></a>\n    </li>\n</ul>';
 
 }
 return __p

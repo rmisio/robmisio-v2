@@ -5,8 +5,9 @@ define([
     'underscore',
     'backbone',
     'app',
-    'templates'
-], function ($, _, Backbone, app, JST) {
+    'templates',
+    'util'
+], function ($, _, Backbone, app, JST, util) {
     'use strict';
 
     var AppView = Backbone.View.extend({
@@ -82,7 +83,7 @@ define([
         },
 
         render: function () {
-            this.$el.html(this.template());
+            this.$el.html(util.template(this.template));
 
             return this;
         }

@@ -4,7 +4,7 @@
         <div class="logo">
             <a href="/">robmisio.com</a>
         </div>        
-        <ul class="list-unstyled">
+        <ul class="list-unstyled site-nav">
             <li>
                 <a href="/blog">blog</a>
             </li>
@@ -12,8 +12,12 @@
                 <a href="/about">about</a>
             </li>                
         </ul>
+        <% print(template('app/scripts/templates/social.ejs')) %>
     </nav>
 </header>
 <div id="page-container"></div>
+<footer>
+    <% print(template('app/scripts/templates/social.ejs')) %>
+</footer>
 <div id="page-overlay"></div>
 

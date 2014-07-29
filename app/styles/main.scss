@@ -144,8 +144,7 @@ figcaption {
             display: none;
         }
 
-        li {
-
+        .site-nav li {
             a {
                 float: left;
                 text-transform: uppercase;
@@ -166,9 +165,47 @@ figcaption {
                 margin-left: 10px;
             }
         }
-
-
     }
+}
+
+.social-links {
+    float: right;
+
+    li {
+        display: inline-block;
+        width: 30px;
+
+        a {
+            display: inline-block;
+            margin-left: 5px;
+            width: 30px;
+            height: 30px;
+            background: transparent url(../images/social.png) no-repeat;
+
+            &.github {
+                background-position: 0 0;
+            }
+
+            &.linkedin {
+                background-position: -35px 0;
+            }
+
+            &.stackoverflow {
+                background-position: -70px 0;
+                width: 32px;
+            }                
+        }
+    }
+}
+
+.touch {
+    .social-links a:active {
+        opacity: 0.8;
+    }
+}
+
+footer {
+    display: none;
 }
 
 // Blog page
@@ -422,6 +459,20 @@ figcaption {
 
 // Phone landscape and down
 @media only screen and (max-width : 768px) {
+    footer {
+        display: block;
+
+        .social-links {
+            float: none;
+            width: 112px;
+            margin: 0 auto;
+        }
+    }
+
+    header .social-links {
+        display: none;
+    }
+
     .blog-page #header-main nav {
         .button-mobile-menu {
             display: block;
