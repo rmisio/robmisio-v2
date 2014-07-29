@@ -7925,22 +7925,26 @@ figcaption {
   font-style: normal;
 }
 
-/* line 299, main.scss */
+/* line 298, main.scss */
+.about-page #page-container {
+  padding-top: 20px;
+}
+/* line 303, main.scss */
 .about-page .quiz .error-msg {
   display: none;
   color: #d9534f;
 }
-/* line 304, main.scss */
+/* line 308, main.scss */
 .about-page .quiz .quiz-results {
   font: normal 28px/28px cursive;
   color: #afafaf;
   margin: 20px 0;
 }
-/* line 309, main.scss */
+/* line 313, main.scss */
 .about-page .quiz .quiz-results span {
   font-size: 32px;
 }
-/* line 313, main.scss */
+/* line 317, main.scss */
 .about-page .quiz .quiz-results a {
   display: inline;
   font-size: 16px;
@@ -7952,79 +7956,79 @@ figcaption {
 .about-page .quiz .quiz-results a:hover {
   border-bottom: 1px solid #fd6500;
 }
-/* line 321, main.scss */
+/* line 325, main.scss */
 .about-page .quiz .main-error, .about-page .quiz .quiz-results {
   display: none;
 }
-/* line 326, main.scss */
+/* line 330, main.scss */
 .about-page .quiz.graded .quiz-results {
   display: block;
 }
-/* line 331, main.scss */
+/* line 335, main.scss */
 .about-page .quiz.graded.correct-on .answer-explain {
   display: block;
 }
-/* line 335, main.scss */
+/* line 339, main.scss */
 .about-page .quiz.graded.correct-on input[data-answer] + label {
   color: #5cb85c;
 }
-/* line 343, main.scss */
+/* line 347, main.scss */
 .about-page .quiz form .has-error-required .error-msg.error-required {
   display: block;
 }
-/* line 348, main.scss */
+/* line 352, main.scss */
 .about-page .quiz form .glyphicon {
   display: none;
 }
-/* line 352, main.scss */
+/* line 356, main.scss */
 .about-page .quiz form .answer-explain {
   display: none;
   font-weight: 200;
 }
-/* line 358, main.scss */
+/* line 362, main.scss */
 .about-page .quiz form .correct-answer label {
   color: #5cb85c;
 }
-/* line 362, main.scss */
+/* line 366, main.scss */
 .about-page .quiz form .correct-answer .glyphicon-ok {
   display: inline;
   color: #5cb85c;
 }
-/* line 367, main.scss */
+/* line 371, main.scss */
 .about-page .quiz form .correct-answer .answer-explain {
   display: block;
 }
-/* line 371, main.scss */
+/* line 375, main.scss */
 .about-page .quiz form .incorrect-answer label {
   color: #d9534f;
 }
-/* line 375, main.scss */
+/* line 379, main.scss */
 .about-page .quiz form .incorrect-answer .glyphicon-remove {
   display: inline;
   color: #d9534f;
 }
-/* line 384, main.scss */
+/* line 388, main.scss */
 .about-page .photos figure {
   margin: 40px 0;
 }
-/* line 387, main.scss */
+/* line 391, main.scss */
 .about-page .photos figure img {
   max-width: 96%;
   margin: 0 auto 10px;
   padding: 10px;
   border: 1px solid #cccccc;
 }
-/* line 393, main.scss */
+/* line 397, main.scss */
 .about-page .photos figure:first-child {
   margin-top: 25px;
 }
-/* line 397, main.scss */
+/* line 401, main.scss */
 .about-page .photos figure:nth-child(odd) {
   transform: rotate(6deg);
   -ms-transform: rotate(6deg);
   -webkit-transform: rotate(6deg);
 }
-/* line 403, main.scss */
+/* line 407, main.scss */
 .about-page .photos figure:nth-child(even) {
   transform: rotate(-3deg);
   -ms-transform: rotate(-3deg);
@@ -8032,13 +8036,13 @@ figcaption {
 }
 
 @media only screen and (max-width: 1170px) {
-  /* line 414, main.scss */
+  /* line 418, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 422, main.scss */
+  /* line 426, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8048,11 +8052,11 @@ figcaption {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 432, main.scss */
+  /* line 436, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 436, main.scss */
+  /* line 440, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8069,7 +8073,7 @@ figcaption {
     transition: width .3s ease;
   }
 
-  /* line 456, main.scss */
+  /* line 460, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8087,12 +8091,12 @@ figcaption {
     transition: left .2s ease;
   }
 
-  /* line 473, main.scss */
+  /* line 477, main.scss */
   body.mobile-menu-open {
     overflow: hidden;
   }
 
-  /* line 479, main.scss */
+  /* line 483, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width .2s ease;
@@ -8101,11 +8105,11 @@ figcaption {
     -o-transition: width .2s ease;
     transition: width .2s ease;
   }
-  /* line 489, main.scss */
+  /* line 493, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 493, main.scss */
+  /* line 497, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left .2s ease;
@@ -8113,5 +8117,16 @@ figcaption {
     -ms-transition: left .2s ease;
     -o-transition: left .2s ease;
     transition: left .2s ease;
+  }
+
+  /* line 510, main.scss */
+  .about-page .photos figure:first-child {
+    margin-top: 40px;
+  }
+  /* line 514, main.scss */
+  .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
+    transform: initial;
+    -ms-transform: initial;
+    -webkit-transform: initial;
   }
 }

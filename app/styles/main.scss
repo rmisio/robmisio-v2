@@ -295,6 +295,10 @@ figcaption {
 
 // About Me Page
 .about-page {
+    #page-container {
+        padding-top: 20px;
+    }
+
     .quiz {
         .error-msg {
             display: none;
@@ -497,6 +501,22 @@ figcaption {
             -ms-transition: left .2s ease;
             -o-transition: left .2s ease;
             transition: left .2s ease;
+        }
+    }
+
+    .about-page {
+        .photos {
+            figure {
+                &:first-child {
+                    margin-top: 40px;
+                }
+
+                &:nth-child(odd), &:nth-child(even) {
+                    transform: initial;
+                    -ms-transform: initial;
+                    -webkit-transform: initial;
+                }
+            }
         }
     }
 }
