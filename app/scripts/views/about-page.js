@@ -77,6 +77,8 @@ define([
                 .find('.has-error-required')
                 .removeClass('has-error-required')
                 .end()
+                .find('.radio')
+                .removeClass('disabled')
                 .find('input[type=radio]')
                 .prop('disabled', false);
             this.$submitButton.prop('disabled', false);
@@ -122,7 +124,9 @@ define([
 
             if (!requiredError) {
                 // check if answers are correct
-                this.$('input[type=radio]')
+                this.$('.radio')
+                    .addClass('disabled')
+                    .find('input[type=radio]')
                     .prop('disabled', true)
                     .filter(':checked').each(function (i, val) {
                         var $input = $(this);

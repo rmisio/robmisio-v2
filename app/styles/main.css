@@ -7689,7 +7689,7 @@ input[disabled] + label {
 }
 /* line 87, main.scss */
 input[disabled] + label:hover {
-  cursor: not-allowed;
+  cursor: default;
 }
 
 /* line 92, main.scss */
@@ -8107,41 +8107,42 @@ footer {
   -webkit-transform: rotate(-3deg);
 }
 
-/* line 483, main.scss */
-.no-touch .quiz .radio:hover, .touch .quiz .radio:active {
+/* line 484, main.scss */
+.no-touch .quiz .radio:hover:not(.disabled),
+.touch .quiz .radio:active:not(.disabled) {
   background-color: #edd1bf;
   border-radius: 3px;
 }
 
 @media only screen and (max-width: 1170px) {
-  /* line 490, main.scss */
+  /* line 491, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 497, main.scss */
+  /* line 498, main.scss */
   footer {
     display: block;
   }
-  /* line 500, main.scss */
+  /* line 501, main.scss */
   footer .social-links {
     float: none;
     width: 112px;
     margin: 0 auto;
   }
 
-  /* line 507, main.scss */
+  /* line 508, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 511, main.scss */
+  /* line 512, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 517, main.scss */
+  /* line 518, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width .2s ease;
@@ -8150,11 +8151,11 @@ footer {
     -o-transition: width .2s ease;
     transition: width .2s ease;
   }
-  /* line 527, main.scss */
+  /* line 528, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 531, main.scss */
+  /* line 532, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left .2s ease;
@@ -8164,7 +8165,7 @@ footer {
     transition: left .2s ease;
   }
 
-  /* line 542, main.scss */
+  /* line 543, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8174,11 +8175,11 @@ footer {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 552, main.scss */
+  /* line 553, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 556, main.scss */
+  /* line 557, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8195,12 +8196,12 @@ footer {
     transition: width .3s ease;
   }
 
-  /* line 577, main.scss */
+  /* line 578, main.scss */
   .fetching-blog footer {
     display: none;
   }
 
-  /* line 582, main.scss */
+  /* line 583, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8218,11 +8219,11 @@ footer {
     transition: left .2s ease;
   }
 
-  /* line 602, main.scss */
+  /* line 603, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 606, main.scss */
+  /* line 607, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;

@@ -85,7 +85,7 @@ input[disabled] + label {
     color: $gray-lighter;
 
     &:hover {
-        cursor: not-allowed;
+        cursor: default;
     }
 }
 
@@ -480,7 +480,8 @@ footer {
     }
 }
 
-.no-touch .quiz .radio:hover, .touch .quiz .radio:active {
+.no-touch .quiz .radio:hover:not(.disabled),
+.touch .quiz .radio:active:not(.disabled) {
     background-color: $orange-light;
     border-radius: 3px;
 }
