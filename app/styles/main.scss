@@ -235,6 +235,10 @@ footer {
     to { background-position: center; }
 }
 
+.blog-page {
+    overflow-y: scroll;
+}
+
 .blog-list {
     margin-top: 20px;
     font-size: 16px;
@@ -327,6 +331,12 @@ footer {
             text-transform: uppercase;
             font-style: normal;
         }
+    }
+
+    &:empty {
+        background: $page-bg-color url(../images/spinner-circle-100-x-100.gif) no-repeat center 100px;
+        min-height: 250px;
+        opacity: 1 !important;
     }
 }
 
@@ -498,6 +508,36 @@ footer {
         display: none;
     }
 
+    .mobile-menu-open body {
+        overflow: hidden;
+    }
+
+    .mobile-menu-open {
+        #header-main nav {
+            .button-mobile-menu:before {
+                width: 13px;
+                -webkit-transition: width .2s ease;
+                -moz-transition: width .2s ease;
+                -ms-transition: width .2s ease;
+                -o-transition: width .2s ease;
+                transition: width .2s ease;                    
+            }
+        }
+
+        #page-overlay {
+            display: block;
+        }
+
+        .blog-list {
+            left: 0;
+            -webkit-transition: left .2s ease;
+            -moz-transition: left .2s ease;
+            -ms-transition: left .2s ease;
+            -o-transition: left .2s ease;
+            transition: left .2s ease;
+        }
+    }    
+
     .blog-page #header-main nav {
         .button-mobile-menu {
             display: block;
@@ -533,6 +573,12 @@ footer {
         }
     }
 
+    .fetching-blog {
+        footer {
+            display: none;
+        }
+    }    
+
     .blog-list {
         background-color: $page-bg-color;
         padding-top: 15px;
@@ -548,36 +594,6 @@ footer {
         -ms-transition: left .2s ease;
         -o-transition: left .2s ease;
         transition: left .2s ease;        
-    }
-
-    body.mobile-menu-open {
-        overflow: hidden;
-    }
-
-    .mobile-menu-open {
-        #header-main nav {
-            .button-mobile-menu:before {
-                width: 13px;
-                -webkit-transition: width .2s ease;
-                -moz-transition: width .2s ease;
-                -ms-transition: width .2s ease;
-                -o-transition: width .2s ease;
-                transition: width .2s ease;                    
-            }
-        }
-
-        #page-overlay {
-            display: block;
-        }
-
-        .blog-list {
-            left: 0;
-            -webkit-transition: left .2s ease;
-            -moz-transition: left .2s ease;
-            -ms-transition: left .2s ease;
-            -o-transition: left .2s ease;
-            transition: left .2s ease;
-        }
     }
 
     .about-page {

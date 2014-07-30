@@ -51,9 +51,10 @@ define([
             });
         },
 
-        blogListItemSelect: function(blog) {
+        blogListItemSelect: function (blog) {
             var self = this,
-                index;
+                index,
+                fadeOut;
 
             // blog arg can arrive as index or model
             if (typeof blog === 'number') {
@@ -65,36 +66,42 @@ define([
 
             this.$blogEntryContainer = this.$blogEntryContainer ||
                 this.$('.blog-entry');
+            fadeOut = this.$blogEntryContainer.animate({ opacity: 0 }, 300, function () {
+                $(this).empty();
+            }).promise();
             this.$('.blog-list li.active')
-                .removeClass('active'); 
-            
+                .removeClass('active');
+            this.$('.blog-list li:eq(' + index + ')')
+                .addClass('active');
+            this.$html = this.$html || $('html');
+            this.$html.addClass('fetching-blog');
+            app.appView.closeMobileNavMenu();
+
             // todo: can't we do some type of client-side caching?
             blog.fetch({
-                success: function(blog) {
+                success: function (blog) {
                     var curUrl = window.location.pathname,
                         url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
 
-                    self.$blogEntryContainer.html(
-                        util.template('app/scripts/templates/blog-entry.ejs',
-                            _.extend(blog.toJSON(), {
-                                'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
-                            }))
-                    );
-                    
-                    self.$('.blog-list li:eq(' + index + ')')
-                        .addClass('active');
+                    fadeOut.done(function () {
+                        self.$html.removeClass('fetching-blog');
+                        self.$blogEntryContainer.html(
+                            util.template('app/scripts/templates/blog-entry.ejs',
+                                _.extend(blog.toJSON(), {
+                                    'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
+                                }))
+                        ).animate({ opacity: 1 }, 300);
+                    });
                     
                     if (curUrl !== url) {
                         app.router.navigate(url,
                             { replace: curUrl === '/' || curUrl === '/blog' });
                     }                                
-
-                    app.appView.closeMobileNavMenu();
                 }
             });
         },
 
-        onBlogListItemSelect: function(e) {
+        onBlogListItemSelect: function (e) {
             var $target = $(e.target).eq(0),
                 $li = $target[0].tagName.toUpperCase() === 'LI' ?
                     $target : $target.parents('li');
@@ -105,7 +112,7 @@ define([
                 return false;
         },
 
-        onBlogListReset: function() {
+        onBlogListReset: function () {
             var activeBlog;
 
             app.appView.renderPage(this, {

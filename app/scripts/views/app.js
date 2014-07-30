@@ -36,7 +36,7 @@ define([
                   app.router.navigate(href, true);
                 }
             }).on('click', function (e) {
-                if (self.$body.hasClass('mobile-menu-open') &&
+                if (self.$html.hasClass('mobile-menu-open') &&
                     (!$(e.target).parents('.blog-list') ||
                     !$(e.target).hasClass('blog-list'))) {
                     self.closeMobileNavMenu();
@@ -44,7 +44,7 @@ define([
             });
 
             this.render();
-            this.$body = $('body');
+            this.$html = $('html');
         },
 
         navBarActivePage: function (index) {
@@ -55,23 +55,23 @@ define([
         },
 
         toggleMobileNavMenu: function (e) {
-            this.$body.toggleClass('mobile-menu-open');
+            this.$html.toggleClass('mobile-menu-open');
             return false;
         },
 
         closeMobileNavMenu: function() {
-            this.$body.removeClass('mobile-menu-open');
+            this.$html.removeClass('mobile-menu-open');
         },
 
         renderPage: function (pageView, context) {
             // todo: consider caching some or all pages
             if (this.curPageView) {
-                this.$body.removeClass(this.curPageView.pageClass);
+                this.$html.removeClass(this.curPageView.pageClass);
                 this.curPageView.remove();
             }
 
             this.curPageView = pageView;
-            this.$body.addClass(pageView.pageClass);
+            this.$html.addClass(pageView.pageClass);
             this.$pageContainer = this.$pageContainer ||
                 this.$('#page-container');
             this.$pageContainer.append(pageView.render(context).el);
