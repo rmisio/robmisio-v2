@@ -34,10 +34,22 @@ module.exports = function (app, passport) {
         threshold: 512
     }));
 
+    var util = require('../util');
+    app.use(function (req, res, next) {
+        if (req.url.toUpperCase().substring(req.url.length - 3) === 'JPG') {
+            util.sleep(15000, function () {
+                next();
+            });
+        } else {
+            next();
+        }
+    });
+
     // Static files middleware
     app.use(serveStatic(config.root +
         (process.env.NODE_ENV === 'production' ?
-            '/dist' : '/app')));
+            '/dist' : '/app')
+        ));
 
     // Use winston on production
     var log;

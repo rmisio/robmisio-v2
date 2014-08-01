@@ -7,3 +7,13 @@ exports.slugify = function (text) {
         .replace(/^-+/, '')          // Trim - from start of text
         .replace(/-+$/, '');         // Trim - from end of text
 }
+
+// blocking sleep function
+// http://stackoverflow.com/a/20967216/632806
+exports.sleep = function (time, callback) {
+    var stop = new Date().getTime();
+    while(new Date().getTime() < stop + time) {
+        ;
+    }
+    callback();
+}

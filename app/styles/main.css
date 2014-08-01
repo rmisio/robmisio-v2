@@ -7977,26 +7977,38 @@ footer {
   opacity: 1 !important;
 }
 
-/* line 345, main.scss */
+@keyframes fadeIn {
+  /* line 344, main.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 347, main.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+/* line 353, main.scss */
 .about-page #page-container {
   padding-top: 20px;
 }
-/* line 350, main.scss */
+/* line 358, main.scss */
 .about-page .quiz .error-msg {
   display: none;
   color: #d9534f;
 }
-/* line 355, main.scss */
+/* line 363, main.scss */
 .about-page .quiz .quiz-results {
   font: normal 28px/28px cursive;
   color: #afafaf;
   margin: 20px 0;
 }
-/* line 360, main.scss */
+/* line 368, main.scss */
 .about-page .quiz .quiz-results span {
   font-size: 32px;
 }
-/* line 364, main.scss */
+/* line 372, main.scss */
 .about-page .quiz .quiz-results a {
   display: inline;
   font-size: 16px;
@@ -8008,106 +8020,115 @@ footer {
 .about-page .quiz .quiz-results a:hover {
   border-bottom: 1px solid #fd6500;
 }
-/* line 372, main.scss */
+/* line 380, main.scss */
 .about-page .quiz .main-error, .about-page .quiz .quiz-results {
   display: none;
 }
-/* line 377, main.scss */
+/* line 385, main.scss */
 .about-page .quiz.graded .quiz-results {
   display: block;
 }
-/* line 382, main.scss */
+/* line 390, main.scss */
 .about-page .quiz.graded.correct-on .answer-explain {
   display: block;
 }
-/* line 386, main.scss */
+/* line 394, main.scss */
 .about-page .quiz.graded.correct-on input[data-answer] + label {
   color: #5cb85c;
 }
-/* line 393, main.scss */
+/* line 401, main.scss */
 .about-page .quiz form .radio {
   padding-left: 23px;
 }
-/* line 397, main.scss */
+/* line 405, main.scss */
 .about-page .quiz form label {
   display: block;
 }
-/* line 401, main.scss */
+/* line 409, main.scss */
 .about-page .quiz form .form-group {
   margin-bottom: 20px;
 }
-/* line 405, main.scss */
+/* line 413, main.scss */
 .about-page .quiz form .radio:first-of-type {
   margin-top: 5px;
 }
-/* line 409, main.scss */
+/* line 417, main.scss */
 .about-page .quiz form .control-label, .about-page .quiz form .error-msg {
   margin-bottom: 5px;
 }
-/* line 414, main.scss */
+/* line 422, main.scss */
 .about-page .quiz form .has-error-required .error-msg.error-required {
   display: block;
 }
-/* line 419, main.scss */
+/* line 427, main.scss */
 .about-page .quiz form .glyphicon {
   display: none;
 }
-/* line 423, main.scss */
+/* line 431, main.scss */
 .about-page .quiz form .answer-explain {
   display: none;
   font-weight: 200;
 }
-/* line 429, main.scss */
+/* line 437, main.scss */
 .about-page .quiz form .correct-answer label {
   color: #5cb85c;
 }
-/* line 433, main.scss */
+/* line 441, main.scss */
 .about-page .quiz form .correct-answer .glyphicon-ok {
   display: inline;
   color: #5cb85c;
 }
-/* line 438, main.scss */
+/* line 446, main.scss */
 .about-page .quiz form .correct-answer .answer-explain {
   display: block;
 }
-/* line 442, main.scss */
+/* line 450, main.scss */
 .about-page .quiz form .incorrect-answer label {
   color: #d9534f;
 }
-/* line 446, main.scss */
+/* line 454, main.scss */
 .about-page .quiz form .incorrect-answer .glyphicon-remove {
   display: inline;
   color: #d9534f;
 }
-/* line 455, main.scss */
+/* line 463, main.scss */
 .about-page .photos figure {
   margin: 40px 0;
 }
-/* line 458, main.scss */
-.about-page .photos figure img {
+/* line 466, main.scss */
+.about-page .photos figure .img-outer {
   max-width: 96%;
   margin: 0 auto 10px;
   padding: 10px;
   border: 1px solid #cccccc;
 }
-/* line 464, main.scss */
+/* line 472, main.scss */
 .about-page .photos figure:first-child {
   margin-top: 25px;
 }
-/* line 468, main.scss */
+/* line 475, main.scss */
+.about-page .photos figure:first-child img.loading {
+  padding-top: 75.151%;
+  background-color: orange;
+}
+/* line 480, main.scss */
+.about-page .photos figure:first-child img.loaded {
+  animation: fadeIn 1s both;
+}
+/* line 485, main.scss */
 .about-page .photos figure:nth-child(odd) {
   transform: rotate(6deg);
   -ms-transform: rotate(6deg);
   -webkit-transform: rotate(6deg);
 }
-/* line 474, main.scss */
+/* line 491, main.scss */
 .about-page .photos figure:nth-child(even) {
   transform: rotate(-3deg);
   -ms-transform: rotate(-3deg);
   -webkit-transform: rotate(-3deg);
 }
 
-/* line 484, main.scss */
+/* line 501, main.scss */
 .no-touch .quiz .radio:hover:not(.disabled),
 .touch .quiz .radio:active:not(.disabled) {
   background-color: #edd1bf;
@@ -8115,34 +8136,34 @@ footer {
 }
 
 @media only screen and (max-width: 1170px) {
-  /* line 491, main.scss */
+  /* line 508, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 498, main.scss */
+  /* line 515, main.scss */
   footer {
     display: block;
   }
-  /* line 501, main.scss */
+  /* line 518, main.scss */
   footer .social-links {
     float: none;
     width: 112px;
     margin: 0 auto;
   }
 
-  /* line 508, main.scss */
+  /* line 525, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 512, main.scss */
+  /* line 529, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 518, main.scss */
+  /* line 535, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width .2s ease;
@@ -8151,11 +8172,11 @@ footer {
     -o-transition: width .2s ease;
     transition: width .2s ease;
   }
-  /* line 528, main.scss */
+  /* line 545, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 532, main.scss */
+  /* line 549, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left .2s ease;
@@ -8165,7 +8186,7 @@ footer {
     transition: left .2s ease;
   }
 
-  /* line 543, main.scss */
+  /* line 560, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8175,11 +8196,11 @@ footer {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 553, main.scss */
+  /* line 570, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 557, main.scss */
+  /* line 574, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8196,12 +8217,12 @@ footer {
     transition: width .3s ease;
   }
 
-  /* line 578, main.scss */
+  /* line 595, main.scss */
   .fetching-blog footer {
     display: none;
   }
 
-  /* line 583, main.scss */
+  /* line 600, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8219,11 +8240,11 @@ footer {
     transition: left .2s ease;
   }
 
-  /* line 603, main.scss */
+  /* line 620, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 607, main.scss */
+  /* line 624, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;
