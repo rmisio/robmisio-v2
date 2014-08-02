@@ -7918,25 +7918,22 @@ footer {
 /* line 279, main.scss */
 .blog-list li:hover, .blog-list li.active {
   background-color: #edd1bf;
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
-/* line 287, main.scss */
+/* line 283, main.scss */
 .blog-list li:hover h2, .blog-list li:hover time, .blog-list li.active h2, .blog-list li.active time {
   color: #fd6500;
 }
-/* line 291, main.scss */
+/* line 287, main.scss */
 .blog-list li:hover time, .blog-list li.active time {
   font-weight: lighter;
 }
-/* line 295, main.scss */
+/* line 291, main.scss */
 .blog-list li:hover:not(.active), .blog-list li.active:not(.active) {
   cursor: pointer;
 }
-/* line 300, main.scss */
+/* line 296, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -7947,7 +7944,7 @@ footer {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 311, main.scss */
+/* line 307, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -7957,58 +7954,94 @@ footer {
   animation: blog-list-loading-on ease-in-out 0.2s;
 }
 
-/* line 323, main.scss */
+/* line 319, main.scss */
 .blog-entry .author-time-tagline {
   font-size: 15px;
   color: #afafaf;
   font-style: italic;
 }
-/* line 328, main.scss */
+/* line 324, main.scss */
 .blog-entry .author-time-tagline span {
   font-family: "Droid Sans", sans-serif;
   color: #222222;
   text-transform: uppercase;
   font-style: normal;
 }
-/* line 336, main.scss */
+/* line 332, main.scss */
 .blog-entry:empty {
   background: white url(../images/spinner-circle-100-x-100.gif) no-repeat center 100px;
   min-height: 250px;
   opacity: 1 !important;
 }
 
-@keyframes fadeIn {
-  /* line 344, main.scss */
+@-webkit-keyframes fadeIn {
+  /* line 341, main.scss */
   from {
     opacity: 0;
   }
 
-  /* line 347, main.scss */
+  /* line 342, main.scss */
   to {
     opacity: 1;
   }
 }
 
-/* line 353, main.scss */
+@-moz-keyframes fadeIn {
+  /* line 347, main.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 348, main.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  /* line 353, main.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 354, main.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  /* line 359, main.scss */
+  from {
+    opacity: 0;
+  }
+
+  /* line 360, main.scss */
+  to {
+    opacity: 1;
+  }
+}
+
+/* line 364, main.scss */
 .about-page #page-container {
   padding-top: 20px;
 }
-/* line 358, main.scss */
+/* line 369, main.scss */
 .about-page .quiz .error-msg {
   display: none;
   color: #d9534f;
 }
-/* line 363, main.scss */
+/* line 374, main.scss */
 .about-page .quiz .quiz-results {
   font: normal 28px/28px cursive;
   color: #afafaf;
   margin: 20px 0;
 }
-/* line 368, main.scss */
+/* line 379, main.scss */
 .about-page .quiz .quiz-results span {
   font-size: 32px;
 }
-/* line 372, main.scss */
+/* line 383, main.scss */
 .about-page .quiz .quiz-results a {
   display: inline;
   font-size: 16px;
@@ -8020,115 +8053,117 @@ footer {
 .about-page .quiz .quiz-results a:hover {
   border-bottom: 1px solid #fd6500;
 }
-/* line 380, main.scss */
+/* line 391, main.scss */
 .about-page .quiz .main-error, .about-page .quiz .quiz-results {
   display: none;
 }
-/* line 385, main.scss */
+/* line 396, main.scss */
 .about-page .quiz.graded .quiz-results {
   display: block;
 }
-/* line 390, main.scss */
+/* line 401, main.scss */
 .about-page .quiz.graded.correct-on .answer-explain {
   display: block;
 }
-/* line 394, main.scss */
+/* line 405, main.scss */
 .about-page .quiz.graded.correct-on input[data-answer] + label {
   color: #5cb85c;
 }
-/* line 401, main.scss */
+/* line 412, main.scss */
 .about-page .quiz form .radio {
   padding-left: 23px;
 }
-/* line 405, main.scss */
+/* line 416, main.scss */
 .about-page .quiz form label {
   display: block;
 }
-/* line 409, main.scss */
+/* line 420, main.scss */
 .about-page .quiz form .form-group {
   margin-bottom: 20px;
 }
-/* line 413, main.scss */
+/* line 424, main.scss */
 .about-page .quiz form .radio:first-of-type {
   margin-top: 5px;
 }
-/* line 417, main.scss */
+/* line 428, main.scss */
 .about-page .quiz form .control-label, .about-page .quiz form .error-msg {
   margin-bottom: 5px;
 }
-/* line 422, main.scss */
+/* line 433, main.scss */
 .about-page .quiz form .has-error-required .error-msg.error-required {
   display: block;
 }
-/* line 427, main.scss */
+/* line 438, main.scss */
 .about-page .quiz form .glyphicon {
   display: none;
 }
-/* line 431, main.scss */
+/* line 442, main.scss */
 .about-page .quiz form .answer-explain {
   display: none;
   font-weight: 200;
 }
-/* line 437, main.scss */
+/* line 448, main.scss */
 .about-page .quiz form .correct-answer label {
   color: #5cb85c;
 }
-/* line 441, main.scss */
+/* line 452, main.scss */
 .about-page .quiz form .correct-answer .glyphicon-ok {
   display: inline;
   color: #5cb85c;
 }
-/* line 446, main.scss */
+/* line 457, main.scss */
 .about-page .quiz form .correct-answer .answer-explain {
   display: block;
 }
-/* line 450, main.scss */
+/* line 461, main.scss */
 .about-page .quiz form .incorrect-answer label {
   color: #d9534f;
 }
-/* line 454, main.scss */
+/* line 465, main.scss */
 .about-page .quiz form .incorrect-answer .glyphicon-remove {
   display: inline;
   color: #d9534f;
 }
-/* line 463, main.scss */
+/* line 474, main.scss */
 .about-page .photos figure {
   margin: 40px 0;
 }
-/* line 466, main.scss */
+/* line 477, main.scss */
 .about-page .photos figure .img-outer {
   max-width: 96%;
   margin: 0 auto 10px;
   padding: 10px;
   border: 1px solid #cccccc;
 }
-/* line 472, main.scss */
+/* line 483, main.scss */
 .about-page .photos figure:first-child {
   margin-top: 25px;
 }
-/* line 475, main.scss */
+/* line 486, main.scss */
 .about-page .photos figure:first-child img.loading {
+  width: 100%;
   padding-top: 75.151%;
-  background-color: orange;
+  background: transparent url(../images/spinner-dot-24-X-24.gif) no-repeat center center;
 }
-/* line 480, main.scss */
+/* line 492, main.scss */
 .about-page .photos figure:first-child img.loaded {
+  -webkit-animation: fadeIn 1s both;
   animation: fadeIn 1s both;
 }
-/* line 485, main.scss */
+/* line 497, main.scss */
 .about-page .photos figure:nth-child(odd) {
   transform: rotate(6deg);
   -ms-transform: rotate(6deg);
   -webkit-transform: rotate(6deg);
 }
-/* line 491, main.scss */
+/* line 503, main.scss */
 .about-page .photos figure:nth-child(even) {
   transform: rotate(-3deg);
   -ms-transform: rotate(-3deg);
   -webkit-transform: rotate(-3deg);
 }
 
-/* line 501, main.scss */
+/* line 513, main.scss */
 .no-touch .quiz .radio:hover:not(.disabled),
 .touch .quiz .radio:active:not(.disabled) {
   background-color: #edd1bf;
@@ -8136,57 +8171,51 @@ footer {
 }
 
 @media only screen and (max-width: 1170px) {
-  /* line 508, main.scss */
+  /* line 520, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 515, main.scss */
+  /* line 527, main.scss */
   footer {
     display: block;
   }
-  /* line 518, main.scss */
+  /* line 530, main.scss */
   footer .social-links {
     float: none;
     width: 112px;
     margin: 0 auto;
   }
 
-  /* line 525, main.scss */
+  /* line 537, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 529, main.scss */
+  /* line 541, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 535, main.scss */
+  /* line 547, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
-    -webkit-transition: width .2s ease;
-    -moz-transition: width .2s ease;
-    -ms-transition: width .2s ease;
-    -o-transition: width .2s ease;
-    transition: width .2s ease;
+    -webkit-transition: width 0.2s ease;
+    transition: width 0.2s ease;
   }
-  /* line 545, main.scss */
+  /* line 553, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 549, main.scss */
+  /* line 557, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
-    -webkit-transition: left .2s ease;
-    -moz-transition: left .2s ease;
-    -ms-transition: left .2s ease;
-    -o-transition: left .2s ease;
-    transition: left .2s ease;
+    -webkit-transition: left 0.2s ease;
+    transition: left 0.2s ease;
   }
 
-  /* line 560, main.scss */
+  /* line 564, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8196,11 +8225,11 @@ footer {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 570, main.scss */
+  /* line 574, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 574, main.scss */
+  /* line 578, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8210,11 +8239,8 @@ footer {
     height: 4px;
     background: #afafaf;
     box-shadow: 0 6px 0 0 #afafaf, 0 12px 0 0 #afafaf;
-    -webkit-transition: width .3s ease;
-    -moz-transition: width .3s ease;
-    -ms-transition: width .3s ease;
-    -o-transition: width .3s ease;
-    transition: width .3s ease;
+    -webkit-transition: width 0.3s ease;
+    transition: width 0.3s ease;
   }
 
   /* line 595, main.scss */
@@ -8233,18 +8259,15 @@ footer {
     position: absolute;
     top: 62px;
     left: -100%;
-    -webkit-transition: left .2s ease;
-    -moz-transition: left .2s ease;
-    -ms-transition: left .2s ease;
-    -o-transition: left .2s ease;
-    transition: left .2s ease;
+    -webkit-transition: left 0.2s ease;
+    transition: left 0.2s ease;
   }
 
-  /* line 620, main.scss */
+  /* line 616, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 624, main.scss */
+  /* line 620, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;

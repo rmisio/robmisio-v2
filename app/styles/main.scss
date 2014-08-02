@@ -278,11 +278,7 @@ footer {
 
         &:hover, &.active {
             background-color: $orange-light;
-            -webkit-transition: all .3s ease;
-            -moz-transition: all .3s ease;
-            -ms-transition: all .3s ease;
-            -o-transition: all .3s ease;
-            transition: all .3s ease;
+            @include transition(all .3s ease);
 
             h2, time {
                 color: $orange;
@@ -340,13 +336,28 @@ footer {
     }
 }
 
+// WebKit
+@-webkit-keyframes fadeIn {
+  from  { opacity: 0; }
+  to    { opacity: 1; }
+}
+
+// Firefox
+@-moz-keyframes fadeIn {
+  from  { opacity: 0; }
+  to    { opacity: 1; }
+}
+
+// Opera
+@-o-keyframes fadeIn {
+  from  { opacity: 0; }
+  to    { opacity: 1; }
+}
+
+// Spec and IE10+
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from  { opacity: 0; }
+  to    { opacity: 1; }
 }
 
 .about-page {
@@ -473,12 +484,13 @@ footer {
                 margin-top: 25px;
 
                 img.loading {
+                    width: 100%;
                     padding-top: 75.151%;
-                    background-color: orange;
+                    background: transparent url(../images/spinner-dot-24-X-24.gif) no-repeat center center;
                 }
 
                 img.loaded {
-                    animation: fadeIn 1s both;
+                    @include animation(fadeIn 1s both);
                 }
             }
 
@@ -534,11 +546,7 @@ footer {
         #header-main nav {
             .button-mobile-menu:before {
                 width: 13px;
-                -webkit-transition: width .2s ease;
-                -moz-transition: width .2s ease;
-                -ms-transition: width .2s ease;
-                -o-transition: width .2s ease;
-                transition: width .2s ease;                    
+                @include transition(width .2s ease);
             }
         }
 
@@ -548,11 +556,7 @@ footer {
 
         .blog-list {
             left: 0;
-            -webkit-transition: left .2s ease;
-            -moz-transition: left .2s ease;
-            -ms-transition: left .2s ease;
-            -o-transition: left .2s ease;
-            transition: left .2s ease;
+            @include transition(left .2s ease);
         }
     }    
 
@@ -582,11 +586,7 @@ footer {
                 box-shadow: 
                     0 6px 0 0 $gray-light,
                     0 12px 0 0 $gray-light;    
-                -webkit-transition: width .3s ease;
-                -moz-transition: width .3s ease;
-                -ms-transition: width .3s ease;
-                -o-transition: width .3s ease;
-                transition: width .3s ease;                    
+                @include transition(width .3s ease);
             }
         }
     }
@@ -607,11 +607,7 @@ footer {
         position: absolute;
         top: 62px;
         left: -100%;
-        -webkit-transition: left .2s ease;
-        -moz-transition: left .2s ease;
-        -ms-transition: left .2s ease;
-        -o-transition: left .2s ease;
-        transition: left .2s ease;        
+        @include transition(left .2s ease);
     }
 
     .about-page {
