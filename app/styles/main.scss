@@ -480,18 +480,33 @@ footer {
                 @include border-frame;
             }
 
+            img.loading {
+                width: 100%;
+                background: transparent url(../images/spinner-dot-24-X-24.gif) no-repeat center center;
+            }
+
+            img.loaded {
+                @include animation(fadeIn 2s both);
+            }
+
             &:first-child {
                 margin-top: 25px;
 
                 img.loading {
-                    width: 100%;
                     padding-top: 75.151%;
-                    background: transparent url(../images/spinner-dot-24-X-24.gif) no-repeat center center;
                 }
 
-                img.loaded {
-                    @include animation(fadeIn 1s both);
+                & + figure {
+                    img.loading {
+                        padding-top: 80%;
+                    }
                 }
+
+                & + figure + figure {
+                    img.loading {
+                        padding-top: 75.151%;
+                    }
+                }                
             }
 
             &:nth-child(odd) {
@@ -612,6 +627,9 @@ footer {
 
     .about-page {
         .photos {
+            max-width: 387px;
+            margin: 0 auto;
+
             figure {
                 &:first-child {
                     margin-top: 40px;

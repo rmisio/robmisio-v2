@@ -37,9 +37,9 @@ module.exports = function (app, passport) {
     var util = require('../util');
     app.use(function (req, res, next) {
         if (req.url.toUpperCase().substring(req.url.length - 3) === 'JPG') {
-            util.sleep(1000, function () {
+            setTimeout(function () {
                 next();
-            });
+            }, util.getRandomInt(1000, 5000));
         } else {
             next();
         }

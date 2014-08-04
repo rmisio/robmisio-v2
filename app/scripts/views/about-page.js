@@ -172,8 +172,7 @@ define([
 
             this.$('img').addClass('loading')
                 .on('load', function () {
-                    $(this).removeClass('loading')
-                        .addClass('loaded');
+                    $(this).toggleClass('loading loaded');
                 });
 
             return this;
