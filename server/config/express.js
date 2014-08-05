@@ -34,17 +34,6 @@ module.exports = function (app, passport) {
         threshold: 512
     }));
 
-    var util = require('../util');
-    app.use(function (req, res, next) {
-        if (req.url.toUpperCase().substring(req.url.length - 3) === 'JPG') {
-            setTimeout(function () {
-                next();
-            }, util.getRandomInt(1000, 5000));
-        } else {
-            next();
-        }
-    });
-
     // Static files middleware
     app.use(serveStatic(config.root +
         (process.env.NODE_ENV === 'production' ?
