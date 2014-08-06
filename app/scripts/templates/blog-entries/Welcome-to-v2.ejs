@@ -1,0 +1,167 @@
+<p>
+    The new version of my blog/sandbox is here. The original site was
+    developed about 4 years ago using Django. I'd show it to you, but during
+    some recent lengthy travels I let the hosting expire and haven't really
+    bothered to resurrect it. I decided instead to channel the energy into a new
+    version, something that has been brewing in my mind for a while now.
+</p>
+
+<p>
+    Since the time I developed the first version of the site, a whole lot has
+    changed in the web dev game. Seriously, 4 years in technology must be like
+    4 decades or centuries in a whole lot of other fields! Node.js has gone from
+    its infancy to a full fledged full stack development platform. Client side
+    MVC frameworks have arrived on the scene and solidified themselves as major
+    players allowing developers to create a much richer experience. Mobile has
+    continued its seemingly meteoric rise making a responsive layout a necessity for many
+    sites, particularly ones that don't offer a native app. Simultaneously, in
+    that time I've worked primarily as a front-end web developer utilizing
+    advanced object oriented JavaScript and consequently my JS chops have grown
+    considerably. So, it's only natural that I decided to implement the new
+    version of the site as a responsive single-page app, utilizing JS on both the
+    client and server. Here's the stack in more detail:
+</p>
+
+<ul>
+    <li>
+        The aforementioned <a href="http://nodejs.org/" target="_blank">Node.js</a>
+        is the server side platform.
+    </li>
+    <li>
+        <a href="http://expressjs.com/" target="_blank">Express</a> is the server
+        side MVC.
+    </li>
+    <li>
+        <a href="http://mongoosejs.com/" target="_blank">Mongoose</a> is the ODM,
+        which of course means <a href="http://www.mongodb.org/" target="_blank">MongoDB</a>
+        is the database.
+    </li>
+    <li>
+        <a href="http://yeoman.io/" target="_blank">Yeoman</a> is used for
+        scaffolding and build automation.
+    </li>
+    <li>
+        <a href="http://backbonejs.org/" target="_blank">Backbone.js</a> is the
+        client side MVC.
+    </li>
+    <li>
+        <a href="http://requirejs.org/" target="_blank">Require.js</a> is used for
+        client side modules.
+    </li>                    
+    <li>
+        <a href="http://getbootstrap.com/" target="_blank">Boostrap</a> is used for a
+        responsive grid, some css sugar and some useful JS components.
+    </li>                        
+    <li>
+        It's all deployed on the cloud using
+        <a href="https://www.heroku.com/" target="_blank">Heroku</a>.
+    </li>                        
+</ul>
+
+<p>
+    Am I the only one with goosebumps here?
+</p>
+
+<h2>A Bit Of Elaboration</h2>
+
+<h3>Yeoman</h3>
+
+<p>
+    Yeoman has multiple facets to it. Firstly, it is a scaffolding/boilerplate
+    tool. It brings together commonly used front-end frameworks/libraries like
+    HTML5 Boilerplate, jQuery, Modernizer, Twitter Bootstrap, SASS (many of them are optional)
+    and with one command you can create a stubbed out web app containing them all.
+    Yeoman is a self-confessed &ldquo;opinionated client-side stack&rdquo; and if anything it
+    serves as a way for one to stay current with some really modern and useful
+    technologies. Yeoman relies heavily on <a href="http://gruntjs.com/" target="_blank">Grunt</a>
+    which is a JavaScript task runner allowing you to basically automate anything.
+    For those of us who feel uber comfortable in JavaScript, Grunt is a really
+    cool thing.
+</p>
+
+<p>
+    Secondly, it is a build tool. Using the aforementioned Grunt and simply
+    typing the command <code>grunt build</code> will create a <em>dist</em> folder with such oh so
+    sweet sugar as minified and concatenated js files, optimized images, and
+    revisioned static assets all ready to be deployed to production.
+</p>
+ 
+<p>
+    Furthermore, yeoman was developed with this &ldquo;generator&rdquo; eco system in mind
+    where the community is free to build on top of it. For example, I used the
+    <a href="https://github.com/yeoman/generator-backbone" target="_blank">Backbone generator</a>
+    which gives me such goodies as being able to type
+    <code>yo backbone:model blog</code> and I get a stubbed out backbone model created in
+    my <em>models</em> folder. Similarly, if I type <code>yo backbone:view blog</code>, not only
+    will I get a stubbed out &ldquo;blog&rdquo; view, but I also get a corresponding &ldquo;blog&rdquo;
+    template file (blog.ejs) that's wired right into view. Awesome, right?
+</p>
+
+<p>
+    The generator also gives you something really cool by automatically compiling
+    your templates for you. Gone are the days of jamming your templates in the
+    head of your html file and compiling them client side. The generator uses
+    Grunt to watch your template folder and any time you make a change to a file
+    in it, it will compile your templates for you and store them in a file called
+    templates.js. This file is then wired into your require.js setup and any time
+    you need to use a template, you just require the <em>templates</em> module which
+    will return an object that by convention you name JST. Then, say you want to
+    render your pre-compiled blog.ejs template, your would simply call
+    <code class="jst-example">JST['path/to/template-folder/blog.ejs'](context)</code>.
+</p>
+
+<p>
+    Finally, while Yeoman was created primarily as a front-end tool, with the
+    generator eco-system, the community is free to expand on it to include the back
+    end, making it potentially a powerhouse full stack tool. Unfortunately, I
+    couldn't find an existing generator that paired Express with Backbone. I
+    found <a href="https://github.com/DaftMonk/generator-angular-fullstack" target="_blank">one
+    for Angular</a> that looks really cool - it even has support for
+    Heroku deployments built right in! But, Backbone and I have been in a steady
+    romance for a while now and I just wasn't ready to see other people yet. So,
+    I ended up using Yeoman for my front-end needs and a separate
+    <a href="https://github.com/madhums/node-express-mongoose" target="_blank">
+    Express, Mongoose, ... boilerplate</a> for my server side needs. Of course,
+    there's nothing stopping an inspired soul from merging the two and turning
+    them into a full-stack backbone express Yeoman generator.
+</p>
+
+<h3>Heroku</h3>
+
+<p>
+    A former colleague of mine had mentioned
+    <a href="https://www.heroku.com/" target="_blank">Heroku</a> to me and told me how using
+    it made deploying your app to the cloud a breeze. Well, I finally got around
+    to playing around with it &mdash; he was right and I thank him. If you read the
+    Getting Started guide for your language, it should only be a matter of
+    minutes before your app is living and breathing on a fluffy cloud. Once you
+    do some preparatory install work, it's really a matter of
+    <code>git push heroku master</code> and boom, go add &ldquo;cloud based architect&rdquo; on your
+    LinkedIn profile (ok, that final bit might be a wee much)! Plus, for many
+    basic to intermediate sites the service is free. My whole stack, with the
+    MongoDB, is free. If you need extra computing power (what Heroku calls dynos)
+    and/or some of their add-ons, then you start getting into fees.
+</p>
+
+<p>
+    An interesting thing I was able to do was to integrate the Yeoman build
+    process with a Heroku deploy. I did this using a Heroku build pack, which is
+    basically a shell script that gets executed when you push your site for
+    deployment. I made a
+    <a href="https://github.com/rmisio/heroku-buildpack-nodejs-grunt-compass-bower"
+        target="blank">fork of a fork</a> which, among other things, will install
+    all of my app dependencies (including the ones yeoman needs) and then execute
+    the grunt &ldquo;heroku&rdquo; task which you would likely configure to execute your &ldquo;build&rdquo;
+    task along with any deployment specific tasks you may want executed. A really
+    cool thing about this set-up is that I don't have to build locally, which would
+    have required me to repo the <em>dist</em> folder or come up with some type of heroku
+    specific branching system (the latter sounding a bit ugly).
+</p>
+
+<h2>The goods</h2>
+
+<p>
+    If you would like to dig deeper into the site... in addition to continuing
+    to explore the live version, feel free to check out the
+    <a href="https://github.com/rmisio/robmisio" target="_blank">source code</a>.
+</p>

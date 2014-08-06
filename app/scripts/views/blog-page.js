@@ -5,10 +5,11 @@ define([
     'jquery',
     'underscore',
     'backbone',
+    'prettify',
     'templates',
     'util',
     'collections/blog'
-], function (app, $, _, Backbone, JST, util, BlogCollection) {
+], function (app, $, _, Backbone, prettify, JST, util, BlogCollection) {
     'use strict';
 
     var BlogPageView = Backbone.View.extend({
@@ -91,6 +92,14 @@ define([
                                     'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
                                 }))
                         ).animate({ opacity: 1 }, 300);
+
+                        self.$blogEntryContainer.find('code, pre')
+                            .each(function () {
+                                var $this = $(this);
+                                
+                                $this.addClass('prettyprint')
+                                    .html(prettyPrintOne($this.html()));
+                            });
                     });
                     
                     if (curUrl !== url) {

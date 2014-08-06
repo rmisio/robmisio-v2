@@ -12,7 +12,8 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
-        bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap'
+        bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
+        prettify: '../bower_components/google-code-prettify/src/prettify'
     }
 });
 
