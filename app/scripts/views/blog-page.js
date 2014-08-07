@@ -5,10 +5,10 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'prettify',
+    'google-code-prettify',
     'templates',
     'util',
-    'collections/blog'
+    'collections/blog',
 ], function (app, $, _, Backbone, prettify, JST, util, BlogCollection) {
     'use strict';
 
@@ -97,11 +97,8 @@ define([
                             .each(function () {
                                 var $this = $(this);
                                 
-                                console.log('hello');
-                                window.hello = prettify;
-                                console.log(prettyPrintOne);
                                 $this.addClass('prettyprint')
-                                    .html(prettyPrintOne($this.html()));
+                                    .html(prettify.prettyPrintOne($this.html()));
                             });
                     });
                     

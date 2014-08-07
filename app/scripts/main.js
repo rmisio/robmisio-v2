@@ -13,7 +13,7 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
-        prettify: '../bower_components/google-code-prettify/src/prettify'
+        'google-code-prettify': '../bower_components/google-code-prettify/src/prettify'
     }
 });
 
