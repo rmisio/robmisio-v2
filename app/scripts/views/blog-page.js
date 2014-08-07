@@ -97,6 +97,9 @@ define([
                             .each(function () {
                                 var $this = $(this);
                                 
+                                console.log('hello');
+                                window.hello = prettify;
+                                console.log(prettyPrintOne);
                                 $this.addClass('prettyprint')
                                     .html(prettyPrintOne($this.html()));
                             });
