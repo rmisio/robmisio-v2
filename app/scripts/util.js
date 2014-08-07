@@ -56,6 +56,26 @@ define([
                         }        
                     }, 0);
                 });
+            },
+
+            deferImage: function (element) {
+                var $el = $(element),
+                    img = new Image(),
+                    $placeholder = $el.find(':first-child');
+
+                $el.addClass('loading');
+                img.onload = function () {
+                    $el.toggleClass('loading loaded');
+                    $placeholder.replaceWith(img);
+                }
+
+                for (var i = 0; i < $placeholder[0].attributes.length; i++) {
+                    var attr = $placeholder[0].attributes[i];
+                    
+                    if (attr.name.match(/^data-/)) {
+                        img.setAttribute(attr.name.replace('data-', ''), attr.value);
+                    }                    
+                }
             }
         };
 

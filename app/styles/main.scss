@@ -36,6 +36,42 @@ $font-family-headings: $font-family-raleway;
     border: 1px solid $gray-lighter;
 }
 
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+
+// animations
+@include keyframes(fadeIn) {
+  from  { opacity: 0; }
+  to    { opacity: 1; }
+}
+
+@include keyframes(bobble) {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    35% {
+        opacity: 1;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -119,7 +155,6 @@ code {
     left: 0;
     opacity: 0.3;
 }
-
 
 .scrollbar-measure {
   width: 1px;
@@ -215,6 +250,30 @@ code {
 
 footer {
     display: none;
+}
+
+.defer-image {
+    position: relative;
+    max-width: 96%;
+    margin: 0 auto 10px;
+    @include border-frame;
+
+    &.loaded img {
+        @include animation(fadeIn 2s both);
+    }
+
+    &.loading::after {
+        content: ' ';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1em;
+        height: 1em;
+        margin: -0.5em 0 0 -0.5em;
+        background: rgba(125, 125, 125, 0.5);
+        border-radius: 100%;
+        @include animation(bobble 2s cubic-bezier(0.6, 1, 1, 1) infinite);
+    }
 }
 
 // Blog page
@@ -349,30 +408,6 @@ footer {
     }
 }
 
-// WebKit
-@-webkit-keyframes fadeIn {
-  from  { opacity: 0; }
-  to    { opacity: 1; }
-}
-
-// Firefox
-@-moz-keyframes fadeIn {
-  from  { opacity: 0; }
-  to    { opacity: 1; }
-}
-
-// Opera
-@-o-keyframes fadeIn {
-  from  { opacity: 0; }
-  to    { opacity: 1; }
-}
-
-// Spec and IE10+
-@keyframes fadeIn {
-  from  { opacity: 0; }
-  to    { opacity: 1; }
-}
-
 .about-page {
     #page-container {
         padding-top: 20px;
@@ -487,36 +522,21 @@ footer {
         figure {
             margin: 40px 0;
 
-            .img-outer {
-                max-width: 96%;
-                margin: 0 auto 10px;
-                @include border-frame;
-            }
-
-            img.loading {
-                width: 100%;
-                background: transparent url(../images/spinner-dot-24-X-24.gif) no-repeat center center;
-            }
-
-            img.loaded {
-                @include animation(fadeIn 2s both);
-            }
-
             &:first-child {
                 margin-top: 25px;
 
-                img.loading {
+                .defer-image > div {
                     padding-top: 75.151%;
                 }
 
                 & + figure {
-                    img.loading {
+                    .defer-image > div {
                         padding-top: 80%;
                     }
                 }
 
                 & + figure + figure {
-                    img.loading {
+                    .defer-image > div {
                         padding-top: 75.151%;
                     }
                 }                

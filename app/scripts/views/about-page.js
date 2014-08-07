@@ -170,11 +170,9 @@ define([
             this.$submitButton = this.$('button[type=submit]');
             this.$quiz = this.$('.quiz');
 
-            this.$('img').addClass('loading')
-                .on('load', function () {
-                    $(this).removeClass('loading')
-                        .addClass('loaded');
-                });
+            this.$('.defer-image').each(function () {
+                util.deferImage(this);
+            });
 
             return this;
         }
