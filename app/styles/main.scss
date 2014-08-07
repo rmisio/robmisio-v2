@@ -260,9 +260,6 @@ footer {
 
 .defer-image {
     position: relative;
-    max-width: 96%;
-    margin: 0 auto 10px;
-    @include border-frame;
 
     &.loaded img {
         @include animation(fadeIn 2s both);
@@ -527,6 +524,12 @@ footer {
     .photos {
         figure {
             margin: 40px 0;
+
+            .defer-image {
+                max-width: 96%;
+                margin: 0 auto 10px;
+                @include border-frame;                
+            }
 
             &:first-child {
                 margin-top: 25px;
