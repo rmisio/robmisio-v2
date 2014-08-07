@@ -8162,7 +8162,7 @@ footer {
 }
 /* line 409, main.scss */
 .blog-entry:empty {
-  background: white url(../images/spinner-circle-100-x-100.gif) no-repeat center 100px;
+  background: white url(../images/spinner-squares.gif) no-repeat center 100px;
   min-height: 250px;
   opacity: 1 !important;
 }

@@ -407,7 +407,7 @@ footer {
     }
 
     &:empty {
-        background: $page-bg-color url(../images/spinner-circle-100-x-100.gif) no-repeat center 100px;
+        background: $page-bg-color url(../images/spinner-squares.gif) no-repeat center 100px;
         min-height: 250px;
         opacity: 1 !important;
     }
