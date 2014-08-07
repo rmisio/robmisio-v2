@@ -8,6 +8,7 @@ var mountFolder = function (connect, dir) {
 var popBlogEntries;
 var blogEntryPath = __dirname + (process.env.NODE_ENV === 'production' ?
         '/dist/blog-entries' : '/app/scripts/templates/blog-entries');
+var http;
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -362,6 +363,20 @@ module.exports = function (grunt) {
             return grunt.task.run(testTasks);
         }
     });
+
+    grunt.registerTask('pingApp', function () {
+        var host = process.env.PING_HOSTNAME;
+
+        http = http || require('http');
+        
+        if (host) {
+            http.get({ host: host }, function(res) {
+                ;
+            }).on('error', function(err) {
+                console.log("Error: " + err.message);
+            });
+        }
+    });    
 
     grunt.registerTask('build', [
         'clean:dist',
