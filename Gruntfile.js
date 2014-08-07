@@ -292,6 +292,12 @@ module.exports = function (grunt) {
                     ]
                 }
             }
+        },
+        uglify: {
+            options: {
+                mangle: false,
+                beautify: true
+            }
         }
     });
 
