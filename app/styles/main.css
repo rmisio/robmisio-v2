@@ -8287,7 +8287,7 @@ footer {
   border-radius: 3px;
 }
 
-@media only screen and (max-width: 1170px) {
+@media only screen and (max-width: 1200px) {
   /* line 568, main.scss */
   .container {
     width: 100%;
