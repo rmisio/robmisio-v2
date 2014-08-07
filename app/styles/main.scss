@@ -204,8 +204,9 @@ code {
                 color: $gray-light;
                 font: 16px $font-family-droid;
                 letter-spacing: -1px;
+                outline: 0;
 
-                &.active, &:hover {
+                &.active, &:hover, &:focus {
                     color: $brand-primary;
                     border-bottom: 2px solid $brand-primary;
                 }
@@ -326,6 +327,7 @@ footer {
         a {
             display: block;
             padding: 12px 8px;
+            outline: none;
         }
 
         h2 {
@@ -347,7 +349,7 @@ footer {
             }
         }
 
-        &:hover, &.active {
+        &:hover, &.active, a:focus, a:active {
             background-color: $orange-light;
             @include transition(all .3s ease);
 
