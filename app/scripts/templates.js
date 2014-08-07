@@ -49,7 +49,7 @@ this["JST"]["app/scripts/templates/blog-list-item.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<li class="clearfix">\n    <a href="' +
+__p += '<li class="clearfix">\n    <a href="/' +
 ((__t = ( BLOG_ENTRY_URL_PREFIX )) == null ? '' : __t) +
 '' +
 ((__t = ( url )) == null ? '' : __t) +
