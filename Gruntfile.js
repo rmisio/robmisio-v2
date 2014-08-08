@@ -213,7 +213,8 @@ module.exports = function (grunt) {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
                         '.tmp/styles/{,*/}*.css',
-                        '<%= yeoman.app %>/styles/{,*/}*.css'
+                        '<%= yeoman.app %>/styles/{,*/}*.css',
+                        '<%= yeoman.app %>/bower_components/google-code-prettify/styles/sunburst.css'
                     ]
                 }
             }
