@@ -64,8 +64,10 @@ define([
         },
 
         renderPage: function (pageView, context) {
-            // todo: consider caching some or all pages
             if (this.curPageView) {
+                console.log('skip');
+                window.skip = this.curPageView;
+
                 this.$html.removeClass(this.curPageView.pageClass);
                 this.curPageView.remove();
             }
@@ -73,6 +75,7 @@ define([
             this.curPageView = pageView;
             this.$html.addClass(pageView.pageClass);
             this.$pageContainer.append(pageView.render(context).el);
+            
             // todo: make a base class and put onPageAppend (at
             // least a stub) in and skip the if
             if (typeof pageView.onPageAppend === 'function') {
@@ -80,14 +83,22 @@ define([
             }
         },
 
+        getCurPageView: function () {
+            return this.curPageView;
+        },
+
+        setCurPageView: function (view) {
+            this.curPageView = view;
+        },        
+
         getPageContainer: function () {
-            this.$pageContainer = this.$pageContainer ||
-                this.$('#page-container');
             return this.$pageContainer;
         },
 
         render: function () {
             this.$el.html(util.template(this.template));
+            this.$pageContainer = this.$pageContainer ||
+                this.$('#page-container');
 
             return this;
         }

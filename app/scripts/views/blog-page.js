@@ -26,9 +26,10 @@ define([
         initialize: function (options) {
             this.options = options || {};
             app.appView.navBarActivePage(0);
-            this.collection = options.collection || new BlogCollection();
+            this.collection = new BlogCollection();
             this.listenTo(this.collection, 'reset', this.onBlogListReset);
-            this.listenTo(app.eventEmitter, app.e.MQ_CHANGE, this.onMqChange);            
+            this.listenTo(app.eventEmitter, app.e.MQ_CHANGE, this.onMqChange);
+            this.collection.fetch({ reset: true });
         },
 
         onMqChange: function (on, off) {
@@ -147,6 +148,7 @@ define([
         },
 
         remove: function () {
+            console.log('aloo!');
             this.clearMobileNavMenuHeight();
 
             Backbone.View.prototype.remove.call(this);
@@ -162,6 +164,8 @@ define([
             this.$el.html(util.template(this.template, context));
 
             // cache selectors
+            console.log('skoobs');
+            window.skoobs = this.$el;
             this.$blogList =  this.$('.blog-list');
 
             return this;

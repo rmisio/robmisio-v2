@@ -26,23 +26,64 @@ define([
 
         index: function () {
             var url = 'blog';
-
-            if (this.blogPage) {
-                if (typeof this.blogPage.cacheUrl === 'function') {
-                    
-                // }
-                //     ) ||
-                //     this.blogPage.cacheUrl === 'url')
-                //     this.blogPage.reAttach(app.appView.getPageContainer());
-                // }
-            }
-
-            this.blogPage = new BlogPage();
-            this.blogPage.collection.fetch({ reset: true });
+ 
+            this.showPage('blog', BlogPage);
         },
 
-        showPage: function () {
+        pageViews: {},
 
+        showPage: function (url, View) {
+            var view = this.pageViews[url],
+                cacheUrls,
+                createNew = true;
+
+            // if (this.curPageView && this.curPageView.cache) {
+            //     if (typeof view.cacheUrl === 'function') {
+            //         cacheUrls = view.cacheUrl();
+            //     } else if (view.cacheUrl) {
+            //         cacheUrls = view.cacheUrl;
+            //     } else {
+            //         cacheUrls = view._cacheUrl;
+            //     }
+
+            //     cacheUrls = typeof === 'string' ? [cacheUrls] :
+            //         cacheUrls;
+
+            //     this.
+            // }
+
+            // cacheUrls = null;
+            if (view) {
+                console.log('boom');
+                if (typeof view.cacheUrl === 'function') {
+                    console.log('zoom');
+                    cacheUrls = view.cacheUrl();
+                    cacheUrls = typeof cacheUrls === 'string' ? [cacheUrls]
+                        : cacheUrls;
+
+                    if (cacheUrls.indexOf('url') !== -1) {
+                        console.log('swooom');
+                        view.reAttach(app.appView.getPageContainer());
+                        createNew = false;
+                    }
+                } else if ((view.cacheUrl === 'url') ||
+                    (view._cacheUrl === 'url')) {
+                    console.log('vrooom');
+                    view.reAttach(app.appView.getPageContainer());
+                    createNew = false;
+                }
+            }
+
+            if (createNew) {
+                console.log('loomer');
+                view = this.pageViews[url] = new View();
+                if (view.cache && !view.cacheUrl) {
+                    view._cacheUrl = url;
+                }
+            }
+
+            this.curPageView = view;
+            return view;
         },
 
         blogPost: function (year, month, slug) {
