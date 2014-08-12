@@ -26,9 +26,8 @@ define([
         initialize: function (options) {
             this.options = options || {};
             app.appView.navBarActivePage(0);
-            this.collection = new BlogCollection();
+            this.collection = options.collection || new BlogCollection();
             this.listenTo(this.collection, 'reset', this.onBlogListReset);
-            this.collection.fetch({ reset: true });
             this.listenTo(app.eventEmitter, app.e.MQ_CHANGE, this.onMqChange);            
         },
 

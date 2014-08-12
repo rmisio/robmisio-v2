@@ -72,14 +72,18 @@ define([
 
             this.curPageView = pageView;
             this.$html.addClass(pageView.pageClass);
-            this.$pageContainer = this.$pageContainer ||
-                this.$('#page-container');
             this.$pageContainer.append(pageView.render(context).el);
             // todo: make a base class and put onPageAppend (at
             // least a stub) in and skip the if
             if (typeof pageView.onPageAppend === 'function') {
                 pageView.onPageAppend();
             }
+        },
+
+        getPageContainer: function () {
+            this.$pageContainer = this.$pageContainer ||
+                this.$('#page-container');
+            return this.$pageContainer;
         },
 
         render: function () {

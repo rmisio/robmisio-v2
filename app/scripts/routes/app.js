@@ -10,7 +10,7 @@ define([
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
-        routes: function() {
+        routes: function () {
             var routes =  {
                 '': 'index',
                 'blog': 'index',
@@ -24,11 +24,28 @@ define([
             return routes;
         },
 
-        index: function() {
-            new BlogPage();
+        index: function () {
+            var url = 'blog';
+
+            if (this.blogPage) {
+                if (typeof this.blogPage.cacheUrl === 'function') {
+                    
+                // }
+                //     ) ||
+                //     this.blogPage.cacheUrl === 'url')
+                //     this.blogPage.reAttach(app.appView.getPageContainer());
+                // }
+            }
+
+            this.blogPage = new BlogPage();
+            this.blogPage.collection.fetch({ reset: true });
         },
 
-        blogPost: function(year, month, slug) {
+        showPage: function () {
+
+        },
+
+        blogPost: function (year, month, slug) {
             new BlogPage({
                 urlParams: {
                     year: year,
@@ -38,7 +55,7 @@ define([
             });
         },
 
-        about: function() {
+        about: function () {
             new AboutPage();
         }        
     });
