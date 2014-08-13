@@ -63,36 +63,37 @@ define([
             this.$html.removeClass('mobile-menu-open');
         },
 
-        renderPage: function (pageView, context) {
-            if (this.curPageView) {
-                console.log('skip');
-                window.skip = this.curPageView;
+        showPage: function (pageView, options) {
+            var options = options || {};
 
+            console.log();
+            console.log('showpage' + (options.reAttach ? '==== reattach' : ''));
+            if (this.curPageView) {
                 this.$html.removeClass(this.curPageView.pageClass);
-                this.curPageView.remove();
+                !options.reAttach && this.curPageView.remove();
+            }
+
+            if (!options.reAttach) {
+                this.$pageContainer.append(pageView.render(options.context).el);
+                pageView.onAttach({});
+            } else {
+                if (this.curPageView.cache) {
+                    this.curPageView.detach();
+                } else {
+                    this.curPageView.remove();
+                }
+
+                pageView.reAttach(this.$pageContainer);
+                pageView.onAttach({ cache: true });
             }
 
             this.curPageView = pageView;
             this.$html.addClass(pageView.pageClass);
-            this.$pageContainer.append(pageView.render(context).el);
-            
-            // todo: make a base class and put onPageAppend (at
-            // least a stub) in and skip the if
-            if (typeof pageView.onPageAppend === 'function') {
-                pageView.onPageAppend();
-            }
         },
 
+        // todo: are we using this?
         getCurPageView: function () {
             return this.curPageView;
-        },
-
-        setCurPageView: function (view) {
-            this.curPageView = view;
-        },        
-
-        getPageContainer: function () {
-            return this.$pageContainer;
         },
 
         render: function () {

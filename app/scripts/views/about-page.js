@@ -6,11 +6,12 @@ define([
     'underscore',
     'backbone',
     'templates',
-    'util'
-], function (app, $, _, Backbone, JST, util) {
+    'util',
+    'views/page'
+], function (app, $, _, Backbone, JST, util, PageView) {
     'use strict';
 
-    var AboutPageView = Backbone.View.extend({
+    var AboutPageView = PageView.extend({
         template: JST['app/scripts/templates/about-page.ejs'],
 
         events: {
@@ -33,9 +34,14 @@ define([
 
         initialize: function (options) {
             this.options = options || {};
-            app.appView.navBarActivePage(1);
-            app.appView.renderPage(this);            
+            app.appView.showPage(this);
+            app.appView.navBarActivePage(1);            
         },
+
+        reAttach: function () {
+            PageView.prototype.reAttach.apply(this, arguments);
+            app.appView.navBarActivePage(1);
+        },        
 
         thanksManoj: function () {
             // alert('thanks manoj');

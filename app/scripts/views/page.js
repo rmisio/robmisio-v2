@@ -12,6 +12,19 @@ define([
         cache: true,
         
         initialize: function (options) {
+        },
+
+        detach: function () {
+            this.$el.detach();
+        },
+
+        reAttach: function ($container) {
+            $container.empty()
+                .append(this.$el);
+        },
+
+        onAttach: function (e) {
+
         }
     });
 

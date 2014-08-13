@@ -8,11 +8,12 @@ define([
     'google-code-prettify',
     'templates',
     'util',
+    'views/page',
     'collections/blog',
-], function (app, $, _, Backbone, prettify, JST, util, BlogCollection) {
+], function (app, $, _, Backbone, prettify, JST, util, PageView, BlogCollection) {
     'use strict';
 
-    var BlogPageView = Backbone.View.extend({
+    var BlogPageView = PageView.extend({
         template: JST['app/scripts/templates/blog-page.ejs'],
 
         templateBlogListItem: JST['app/scripts/templates/blog-list-item.ejs'],
@@ -30,6 +31,22 @@ define([
             this.listenTo(this.collection, 'reset', this.onBlogListReset);
             this.listenTo(app.eventEmitter, app.e.MQ_CHANGE, this.onMqChange);
             this.collection.fetch({ reset: true });
+        },
+
+        reAttach: function () {
+            PageView.prototype.reAttach.apply(this, arguments);
+            app.appView.navBarActivePage(0);
+        },
+
+        cacheUrl: function () {
+            var curBlogUrl = this.$blogList
+                .find('.active a')
+                .attr('href');
+
+            return ['',
+                'blog',
+                curBlogUrl.slice(1)
+            ];
         },
 
         onMqChange: function (on, off) {
@@ -81,8 +98,7 @@ define([
             // todo: can't we do some type of client-side caching?
             blog.fetch({
                 success: function (blog) {
-                    var curUrl = window.location.pathname,
-                        url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
+                    var url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
 
                     fadeOut.done(function () {
                         self.$html.removeClass('fetching-blog');
@@ -102,12 +118,18 @@ define([
                             });
                     });
                     
-                    if (curUrl !== url) {
-                        app.router.navigate(url,
-                            { replace: curUrl === '/' || curUrl === '/blog' });
-                    }                                
+                    self.navigateBlogEntry(url);
                 }
             });
+        },
+
+        navigateBlogEntry: function (url) {
+            var curUrl = window.location.pathname;
+
+            if (curUrl !== url) {
+                app.router.navigate(url,
+                    { replace: curUrl === '/' || curUrl === '/blog' });
+            }
         },
 
         onBlogListItemSelect: function (e) {
@@ -124,8 +146,8 @@ define([
         onBlogListReset: function () {
             var activeBlog;
 
-            app.appView.renderPage(this, {
-                collection: this.collection.toJSON()
+            app.appView.showPage(this, {
+                context : { collection: this.collection.toJSON() }
             });
 
             if (this.collection.length) {
@@ -141,14 +163,21 @@ define([
             }
         },
 
-        onPageAppend: function () {
-            if (util.mq.maxPhoneLandscape()) {
-                this.setMobileNavMenuHeight();
+        onAttach: function (e) {
+            if (!e.cache) {
+                if (util.mq.maxPhoneLandscape()) {
+                    this.setMobileNavMenuHeight();
+                }
+            } else {
+                this.navigateBlogEntry(
+                    this.$blogList
+                        .find('.active a')
+                        .attr('href')
+                    );
             }
         },
 
         remove: function () {
-            console.log('aloo!');
             this.clearMobileNavMenuHeight();
 
             Backbone.View.prototype.remove.call(this);
@@ -164,8 +193,6 @@ define([
             this.$el.html(util.template(this.template, context));
 
             // cache selectors
-            console.log('skoobs');
-            window.skoobs = this.$el;
             this.$blogList =  this.$('.blog-list');
 
             return this;

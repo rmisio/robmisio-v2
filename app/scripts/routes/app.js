@@ -14,12 +14,10 @@ define([
             var routes =  {
                 '': 'index',
                 'blog': 'index',
-                'posts/:year/:month/:slug': 'blogPost',
                 'about': 'about'
             };
 
-            routes[app.BLOG_ENTRY_URL_PREFIX + ':year/:month/:slug'] =
-                'blogPost';
+            routes[app.BLOG_ENTRY_URL_PREFIX + ':year/:month/:slug'] = 'blogPost';
 
             return routes;
         },
@@ -32,72 +30,72 @@ define([
 
         pageViews: {},
 
-        showPage: function (url, View) {
-            var view = this.pageViews[url],
-                cacheUrls,
-                createNew = true;
+        // todo: rename plural
+        getCacheUrl: function (view) {
+            var urls = [];
 
-            // if (this.curPageView && this.curPageView.cache) {
-            //     if (typeof view.cacheUrl === 'function') {
-            //         cacheUrls = view.cacheUrl();
-            //     } else if (view.cacheUrl) {
-            //         cacheUrls = view.cacheUrl;
-            //     } else {
-            //         cacheUrls = view._cacheUrl;
-            //     }
+            if (typeof view.cacheUrl === 'function') {
+                urls = view.cacheUrl();
+                urls = typeof urls === 'string' ? [urls] : urls;
+            } else if (view.cacheUrl) {
+                urls = [view.cacheUrl];
+            } else if (view._cacheUrl) {
+                urls = [view._cacheUrl];
+            }
 
-            //     cacheUrls = typeof === 'string' ? [cacheUrls] :
-            //         cacheUrls;
+            return urls;
+        },
 
-            //     this.
-            // }
+        showPage: function (url, View, options) {
+            var curPageView = app.appView.getCurPageView(),
+                view;
 
-            // cacheUrls = null;
-            if (view) {
-                console.log('boom');
-                if (typeof view.cacheUrl === 'function') {
-                    console.log('zoom');
-                    cacheUrls = view.cacheUrl();
-                    cacheUrls = typeof cacheUrls === 'string' ? [cacheUrls]
-                        : cacheUrls;
+            options = options || {};
 
-                    if (cacheUrls.indexOf('url') !== -1) {
-                        console.log('swooom');
-                        view.reAttach(app.appView.getPageContainer());
-                        createNew = false;
-                    }
-                } else if ((view.cacheUrl === 'url') ||
-                    (view._cacheUrl === 'url')) {
-                    console.log('vrooom');
-                    view.reAttach(app.appView.getPageContainer());
-                    createNew = false;
+            if (curPageView && curPageView.cache) {
+                console.log('following urls cached for view: ' + curPageView.pageClass);
+                for (var i = 0, curPageUrls = this.getCacheUrl(curPageView);
+                    i < curPageUrls.length; i++) {
+                    this.pageViews[curPageUrls[i]] = curPageView;
+
+                    console.log(curPageUrls[i]);
                 }
             }
 
-            if (createNew) {
-                console.log('loomer');
-                view = this.pageViews[url] = new View();
+            view = this.pageViews[url];
+
+            console.log('url: ' + url);
+            console.log('cache-url: ' + this.getCacheUrl(view || {}));
+
+            if (view && this.getCacheUrl(view).indexOf(url) !== -1) {
+                app.appView.showPage(view, { reAttach: true });
+            } else {
+                console.log('new view');
+                view = this.pageViews[url] = new View(options.viewOptions);
+
                 if (view.cache && !view.cacheUrl) {
                     view._cacheUrl = url;
                 }
             }
 
-            this.curPageView = view;
             return view;
         },
 
         blogPost: function (year, month, slug) {
-            new BlogPage({
+            var opts = {
                 urlParams: {
                     year: year,
                     month: month,
                     slug: slug
-                }
-            });
+                }};
+
+            var url = app.BLOG_ENTRY_URL_PREFIX + year + '/' + month + '/' + slug;
+
+            this.showPage(url, BlogPage, { viewOptions: opts });
         },
 
         about: function () {
-            new AboutPage();
+            this.showPage('about', AboutPage);
         }        
     });
 
