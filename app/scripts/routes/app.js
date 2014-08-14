@@ -53,24 +53,17 @@ define([
             options = options || {};
 
             if (curPageView && curPageView.cache) {
-                console.log('following urls cached for view: ' + curPageView.pageClass);
                 for (var i = 0, curPageUrls = this.getCacheUrl(curPageView);
                     i < curPageUrls.length; i++) {
                     this.pageViews[curPageUrls[i]] = curPageView;
-
-                    console.log(curPageUrls[i]);
                 }
             }
 
             view = this.pageViews[url];
 
-            console.log('url: ' + url);
-            console.log('cache-url: ' + this.getCacheUrl(view || {}));
-
             if (view && this.getCacheUrl(view).indexOf(url) !== -1) {
                 app.appView.showPage(view, { reAttach: true });
             } else {
-                console.log('new view');
                 view = this.pageViews[url] = new View(options.viewOptions);
 
                 if (view.cache && !view.cacheUrl) {

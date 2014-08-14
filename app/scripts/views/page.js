@@ -15,6 +15,7 @@ define([
         },
 
         detach: function () {
+            this.restoreScrollPos = $(document).scrollTop();
             this.$el.detach();
         },
 
@@ -24,7 +25,7 @@ define([
         },
 
         onAttach: function (e) {
-
+            $(document).scrollTop(this.restoreScrollPos || 0);
         }
     });
 

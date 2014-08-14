@@ -26,27 +26,22 @@ define([
 
         initialize: function (options) {
             this.options = options || {};
-            app.appView.navBarActivePage(0);
             this.collection = new BlogCollection();
             this.listenTo(this.collection, 'reset', this.onBlogListReset);
             this.listenTo(app.eventEmitter, app.e.MQ_CHANGE, this.onMqChange);
             this.collection.fetch({ reset: true });
         },
 
-        reAttach: function () {
-            PageView.prototype.reAttach.apply(this, arguments);
-            app.appView.navBarActivePage(0);
-        },
-
         cacheUrl: function () {
             var curBlogUrl = this.$blogList
                 .find('.active a')
-                .attr('href');
+                .attr('href'),
+                urls;
 
-            return ['',
-                'blog',
-                curBlogUrl.slice(1)
-            ];
+            urls = [curBlogUrl.slice(1)];
+            util.mq.maxPhoneLandscape() && urls.push('blog');
+
+            return urls;
         },
 
         onMqChange: function (on, off) {
@@ -164,6 +159,9 @@ define([
         },
 
         onAttach: function (e) {
+            PageView.prototype.onAttach.apply(this, arguments);
+            app.appView.navBarActivePage(0);
+
             if (!e.cache) {
                 if (util.mq.maxPhoneLandscape()) {
                     this.setMobileNavMenuHeight();

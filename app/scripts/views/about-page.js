@@ -35,13 +35,12 @@ define([
         initialize: function (options) {
             this.options = options || {};
             app.appView.showPage(this);
-            app.appView.navBarActivePage(1);            
         },
 
-        reAttach: function () {
-            PageView.prototype.reAttach.apply(this, arguments);
+        onAttach: function (e) {
+            PageView.prototype.onAttach.apply(this, arguments);
             app.appView.navBarActivePage(1);
-        },        
+        },                
 
         thanksManoj: function () {
             // alert('thanks manoj');

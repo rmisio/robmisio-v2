@@ -66,23 +66,16 @@ define([
         showPage: function (pageView, options) {
             var options = options || {};
 
-            console.log();
-            console.log('showpage' + (options.reAttach ? '==== reattach' : ''));
             if (this.curPageView) {
-                this.$html.removeClass(this.curPageView.pageClass);
-                !options.reAttach && this.curPageView.remove();
+                this.curPageView.cache ?  this.curPageView.detach() :
+                    this.curPageView.remove();
+                this.$html.removeClass(this.curPageView.pageClass);                
             }
 
             if (!options.reAttach) {
                 this.$pageContainer.append(pageView.render(options.context).el);
                 pageView.onAttach({});
             } else {
-                if (this.curPageView.cache) {
-                    this.curPageView.detach();
-                } else {
-                    this.curPageView.remove();
-                }
-
                 pageView.reAttach(this.$pageContainer);
                 pageView.onAttach({ cache: true });
             }
@@ -91,7 +84,6 @@ define([
             this.$html.addClass(pageView.pageClass);
         },
 
-        // todo: are we using this?
         getCurPageView: function () {
             return this.curPageView;
         },
