@@ -210,6 +210,10 @@ code {
                     color: $brand-primary;
                     border-bottom: 2px solid $brand-primary;
                 }
+
+                &.active {
+                    border: 2px solid red;
+                }
             }
 
             &:first-child a {
