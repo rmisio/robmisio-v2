@@ -206,7 +206,7 @@ code {
                 letter-spacing: -1px;
                 outline: 0;
 
-                &.active, &:hover, &:focus {
+                &.active, &.hhhhover, &:focus {
                     color: $brand-primary;
                     border-bottom: 2px solid $brand-primary;
                 }
@@ -221,6 +221,11 @@ code {
             }
         }
     }
+}
+
+.no-touch #header-main nav .site-nav li a:hover {
+    color: $brand-primary;
+    border-bottom: 2px solid $brand-primary;
 }
 
 .social-links {
