@@ -372,15 +372,18 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('pingApp', function () {
-        var host = process.env.PING_HOSTNAME;
+        var host = process.env.PING_HOSTNAME,
+            done = this.async();
 
         http = http || require('http');
         
         if (host) {
+            console.log('=====> pinging ', host);
             http.get({ host: host }, function(res) {
-                ;
+                done();
             }).on('error', function(err) {
                 console.log("Error: " + err.message);
+                done();
             });
         }
     });    
