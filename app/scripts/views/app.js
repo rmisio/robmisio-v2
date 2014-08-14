@@ -73,7 +73,7 @@ define([
             }
 
             if (!options.reAttach) {
-                this.$pageContainer.append(pageView.render(options.context).el);
+                this.$pageContainer.html(pageView.render(options.context).el);
                 pageView.onAttach({});
             } else {
                 pageView.reAttach(this.$pageContainer);

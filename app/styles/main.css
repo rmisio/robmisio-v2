@@ -7933,7 +7933,7 @@ code {
   border-bottom: 2px solid #fd6500;
 }
 /* line 214, main.scss */
-#header-main nav .site-nav li a.active {
+#header-main nav .site-nav li a:focus {
   border: 2px solid red;
 }
 /* line 219, main.scss */

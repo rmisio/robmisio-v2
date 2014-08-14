@@ -211,7 +211,7 @@ code {
                     border-bottom: 2px solid $brand-primary;
                 }
 
-                &.active {
+                &:focus {
                     border: 2px solid red;
                 }
             }
