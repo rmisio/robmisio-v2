@@ -15,7 +15,10 @@ var host = process.env.PING_HOSTNAME;
 
 // Connect to mongodb
 var connect = function () {
-    var options = { server: { socketOptions: { keepAlive: 1 } } };
+    var options = {
+        server: { socketOptions: { keepAlive: 1 } },
+        auto_reconnect: true       
+    };
     mongoose.connect(config.db, options);
 };
 connect();
