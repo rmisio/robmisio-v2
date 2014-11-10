@@ -32,6 +32,9 @@ blogSchema = new Schema({
     },
     slug: {
         type: String
+    },
+    view: {
+        type: String
     }
 }, {
     toObject: { virtuals: true },

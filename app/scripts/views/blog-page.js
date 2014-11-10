@@ -1,6 +1,7 @@
 /*global define*/
 
 define([
+    'require',
     'app',
     'jquery',
     'underscore',
@@ -10,7 +11,8 @@ define([
     'util',
     'views/page',
     'collections/blog',
-], function (app, $, _, Backbone, prettify, JST, util, PageView, BlogCollection) {
+    'views/blog-entries/local/la-sombra-del-viento'
+], function (require, app, $, _, Backbone, prettify, JST, util, PageView, BlogCollection, LocalLaSombraDelVientoView) {
     'use strict';
 
     var BlogPageView = PageView.extend({
@@ -23,6 +25,8 @@ define([
         },
 
         pageClass: 'blog-page',
+
+        moduleArgs: arguments,
 
         initialize: function (options) {
             this.options = options || {};
@@ -93,16 +97,18 @@ define([
             // todo: can't we do some type of client-side caching?
             blog.fetch({
                 success: function (blog) {
-                    var url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url');
+                    var url = app.BLOG_ENTRY_URL_PREFIX + blog.get('url'),
+                        context = _.extend(blog.toJSON(), {
+                                'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
+                            }),
+                        view = blog.get('view'),
+                        template = 'app/scripts/templates/blog-entry.ejs',
+                        loadHtml;
 
-                    fadeOut.done(function () {
-                        self.$html.removeClass('fetching-blog');
-                        self.$blogEntryContainer.html(
-                            util.template('app/scripts/templates/blog-entry.ejs',
-                                _.extend(blog.toJSON(), {
-                                    'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
-                                }))
-                        ).animate({ opacity: 1 }, 300);
+                    loadHtml = function (view) {
+                        self.$blogEntryContainer.html(view ? view.render(context).el :
+                                util.template(template, context))
+                            .animate({ opacity: 1 }, 300);
 
                         self.$blogEntryContainer.find('code, pre')
                             .each(function () {
@@ -111,6 +117,18 @@ define([
                                 $this.addClass('prettyprint')
                                     .html(prettify.prettyPrintOne($this.html()));
                             });
+                    };
+
+                    fadeOut.done(function () {
+                        var View;
+
+                        self.$html.removeClass('fetching-blog');
+
+                        if (view && (View = require('views/blog-entries/' + view))) {
+                            loadHtml(new View({ template: template }));
+                        } else {
+                            loadHtml();
+                        }
                     });
                     
                     self.navigateBlogEntry(url);
