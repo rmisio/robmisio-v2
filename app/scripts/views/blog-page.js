@@ -10,9 +10,8 @@ define([
     'templates',
     'util',
     'views/page',
-    'collections/blog',
-    'views/blog-entries/local/la-sombra-del-viento'
-], function (require, app, $, _, Backbone, prettify, JST, util, PageView, BlogCollection, LocalLaSombraDelVientoView) {
+    'collections/blog'
+], function (require, app, $, _, Backbone, prettify, JST, util, PageView, BlogCollection) {
     'use strict';
 
     var BlogPageView = PageView.extend({
