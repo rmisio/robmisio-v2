@@ -4,7 +4,7 @@
  */
 
 var util = require('../../util'),
-    moment = require('moment'), 
+    moment = require('moment'),
     mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     blogSchema;
@@ -20,7 +20,7 @@ blogSchema = new Schema({
         type: String,
         trim: true,
         required: true,
-        unique: true    
+        unique: true
     },
     content: {
         type: String,
@@ -31,7 +31,8 @@ blogSchema = new Schema({
         default: Date.now
     },
     slug: {
-        type: String
+        type: String,
+        required: true
     },
     view: {
         type: String
@@ -54,7 +55,7 @@ blogSchema = new Schema({
 
 blogSchema.pre('save', function (next) {
     this.slug = util.slugify(this.title);
-    next(); 
+    next();
 });
 
 /**
