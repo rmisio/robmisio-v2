@@ -12,6 +12,23 @@ __p += '<div class="row">\n    <section class="col-md-8 quiz">\n        <p>\n   
 return __p
 };
 
+this["JST"]["app/scripts/templates/album-page.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<div class="row">\n    <section class="col-md-8 album-page">\n        <h1>' +
+((__t = ( this.slug ? 'Update' : 'Create' )) == null ? '' : __t) +
+' Album</h1>\n        <form>\n            <p class="error-msg main-error">\n                <span class="glyphicon glyphicon-warning-sign"></span>\n                There are one or more errors. Please fix the fields in red.\n            </p>\n            <div class="form-group">\n                <p class="error-msg error-required">This field is required. Please select a value.</p>\n                <label for="albumTitle" class="required">Title</label>\n                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="' +
+((__t = ( this.title || '' )) == null ? '' : __t) +
+'" />\n            </div>\n            <div class="form-group photos-group">\n                <p class="error-msg error-required">At least one photo is required. Please add a photo.</p>\n                <label class="required">Photos</label>\n                <input class="btn btn-default cloudinary_fileupload" type="file" name="file" multiple />\n            </div>\n\n            ';
+ for (photo in this.photos) { print('boomer') } ;
+__p += '\n\n            <button type="submit" class="btn btn-default">Save</button>\n            <button type="reset" class="btn btn-default">Cancel</button>\n        </form>\n    </section>\n</div>\n';
+
+}
+return __p
+};
+
 this["JST"]["app/scripts/templates/app.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;

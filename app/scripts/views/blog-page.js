@@ -58,7 +58,7 @@ define([
         setMobileNavMenuHeight: function () {
             this.$blogList.css('maxHeight', $(window).height() -
                 parseInt(this.$blogList.css('top')));
-        },        
+        },
 
         clearMobileNavMenuHeight: function () {
             this.$blogList.attr('style', function (i, style) {
@@ -112,7 +112,7 @@ define([
                         self.$blogEntryContainer.find('code, pre')
                             .each(function () {
                                 var $this = $(this);
-                                
+
                                 $this.addClass('prettyprint')
                                     .html(prettify.prettyPrintOne($this.html()));
                             });
@@ -129,7 +129,7 @@ define([
                             loadHtml();
                         }
                     });
-                    
+
                     self.navigateBlogEntry(url);
                 }
             });
@@ -151,16 +151,14 @@ define([
 
                 if ($li.hasClass('active')) { return };
                 this.blogListItemSelect($li.index());
-                
+
                 return false;
         },
 
         onBlogListReset: function () {
             var activeBlog;
 
-            app.appView.showPage(this, {
-                context : { collection: this.collection.toJSON() }
-            });
+            app.appView.showPage(this);
 
             if (this.collection.length) {
                 if (this.options.urlParams) {
@@ -198,11 +196,12 @@ define([
             Backbone.View.prototype.remove.call(this);
         },
 
-        // todo: consider putting this functionality in a 
+        // todo: consider putting this functionality in a
         // view base class
         render: function (context) {
             context = context || {};
             context = _.extend(context, {
+                collection: this.collection.toJSON(),
                 'BLOG_ENTRY_URL_PREFIX': app.BLOG_ENTRY_URL_PREFIX
             });
             this.$el.html(util.template(this.template, context));

@@ -13,7 +13,11 @@ require.config({
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
         bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap',
-        'google-code-prettify': '../bower_components/google-code-prettify/src/prettify'
+        'google-code-prettify': '../bower_components/google-code-prettify/src/prettify',
+        'jquery.ui.widget': '../bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget',
+        'jquery.iframe-transport': '../bower_components/blueimp-file-upload/js/jquery.iframe-transport',
+        'jquery.fileupload': '../bower_components/blueimp-file-upload/js/jquery.fileupload',
+        cloudinary_js: '../bower_components/jquery-cloudinary/js/jquery.cloudinary'
     }
 });
 
@@ -52,5 +56,5 @@ require([
     });
     // END - bootstrap modal scroll issue fix.
 
-    Backbone.history.start({ pushState: true });    
+    Backbone.history.start({ pushState: true });
 });

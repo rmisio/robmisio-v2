@@ -15,9 +15,19 @@ define([
         },
 
         defaults: {
+            photos: []
         },
 
         validate: function (attrs, options) {
+            var error = {};
+
+            if (!attrs.title) {
+                error.title = 'Title is required.';
+            } else if (!photos.length) {
+                error.photos = 'At least one photo is required.';
+            }
+
+            if (_.size(error)) { return error; }
         },
 
         parse: function (response, options)  {

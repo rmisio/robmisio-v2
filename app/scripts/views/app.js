@@ -69,11 +69,11 @@ define([
             if (this.curPageView) {
                 this.curPageView.cache ?  this.curPageView.detach() :
                     this.curPageView.remove();
-                this.$html.removeClass(this.curPageView.pageClass);                
+                this.$html.removeClass(this.curPageView.pageClass);
             }
 
             if (!options.reAttach) {
-                this.$pageContainer.html(pageView.render(options.context).el);
+                this.$pageContainer.html(pageView.render().el);
                 pageView.onAttach({});
             } else {
                 pageView.reAttach(this.$pageContainer);

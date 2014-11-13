@@ -5,8 +5,9 @@ define([
     'backbone',
     'app',
     'views/blog-page',
-    'views/about-page'
-], function ($, Backbone, app, BlogPage, AboutPage) {
+    'views/about-page',
+    'views/album-page'
+], function ($, Backbone, app, BlogPage, AboutPage, AlbumPage) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -14,7 +15,8 @@ define([
             var routes =  {
                 '': 'index',
                 'blog': 'index',
-                'about': 'about'
+                'about': 'about',
+                'album': 'albumCreate'
             };
 
             routes[app.BLOG_ENTRY_URL_PREFIX + ':year/:month/:slug'] = 'blogPost';
@@ -22,13 +24,11 @@ define([
             return routes;
         },
 
+        pageViews: {},
+
         index: function () {
-            var url = 'blog';
- 
             this.showPage('blog', BlogPage);
         },
-
-        pageViews: {},
 
         // todo: rename plural
         getCacheUrl: function (view) {
@@ -89,7 +89,11 @@ define([
 
         about: function () {
             this.showPage('about', AboutPage);
-        }        
+        },
+
+        albumCreate: function () {
+            this.showPage('album', AlbumPage);
+        }
     });
 
     return AppRouter;

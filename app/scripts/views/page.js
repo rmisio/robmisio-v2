@@ -9,8 +9,8 @@ define([
     'use strict';
 
     var PageView = Backbone.View.extend({
-        cache: true,
-        
+        cache: false,
+
         initialize: function (options) {
         },
 
