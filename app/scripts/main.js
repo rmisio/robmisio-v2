@@ -4,10 +4,13 @@
 require.config({
     shim: {
         bootstrap: {
-            deps: ['jquery'],
+            deps: [
+                'jquery'
+            ],
             exports: 'jquery'
         }
     },
+
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
         backbone: '../bower_components/backbone/backbone',
@@ -17,7 +20,8 @@ require.config({
         'jquery.ui.widget': '../bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget',
         'jquery.iframe-transport': '../bower_components/blueimp-file-upload/js/jquery.iframe-transport',
         'jquery.fileupload': '../bower_components/blueimp-file-upload/js/jquery.fileupload',
-        cloudinary_js: '../bower_components/jquery-cloudinary/js/jquery.cloudinary'
+        cloudinary_js: '../bower_components/jquery-cloudinary/js/jquery.cloudinary',
+        'backbone-validation': '../bower_components/backbone-validation/dist/backbone-validation-amd'
     }
 });
 
@@ -34,27 +38,6 @@ require([
     app.router = new AppRouter();
     app.eventEmitter = _.extend({}, Backbone.Events);
     util.initMqChangeEvents(app.eventEmitter);
-
-    // bootstrap modal scroll issue fix:
-    // https://github.com/twbs/bootstrap/issues/9855#issuecomment-27460362
-    // todo: upgrading bootstrap should fix this
-    function measureScrollBar() {
-        var scrollDiv = document.createElement('div')
-        scrollDiv.className = 'scrollbar-measure'
-        document.body.appendChild(scrollDiv)
-        var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
-        document.body.removeChild(scrollDiv)
-        return scrollbarWidth
-    }
-
-    $(document.body).on('show.bs.modal', function () {
-        if (this.clientHeight <= window.innerHeight) return
-        var scrollbarWidth = measureScrollBar()
-        if (scrollbarWidth) $(document.body).css('padding-right', scrollbarWidth)
-    }).on('hidden.bs.modal', function () {
-        $(document.body).css('padding-right', 0)
-    });
-    // END - bootstrap modal scroll issue fix.
 
     Backbone.history.start({ pushState: true });
 });

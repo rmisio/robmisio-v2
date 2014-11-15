@@ -9,7 +9,9 @@
     "requirejs": "~2.1.10",
     "requirejs-text": "~2.0.10",
     "modernizr": "~2.7.1",
-    "google-code-prettify": "~1.0.2"
+    "google-code-prettify": "~1.0.2",
+    "backbone-validation": "~0.9.1",
+    "jquery-cloudinary": "~1.0.20"
   },
   "devDependencies": {}
 }

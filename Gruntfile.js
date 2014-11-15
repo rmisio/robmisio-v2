@@ -308,7 +308,7 @@ module.exports = function (grunt) {
         popBlogEntries = popBlogEntries ||
             require('./bin/populate-blog-entries')(blogEntryPath, done);
     });
-    
+
     grunt.registerTask('createDefaultTemplate', function () {
         grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
     });
@@ -368,7 +368,7 @@ module.exports = function (grunt) {
             testTasks.splice(testTasks.indexOf('connect:test'), 1);
             return grunt.task.run(testTasks);
         }
-    });    
+    });
 
     grunt.registerTask('build', [
         'clean:dist',

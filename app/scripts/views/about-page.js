@@ -40,11 +40,11 @@ define([
         onAttach: function (e) {
             PageView.prototype.onAttach.apply(this, arguments);
             app.appView.navBarActivePage(1);
-        },                
+        },
 
         thanksManoj: function () {
             // alert('thanks manoj');
-            
+
             // return false;
         },
 
@@ -135,7 +135,7 @@ define([
                     .prop('disabled', true)
                     .filter(':checked').each(function (i, val) {
                         var $input = $(this);
-                        
+
                         if ($input.attr('data-answer')) {
                             $input.parents('.radio')
                                 .addClass('correct-answer');
@@ -147,7 +147,7 @@ define([
 
                 score = Math.round(this.$('.correct-answer').length /
                     this.$('.form-group').length * 100);
-                
+
                 for (var index in this.gradeMessage) {
                     if (score >= index) {
                         gradeMsgIndex = index;

@@ -1,26 +1,21 @@
 <div class="row">
     <section class="col-md-8 album-page">
         <h1><%= this.slug ? 'Update' : 'Create' %> Album</h1>
-        <form>
-            <p class="error-msg main-error">
-                <span class="glyphicon glyphicon-warning-sign"></span>
-                There are one or more errors. Please fix the fields in red.
-            </p>
+        <form action="#">
             <div class="form-group">
-                <p class="error-msg error-required">This field is required. Please select a value.</p>
                 <label for="albumTitle" class="required">Title</label>
                 <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="<%= this.title || '' %>" />
             </div>
-            <div class="form-group photos-group">
-                <p class="error-msg error-required">At least one photo is required. Please add a photo.</p>
+            <div class="form-group">
                 <label class="required">Photos</label>
-                <input class="btn btn-default cloudinary_fileupload" type="file" name="file" multiple />
+                <input class="btn btn-default cloudinary_fileupload form-control" type="file" name="file" multiple />
+                <div class="uploads"></div>
             </div>
 
-            <% for (photo in this.photos) { print('boomer') } %>
+
 
             <button type="submit" class="btn btn-default">Save</button>
-            <button type="reset" class="btn btn-default">Cancel</button>
+            <button type="reset" class="btn btn-default">Reset</button>
         </form>
     </section>
 </div>
