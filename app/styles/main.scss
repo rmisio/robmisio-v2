@@ -594,6 +594,27 @@ form {
             float: right;
         }
     }
+
+    .photo-thumbs {
+        .photo-thumb {
+            display: inline-block;
+            width: 23%;
+            position: relative;
+            cursor: pointer;
+
+            .remove-thumb {
+                position: absolute;
+                right: 5px;
+                top: 5px;
+                padding: 3px 7px;
+                display: none;
+            }
+
+            &:hover .remove-thumb {
+                display: block;
+            }
+        }
+    }
 }
 
 // * Responsive *

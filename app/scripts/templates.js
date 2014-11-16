@@ -19,7 +19,7 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="row">\n    <section class="col-md-8 album-page">\n        <h1>' +
 ((__t = ( typeof(slug) !== 'undefined' ? 'Update' : 'Create' )) == null ? '' : __t) +
-' Album</h1>\n        <form action="#">\n            <div class="form-group">\n                <label for="albumTitle" class="required">Title</label>\n                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="' +
+' Album</h1>\n        <form action="#" class="album-form">\n            <div class="form-group">\n                <label for="albumTitle" class="required">Title</label>\n                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="' +
 ((__t = ( this.title || '' )) == null ? '' : __t) +
 '" />\n            </div>\n            <div class="form-group">\n                <label class="required">Photos</label>\n                <input class="btn btn-default cloudinary_fileupload form-control" type="file" name="file" multiple />\n                <div class="uploads"></div>\n               <div class="photo-thumbs">\n                    ';
  if (typeof(photos) !== 'undefined') {
@@ -28,7 +28,21 @@ __p += '<div class="row">\n    <section class="col-md-8 album-page">\n        <h
                                     photos[i]));
                             }
                         } ;
-__p += '\n                </div>\n            </div>\n\n            <button type="submit" class="btn btn-default">Save</button>\n            <button type="reset" class="btn btn-default">Reset</button>\n        </form>\n    </section>\n</div>\n';
+__p += '\n                </div>\n            </div>\n\n            <button type="submit" class="btn btn-primary">Save</button>\n            <button type="reset" class="btn btn-default">Reset</button>\n        </form>\n    </section>\n</div>\n\n<div class="modal fade" id="albumPhotoModal">\n    <div class="modal-dialog">\n        <div class="modal-content"></div>\n    </div>\n</div>\n';
+
+}
+return __p
+};
+
+this["JST"]["app/scripts/templates/album-photo.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="modal-header">\n    <button type="button" class="close" data-dismiss="modal">\n        <span aria-hidden="true">&times;</span>\n        <span class="sr-only">Close</span>\n    </button>\n    <h3 class="modal-title">Update Photo</h3>\n</div>\n<div class="modal-body">\n    <form action="#">\n        <div class="form-group">\n            <label>Title</label>\n            <input type="text" class="form-control" name="title" value="' +
+((__t = ( this.title || '' )) == null ? '' : __t) +
+'" />\n        </div>\n        <div class="form-group">\n            <label>Caption</label>\n            <input type="text" class="form-control" name="caption" value="' +
+((__t = ( this.caption || '' )) == null ? '' : __t) +
+'" />\n        </div>\n\n        <button type="submit" class="btn btn-default">OK</button>\n    </form>\n</div>\n<div class="modal-footer">\n    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\n    <button type="button" class="btn btn-primary">Save</button>\n</div>\n';
 
 }
 return __p
@@ -111,9 +125,13 @@ this["JST"]["app/scripts/templates/photo-thumb.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<img src="' +
-((__t = ( cloudinary.data.url )) == null ? '' : __t) +
-'" />\n';
+__p += '<div class="photo-thumb">\n    <button class="remove-thumb btn btn-default">X</button>\n    <img src="' +
+((__t = ( clImgUrl({ path: cloudinary.data.path,
+        url: cloudinary.data.url,
+        width: 185,
+        height: 185,
+        crop: 'fill' }) )) == null ? '' : __t) +
+'"\n        class="img-responsive" />\n</div>\n';
 
 }
 return __p

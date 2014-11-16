@@ -8,13 +8,6 @@ define([
 
     var PhotoModel = Backbone.Model.extend({
         initialize: function () {
-            console.log('new photo model');
-        },
-
-        validation: {
-            'cloudinary.id': {
-              required: true
-            }
         },
 
         parse: function (response, options)  {

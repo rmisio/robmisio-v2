@@ -1,7 +1,7 @@
 <div class="row">
     <section class="col-md-8 album-page">
         <h1><%= typeof(slug) !== 'undefined' ? 'Update' : 'Create' %> Album</h1>
-        <form action="#">
+        <form action="#" class="album-form">
             <div class="form-group">
                 <label for="albumTitle" class="required">Title</label>
                 <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="<%= this.title || '' %>" />
@@ -20,8 +20,14 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-default">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
             <button type="reset" class="btn btn-default">Reset</button>
         </form>
     </section>
+</div>
+
+<div class="modal fade" id="albumPhotoModal">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
 </div>

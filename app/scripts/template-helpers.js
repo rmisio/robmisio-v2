@@ -2,7 +2,8 @@
 
 define([
     'underscore',
-], function (_) {
+    'util'
+], function (_, util) {
     'use strict';
 
     var MONTHS = [
@@ -18,7 +19,28 @@ define([
         'October',
         'November',
         'December'
-    ], timeAgo;
+    ],
+    timeAgo,
+    clImgUrl;
+
+    clImgUrl = function (args) {
+        args =  args || {};
+
+        var transformFrag = '',
+            path = args.path || '',
+            url = args.url || '';
+
+        args.width && (transformFrag += 'w_' + args.width + ',');
+        args.height && (transformFrag += 'h_' + args.height +',');
+        args.crop && (transformFrag += 'c_' + args.crop +',');
+
+        if (transformFrag.charAt(transformFrag.length - 1) === ',') {
+            transformFrag = transformFrag.slice(0, transformFrag.length - 1);
+        }
+
+        return url.slice(0, url.indexOf(path)) + transformFrag + '/' + path;
+
+    };
 
     timeAgo =  function (date) {
         // partly following suit with the breakdown used here:
@@ -32,16 +54,6 @@ define([
         daysElapsed = Math.round(Math.abs(
             (now.getTime() - date) / (24*60*60*1000)
         ));
-
-        // if (daysElapsed >= 548) {
-        //     str = Math.round(daysElapsed / 365) + ' years ago';
-        // } else if (daysElapsed >= 345) {
-        //     str = "a year ago"
-        // } else if (daysElapsed >= 45) {
-        //     str = Math.floor(daysElapsed) + ' months ago';
-        // } else if (daysElapsed >= 25) {
-        //     str = 'a month ago';
-        // } else {
 
         if (daysElapsed >= 25) {
             str = MONTHS[date.getMonth()] + ' ' + date.getDate() +
@@ -135,6 +147,7 @@ define([
     // testTimeAgo();
 
     return {
-        timeAgo: timeAgo
+        timeAgo: timeAgo,
+        clImgUrl: clImgUrl
     }
 });

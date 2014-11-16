@@ -10,17 +10,20 @@ define([
     'backbone-validation',
     'cloudinary_js',
     'views/page',
+    'views/album-photo',
     'models/album',
     'collections/photo'
 ], function (app, $, _, Backbone, JST, util, BackboneValidation, cloudinary,
-        PageView, AlbumModel, PhotoCollection) {
+        PageView, AlbumPhotoView, AlbumModel, PhotoCollection) {
     'use strict';
 
     var AlbumPageView = PageView.extend({
         template: JST['app/scripts/templates/album-page.ejs'],
 
         events: {
-            'submit form': 'submit'
+            'submit .album-form': 'submit',
+            'click .remove-thumb': 'photoThumbRemove',
+            'click .photo-thumb': 'photoThumbClick'
         },
 
         pageClass: 'album-page',
@@ -28,38 +31,43 @@ define([
         initialize: function (options) {
             this.options = options || {};
 
-            _.bindAll(this, 'invalidForm', 'renderPhotoUploadInfo');
+             _.bindAll(this, 'invalidForm');
 
             this.model = new AlbumModel();
             this.photoCollection = new PhotoCollection();
             this.photoUploadInfoModel = new Backbone.Model({
                 uploadCount: 0,
                 uploadPercent: 0
-            }).on('change', this.renderPhotoUploadInfo);
-
-            this.model.set({
-                photos: [
-                {
-                    cloudinary: {
-                        id: "bbel1xqvpyzbhgbmex5x",
-                        data: {
-                            version: 1416101351,
-                            signature: "cec3123196349fc3a5da38c8fca83dc13b64f05b",
-                            width: 2592,
-                            height: 1456,
-                            format: "jpg",
-                            resource_type: "image",
-                            created_at: "2014-11-16T01:29:11Z",
-                            bytes: 1511177,
-                            type: "upload",
-                            etag: "0316193b06f2062ce2cb32f27a5d03b5",
-                            url: "http://res.cloudinary.com/dabzwws4g/image/upload/v1416101351/bbel1xqvpyzbhgbmex5x.jpg",
-                            secure_url: "https://res.cloudinary.com/dabzwws4g/image/upload/v1416101351/bbel1xqvpyzbhgbmex5x.jpg",
-                            path: "v1416101351/bbel1xqvpyzbhgbmex5x.jpg"
-                        }
-                    }
-                }]
             });
+
+            this.listenTo(this.photoUploadInfoModel, 'change',
+                this.renderPhotoUploadInfo, this);
+            this.listenTo(this.photoCollection, 'add', this.photoAdd, this);
+            this.listenTo(this.photoCollection, 'remove', this.photoRemove, this);
+
+            // this.model.set({
+            //     photos: [
+            //     {
+            //         cloudinary: {
+            //             id: "bbel1xqvpyzbhgbmex5x",
+            //             data: {
+            //                 version: 1416101351,
+            //                 signature: "cec3123196349fc3a5da38c8fca83dc13b64f05b",
+            //                 width: 2592,
+            //                 height: 1456,
+            //                 format: "jpg",
+            //                 resource_type: "image",
+            //                 created_at: "2014-11-16T01:29:11Z",
+            //                 bytes: 1511177,
+            //                 type: "upload",
+            //                 etag: "0316193b06f2062ce2cb32f27a5d03b5",
+            //                 url: "http://res.cloudinary.com/dabzwws4g/image/upload/v1416101351/bbel1xqvpyzbhgbmex5x.jpg",
+            //                 secure_url: "https://res.cloudinary.com/dabzwws4g/image/upload/v1416101351/bbel1xqvpyzbhgbmex5x.jpg",
+            //                 path: "v1416101351/bbel1xqvpyzbhgbmex5x.jpg"
+            //             }
+            //         }
+            //     }]
+            // });
 
             Backbone.Validation.bind(this, {
                 invalid: this.invalidForm
@@ -69,7 +77,6 @@ define([
         },
 
         invalidForm: function(view, attr, error, selector) {
-            console.log('filabuster');
             if (attr === 'photos') {
                 Backbone.Validation.callbacks.invalid.apply(
                     Backbone.Validation.callbacks,
@@ -92,6 +99,22 @@ define([
             });
         },
 
+        photoAdd: function (model, collection, options) {
+            this.$thumbsContainer = this.$thumbsContainer ||
+                this.$('.photo-thumbs');
+
+            this.$thumbsContainer.append(
+                util.template(JST['app/scripts/templates/photo-thumb.ejs'],
+                    model.toJSON())
+            );
+        },
+
+        photoRemove: function (model, collection, options) {
+            this.$('.photo-thumb')
+                .eq(options.index)
+                .remove();
+        },
+
         renderPhotoUploadInfo: function (uploadCount, uploadPercent) {
             this.$uploadInfoContainer = this.$uploadInfoContainer ||
                 this.$('.uploads');
@@ -101,19 +124,40 @@ define([
             );
         },
 
+        photoThumbRemove: function (e) {
+            var photos = this.photoCollection,
+                index = $(e.target)
+                    .parents('.photo-thumb')
+                    .index();
+
+            photos.remove(photos.at(index));
+        },
+
+        photoThumbClick: function (e) {
+            var photos = this.photoCollection,
+                index = $(e.target)
+                    .parents('.photo-thumb')
+                    .index();
+
+            this.$albumPhotoModal = this.$albumPhotoModal ||
+                this.$('#albumPhotoModal');
+            this.$albumPhotoModal.find('.modal-content')
+                .html(
+                    new AlbumPhotoView({ model: photos.at(index) })
+                        .render()
+                        .el
+                );
+            this.$albumPhotoModal.modal();
+        },
+
         render: function () {
             var context = this.model.toJSON(),
                 self = this,
                 $fileInput,
                 fileInputClasses;
 
-            console.log('skip');
-            window.skip = this;
-
             context.create = this.create;
             this.$el.html(util.template(this.template, context));
-
-            // this.$thumbsContainer = this.$('.photo-thumbs');
 
             // TODO: Move these 2 elsewhere!!!
             $.cloudinary.config().cloud_name = 'dabzwws4g';

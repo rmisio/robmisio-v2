@@ -8256,53 +8256,72 @@ form .has-error-required .error-msg.error-required {
 .album-page .uploads .uploadCount {
   float: right;
 }
+/* line 599, main.scss */
+.album-page .photo-thumbs .photo-thumb {
+  display: inline-block;
+  width: 23%;
+  position: relative;
+  cursor: pointer;
+}
+/* line 605, main.scss */
+.album-page .photo-thumbs .photo-thumb .remove-thumb {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  padding: 3px 7px;
+  display: none;
+}
+/* line 613, main.scss */
+.album-page .photo-thumbs .photo-thumb:hover .remove-thumb {
+  display: block;
+}
 
 @media only screen and (max-width: 1200px) {
-  /* line 601, main.scss */
+  /* line 622, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 608, main.scss */
+  /* line 629, main.scss */
   footer {
     display: block;
   }
-  /* line 611, main.scss */
+  /* line 632, main.scss */
   footer .social-links {
     float: none;
     width: 112px;
     margin: 0 auto;
   }
 
-  /* line 618, main.scss */
+  /* line 639, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 622, main.scss */
+  /* line 643, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 628, main.scss */
+  /* line 649, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width 0.2s ease;
     transition: width 0.2s ease;
   }
-  /* line 634, main.scss */
+  /* line 655, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 638, main.scss */
+  /* line 659, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left 0.2s ease;
     transition: left 0.2s ease;
   }
 
-  /* line 645, main.scss */
+  /* line 666, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8312,11 +8331,11 @@ form .has-error-required .error-msg.error-required {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 655, main.scss */
+  /* line 676, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 659, main.scss */
+  /* line 680, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8330,12 +8349,12 @@ form .has-error-required .error-msg.error-required {
     transition: width 0.3s ease;
   }
 
-  /* line 676, main.scss */
+  /* line 697, main.scss */
   .fetching-blog footer {
     display: none;
   }
 
-  /* line 681, main.scss */
+  /* line 702, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8350,21 +8369,21 @@ form .has-error-required .error-msg.error-required {
     transition: left 0.2s ease;
   }
 
-  /* line 695, main.scss */
+  /* line 716, main.scss */
   .blog-entry .jst-example {
     white-space: pre-wrap;
   }
 
-  /* line 701, main.scss */
+  /* line 722, main.scss */
   .about-page .photos {
     max-width: 387px;
     margin: 0 auto;
   }
-  /* line 706, main.scss */
+  /* line 727, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 710, main.scss */
+  /* line 731, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;

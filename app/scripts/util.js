@@ -53,7 +53,7 @@ define([
                             }
 
                             curMQs[mqCheck] = result;
-                        }        
+                        }
                     }, 0);
                 });
             },
@@ -71,10 +71,10 @@ define([
 
                 for (var i = 0; i < $placeholder[0].attributes.length; i++) {
                     var attr = $placeholder[0].attributes[i];
-                    
+
                     if (attr.name.match(/^data-/)) {
                         img.setAttribute(attr.name.replace('data-', ''), attr.value);
-                    }                    
+                    }
                 }
             }
         };
