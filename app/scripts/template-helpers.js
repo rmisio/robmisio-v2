@@ -46,7 +46,7 @@ define([
         if (daysElapsed >= 25) {
             str = MONTHS[date.getMonth()] + ' ' + date.getDate() +
                 ', ' + date.getFullYear();
-        } else {                
+        } else {
             secElapsed = (new Date() - date) / 1000;
 
             if (secElapsed >= 36*60*60) {
@@ -54,7 +54,7 @@ define([
             } else if (secElapsed >= 22*60*60) {
                 str = 'a day ago';
             } else if (secElapsed >= 90*60) {
-                str = Math.round(secElapsed / 60 / 60) + ' hours ago';                    
+                str = Math.round(secElapsed / 60 / 60) + ' hours ago';
             } else if (secElapsed >= 45*60) {
                 str = 'an hour ago';
             } else if (secElapsed >= 90) {
@@ -88,10 +88,10 @@ define([
         console.log('======== ' + timeAgo(new Date(now - (1000*60*60*36))));
 
         console.log('(48 hours) Should print: 2 days ago');
-        console.log('======== ' + timeAgo(new Date(now - (1000*60*60*48))));        
+        console.log('======== ' + timeAgo(new Date(now - (1000*60*60*48))));
 
         console.log('(35 hours) Should print: a day ago');
-        console.log('======== ' + timeAgo(new Date(now - (1000*60*60*35))));        
+        console.log('======== ' + timeAgo(new Date(now - (1000*60*60*35))));
 
         console.log('(24.4 days) Should print: 24 days ago');
         console.log('======== ' + timeAgo(new Date(now - (1000*60*60*24*24.4))));
@@ -130,7 +130,7 @@ define([
         console.log('======== ' + timeAgo(new Date(now - (1000*44))));
 
         console.log('(2 seconds) Should print: seconds ago');
-        console.log('======== ' + timeAgo(new Date(now - (1000*2))));        
+        console.log('======== ' + timeAgo(new Date(now - (1000*2))));
     }
     // testTimeAgo();
 

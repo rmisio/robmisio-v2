@@ -7,17 +7,14 @@ define([
     'use strict';
 
     var PhotoModel = Backbone.Model.extend({
-        url: function () {
-            return '/api/photos/' + this.get('url');
-        },
-
         initialize: function () {
+            console.log('new photo model');
         },
 
-        defaults: {
-        },
-
-        validate: function (attrs, options) {
+        validation: {
+            'cloudinary.id': {
+              required: true
+            }
         },
 
         parse: function (response, options)  {

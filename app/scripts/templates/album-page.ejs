@@ -1,6 +1,6 @@
 <div class="row">
     <section class="col-md-8 album-page">
-        <h1><%= this.slug ? 'Update' : 'Create' %> Album</h1>
+        <h1><%= typeof(slug) !== 'undefined' ? 'Update' : 'Create' %> Album</h1>
         <form action="#">
             <div class="form-group">
                 <label for="albumTitle" class="required">Title</label>
@@ -10,9 +10,15 @@
                 <label class="required">Photos</label>
                 <input class="btn btn-default cloudinary_fileupload form-control" type="file" name="file" multiple />
                 <div class="uploads"></div>
+               <div class="photo-thumbs">
+                    <% if (typeof(photos) !== 'undefined') {
+                           for (var i = 0; i < photos.length; i++) {
+                                print(template('app/scripts/templates/photo-thumb.ejs',
+                                    photos[i]));
+                            }
+                        } %>
+                </div>
             </div>
-
-
 
             <button type="submit" class="btn btn-default">Save</button>
             <button type="reset" class="btn btn-default">Reset</button>

@@ -588,6 +588,14 @@ form {
     border-radius: 3px;
 }
 
+.album-page {
+    .uploads {
+        .uploadCount {
+            float: right;
+        }
+    }
+}
+
 // * Responsive *
 @media only screen and (max-width : 1200px) {
     .container {

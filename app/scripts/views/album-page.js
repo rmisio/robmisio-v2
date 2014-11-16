@@ -10,8 +10,10 @@ define([
     'backbone-validation',
     'cloudinary_js',
     'views/page',
-    'models/album'
-], function (app, $, _, Backbone, JST, util, BackboneValidation, cloudinary, PageView, AlbumModel) {
+    'models/album',
+    'collections/photo'
+], function (app, $, _, Backbone, JST, util, BackboneValidation, cloudinary,
+        PageView, AlbumModel, PhotoCollection) {
     'use strict';
 
     var AlbumPageView = PageView.extend({
@@ -29,33 +31,45 @@ define([
             _.bindAll(this, 'invalidForm', 'renderPhotoUploadInfo');
 
             this.model = new AlbumModel();
+            this.photoCollection = new PhotoCollection();
             this.photoUploadInfoModel = new Backbone.Model({
                 uploadCount: 0,
                 uploadPercent: 0
             }).on('change', this.renderPhotoUploadInfo);
 
-            Backbone.Validation.bind(this, {
-                invalid: this.invalidForm
+            this.model.set({
+                photos: [
+                {
+                    cloudinary: {
+                        id: "bbel1xqvpyzbhgbmex5x",
+                        data: {
+                            version: 1416101351,
+                            signature: "cec3123196349fc3a5da38c8fca83dc13b64f05b",
+                            width: 2592,
+                            height: 1456,
+                            format: "jpg",
+                            resource_type: "image",
+                            created_at: "2014-11-16T01:29:11Z",
+                            bytes: 1511177,
+                            type: "upload",
+                            etag: "0316193b06f2062ce2cb32f27a5d03b5",
+                            url: "http://res.cloudinary.com/dabzwws4g/image/upload/v1416101351/bbel1xqvpyzbhgbmex5x.jpg",
+                            secure_url: "https://res.cloudinary.com/dabzwws4g/image/upload/v1416101351/bbel1xqvpyzbhgbmex5x.jpg",
+                            path: "v1416101351/bbel1xqvpyzbhgbmex5x.jpg"
+                        }
+                    }
+                }]
             });
 
-
-            this.model.set({
-                slug: 'fat/ass/pickles',
-                title: 'Sonomo Country Living Is Up In Here',
-                photos: [{
-                    title: 'I like you, do you like me?',
-                    caption: 'spanky, wanky and hutch'
-                },
-                {
-                    title: 'Moo shoo pork ass pickles',
-                    caption: 'in the west, the sun cried Mariah!'
-                }]
+            Backbone.Validation.bind(this, {
+                invalid: this.invalidForm
             });
 
             app.appView.showPage(this);
         },
 
         invalidForm: function(view, attr, error, selector) {
+            console.log('filabuster');
             if (attr === 'photos') {
                 Backbone.Validation.callbacks.invalid.apply(
                     Backbone.Validation.callbacks,
@@ -93,8 +107,13 @@ define([
                 $fileInput,
                 fileInputClasses;
 
+            console.log('skip');
+            window.skip = this;
+
             context.create = this.create;
             this.$el.html(util.template(this.template, context));
+
+            // this.$thumbsContainer = this.$('.photo-thumbs');
 
             // TODO: Move these 2 elsewhere!!!
             $.cloudinary.config().cloud_name = 'dabzwws4g';
@@ -121,10 +140,25 @@ define([
                     // console.log('moo' + moo);
                     // moo += 1;
                 }).on('cloudinarydone', function(e, data) {
+                    var cloudinaryData = data.result,
+                        cloudinaryId = cloudinaryData.public_id;
+
                     console.log('cloudinarydone');
+
+                    window['moo' + moo] = arguments;
+                    console.log('moo' + moo);
+                    moo += 1;
 
                     self.photoUploadInfoModel.set('uploadCount',
                         self.photoUploadInfoModel.get('uploadCount') - 1);
+
+                    delete cloudinaryData['public_id'];
+                    self.photoCollection.add({
+                        cloudinary: {
+                            id: cloudinaryId,
+                            data: cloudinaryData
+                        }
+                    });
 
                     // $('.thumbnails').append($.cloudinary.image(data.result.public_id,
                     //   { format: 'jpg', width: 150, height: 100,

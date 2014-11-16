@@ -1,5 +1,10 @@
 <% if (uploadCount) { %>
-<p>Uploading <%= uploadCount %> files</p>
+<p>
+    Uploading...
+    <span class="uploadCount">
+        <%= uploadCount %> file<%= uploadCount > 1 ? 's' : '' %> remaining
+    </span>
+</p>
 <% } else { %>
 <p>Uploads complete.</p>
 <% } %>

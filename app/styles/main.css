@@ -8252,52 +8252,57 @@ form .has-error-required .error-msg.error-required {
   border-radius: 3px;
 }
 
+/* line 593, main.scss */
+.album-page .uploads .uploadCount {
+  float: right;
+}
+
 @media only screen and (max-width: 1200px) {
-  /* line 593, main.scss */
+  /* line 601, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 600, main.scss */
+  /* line 608, main.scss */
   footer {
     display: block;
   }
-  /* line 603, main.scss */
+  /* line 611, main.scss */
   footer .social-links {
     float: none;
     width: 112px;
     margin: 0 auto;
   }
 
-  /* line 610, main.scss */
+  /* line 618, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 614, main.scss */
+  /* line 622, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 620, main.scss */
+  /* line 628, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width 0.2s ease;
     transition: width 0.2s ease;
   }
-  /* line 626, main.scss */
+  /* line 634, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 630, main.scss */
+  /* line 638, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left 0.2s ease;
     transition: left 0.2s ease;
   }
 
-  /* line 637, main.scss */
+  /* line 645, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8307,11 +8312,11 @@ form .has-error-required .error-msg.error-required {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 647, main.scss */
+  /* line 655, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 651, main.scss */
+  /* line 659, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8325,12 +8330,12 @@ form .has-error-required .error-msg.error-required {
     transition: width 0.3s ease;
   }
 
-  /* line 668, main.scss */
+  /* line 676, main.scss */
   .fetching-blog footer {
     display: none;
   }
 
-  /* line 673, main.scss */
+  /* line 681, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8345,21 +8350,21 @@ form .has-error-required .error-msg.error-required {
     transition: left 0.2s ease;
   }
 
-  /* line 687, main.scss */
+  /* line 695, main.scss */
   .blog-entry .jst-example {
     white-space: pre-wrap;
   }
 
-  /* line 693, main.scss */
+  /* line 701, main.scss */
   .about-page .photos {
     max-width: 387px;
     margin: 0 auto;
   }
-  /* line 698, main.scss */
+  /* line 706, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 702, main.scss */
+  /* line 710, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;

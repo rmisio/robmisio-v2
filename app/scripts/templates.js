@@ -14,13 +14,21 @@ return __p
 
 this["JST"]["app/scripts/templates/album-page.ejs"] = function(obj) {
 obj || (obj = {});
-var __t, __p = '', __e = _.escape;
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="row">\n    <section class="col-md-8 album-page">\n        <h1>' +
-((__t = ( this.slug ? 'Update' : 'Create' )) == null ? '' : __t) +
+((__t = ( typeof(slug) !== 'undefined' ? 'Update' : 'Create' )) == null ? '' : __t) +
 ' Album</h1>\n        <form action="#">\n            <div class="form-group">\n                <label for="albumTitle" class="required">Title</label>\n                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="' +
 ((__t = ( this.title || '' )) == null ? '' : __t) +
-'" />\n            </div>\n            <div class="form-group">\n                <label class="required">Photos</label>\n                <input class="btn btn-default cloudinary_fileupload form-control" type="file" name="file" multiple />\n                <div class="uploads"></div>\n            </div>\n\n\n\n            <button type="submit" class="btn btn-default">Save</button>\n            <button type="reset" class="btn btn-default">Reset</button>\n        </form>\n    </section>\n</div>\n';
+'" />\n            </div>\n            <div class="form-group">\n                <label class="required">Photos</label>\n                <input class="btn btn-default cloudinary_fileupload form-control" type="file" name="file" multiple />\n                <div class="uploads"></div>\n               <div class="photo-thumbs">\n                    ';
+ if (typeof(photos) !== 'undefined') {
+                           for (var i = 0; i < photos.length; i++) {
+                                print(template('app/scripts/templates/photo-thumb.ejs',
+                                    photos[i]));
+                            }
+                        } ;
+__p += '\n                </div>\n            </div>\n\n            <button type="submit" class="btn btn-default">Save</button>\n            <button type="reset" class="btn btn-default">Reset</button>\n        </form>\n    </section>\n</div>\n';
 
 }
 return __p
@@ -99,6 +107,18 @@ __p += '\n    </ul>\n    <section class="col-md-8 blog-entry"></section>\n</div>
 return __p
 };
 
+this["JST"]["app/scripts/templates/photo-thumb.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<img src="' +
+((__t = ( cloudinary.data.url )) == null ? '' : __t) +
+'" />\n';
+
+}
+return __p
+};
+
 this["JST"]["app/scripts/templates/photo-uploads.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
@@ -106,9 +126,11 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 
  if (uploadCount) { ;
-__p += '\n<p>Uploading ' +
+__p += '\n<p>\n    Uploading...\n    <span class="uploadCount">\n        ' +
 ((__t = ( uploadCount )) == null ? '' : __t) +
-' files</p>\n';
+' file' +
+((__t = ( uploadCount > 1 ? 's' : '' )) == null ? '' : __t) +
+' remaining\n    </span>\n</p>\n';
  } else { ;
 __p += '\n<p>Uploads complete.</p>\n';
  } ;

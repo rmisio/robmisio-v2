@@ -1,13 +1,11 @@
 define([
     'jquery',
+    'underscore',
     'backbone',
     'backbone-validation'
-], function ($, backbone, BackboneValidation) {
+], function ($, _, backbone, BackboneValidation) {
     'use strict';
 
-    // todo: maybe make a seperate module for stuff like this...
-    //
-    //
     // bootstrap modal scroll issue fix:
     // https://github.com/twbs/bootstrap/issues/9855#issuecomment-27460362
     // todo: upgrading bootstrap should fix this
