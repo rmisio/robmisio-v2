@@ -6,8 +6,9 @@ define([
     'app',
     'views/blog-page',
     'views/about-page',
-    'views/album-page'
-], function ($, Backbone, app, BlogPage, AboutPage, AlbumPage) {
+    'views/album-form',
+    'models/album'
+], function ($, Backbone, app, BlogPage, AboutPage, AlbumForm, AlbumModel) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -16,7 +17,9 @@ define([
                 '': 'index',
                 'blog': 'index',
                 'about': 'about',
-                'album': 'albumCreate'
+                'album/create': 'albumCreate',
+                'album/update/:slug': 'albumUpdate'
+
             };
 
             routes[app.BLOG_ENTRY_URL_PREFIX + ':year/:month/:slug'] = 'blogPost';
@@ -76,11 +79,12 @@ define([
 
         blogPost: function (year, month, slug) {
             var opts = {
-                urlParams: {
-                    year: year,
-                    month: month,
-                    slug: slug
-                }};
+                    urlParams: {
+                        year: year,
+                        month: month,
+                        slug: slug
+                    }
+                };
 
             var url = app.BLOG_ENTRY_URL_PREFIX + year + '/' + month + '/' + slug;
 
@@ -92,7 +96,40 @@ define([
         },
 
         albumCreate: function () {
-            this.showPage('album', AlbumPage);
+            this.showPage('album/create', AlbumForm, {
+                viewOptions: {
+                    model: new AlbumModel()
+                }
+            });
+        },
+
+        albumUpdate: function (slug) {
+            var self = this,
+                model;
+
+            if (!slug) {
+                // todo: 404 yo
+            }
+
+            model = new AlbumModel({
+                slug: slug
+            });
+
+            model.fetch({
+                success: function () {
+                    self.showPage('album/update/' + slug, AlbumForm, {
+                        viewOptions: {
+                            model: model
+                        }
+                    });
+                },
+
+                error: function (model, jqxhr) {
+                    if (jqxhr.status === 404) {
+                        // todo: 404 yo
+                    }
+                }
+            });
         }
     });
 

@@ -7,6 +7,7 @@ var path = require('path'),
     mongoose = require('mongoose'),
     home = require('home'),
     blogs = require('blogs'),
+    albums = require('albums'),
     indexUrl;
 
 /**
@@ -20,6 +21,11 @@ module.exports = function (app, passport) {
     // app.post('/api/blogs', blogs.create);
     // app.put('/api/blogs/:id', blogs.update);
     // app.del('/blogs/:id', blogs.destroy);
+
+    // album routes
+    app.get('/api/albums/:slug', albums.show);
+    app.post('/api/albums', albums.create);
+    app.put('/api/albums/:id', albums.update);
 
    // Error handling
     app.use(function (err, req, res, next) {

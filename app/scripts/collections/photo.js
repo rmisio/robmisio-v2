@@ -8,8 +8,6 @@ define([
     'use strict';
 
     var PhotoCollection = Backbone.Collection.extend({
-        // url: '',
-
         model: PhotoModel
     });
 

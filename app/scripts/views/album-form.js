@@ -11,14 +11,13 @@ define([
     'cloudinary_js',
     'views/page',
     'views/album-photo',
-    'models/album',
-    'collections/photo'
+    'models/album'
 ], function (app, $, _, Backbone, JST, util, BackboneValidation, cloudinary,
-        PageView, AlbumPhotoView, AlbumModel, PhotoCollection) {
+        PageView, AlbumPhotoView, AlbumModel) {
     'use strict';
 
-    var AlbumPageView = PageView.extend({
-        template: JST['app/scripts/templates/album-page.ejs'],
+    var AlbumFormView = PageView.extend({
+        template: JST['app/scripts/templates/album-form.ejs'],
 
         events: {
             'submit .album-form': 'submit',
@@ -26,15 +25,18 @@ define([
             'click .photo-thumb': 'photoThumbClick'
         },
 
-        pageClass: 'album-page',
+        pageClass: 'album-form',
 
         initialize: function (options) {
             this.options = options || {};
 
              _.bindAll(this, 'invalidForm');
 
-            this.model = new AlbumModel();
-            this.photoCollection = new PhotoCollection();
+            this.model = this.options.model;
+            if (!this.model || (!this.model instanceof AlbumModel)) {
+                throw new Error('Please provide a AlbumModel.');
+            }
+
             this.photoUploadInfoModel = new Backbone.Model({
                 uploadCount: 0,
                 uploadPercent: 0
@@ -42,32 +44,8 @@ define([
 
             this.listenTo(this.photoUploadInfoModel, 'change',
                 this.renderPhotoUploadInfo, this);
-            this.listenTo(this.photoCollection, 'add', this.photoAdd, this);
-            this.listenTo(this.photoCollection, 'remove', this.photoRemove, this);
-
-            // this.model.set({
-            //     photos: [
-            //     {
-            //         cloudinary: {
-            //             id: "bbel1xqvpyzbhgbmex5x",
-            //             data: {
-            //                 version: 1416101351,
-            //                 signature: "cec3123196349fc3a5da38c8fca83dc13b64f05b",
-            //                 width: 2592,
-            //                 height: 1456,
-            //                 format: "jpg",
-            //                 resource_type: "image",
-            //                 created_at: "2014-11-16T01:29:11Z",
-            //                 bytes: 1511177,
-            //                 type: "upload",
-            //                 etag: "0316193b06f2062ce2cb32f27a5d03b5",
-            //                 url: "http://res.cloudinary.com/dabzwws4g/image/upload/v1416101351/bbel1xqvpyzbhgbmex5x.jpg",
-            //                 secure_url: "https://res.cloudinary.com/dabzwws4g/image/upload/v1416101351/bbel1xqvpyzbhgbmex5x.jpg",
-            //                 path: "v1416101351/bbel1xqvpyzbhgbmex5x.jpg"
-            //             }
-            //         }
-            //     }]
-            // });
+            this.listenTo(this.model.get('photos'), 'add', this.photoAdd, this);
+            this.listenTo(this.model.get('photos'), 'remove', this.photoRemove, this);
 
             Backbone.Validation.bind(this, {
                 invalid: this.invalidForm
@@ -94,8 +72,7 @@ define([
             e.preventDefault();
 
             this.model.save({
-                title: this.$('input[name="title"]').val(),
-                photos: []
+                title: this.$('input[name="title"]').val()
             });
         },
 
@@ -125,28 +102,36 @@ define([
         },
 
         photoThumbRemove: function (e) {
-            var photos = this.photoCollection,
+            var photos = this.model.get('photos'),
                 index = $(e.target)
                     .parents('.photo-thumb')
                     .index();
 
+            e.stopPropagation();
             photos.remove(photos.at(index));
         },
 
         photoThumbClick: function (e) {
-            var photos = this.photoCollection,
+            var self = this,
+                photos = this.model.get('photos'),
                 index = $(e.target)
                     .parents('.photo-thumb')
-                    .index();
+                    .index(),
+                albumPhotoView;
 
             this.$albumPhotoModal = this.$albumPhotoModal ||
                 this.$('#albumPhotoModal');
             this.$albumPhotoModal.find('.modal-content')
                 .html(
-                    new AlbumPhotoView({ model: photos.at(index) })
+                    (albumPhotoView = new AlbumPhotoView({ model: photos.at(index) }))
                         .render()
                         .el
                 );
+
+            this.listenTo(albumPhotoView, 'model-data-set', function () {
+                self.$albumPhotoModal.modal('hide');
+            });
+
             this.$albumPhotoModal.modal();
         },
 
@@ -156,7 +141,6 @@ define([
                 $fileInput,
                 fileInputClasses;
 
-            context.create = this.create;
             this.$el.html(util.template(this.template, context));
 
             // TODO: Move these 2 elsewhere!!!
@@ -197,7 +181,7 @@ define([
                         self.photoUploadInfoModel.get('uploadCount') - 1);
 
                     delete cloudinaryData['public_id'];
-                    self.photoCollection.add({
+                    self.model.get('photos').add({
                         cloudinary: {
                             id: cloudinaryId,
                             data: cloudinaryData
@@ -218,5 +202,5 @@ define([
         }
     });
 
-    return AlbumPageView;
+    return AlbumFormView;
 });

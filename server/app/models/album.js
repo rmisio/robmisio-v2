@@ -25,8 +25,7 @@ albumSchema = new Schema({
     },
     photos: [{ type: Schema.Types.ObjectId, ref: 'Photo' }],
     slug: {
-        type: String,
-        required: true
+        type: String
     }
 });
 

@@ -14,7 +14,7 @@ define([
         template: JST['app/scripts/templates/album-photo.ejs'],
 
         events: {
-            'submit form': 'submit'
+            'click .btn-primary': 'submit'
         },
 
         initialize: function (options) {
@@ -27,15 +27,12 @@ define([
         },
 
         submit: function (e) {
-            console.log('moon');
-            window.moon = this;
-
-            e.preventDefault();
-
             this.model.set({
                 title: this.$('input[name="title"]').val(),
                 caption: this.$('input[name="caption"]').val()
             });
+
+            this.trigger('model-data-set');
         },
 
         render: function () {

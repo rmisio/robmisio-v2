@@ -20,8 +20,8 @@ define([
         'November',
         'December'
     ],
-    timeAgo,
-    clImgUrl;
+    clImgUrl,
+    timeAgo;
 
     clImgUrl = function (args) {
         args =  args || {};

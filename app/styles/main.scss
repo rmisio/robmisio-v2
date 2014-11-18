@@ -588,9 +588,32 @@ form {
     border-radius: 3px;
 }
 
-.album-page {
-    .uploads {
-        .uploadCount {
+.album-form {
+    .album-form {
+        .cloudinary_fileupload {
+            margin-bottom: 20px;
+        }
+
+        .uploads {
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid #CCC;
+
+            &:empty { display: none; }
+
+            p { padding: 10px 10px 0; }
+
+            .uploadCount {
+                float: right;
+            }
+
+            .progress {
+                border-radius: 0 0 4px 4px;
+                margin: 0;
+            }
+        }
+
+        button[type="submit"] {
             float: right;
         }
     }

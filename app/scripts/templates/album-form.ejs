@@ -4,7 +4,7 @@
         <form action="#" class="album-form">
             <div class="form-group">
                 <label for="albumTitle" class="required">Title</label>
-                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="<%= this.title || '' %>" />
+                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="<%= typeof(title) === 'undefined' ? '' : title %>" />
             </div>
             <div class="form-group">
                 <label class="required">Photos</label>
@@ -21,7 +21,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Save</button>
-            <button type="reset" class="btn btn-default">Reset</button>
+            <!-- <button type="reset" class="btn btn-default">Reset</button> -->
         </form>
     </section>
 </div>

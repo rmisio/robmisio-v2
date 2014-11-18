@@ -8253,75 +8253,102 @@ form .has-error-required .error-msg.error-required {
 }
 
 /* line 593, main.scss */
-.album-page .uploads .uploadCount {
+.album-form .album-form .cloudinary_fileupload {
+  margin-bottom: 20px;
+}
+/* line 597, main.scss */
+.album-form .album-form .uploads {
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #CCC;
+}
+/* line 602, main.scss */
+.album-form .album-form .uploads:empty {
+  display: none;
+}
+/* line 604, main.scss */
+.album-form .album-form .uploads p {
+  padding: 10px 10px 0;
+}
+/* line 606, main.scss */
+.album-form .album-form .uploads .uploadCount {
   float: right;
 }
-/* line 599, main.scss */
-.album-page .photo-thumbs .photo-thumb {
+/* line 610, main.scss */
+.album-form .album-form .uploads .progress {
+  border-radius: 0 0 4px 4px;
+  margin: 0;
+}
+/* line 616, main.scss */
+.album-form .album-form button[type="submit"] {
+  float: right;
+}
+/* line 622, main.scss */
+.album-form .photo-thumbs .photo-thumb {
   display: inline-block;
   width: 23%;
   position: relative;
   cursor: pointer;
 }
-/* line 605, main.scss */
-.album-page .photo-thumbs .photo-thumb .remove-thumb {
+/* line 628, main.scss */
+.album-form .photo-thumbs .photo-thumb .remove-thumb {
   position: absolute;
   right: 5px;
   top: 5px;
   padding: 3px 7px;
   display: none;
 }
-/* line 613, main.scss */
-.album-page .photo-thumbs .photo-thumb:hover .remove-thumb {
+/* line 636, main.scss */
+.album-form .photo-thumbs .photo-thumb:hover .remove-thumb {
   display: block;
 }
 
 @media only screen and (max-width: 1200px) {
-  /* line 622, main.scss */
+  /* line 645, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 629, main.scss */
+  /* line 652, main.scss */
   footer {
     display: block;
   }
-  /* line 632, main.scss */
+  /* line 655, main.scss */
   footer .social-links {
     float: none;
     width: 112px;
     margin: 0 auto;
   }
 
-  /* line 639, main.scss */
+  /* line 662, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 643, main.scss */
+  /* line 666, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 649, main.scss */
+  /* line 672, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width 0.2s ease;
     transition: width 0.2s ease;
   }
-  /* line 655, main.scss */
+  /* line 678, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 659, main.scss */
+  /* line 682, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left 0.2s ease;
     transition: left 0.2s ease;
   }
 
-  /* line 666, main.scss */
+  /* line 689, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8331,11 +8358,11 @@ form .has-error-required .error-msg.error-required {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 676, main.scss */
+  /* line 699, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 680, main.scss */
+  /* line 703, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8349,12 +8376,12 @@ form .has-error-required .error-msg.error-required {
     transition: width 0.3s ease;
   }
 
-  /* line 697, main.scss */
+  /* line 720, main.scss */
   .fetching-blog footer {
     display: none;
   }
 
-  /* line 702, main.scss */
+  /* line 725, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8369,21 +8396,21 @@ form .has-error-required .error-msg.error-required {
     transition: left 0.2s ease;
   }
 
-  /* line 716, main.scss */
+  /* line 739, main.scss */
   .blog-entry .jst-example {
     white-space: pre-wrap;
   }
 
-  /* line 722, main.scss */
+  /* line 745, main.scss */
   .about-page .photos {
     max-width: 387px;
     margin: 0 auto;
   }
-  /* line 727, main.scss */
+  /* line 750, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 731, main.scss */
+  /* line 754, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;

@@ -9,7 +9,7 @@ exports.index = function (req, res) {
             if (!err) {
                 for (var i=0; i < blogs.length; i++) {
                     blogsToReturn.push({
-                        id: blogs[i]['id'], 
+                        id: blogs[i]['id'],
                         title: blogs[i]['title'],
                         createdAt: blogs[i]['createdAt'],
                         url: blogs[i]['url']
