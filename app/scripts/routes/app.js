@@ -72,9 +72,9 @@ define([
                 if (view.cache && !view.cacheUrl) {
                     view._cacheUrl = url;
                 }
-            }
 
-            return view;
+                app.appView.showPage(view);
+            }
         },
 
         blogPost: function (year, month, slug) {

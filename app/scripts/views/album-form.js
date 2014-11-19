@@ -25,17 +25,23 @@ define([
             'click .photo-thumb': 'photoThumbClick'
         },
 
-        pageClass: 'album-form',
+        pageClass: 'album-form-page',
 
         initialize: function (options) {
+            console.log('boom');
+            window.boom = this;
+
             this.options = options || {};
 
-             _.bindAll(this, 'invalidForm');
+             _.bindAll(this, 'invalidForm', 'validForm');
 
             this.model = this.options.model;
             if (!this.model || (!this.model instanceof AlbumModel)) {
                 throw new Error('Please provide a AlbumModel.');
             }
+
+            // flag indicating whether we are creating or updating the album
+            this.createMode = !this.model.get('slug');
 
             this.photoUploadInfoModel = new Backbone.Model({
                 uploadCount: 0,
@@ -48,10 +54,9 @@ define([
             this.listenTo(this.model.get('photos'), 'remove', this.photoRemove, this);
 
             Backbone.Validation.bind(this, {
-                invalid: this.invalidForm
+                invalid: this.invalidForm,
+                valid: this.validForm
             });
-
-            app.appView.showPage(this);
         },
 
         invalidForm: function(view, attr, error, selector) {
@@ -68,12 +73,63 @@ define([
             }
         },
 
+        validForm: function(view, attr, error, selector) {
+            if (attr === 'photos') {
+                Backbone.Validation.callbacks.valid.apply(
+                    Backbone.Validation.callbacks,
+                    [this, 'file', error, selector]
+                );
+            } else {
+                Backbone.Validation.callbacks.valid.apply(
+                    Backbone.Validation.callbacks,
+                    arguments
+                );
+            }
+        },
+
+        scrollTop: function ($el, duration) {
+            $el = $el || this.$('h1');
+            $('html, body').animate({
+                scrollTop: $el.offset().top - 10
+            }, duration || 500);
+        },
+
         submit: function (e) {
             e.preventDefault();
 
-            this.model.save({
+            var saved = false,
+                self = this;
+
+            if (this.isUploadInProgress()) {
+                alert('Please wait until any uploads have completed.');
+                return;
+            }
+
+            saved = this.model.save({
                 title: this.$('input[name="title"]').val()
+            }, {
+                success: function () {
+                    var msg;
+
+                    self.scrollTop();
+
+                    if (self.createMode) {
+                        self.createMode = false;
+                        self.$('.status-msg').html('Groovy! Your <a href="/albums/' +
+                            self.model.get('slug') + '">album</a> is now available ' +
+                            'for your viewing pleasure.');
+                    } else {
+                        self.$('.status-msg').html('Groovy! Your <a href="/albums/' +
+                            self.model.get('slug') + '">album</a> has been updated.');
+                    }
+                }
             });
+
+            if (saved === false) {
+                this.scrollTop(this.$('.album-form .has-error')
+                    .filter(':first'));
+            }
+
         },
 
         photoAdd: function (model, collection, options) {
@@ -135,12 +191,16 @@ define([
             this.$albumPhotoModal.modal();
         },
 
-        render: function () {
-            var context = this.model.toJSON(),
-                self = this,
+        isUploadInProgress: function () {
+            return !!this.photoUploadInfoModel.get('uploadCount');
+        },
+
+        render: function (context) {
+            var self = this,
                 $fileInput,
                 fileInputClasses;
 
+            context = _.extend(this.model.toJSON(), context || {});
             this.$el.html(util.template(this.template, context));
 
             // TODO: Move these 2 elsewhere!!!
@@ -153,32 +213,14 @@ define([
             fileInputClasses = $fileInput.attr('class');
             $fileInput
                 .unsigned_cloudinary_upload($.cloudinary.config().upload_preset, {}, {})
-                .on('fileuploadstart', function() {
-                    console.log('fileuploadstart');
-
-                    // window['moo' + moo] = arguments;
-                    // console.log('moo' + moo);
-                }).on('fileuploadsend', function(e, data) {
-                    console.log('fileuploadsend');
-
+                .on('fileuploadsend', function(e, data) {
                     self.photoUploadInfoModel.set('uploadCount',
                         self.photoUploadInfoModel.get('uploadCount') + 1);
-
-                    // window['moo' + moo] = arguments;
-                    // console.log('moo' + moo);
-                    // moo += 1;
                 }).on('cloudinarydone', function(e, data) {
                     var cloudinaryData = data.result,
                         cloudinaryId = cloudinaryData.public_id;
 
-                    console.log('cloudinarydone');
-
-                    window['moo' + moo] = arguments;
-                    console.log('moo' + moo);
-                    moo += 1;
-
-                    self.photoUploadInfoModel.set('uploadCount',
-                        self.photoUploadInfoModel.get('uploadCount') - 1);
+                    // console.log('cloudinarydone');
 
                     delete cloudinaryData['public_id'];
                     self.model.get('photos').add({
@@ -187,10 +229,9 @@ define([
                             data: cloudinaryData
                         }
                     });
-
-                    // $('.thumbnails').append($.cloudinary.image(data.result.public_id,
-                    //   { format: 'jpg', width: 150, height: 100,
-                    //     crop: 'thumb', gravity: 'face', effect: 'saturation:50' } ))}
+                }).on('fileuploadalways', function(e, data) {
+                    self.photoUploadInfoModel.set('uploadCount',
+                        self.photoUploadInfoModel.get('uploadCount') - 1);
                 }).on('cloudinaryprogressall', function(e, data) {
                     self.photoUploadInfoModel.set('uploadPercent',
                         Math.round((data.loaded * 100.0) / data.total));

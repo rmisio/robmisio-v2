@@ -8253,45 +8253,45 @@ form .has-error-required .error-msg.error-required {
 }
 
 /* line 593, main.scss */
-.album-form .album-form .cloudinary_fileupload {
+.album-form-page .album-form .cloudinary_fileupload {
   margin-bottom: 20px;
 }
 /* line 597, main.scss */
-.album-form .album-form .uploads {
+.album-form-page .album-form .uploads {
   border-radius: 4px;
   margin-bottom: 20px;
   border: 1px solid #CCC;
 }
 /* line 602, main.scss */
-.album-form .album-form .uploads:empty {
+.album-form-page .album-form .uploads:empty {
   display: none;
 }
 /* line 604, main.scss */
-.album-form .album-form .uploads p {
+.album-form-page .album-form .uploads p {
   padding: 10px 10px 0;
 }
 /* line 606, main.scss */
-.album-form .album-form .uploads .uploadCount {
+.album-form-page .album-form .uploads .uploadCount {
   float: right;
 }
 /* line 610, main.scss */
-.album-form .album-form .uploads .progress {
+.album-form-page .album-form .uploads .progress {
   border-radius: 0 0 4px 4px;
   margin: 0;
 }
 /* line 616, main.scss */
-.album-form .album-form button[type="submit"] {
+.album-form-page .album-form button[type="submit"] {
   float: right;
 }
 /* line 622, main.scss */
-.album-form .photo-thumbs .photo-thumb {
+.album-form-page .photo-thumbs .photo-thumb {
   display: inline-block;
   width: 23%;
   position: relative;
   cursor: pointer;
 }
 /* line 628, main.scss */
-.album-form .photo-thumbs .photo-thumb .remove-thumb {
+.album-form-page .photo-thumbs .photo-thumb .remove-thumb {
   position: absolute;
   right: 5px;
   top: 5px;
@@ -8299,7 +8299,7 @@ form .has-error-required .error-msg.error-required {
   display: none;
 }
 /* line 636, main.scss */
-.album-form .photo-thumbs .photo-thumb:hover .remove-thumb {
+.album-form-page .photo-thumbs .photo-thumb:hover .remove-thumb {
   display: block;
 }
 

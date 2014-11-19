@@ -19,7 +19,7 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="row">\n    <section class="col-md-8 album-page">\n        <h1>' +
 ((__t = ( typeof(slug) !== 'undefined' ? 'Update' : 'Create' )) == null ? '' : __t) +
-' Album</h1>\n        <form action="#" class="album-form">\n            <div class="form-group">\n                <label for="albumTitle" class="required">Title</label>\n                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="' +
+' Album</h1>\n        <form action="#" class="album-form">\n            <p class="status-msg"></p>\n            <div class="form-group">\n                <label for="albumTitle" class="required">Title</label>\n                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="' +
 ((__t = ( typeof(title) === 'undefined' ? '' : title )) == null ? '' : __t) +
 '" />\n            </div>\n            <div class="form-group">\n                <label class="required">Photos</label>\n                <input class="btn btn-default cloudinary_fileupload form-control" type="file" name="file" multiple />\n                <div class="uploads"></div>\n               <div class="photo-thumbs">\n                    ';
  if (typeof(photos) !== 'undefined') {
@@ -152,7 +152,9 @@ __p += '\n<p>\n    Uploading...\n    <span class="uploadCount">\n        ' +
  } else { ;
 __p += '\n<p>Uploads complete.</p>\n';
  } ;
-__p += '\n\n<div class="progress">\n  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ' +
+__p += '\n\n<div class="progress">\n  <div class="progress-bar" role="progressbar" aria-valuenow="' +
+((__t = ( uploadPercent )) == null ? '' : __t) +
+'" aria-valuemin="0" aria-valuemax="100" style="width: ' +
 ((__t = ( uploadPercent )) == null ? '' : __t) +
 '%;">\n    ' +
 ((__t = ( uploadPercent )) == null ? '' : __t) +

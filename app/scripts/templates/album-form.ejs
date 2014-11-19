@@ -2,6 +2,7 @@
     <section class="col-md-8 album-page">
         <h1><%= typeof(slug) !== 'undefined' ? 'Update' : 'Create' %> Album</h1>
         <form action="#" class="album-form">
+            <p class="status-msg"></p>
             <div class="form-group">
                 <label for="albumTitle" class="required">Title</label>
                 <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="<%= typeof(title) === 'undefined' ? '' : title %>" />
