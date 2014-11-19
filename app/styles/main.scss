@@ -267,6 +267,28 @@ footer {
 .defer-image {
     position: relative;
 
+    .defer-image > img {
+        display: block;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .defer-image.loading {
+        position: relative;
+        background: #EEE;
+    }
+
+    /* Image aspect ratios - % is relative to width. */
+    &.image-ratio\:1x2   > div { padding-top: 200%; }
+    &.image-ratio\:9x16  > div { padding-top: 177.777%; }
+    &.image-ratio\:2x3   > div { padding-top: 150%; }
+    &.image-ratio\:3x4   > div { padding-top: 133.333%; }
+    &.image-ratio\:1x1   > div { padding-top: 100%; }
+    &.image-ratio\:4x3   > div { padding-top: 75%; }
+    &.image-ratio\:3x2   > div { padding-top: 66.66%; }
+    &.image-ratio\:16x9  > div { padding-top: 56.25%; }
+    &.image-ratio\:2x1   > div { padding-top: 50%; }
+
     &.loaded img {
         @include animation(fadeIn 2s both);
     }
@@ -619,11 +641,18 @@ form {
     }
 
     .photo-thumbs {
-        .photo-thumb {
+        .photo-thumb, .sortable-placeholder {
             display: inline-block;
             width: 23%;
             position: relative;
             cursor: pointer;
+            border: 1px dashed #CCC;
+            border-radius: 3px;
+            margin-right: 3px;
+
+            &.loaded {
+                border: 1px solid transparent;
+            }
 
             .remove-thumb {
                 position: absolute;
@@ -635,6 +664,14 @@ form {
 
             &:hover .remove-thumb {
                 display: block;
+            }
+
+            &.loading:hover .remove-thumb {
+                display: none;
+            }
+
+            .sortable-placeholder {
+                background: #F6F6F6;
             }
         }
     }

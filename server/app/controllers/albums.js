@@ -43,7 +43,11 @@ exports.show = function (req, res) {
 
                 if (!err) {
                     ret = JSON.parse(JSON.stringify(album));
-                    ret.photos = photos;
+                    ret.photos = [];
+
+                    photos.forEach(function (p, i) {
+                        ret.photos[album.photos.indexOf(p._id)] = p;
+                    });
 
                     return res.send(ret);
                 } else {

@@ -1,9 +1,9 @@
-<div class="photo-thumb">
-    <button class="remove-thumb btn btn-default">X</button>
-    <img src="<%= clImgUrl({ path: cloudinary.data.path,
+<div class="defer-image photo-thumb image-ratio:1x1">
+    <div data-class="img-responsive" data-src="<%= clImgUrl({ path: cloudinary.data.path,
         url: cloudinary.data.url,
         width: 185,
         height: 185,
-        crop: 'fill' }) %>"
-        class="img-responsive" />
+        crop: 'fill' }) %>">
+    </div>
+    <button class="remove-thumb btn btn-default">X</button>
 </div>

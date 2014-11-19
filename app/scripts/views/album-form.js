@@ -11,9 +11,10 @@ define([
     'cloudinary_js',
     'views/page',
     'views/album-photo',
-    'models/album'
+    'models/album',
+    'html-sortable'
 ], function (app, $, _, Backbone, JST, util, BackboneValidation, cloudinary,
-        PageView, AlbumPhotoView, AlbumModel) {
+        PageView, AlbumPhotoView, AlbumModel, HtmlSortable) {
     'use strict';
 
     var AlbumFormView = PageView.extend({
@@ -133,12 +134,15 @@ define([
         },
 
         photoAdd: function (model, collection, options) {
-            this.$thumbsContainer = this.$thumbsContainer ||
-                this.$('.photo-thumbs');
-
             this.$thumbsContainer.append(
                 util.template(JST['app/scripts/templates/photo-thumb.ejs'],
                     model.toJSON())
+            );
+
+            this.$thumbsContainer.sortable('reload');
+            util.deferImage(
+                this.$thumbsContainer.find('.photo-thumb')
+                    .filter(':last')
             );
         },
 
@@ -207,8 +211,6 @@ define([
             $.cloudinary.config().cloud_name = 'dabzwws4g';
             $.cloudinary.config().upload_preset = 'ceorfqu2';
 
-            var moo = 0;
-
             $fileInput = this.$('.cloudinary_fileupload'),
             fileInputClasses = $fileInput.attr('class');
             $fileInput
@@ -238,6 +240,26 @@ define([
                 })
                 // restore classes plugin seems to be blowing away
                 .addClass(fileInputClasses);
+
+            this.$('.defer-image').each(function () {
+                util.deferImage(this);
+            });
+
+            this.$thumbsContainer = this.$('.photo-thumbs').sortable({
+                forcePlaceholderSize: true
+            }).on('sortupdate', function (e, ui) {
+                var photos = self.model.get('photos');
+
+                photos.add(
+                    photos.remove(photos.at(ui.oldindex), { silent: true }),
+                    {
+                        at: ui.item.index(),
+                        silent: true
+                    }
+                );
+            });
+
+
 
             return this;
         }

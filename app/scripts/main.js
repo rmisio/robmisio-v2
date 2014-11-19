@@ -21,7 +21,8 @@ require.config({
         'jquery.iframe-transport': '../bower_components/blueimp-file-upload/js/jquery.iframe-transport',
         'jquery.fileupload': '../bower_components/blueimp-file-upload/js/jquery.fileupload',
         cloudinary_js: '../bower_components/jquery-cloudinary/js/jquery.cloudinary',
-        'backbone-validation': '../bower_components/backbone-validation/dist/backbone-validation-amd'
+        'backbone-validation': '../bower_components/backbone-validation/dist/backbone-validation-amd',
+        'html-sortable': '../bower_components/html.sortable/dist/html.sortable'
     }
 });
 

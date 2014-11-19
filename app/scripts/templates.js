@@ -125,13 +125,13 @@ this["JST"]["app/scripts/templates/photo-thumb.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="photo-thumb">\n    <button class="remove-thumb btn btn-default">X</button>\n    <img src="' +
+__p += '<div class="defer-image photo-thumb image-ratio:1x1">\n    <div data-class="img-responsive" data-src="' +
 ((__t = ( clImgUrl({ path: cloudinary.data.path,
         url: cloudinary.data.url,
         width: 185,
         height: 185,
         crop: 'fill' }) )) == null ? '' : __t) +
-'"\n        class="img-responsive" />\n</div>\n';
+'">\n    </div>\n    <button class="remove-thumb btn btn-default">X</button>\n</div>\n';
 
 }
 return __p

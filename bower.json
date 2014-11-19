@@ -11,7 +11,8 @@
     "modernizr": "~2.7.1",
     "google-code-prettify": "~1.0.2",
     "backbone-validation": "~0.9.1",
-    "jquery-cloudinary": "~1.0.20"
+    "jquery-cloudinary": "~1.0.20",
+    "html.sortable": "~0.1.6"
   },
   "devDependencies": {}
 }
