@@ -29,9 +29,6 @@ define([
         pageClass: 'album-form-page',
 
         initialize: function (options) {
-            console.log('boom');
-            window.boom = this;
-
             this.options = options || {};
 
              _.bindAll(this, 'invalidForm', 'validForm');

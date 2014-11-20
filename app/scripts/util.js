@@ -58,12 +58,20 @@ define([
                 });
             },
 
-            deferImage: function (element) {
+            deferImage: function (element, options) {
                 var $el = $(element),
                     img = new Image(),
-                    $placeholder = $el.find(':first-child');
+                    $placeholder = $el.find(':first-child'),
+                    maxHeightRatio = 0.7,
+                    elWidth;
 
+                options = options || {};
                 $el.addClass('loading');
+
+                if (options.maxHeight && elWidth) {
+                    $placeholder.css('max-height', elWidth * maxHeightRatio);
+                }
+
                 img.onload = function () {
                     $el.toggleClass('loading loaded');
                     $placeholder.replaceWith(img);
@@ -76,9 +84,68 @@ define([
                         img.setAttribute(attr.name.replace('data-', ''), attr.value);
                     }
                 }
+            },
+
+            responsivePhoto: function (el, options) {
+                var $el = $(el),
+                    maxHeightRatio = 0.7,
+                    maxHeight,
+                    $parent,
+                    maxHeightStr;
+
+                options = options || {};
+                options.maxHeight = typeof options.maxHeight === 'undefined'
+                    ? true : options.maxHeight;
+
+                if (options.maxHeight && ($parent = $el.parent()).width()) {
+                    maxHeight = $parent.width() * maxHeightRatio;
+                    $el.css('max-height', maxHeight);
+
+                    $(window).resize(
+                        _.debounce(function () {
+                            console.log('resize');
+                            window.resize = $el;
+
+                            if (!$el.length) {
+                                console.log('where you at boo?');
+                            }
+
+                            maxHeight = $parent.width() * maxHeightRatio;
+                            $el.css('max-height', maxHeight);
+                            if (maxHeightStr) {
+                                maxHeightStr = $el.attr('data-style') || '' + ';max-height: '
+                                    + maxHeight + 'px';
+                                $el.attr('data-style', maxHeightStr.replace(/^;/, ''));
+                            }
+                        }, 100)
+                    );
+
+                    if ($parent.hasClass('defer-image')) {
+                        maxHeightStr = $el.attr('data-style') || '' + ';max-height: '
+                            + maxHeight + 'px';
+                        $el.attr('data-style', maxHeightStr.replace(/^;/, ''));
+                    }
+                }
+
+                if ($parent.hasClass('defer-image')) {
+                    util.deferImage($parent);
+                }
+            },
+
+            deviceWidth: function () {
+                var deviceWidth = window.screen.width;
+
+                // iOS returns available pixels, Android returns pixels / pixel ratio
+                // http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
+                if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
+                    deviceWidth = deviceWidth / window.devicePixelRatio;
+                }
+
+                return deviceWidth;
             }
         };
 
     templateHelpers.template = util.template;
+    templateHelpers.deviceWidth = util.deviceWidth;
     return util;
 });

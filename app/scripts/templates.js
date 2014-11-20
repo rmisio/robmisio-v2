@@ -34,6 +34,28 @@ __p += '\n                </div>\n            </div>\n\n            <button type
 return __p
 };
 
+this["JST"]["app/scripts/templates/album-page.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<style>\n</style>\n\n<p>albums are super fun!</p>\n\n<br />\n<br />\n\n<!-- <button>fluffy clouds</button> -->\n\n<div class="album">\n';
+ for (var i=0; i < photos.length; i++) {
+    var p = photos[i];
+    // console.log($.cloudinary.url(p.cloudinary.id + '.' + p.cloudinary.data.format, { width: 100, crop: 'fill' }));
+    ;
+__p += '\n\n    <div class="defer-image">\n        <div class="photo"\n            data-class="img-responsive photo"\n            data-src="' +
+((__t = ( $.cloudinary.url(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 800, width: deviceWidth(), crop: 'fit', dpr: 1.0 }) )) == null ? '' : __t) +
+'"\n            style="padding-top: ' +
+((__t = ( p.cloudinary.data.height / p.cloudinary.data.width * 100 )) == null ? '' : __t) +
+'%">\n        </div>\n    </div>\n\n';
+ } ;
+__p += '\n</div>\n';
+
+}
+return __p
+};
+
 this["JST"]["app/scripts/templates/album-photo.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;

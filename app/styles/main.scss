@@ -264,6 +264,30 @@ footer {
     display: none;
 }
 
+// Form stylings
+
+.error-msg {
+    display: none;
+    color: $brand-danger;
+}
+
+label.required::after {
+    content: '*';
+    font-weight: lighter;
+}
+
+form {
+    .control-label, .error-msg {
+        margin-bottom: 5px;
+    }
+
+    .has-error-required {
+        .error-msg.error-required {
+            display: block;
+        }
+    }
+}
+
 .defer-image {
     position: relative;
 
@@ -307,27 +331,15 @@ footer {
     }
 }
 
-// Form stylings
-
-.error-msg {
-    display: none;
-    color: $brand-danger;
+.photo {
+    @include box-shadow(rgba(0,0,0,0.20) 0 1px 4px);
+    border: #fff 10px solid;
 }
 
-label.required::after {
-    content: '*';
-    font-weight: lighter;
-}
-
-form {
-    .control-label, .error-msg {
-        margin-bottom: 5px;
-    }
-
-    .has-error-required {
-        .error-msg.error-required {
-            display: block;
-        }
+.album {
+    .photo {
+        margin: 0 auto 25px;
+        max-height: 800px;
     }
 }
 
