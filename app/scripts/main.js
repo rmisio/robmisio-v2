@@ -31,10 +31,11 @@ require([
     'underscore',
     'bootstrap',
     'app',
+    'startup',
     'util',
     'routes/app',
     'views/app'
-], function (Backbone, _, bootstrap, app, util, AppRouter, AppView) {
+], function (Backbone, _, bootstrap, app, startup, util, AppRouter, AppView) {
     app.appView = new AppView();
     app.router = new AppRouter();
     app.eventEmitter = _.extend({}, Backbone.Events);

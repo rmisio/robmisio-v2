@@ -35,6 +35,8 @@ define([
             var self = this;
 
             this.$('.photo').each(function () {
+                // todo: second onresize handler (the one on the
+                // actual img tag) is not being unbound!
                 self.respPhotos.push(util.responsivePhoto(this));
             });
         },

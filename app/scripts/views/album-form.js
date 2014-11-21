@@ -204,10 +204,6 @@ define([
             context = _.extend(this.model.toJSON(), context || {});
             this.$el.html(util.template(this.template, context));
 
-            // TODO: Move these 2 elsewhere!!!
-            $.cloudinary.config().cloud_name = 'dabzwws4g';
-            $.cloudinary.config().upload_preset = 'ceorfqu2';
-
             $fileInput = this.$('.cloudinary_fileupload'),
             fileInputClasses = $fileInput.attr('class');
             $fileInput
@@ -218,8 +214,6 @@ define([
                 }).on('cloudinarydone', function(e, data) {
                     var cloudinaryData = data.result,
                         cloudinaryId = cloudinaryData.public_id;
-
-                    // console.log('cloudinarydone');
 
                     delete cloudinaryData['public_id'];
                     self.model.get('photos').add({

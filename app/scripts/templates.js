@@ -41,12 +41,18 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="album">\n';
  for (var i=0; i < photos.length; i++) {
-    var p = photos[i];
+    var p = photos[i],
+        height = p.cloudinary.data.height,
+        width = p.cloudinary.data.width;
     ;
-__p += '\n\n    <div class="defer-image photo">\n        <div data-class="img-responsive"\n            data-src="' +
-((__t = ( clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 800, width: deviceWidth(), crop: 'fit'}) )) == null ? '' : __t) +
+__p += '\n\n    <div class="defer-image photo"\n        data-photo-height="' +
+((__t = ( height )) == null ? '' : __t) +
+'"\n        data-photo-width="' +
+((__t = ( width )) == null ? '' : __t) +
+'">\n        <div data-class="img-responsive"\n            data-src="' +
+((__t = ( clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 675, width: deviceWidth(), crop: 'fit'}) )) == null ? '' : __t) +
 '"\n            style="padding-top: ' +
-((__t = ( phTopPadding(p.cloudinary.data.width, p.cloudinary.data.height) )) == null ? '' : __t) +
+((__t = ( height / width * 100 )) == null ? '' : __t) +
 '%">\n        </div>\n    </div>\n\n';
  } ;
 __p += '\n</div>\n';
@@ -148,7 +154,7 @@ var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<div class="defer-image photo-thumb image-ratio:1x1">\n    <div data-class="img-responsive"\n        data-src="' +
 ((__t = ( clUrl(cloudinary.id + '.' + cloudinary.data.format, { height: 185, width: 185, crop: 'fill'}) )) == null ? '' : __t) +
-'"\n    </div>\n    <button class="remove-thumb btn btn-default">X</button>\n</div>\n';
+'">\n    </div>\n    <button class="remove-thumb btn btn-default">X</button>\n</div>\n';
 
 }
 return __p

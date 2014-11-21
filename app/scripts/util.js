@@ -62,16 +62,10 @@ define([
             deferImage: function (element, options) {
                 var $el = $(element),
                     img = new Image(),
-                    $placeholder = $el.find(':first-child'),
-                    maxHeightRatio = 0.7,
-                    elWidth;
+                    $placeholder = $el.find(':first-child');
 
                 options = options || {};
                 $el.addClass('loading');
-
-                if (options.maxHeight && elWidth) {
-                    $placeholder.css('max-height', elWidth * maxHeightRatio);
-                }
 
                 img.onload = function () {
                     $el.toggleClass('loading loaded');
@@ -89,21 +83,35 @@ define([
                 }
             },
 
-            respConstrainMaxHeight: function (el) {
+            // portrait bit of a misnomer here... it's actually photos whose aspect
+            // ration is greater than the ratio declared below.
+            respPortraitPhoto: function (el) {
                 var $el = $(el),
-                    ratio = 0.7,
+                    ratio = 0.6,
+                    $parent = $el.parent(),
+                    maxHeight,
                     resize,
                     unbind,
-                    parentWidth;
+                    parentWidth,
+                    adjustedW;
 
-                if (parentWidth = $el.parent().width()) {
-                    $el.css('max-height', parentWidth * ratio);
+                $parent.css('width', 'auto');
+                $el.css('max-height', 'auto');
+                if (parentWidth = $parent.width()) {
+                    maxHeight = parentWidth * ratio;
+
+                    adjustedW = maxHeight / ($parent.data('photo-height') / $parent.data('photo-width'));
+                    if (adjustedW < parentWidth) {
+                        $parent.width(adjustedW);
+                    }
+
+                    $el.css('max-height', maxHeight);
 
                     resize = _.debounce(function () {
-                        util.respConstrainMaxHeight(el);
+                        util.respPortraitPhoto(el);
                     }, 100);
 
-                    $(window).on('resize', resize);
+                    $(window).one('resize', resize);
                 }
 
                 unbind = function () {
@@ -120,17 +128,19 @@ define([
                     rCMH;
 
                 if ($el.hasClass('defer-image')) {
-                    rCMH = util.respConstrainMaxHeight($img);
+                    rCMH = util.respPortraitPhoto($img);
                     util.deferImage($el, {
                         onAttach: function (e) {
                             rCMH.unbind();
-                            util.respConstrainMaxHeight(e.img);
+                            util.respPortraitPhoto(e.img);
                         }
                     });
                 } else {
-                    rCMH = util.respConstrainMaxHeight($img);
+                    rCMH = util.respPortraitPhoto($img);
                 }
 
+                // todo: second onresize handler (the one on the
+                // actual img tag) is not being unbound!
                 return { unbind: rCMH.unbind };
             },
 

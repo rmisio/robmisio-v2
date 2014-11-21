@@ -10,4 +10,4 @@ get up and running:
 6. ```npm start```  
 7. ```npm install -g grunt-cli```  
 8. Add existing blog entries to the db via ```grunt popBlogEntries```  
-9. ```grunt watch``` so any new or updated blog entries are added to the db.  
+9. ```grunt watch```  

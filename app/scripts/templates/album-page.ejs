@@ -1,12 +1,16 @@
 <div class="album">
 <% for (var i=0; i < photos.length; i++) {
-    var p = photos[i];
+    var p = photos[i],
+        height = p.cloudinary.data.height,
+        width = p.cloudinary.data.width;
     %>
 
-    <div class="defer-image photo">
+    <div class="defer-image photo"
+        data-photo-height="<%= height %>"
+        data-photo-width="<%= width %>">
         <div data-class="img-responsive"
-            data-src="<%= clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 800, width: deviceWidth(), crop: 'fit'}) %>"
-            style="padding-top: <%= phTopPadding(p.cloudinary.data.width, p.cloudinary.data.height) %>%">
+            data-src="<%= clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 675, width: deviceWidth(), crop: 'fit'}) %>"
+            style="padding-top: <%= height / width * 100 %>%">
         </div>
     </div>
 
