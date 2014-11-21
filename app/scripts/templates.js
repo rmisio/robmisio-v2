@@ -39,15 +39,14 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<style>\n</style>\n\n<p>albums are super fun!</p>\n\n<br />\n<br />\n\n<!-- <button>fluffy clouds</button> -->\n\n<div class="album">\n';
+__p += '<div class="album">\n';
  for (var i=0; i < photos.length; i++) {
     var p = photos[i];
-    // console.log($.cloudinary.url(p.cloudinary.id + '.' + p.cloudinary.data.format, { width: 100, crop: 'fill' }));
     ;
-__p += '\n\n    <div class="defer-image">\n        <div class="photo"\n            data-class="img-responsive photo"\n            data-src="' +
-((__t = ( $.cloudinary.url(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 800, width: deviceWidth(), crop: 'fit', dpr: 1.0 }) )) == null ? '' : __t) +
+__p += '\n\n    <div class="defer-image photo">\n        <div data-class="img-responsive"\n            data-src="' +
+((__t = ( clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 800, width: deviceWidth(), crop: 'fit'}) )) == null ? '' : __t) +
 '"\n            style="padding-top: ' +
-((__t = ( p.cloudinary.data.height / p.cloudinary.data.width * 100 )) == null ? '' : __t) +
+((__t = ( phTopPadding(p.cloudinary.data.width, p.cloudinary.data.height) )) == null ? '' : __t) +
 '%">\n        </div>\n    </div>\n\n';
  } ;
 __p += '\n</div>\n';
@@ -147,13 +146,9 @@ this["JST"]["app/scripts/templates/photo-thumb.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="defer-image photo-thumb image-ratio:1x1">\n    <div data-class="img-responsive" data-src="' +
-((__t = ( clImgUrl({ path: cloudinary.data.path,
-        url: cloudinary.data.url,
-        width: 185,
-        height: 185,
-        crop: 'fill' }) )) == null ? '' : __t) +
-'">\n    </div>\n    <button class="remove-thumb btn btn-default">X</button>\n</div>\n';
+__p += '<div class="defer-image photo-thumb image-ratio:1x1">\n    <div data-class="img-responsive"\n        data-src="' +
+((__t = ( clUrl(cloudinary.id + '.' + cloudinary.data.format, { height: 185, width: 185, crop: 'fill'}) )) == null ? '' : __t) +
+'"\n    </div>\n    <button class="remove-thumb btn btn-default">X</button>\n</div>\n';
 
 }
 return __p

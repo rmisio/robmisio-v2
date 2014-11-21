@@ -2,8 +2,9 @@
 
 define([
     'underscore',
-    'util'
-], function (_, util) {
+    'util',
+    'jquery'
+], function (_, util, $) {
     'use strict';
 
     var MONTHS = [
@@ -20,26 +21,22 @@ define([
         'November',
         'December'
     ],
-    clImgUrl,
-    timeAgo;
+    clUrl,
+    phTopPadding,
+    timeAgo,
+    testTimeAgo;
 
-    clImgUrl = function (args) {
-        args =  args || {};
+    clUrl = function () {
+        var args = arguments;
 
-        var transformFrag = '',
-            path = args.path || '',
-            url = args.url || '';
+        args[1] = args[1] || {};
+        args[1]['dpr'] = args[1]['dpr'] || window.devicePixelRatio;
 
-        args.width && (transformFrag += 'w_' + args.width + ',');
-        args.height && (transformFrag += 'h_' + args.height +',');
-        args.crop && (transformFrag += 'c_' + args.crop +',');
+        return $.cloudinary.url.apply(this, arguments);
+    };
 
-        if (transformFrag.charAt(transformFrag.length - 1) === ',') {
-            transformFrag = transformFrag.slice(0, transformFrag.length - 1);
-        }
-
-        return url.slice(0, url.indexOf(path)) + transformFrag + '/' + path;
-
+    phTopPadding = function (width, height) {
+        return width > height ? height / width * 100 : width / height * 100;
     };
 
     timeAgo =  function (date) {
@@ -82,7 +79,7 @@ define([
     };
 
     // todo: *REALLY* need to get into mocha or something!
-    var testTimeAgo = function () {
+    testTimeAgo = function () {
         var now = new Date().getTime();
 
         console.log('============ testing timeAgo yo! =========');
@@ -148,6 +145,7 @@ define([
 
     return {
         timeAgo: timeAgo,
-        clImgUrl: clImgUrl
+        clUrl: clUrl,
+        phTopPadding: phTopPadding
     }
 });

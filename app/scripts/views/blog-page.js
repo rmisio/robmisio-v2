@@ -193,7 +193,7 @@ define([
         remove: function () {
             this.clearMobileNavMenuHeight();
 
-            Backbone.View.prototype.remove.call(this);
+            PageView.prototype.remove.call(this);
         },
 
         // todo: consider putting this functionality in a

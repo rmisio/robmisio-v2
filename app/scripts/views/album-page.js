@@ -27,22 +27,35 @@ define([
             if (!this.model || (!this.model instanceof AlbumModel)) {
                 throw new Error('Please provide a AlbumModel.');
             }
+
+            this.respPhotos = [];
         },
 
         onAttach: function () {
+            var self = this;
+
             this.$('.photo').each(function () {
-                util.responsivePhoto(this);
+                self.respPhotos.push(util.responsivePhoto(this));
             });
         },
 
-        render: function () {
-            var context = this.model.toJSON();
+        remove: function () {
+            console.log('vroom vroom');
+            window.vroom = this.respPhotos;
 
+            _.each(this.respPhotos, function (respPhoto) {
+                respPhoto.unbind();
+            });
+
+            PageView.prototype.remove.call(this);
+        },
+
+        render: function () {
+            // todo: move this right NOW!!!
             $.cloudinary.config().cloud_name = 'dabzwws4g';
             $.cloudinary.config().upload_preset = 'ceorfqu2';
-            context.$ = $;
 
-            this.$el.html(util.template(this.template, context));
+            this.$el.html(util.template(this.template, this.model.toJSON()));
 
             return this;
         }

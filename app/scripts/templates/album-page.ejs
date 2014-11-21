@@ -1,24 +1,12 @@
-<style>
-</style>
-
-<p>albums are super fun!</p>
-
-<br />
-<br />
-
-<!-- <button>fluffy clouds</button> -->
-
 <div class="album">
 <% for (var i=0; i < photos.length; i++) {
     var p = photos[i];
-    // console.log($.cloudinary.url(p.cloudinary.id + '.' + p.cloudinary.data.format, { width: 100, crop: 'fill' }));
     %>
 
-    <div class="defer-image">
-        <div class="photo"
-            data-class="img-responsive photo"
-            data-src="<%= $.cloudinary.url(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 800, width: deviceWidth(), crop: 'fit', dpr: 1.0 }) %>"
-            style="padding-top: <%= p.cloudinary.data.height / p.cloudinary.data.width * 100 %>%">
+    <div class="defer-image photo">
+        <div data-class="img-responsive"
+            data-src="<%= clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 800, width: deviceWidth(), crop: 'fit'}) %>"
+            style="padding-top: <%= phTopPadding(p.cloudinary.data.width, p.cloudinary.data.height) %>%">
         </div>
     </div>
 

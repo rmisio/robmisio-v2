@@ -15,6 +15,7 @@ define([
                 template = typeof template === 'string' ?
                     JST[template] : template;
                 context = context || {};
+
                 return template(_.extend(context, templateHelpers));
             },
 
@@ -75,6 +76,8 @@ define([
                 img.onload = function () {
                     $el.toggleClass('loading loaded');
                     $placeholder.replaceWith(img);
+                    typeof options.onAttach === 'function'
+                        && options.onAttach({ img: img });
                 }
 
                 for (var i = 0; i < $placeholder[0].attributes.length; i++) {
@@ -86,50 +89,49 @@ define([
                 }
             },
 
+            respConstrainMaxHeight: function (el) {
+                var $el = $(el),
+                    ratio = 0.7,
+                    resize,
+                    unbind,
+                    parentWidth;
+
+                if (parentWidth = $el.parent().width()) {
+                    $el.css('max-height', parentWidth * ratio);
+
+                    resize = _.debounce(function () {
+                        util.respConstrainMaxHeight(el);
+                    }, 100);
+
+                    $(window).on('resize', resize);
+                }
+
+                unbind = function () {
+                    resize && $(window).off('resize', resize);
+                };
+
+                return { unbind: unbind };
+            },
+
             responsivePhoto: function (el, options) {
                 var $el = $(el),
+                    $img = $el.find(':first-child'),
                     maxHeightRatio = 0.7,
-                    maxHeight,
-                    $parent,
-                    maxHeightStr;
+                    rCMH;
 
-                options = options || {};
-                options.maxHeight = typeof options.maxHeight === 'undefined'
-                    ? true : options.maxHeight;
-
-                if (options.maxHeight && ($parent = $el.parent()).width()) {
-                    maxHeight = $parent.width() * maxHeightRatio;
-                    $el.css('max-height', maxHeight);
-
-                    $(window).resize(
-                        _.debounce(function () {
-                            console.log('resize');
-                            window.resize = $el;
-
-                            if (!$el.length) {
-                                console.log('where you at boo?');
-                            }
-
-                            maxHeight = $parent.width() * maxHeightRatio;
-                            $el.css('max-height', maxHeight);
-                            if (maxHeightStr) {
-                                maxHeightStr = $el.attr('data-style') || '' + ';max-height: '
-                                    + maxHeight + 'px';
-                                $el.attr('data-style', maxHeightStr.replace(/^;/, ''));
-                            }
-                        }, 100)
-                    );
-
-                    if ($parent.hasClass('defer-image')) {
-                        maxHeightStr = $el.attr('data-style') || '' + ';max-height: '
-                            + maxHeight + 'px';
-                        $el.attr('data-style', maxHeightStr.replace(/^;/, ''));
-                    }
+                if ($el.hasClass('defer-image')) {
+                    rCMH = util.respConstrainMaxHeight($img);
+                    util.deferImage($el, {
+                        onAttach: function (e) {
+                            rCMH.unbind();
+                            util.respConstrainMaxHeight(e.img);
+                        }
+                    });
+                } else {
+                    rCMH = util.respConstrainMaxHeight($img);
                 }
 
-                if ($parent.hasClass('defer-image')) {
-                    util.deferImage($parent);
-                }
+                return { unbind: rCMH.unbind };
             },
 
             deviceWidth: function () {
