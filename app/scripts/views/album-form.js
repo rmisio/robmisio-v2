@@ -199,15 +199,20 @@ define([
         render: function (context) {
             var self = this,
                 $fileInput,
-                fileInputClasses;
+                fileInputClasses,
+                clOpts = {};
 
             context = _.extend(this.model.toJSON(), context || {});
             this.$el.html(util.template(this.template, context));
 
+            if (app.config.env && app.config.env === 'development') {
+                clOpts.tags = ['dev'];
+            }
+
             $fileInput = this.$('.cloudinary_fileupload'),
             fileInputClasses = $fileInput.attr('class');
             $fileInput
-                .unsigned_cloudinary_upload($.cloudinary.config().upload_preset, {}, {})
+                .unsigned_cloudinary_upload($.cloudinary.config().upload_preset, clOpts, {})
                 .on('fileuploadsend', function(e, data) {
                     self.photoUploadInfoModel.set('uploadCount',
                         self.photoUploadInfoModel.get('uploadCount') + 1);
@@ -249,8 +254,6 @@ define([
                     }
                 );
             });
-
-
 
             return this;
         }

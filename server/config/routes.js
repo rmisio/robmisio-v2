@@ -44,7 +44,11 @@ module.exports = function (app, passport) {
     indexUrl = process.env.NODE_ENV === 'production' ?
         '../../../dist/index.html' : '../../../app/index.html';
     app.get('*', function (req, res, next) {
-        res.sendfile(path.resolve(__dirname + indexUrl));
+        res.render(indexUrl, {
+            config: {
+                env: process.env.NODE_ENV || 'kkk'
+            }
+        })
     });
 
     // assume 404 since no middleware responded

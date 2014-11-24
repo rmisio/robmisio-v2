@@ -15,6 +15,18 @@
         <!-- build:js /scripts/vendor/modernizr.js -->
         <script src="/bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
+
+        <script>
+            {%-  if config %}
+                {%- for setting in config %}
+                    {%- if loop.first %}
+                    window.config = {
+                    {%- endif %}
+                        {{ loop.key }}: '{{ setting }}'
+                    {%- if loop.last %}};{% else %},{% endif %}
+                {%- endfor %}
+            {%- endif %}
+        </script>
     </head>
     <body>
         <!--[if lt IE 10]>
