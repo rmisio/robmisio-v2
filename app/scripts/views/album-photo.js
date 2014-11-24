@@ -29,7 +29,7 @@ define([
         submit: function (e) {
             this.model.set({
                 title: this.$('input[name="title"]').val(),
-                caption: this.$('input[name="caption"]').val()
+                caption: this.$('[name="caption"]').val()
             });
 
             this.trigger('model-data-set');

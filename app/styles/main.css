@@ -8027,8 +8027,16 @@ form .has-error-required .error-msg.error-required {
 }
 
 /* line 340, main.scss */
-.album .photo {
-  margin: 0 auto 25px;
+.album .photos {
+  margin-top: 25px;
+}
+/* line 343, main.scss */
+.album .photos figure {
+  margin-bottom: 40px;
+}
+/* line 346, main.scss */
+.album .photos figure .photo {
+  margin: 0 auto 15px;
   max-height: 800px;
 }
 
@@ -8072,67 +8080,67 @@ form .has-error-required .error-msg.error-required {
     background-position: center;
   }
 }
-/* line 373, main.scss */
+/* line 381, main.scss */
 .blog-page {
   overflow-y: scroll;
 }
 
-/* line 377, main.scss */
+/* line 385, main.scss */
 .blog-list {
   margin-top: 20px;
   font-size: 16px;
 }
-/* line 381, main.scss */
+/* line 389, main.scss */
 .blog-list li {
   position: relative;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
-/* line 386, main.scss */
+/* line 394, main.scss */
 .blog-list li:last-child {
   border-bottom: none;
 }
-/* line 390, main.scss */
+/* line 398, main.scss */
 .blog-list li a {
   display: block;
   padding: 12px 8px;
   outline: none;
 }
-/* line 396, main.scss */
+/* line 404, main.scss */
 .blog-list li h2 {
   margin: 0 0 3px;
   line-height: 18px;
   font-size: 18px;
   color: #010101;
 }
-/* line 403, main.scss */
+/* line 411, main.scss */
 .blog-list li time {
   font-style: italic;
   color: #afafaf;
   margin: 0;
 }
-/* line 410, main.scss */
+/* line 418, main.scss */
 .blog-list li.active:hover a {
   cursor: default;
 }
-/* line 415, main.scss */
+/* line 423, main.scss */
 .blog-list li:hover, .blog-list li.active, .blog-list li a:focus, .blog-list li a:active {
   background-color: #edd1bf;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-/* line 419, main.scss */
+/* line 427, main.scss */
 .blog-list li:hover h2, .blog-list li:hover time, .blog-list li.active h2, .blog-list li.active time, .blog-list li a:focus h2, .blog-list li a:focus time, .blog-list li a:active h2, .blog-list li a:active time {
   color: #fd6500;
 }
-/* line 423, main.scss */
+/* line 431, main.scss */
 .blog-list li:hover time, .blog-list li.active time, .blog-list li a:focus time, .blog-list li a:active time {
   font-weight: lighter;
 }
-/* line 427, main.scss */
+/* line 435, main.scss */
 .blog-list li:hover:not(.active), .blog-list li.active:not(.active), .blog-list li a:focus:not(.active), .blog-list li a:active:not(.active) {
   cursor: pointer;
 }
-/* line 432, main.scss */
+/* line 440, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -8143,7 +8151,7 @@ form .has-error-required .error-msg.error-required {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 443, main.scss */
+/* line 451, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -8153,45 +8161,45 @@ form .has-error-required .error-msg.error-required {
   animation: blog-list-loading-on ease-in-out 0.2s;
 }
 
-/* line 455, main.scss */
+/* line 463, main.scss */
 .blog-entry h1 {
   margin-bottom: 5px;
 }
-/* line 459, main.scss */
+/* line 467, main.scss */
 .blog-entry .author-time-tagline {
   font-size: 15px;
   color: #afafaf;
   font-style: italic;
 }
-/* line 464, main.scss */
+/* line 472, main.scss */
 .blog-entry .author-time-tagline span {
   font-family: "Droid Sans", sans-serif;
   color: #222;
   text-transform: uppercase;
   font-style: normal;
 }
-/* line 472, main.scss */
+/* line 480, main.scss */
 .blog-entry:empty {
   background: white url(../images/spinner-squares.gif) no-repeat center 100px;
   min-height: 250px;
   opacity: 1 !important;
 }
 
-/* line 480, main.scss */
+/* line 488, main.scss */
 .about-page #page-container {
   padding-top: 20px;
 }
-/* line 485, main.scss */
+/* line 493, main.scss */
 .about-page .quiz .quiz-results {
   font: normal 28px/28px cursive;
   color: #afafaf;
   margin: 20px 0;
 }
-/* line 490, main.scss */
+/* line 498, main.scss */
 .about-page .quiz .quiz-results span {
   font-size: 32px;
 }
-/* line 494, main.scss */
+/* line 502, main.scss */
 .about-page .quiz .quiz-results a {
   display: inline;
   font-size: 16px;
@@ -8203,148 +8211,153 @@ form .has-error-required .error-msg.error-required {
 .about-page .quiz .quiz-results a:hover {
   border-bottom: 1px solid #fd6500;
 }
-/* line 502, main.scss */
+/* line 510, main.scss */
 .about-page .quiz .main-error, .about-page .quiz .quiz-results {
   display: none;
 }
-/* line 507, main.scss */
+/* line 515, main.scss */
 .about-page .quiz.graded .quiz-results {
   display: block;
 }
-/* line 512, main.scss */
+/* line 520, main.scss */
 .about-page .quiz.graded.correct-on .answer-explain {
   display: block;
 }
-/* line 516, main.scss */
+/* line 524, main.scss */
 .about-page .quiz.graded.correct-on input[data-answer] + label {
   color: #5cb85c;
 }
-/* line 523, main.scss */
+/* line 531, main.scss */
 .about-page .quiz form .radio {
   padding-left: 23px;
 }
-/* line 527, main.scss */
+/* line 535, main.scss */
 .about-page .quiz form label {
   display: block;
 }
-/* line 531, main.scss */
+/* line 539, main.scss */
 .about-page .quiz form .form-group {
   margin-bottom: 20px;
 }
-/* line 535, main.scss */
+/* line 543, main.scss */
 .about-page .quiz form .radio:first-of-type {
   margin-top: 5px;
 }
-/* line 539, main.scss */
+/* line 547, main.scss */
 .about-page .quiz form .glyphicon {
   display: none;
 }
-/* line 543, main.scss */
+/* line 551, main.scss */
 .about-page .quiz form .answer-explain {
   display: none;
   font-weight: 200;
 }
-/* line 549, main.scss */
+/* line 557, main.scss */
 .about-page .quiz form .correct-answer label {
   color: #5cb85c;
 }
-/* line 553, main.scss */
+/* line 561, main.scss */
 .about-page .quiz form .correct-answer .glyphicon-ok {
   display: inline;
   color: #5cb85c;
 }
-/* line 558, main.scss */
+/* line 566, main.scss */
 .about-page .quiz form .correct-answer .answer-explain {
   display: block;
 }
-/* line 562, main.scss */
+/* line 570, main.scss */
 .about-page .quiz form .incorrect-answer label {
   color: #d9534f;
 }
-/* line 566, main.scss */
+/* line 574, main.scss */
 .about-page .quiz form .incorrect-answer .glyphicon-remove {
   display: inline;
   color: #d9534f;
 }
-/* line 575, main.scss */
+/* line 583, main.scss */
 .about-page .photos figure {
   margin: 40px 0;
 }
-/* line 578, main.scss */
+/* line 586, main.scss */
 .about-page .photos figure .defer-image {
   max-width: 96%;
   margin: 0 auto 10px;
   padding: 10px;
   border: 1px solid #ccc;
 }
-/* line 584, main.scss */
+/* line 592, main.scss */
 .about-page .photos figure:first-child {
   margin-top: 25px;
 }
-/* line 587, main.scss */
+/* line 595, main.scss */
 .about-page .photos figure:first-child .defer-image > div {
   padding-top: 75.151%;
 }
-/* line 592, main.scss */
+/* line 600, main.scss */
 .about-page .photos figure:first-child + figure .defer-image > div {
   padding-top: 80%;
 }
-/* line 598, main.scss */
+/* line 606, main.scss */
 .about-page .photos figure:first-child + figure + figure .defer-image > div {
   padding-top: 75.151%;
 }
-/* line 604, main.scss */
+/* line 612, main.scss */
 .about-page .photos figure:nth-child(odd) {
   transform: rotate(6deg);
   -ms-transform: rotate(6deg);
   -webkit-transform: rotate(6deg);
 }
-/* line 610, main.scss */
+/* line 618, main.scss */
 .about-page .photos figure:nth-child(even) {
   transform: rotate(-3deg);
   -ms-transform: rotate(-3deg);
   -webkit-transform: rotate(-3deg);
 }
 
-/* line 619, main.scss */
+/* line 627, main.scss */
 .no-touch .quiz .radio:hover:not(.disabled),
 .touch .quiz .radio:active:not(.disabled) {
   background-color: #edd1bf;
   border-radius: 3px;
 }
 
-/* line 627, main.scss */
+/* line 635, main.scss */
 .album-form-page .album-form .cloudinary_fileupload {
   margin-bottom: 20px;
 }
-/* line 631, main.scss */
+/* line 639, main.scss */
 .album-form-page .album-form .uploads {
   border-radius: 4px;
   margin-bottom: 20px;
   border: 1px solid #CCC;
 }
-/* line 636, main.scss */
+/* line 644, main.scss */
 .album-form-page .album-form .uploads:empty {
   display: none;
 }
-/* line 638, main.scss */
+/* line 646, main.scss */
 .album-form-page .album-form .uploads p {
   padding: 10px 10px 0;
 }
-/* line 640, main.scss */
+/* line 648, main.scss */
 .album-form-page .album-form .uploads .uploadCount {
   float: right;
 }
-/* line 644, main.scss */
+/* line 652, main.scss */
 .album-form-page .album-form .uploads .progress {
   border-radius: 0 0 4px 4px;
   margin: 0;
 }
-/* line 650, main.scss */
+/* line 658, main.scss */
 .album-form-page .album-form button[type="submit"] {
   float: right;
 }
-/* line 656, main.scss */
+/* line 664, main.scss */
+.album-form-page .album-photo-form textarea {
+  height: 100px;
+  resize: vertical;
+}
+/* line 671, main.scss */
 .album-form-page .photo-thumbs .photo-thumb, .album-form-page .photo-thumbs .sortable-placeholder {
   display: inline-block;
   width: 23%;
@@ -8354,11 +8367,11 @@ form .has-error-required .error-msg.error-required {
   border-radius: 3px;
   margin-right: 3px;
 }
-/* line 665, main.scss */
+/* line 680, main.scss */
 .album-form-page .photo-thumbs .photo-thumb.loaded, .album-form-page .photo-thumbs .sortable-placeholder.loaded {
   border: 1px solid transparent;
 }
-/* line 669, main.scss */
+/* line 684, main.scss */
 .album-form-page .photo-thumbs .photo-thumb .remove-thumb, .album-form-page .photo-thumbs .sortable-placeholder .remove-thumb {
   position: absolute;
   right: 5px;
@@ -8366,65 +8379,75 @@ form .has-error-required .error-msg.error-required {
   padding: 3px 7px;
   display: none;
 }
-/* line 677, main.scss */
+/* line 692, main.scss */
 .album-form-page .photo-thumbs .photo-thumb:hover .remove-thumb, .album-form-page .photo-thumbs .sortable-placeholder:hover .remove-thumb {
   display: block;
 }
-/* line 681, main.scss */
+/* line 696, main.scss */
 .album-form-page .photo-thumbs .photo-thumb.loading:hover .remove-thumb, .album-form-page .photo-thumbs .sortable-placeholder.loading:hover .remove-thumb {
   display: none;
 }
-/* line 685, main.scss */
+/* line 700, main.scss */
 .album-form-page .photo-thumbs .photo-thumb .sortable-placeholder, .album-form-page .photo-thumbs .sortable-placeholder .sortable-placeholder {
   background: #F6F6F6;
 }
 
 @media only screen and (max-width: 1200px) {
-  /* line 694, main.scss */
+  /* line 709, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 701, main.scss */
+  /* line 716, main.scss */
   footer {
     display: block;
   }
-  /* line 704, main.scss */
+  /* line 719, main.scss */
   footer .social-links {
     float: none;
     width: 112px;
     margin: 0 auto;
   }
 
-  /* line 711, main.scss */
+  /* line 726, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 715, main.scss */
+  /* line 730, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 721, main.scss */
+  /* line 736, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width 0.2s ease;
     transition: width 0.2s ease;
   }
-  /* line 727, main.scss */
+  /* line 742, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 731, main.scss */
+  /* line 746, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left 0.2s ease;
     transition: left 0.2s ease;
   }
 
-  /* line 738, main.scss */
+  /* line 752, main.scss */
+  .photo {
+    border: #fff 8px solid;
+  }
+
+  /* line 758, main.scss */
+  .album .photos figure {
+    margin-bottom: 35px;
+  }
+
+  /* line 765, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8434,11 +8457,11 @@ form .has-error-required .error-msg.error-required {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 748, main.scss */
+  /* line 775, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 752, main.scss */
+  /* line 779, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8452,12 +8475,12 @@ form .has-error-required .error-msg.error-required {
     transition: width 0.3s ease;
   }
 
-  /* line 769, main.scss */
+  /* line 796, main.scss */
   .fetching-blog footer {
     display: none;
   }
 
-  /* line 774, main.scss */
+  /* line 801, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8472,24 +8495,35 @@ form .has-error-required .error-msg.error-required {
     transition: left 0.2s ease;
   }
 
-  /* line 788, main.scss */
+  /* line 815, main.scss */
   .blog-entry .jst-example {
     white-space: pre-wrap;
   }
 
-  /* line 794, main.scss */
+  /* line 821, main.scss */
   .about-page .photos {
     max-width: 387px;
     margin: 0 auto;
   }
-  /* line 799, main.scss */
+  /* line 826, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 803, main.scss */
+  /* line 830, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;
     -webkit-transform: initial;
+  }
+}
+@media only screen and (max-width: 80px) {
+  /* line 842, main.scss */
+  .photo {
+    border: #fff 6px solid;
+  }
+
+  /* line 848, main.scss */
+  .album .photos figure {
+    margin-bottom: 30px;
   }
 }

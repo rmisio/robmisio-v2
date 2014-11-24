@@ -5,7 +5,8 @@
             <p class="status-msg"></p>
             <div class="form-group">
                 <label for="albumTitle" class="required">Title</label>
-                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" value="<%= typeof(title) === 'undefined' ? '' : title %>" />
+                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" maxlength="150"
+                value="<%= typeof(title) === 'undefined' ? '' : title %>" />
             </div>
             <div class="form-group">
                 <label class="required">Photos</label>

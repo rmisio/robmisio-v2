@@ -1,18 +1,28 @@
 <div class="album">
-<% for (var i=0; i < photos.length; i++) {
-    var p = photos[i],
-        height = p.cloudinary.data.height,
-        width = p.cloudinary.data.width;
-    %>
+    <h1><%= title %></h1>
 
-    <div class="defer-image photo"
-        data-photo-height="<%= height %>"
-        data-photo-width="<%= width %>">
-        <div data-class="img-responsive"
-            data-src="<%= clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 675, width: deviceWidth(), crop: 'fit'}) %>"
-            style="padding-top: <%= height / width * 100 %>%">
-        </div>
+    <div class="photos">
+    <% for (var i=0; i < photos.length; i++) {
+        var p = photos[i],
+            height = p.cloudinary.data.height,
+            width = p.cloudinary.data.width;
+        %>
+
+        <figure>
+            <div class="defer-image photo"
+                data-photo-height="<%= height %>"
+                data-photo-width="<%= width %>">
+                <div data-class="img-responsive"
+                    data-src="<%= clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 675, width: deviceWidth(), crop: 'fit'}) %>"
+                    style="padding-top: <%= height / width * 100 %>%">
+                </div>
+            </div>
+            <% if (typeof p.caption !== 'undefined') { %>
+            <figcaption>
+                <%- p.caption %>
+            </figcaption>
+            <% } %>
+        </figure>
+    <% } %>
     </div>
-
-<% } %>
 </div>

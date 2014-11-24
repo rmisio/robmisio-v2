@@ -337,9 +337,17 @@ form {
 }
 
 .album {
-    .photo {
-        margin: 0 auto 25px;
-        max-height: 800px;
+    .photos {
+        margin-top: 25px;
+
+        figure {
+            margin-bottom: 40px;
+
+            .photo {
+                margin: 0 auto 15px;
+                max-height: 800px;
+            }
+        }
     }
 }
 
@@ -652,6 +660,13 @@ form {
         }
     }
 
+    .album-photo-form {
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+    }
+
     .photo-thumbs {
         .photo-thumb, .sortable-placeholder {
             display: inline-block;
@@ -734,6 +749,18 @@ form {
         }
     }
 
+    .photo {
+        border: #fff 8px solid;
+    }
+
+    .album {
+        .photos {
+            figure {
+                margin-bottom: 35px;
+            }
+        }
+    }
+
     .blog-page #header-main nav {
         .button-mobile-menu {
             display: block;
@@ -805,6 +832,21 @@ form {
                     -ms-transform: initial;
                     -webkit-transform: initial;
                 }
+            }
+        }
+    }
+}
+
+// Landscape phones and down
+@media only screen and (max-width : 80px) {
+    .photo {
+        border: #fff 6px solid;
+    }
+
+    .album {
+        .photos {
+            figure {
+                margin-bottom: 30px;
             }
         }
     }
