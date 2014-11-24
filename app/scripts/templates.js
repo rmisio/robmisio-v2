@@ -19,7 +19,7 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="row">\n    <section class="col-md-8 album-page">\n        <h1>' +
 ((__t = ( typeof(slug) !== 'undefined' ? 'Update' : 'Create' )) == null ? '' : __t) +
-' Album</h1>\n        <form action="#" class="album-form">\n            <p class="status-msg"></p>\n            <div class="form-group">\n                <label for="albumTitle" class="required">Title</label>\n                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" maxlength="150"\n                value="' +
+' Album</h1>\n        <form action="#" class="album-form clearfix">\n            <p class="status-msg"></p>\n            <div class="form-group">\n                <label for="albumTitle" class="required">Title</label>\n                <input id="albumTitle" type="text" class="form-control" name="title" placeholder="Please enter a title" maxlength="150"\n                value="' +
 ((__t = ( typeof(title) === 'undefined' ? '' : title )) == null ? '' : __t) +
 '" />\n            </div>\n            <div class="form-group">\n                <label class="required">Photos</label>\n                <input class="btn btn-default cloudinary_fileupload form-control" type="file" name="file" multiple />\n                <div class="uploads"></div>\n               <div class="photo-thumbs">\n                    ';
  if (typeof(photos) !== 'undefined') {

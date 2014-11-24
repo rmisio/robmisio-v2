@@ -42,9 +42,6 @@ define([
         },
 
         remove: function () {
-            console.log('vroom vroom');
-            window.vroom = this.respPhotos;
-
             _.each(this.respPhotos, function (respPhoto) {
                 respPhoto.unbind();
             });
