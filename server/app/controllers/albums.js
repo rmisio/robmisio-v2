@@ -113,7 +113,7 @@ exports.update = function (req, res) {
         if (typeof photoOuter === 'object') {
             if (photoOuter._id) {
                 funcs.push(function (callback) {
-                    Photo.findByIdAndUpdate(photoOuter._id, _.omit(photoOuter, photoOuter._id), function(err, photo) {
+                    Photo.findByIdAndUpdate(photoOuter._id, _.omit(photoOuter, '_id'), function(err, photo) {
                         if (!err) {
                             if (!photo) {
                                 callback('Unable to find photo with id: ' + photoOuter._id);
@@ -146,7 +146,7 @@ exports.update = function (req, res) {
         funcs,
         function (err, results) {
             if (!err) {
-                Album.findByIdAndUpdate(req.params.id, _.omit(req.body, req.body._id), function(err, album) {
+                Album.findByIdAndUpdate(req.params.id, _.omit(req.body, '_id'), function(err, album) {
                     if (!err) {
                         if (!album) {
                             return res.send(404);
