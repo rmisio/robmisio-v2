@@ -34,7 +34,6 @@ define([
 
         initialize: function (options) {
             this.options = options || {};
-            app.appView.showPage(this);
         },
 
         onAttach: function (e) {
