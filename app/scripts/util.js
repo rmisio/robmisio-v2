@@ -90,6 +90,7 @@ define([
                     ratio = 0.6,
                     $parent = $el.parent(),
                     maxHeight,
+                    parentHeight,
                     resize,
                     unbind,
                     parentWidth,
@@ -99,8 +100,10 @@ define([
                 $el.css('max-height', 'auto');
                 if (parentWidth = $parent.width()) {
                     maxHeight = parentWidth * ratio;
+                    parentHeight = $parent.data('photo-height');
+                    maxHeight = maxHeight > parentHeight ? parentHeight : maxHeight;
 
-                    adjustedW = maxHeight / ($parent.data('photo-height') / $parent.data('photo-width'));
+                    adjustedW = maxHeight / (parentHeight / $parent.data('photo-width'));
                     if (adjustedW < parentWidth) {
                         $parent.width(adjustedW);
                     }

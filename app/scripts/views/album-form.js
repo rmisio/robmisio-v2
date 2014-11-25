@@ -200,7 +200,9 @@ define([
             var self = this,
                 $fileInput,
                 fileInputClasses,
-                clOpts = {};
+                clOpts = {
+                    upload_preset: 'ceorfqu2'
+                };
 
             context = _.extend(this.model.toJSON(), context || {});
             this.$el.html(util.template(this.template, context));
