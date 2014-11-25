@@ -39,6 +39,7 @@
     "grunt-usemin": "~0.1.12",
     "jshint-stylish": "~0.1.5",
     "load-grunt-tasks": "~0.3.0",
+    "lodash": "^2.4.1",
     "method-override": "latest",
     "mocha": "latest",
     "moment": "^2.7.0",
@@ -53,7 +54,6 @@
     "supertest": "latest",
     "swig": "latest",
     "time-grunt": "~0.2.8",
-    "underscore": "^1.6.0",
     "view-helpers": "latest",
     "winston": "latest"
   },
