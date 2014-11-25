@@ -46,7 +46,7 @@ module.exports = function (app, passport) {
     app.get('*', function (req, res, next) {
         res.render(indexUrl, {
             config: {
-                env: process.env.NODE_ENV || 'kkk'
+                env: process.env.NODE_ENV || ''
             }
         })
     });
