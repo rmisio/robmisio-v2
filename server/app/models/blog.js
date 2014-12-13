@@ -31,8 +31,7 @@ blogSchema = new Schema({
         default: Date.now
     },
     slug: {
-        type: String,
-        required: true
+        type: String
     },
     view: {
         type: String

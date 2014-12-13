@@ -8,8 +8,9 @@ define([
     'templates',
     'util',
     'views/page',
+    'views/album',
     'models/album'
-], function (app, $, _, Backbone, JST, util, PageView, AlbumModel) {
+], function (app, $, _, Backbone, JST, util, PageView, AlbumView, AlbumModel) {
     'use strict';
 
     var AlbumPageView = PageView.extend({
@@ -27,34 +28,20 @@ define([
             if (!this.model || (!this.model instanceof AlbumModel)) {
                 throw new Error('Please provide a AlbumModel.');
             }
-
-            this.respPhotos = [];
-        },
-
-        onAttach: function () {
-            var self = this;
-
-            this.$('.photo').each(function () {
-                // todo: second onresize handler (the one on the
-                // actual img tag) is not being unbound!
-                self.respPhotos.push(util.responsivePhoto(this));
-            });
         },
 
         remove: function () {
-            _.each(this.respPhotos, function (respPhoto) {
-                respPhoto.unbind();
-            });
-
-            PageView.prototype.remove.call(this);
+            this.albumView.remove();
+            PageView.prototype.remove.apply(this, arguments);
         },
 
         render: function () {
-            // todo: move this right NOW!!!
-            $.cloudinary.config().cloud_name = 'dabzwws4g';
-            $.cloudinary.config().upload_preset = 'ceorfqu2';
-
             this.$el.html(util.template(this.template, this.model.toJSON()));
+            this.albumView = new AlbumView({
+                model: this.model
+            });
+            this.$el.append(this.albumView.render().el);
+            this.albumView.onAttach();
 
             return this;
         }

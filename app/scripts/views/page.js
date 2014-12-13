@@ -26,6 +26,10 @@ define([
 
         onAttach: function (e) {
             $(document).scrollTop(this.restoreScrollPos || 0);
+        },
+
+        remove: function () {
+            Backbone.View.prototype.remove.apply(this, arguments);
         }
     });
 

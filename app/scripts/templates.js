@@ -36,12 +36,36 @@ return __p
 
 this["JST"]["app/scripts/templates/album-page.ejs"] = function(obj) {
 obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<h1>' +
+((__t = ( title )) == null ? '' : __t) +
+'</h1>\n';
+
+}
+return __p
+};
+
+this["JST"]["app/scripts/templates/album-photo.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<div class="modal-header">\n    <button type="button" class="close" data-dismiss="modal">\n        <span aria-hidden="true">&times;</span>\n        <span class="sr-only">Close</span>\n    </button>\n    <h3 class="modal-title">Update Photo</h3>\n</div>\n<div class="modal-body">\n    <form action="#" class="album-photo-form">\n        <div class="form-group">\n            <label>Title</label>\n            <input type="text" class="form-control" name="title" maxlength="150" value="' +
+((__t = ( typeof(title) === 'undefined' ? '' : title )) == null ? '' : __t) +
+'" />\n        </div>\n        <div class="form-group">\n            <label>Caption</label>\n            <textarea class="form-control" name="caption" maxlength="1500">' +
+((__t = ( typeof(caption) === 'undefined' ? '' : caption )) == null ? '' : __t) +
+'</textarea>\n        </div>\n    </form>\n</div>\n<div class="modal-footer">\n    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\n    <button type="button" class="btn btn-primary">OK</button>\n</div>\n';
+
+}
+return __p
+};
+
+this["JST"]["app/scripts/templates/album.ejs"] = function(obj) {
+obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class="album">\n    <h1>' +
-((__t = ( title )) == null ? '' : __t) +
-'</h1>\n\n    <div class="photos">\n    ';
+__p += '<div class="album">\n    <div class="photos">\n    ';
  for (var i=0; i < photos.length; i++) {
         var p = photos[i],
             height = p.cloudinary.data.height,
@@ -64,20 +88,6 @@ __e( p.caption ) +
 __p += '\n        </figure>\n    ';
  } ;
 __p += '\n    </div>\n</div>\n';
-
-}
-return __p
-};
-
-this["JST"]["app/scripts/templates/album-photo.ejs"] = function(obj) {
-obj || (obj = {});
-var __t, __p = '', __e = _.escape;
-with (obj) {
-__p += '<div class="modal-header">\n    <button type="button" class="close" data-dismiss="modal">\n        <span aria-hidden="true">&times;</span>\n        <span class="sr-only">Close</span>\n    </button>\n    <h3 class="modal-title">Update Photo</h3>\n</div>\n<div class="modal-body">\n    <form action="#" class="album-photo-form">\n        <div class="form-group">\n            <label>Title</label>\n            <input type="text" class="form-control" name="title" maxlength="150" value="' +
-((__t = ( typeof(title) === 'undefined' ? '' : title )) == null ? '' : __t) +
-'" />\n        </div>\n        <div class="form-group">\n            <label>Caption</label>\n            <textarea class="form-control" name="caption" maxlength="1500">' +
-((__t = ( typeof(caption) === 'undefined' ? '' : caption )) == null ? '' : __t) +
-'</textarea>\n        </div>\n    </form>\n</div>\n<div class="modal-footer">\n    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\n    <button type="button" class="btn btn-primary">OK</button>\n</div>\n';
 
 }
 return __p

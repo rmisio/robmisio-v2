@@ -10,8 +10,9 @@ define([
     'templates',
     'util',
     'views/page',
+    'views/blog-entries/happy-holi',
     'collections/blog'
-], function (require, app, $, _, Backbone, prettify, JST, util, PageView, BlogCollection) {
+], function (require, app, $, _, Backbone, prettify, JST, util, PageView, HappyHoliView, BlogCollection) {
     'use strict';
 
     var BlogPageView = PageView.extend({
