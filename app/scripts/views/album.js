@@ -7,9 +7,8 @@ define([
     'backbone',
     'templates',
     'util',
-    'views/page',
     'models/album'
-], function (app, $, _, Backbone, JST, util, PageView, AlbumModel) {
+], function (app, $, _, Backbone, JST, util, AlbumModel) {
     'use strict';
 
     var AlbumView = Backbone.View.extend({
