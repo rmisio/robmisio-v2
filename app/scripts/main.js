@@ -36,10 +36,11 @@ require([
     'routes/app',
     'views/app'
 ], function (Backbone, _, bootstrap, app, startup, util, AppRouter, AppView) {
-    app.appView = new AppView();
-    app.router = new AppRouter();
     app.config = window.config || {};
     delete window.config;
+    startup.init();
+    app.appView = new AppView();
+    app.router = new AppRouter();
     app.eventEmitter = _.extend({}, Backbone.Events);
     util.initMqChangeEvents(app.eventEmitter);
 
