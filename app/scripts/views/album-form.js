@@ -201,13 +201,13 @@ define([
                 $fileInput,
                 fileInputClasses,
                 clOpts = {
-                    upload_preset: 'ceorfqu2'
+                    upload_preset: 'khjyfghg'
                 };
 
             context = _.extend(this.model.toJSON(), context || {});
             this.$el.html(util.template(this.template, context));
 
-            if (app.config.env && app.config.env === 'development') {
+            if (app.config.env === 'development') {
                 clOpts.tags = ['dev'];
             }
 

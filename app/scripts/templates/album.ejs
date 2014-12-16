@@ -11,7 +11,7 @@
                 data-photo-height="<%= height %>"
                 data-photo-width="<%= width %>">
                 <div data-class="img-responsive"
-                    data-src="<%= clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 675, width: deviceWidth(), crop: 'limit'}) %>"
+                    data-src="<%= clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 675, width: photoWidthLimit, crop: 'limit'}) %>"
                     style="padding-top: <%= height / width * 100 %>%">
                 </div>
             </div>

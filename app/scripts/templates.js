@@ -76,7 +76,7 @@ __p += '\n\n        <figure>\n            <div class="defer-image photo"\n      
 '"\n                data-photo-width="' +
 ((__t = ( width )) == null ? '' : __t) +
 '">\n                <div data-class="img-responsive"\n                    data-src="' +
-((__t = ( clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 675, width: deviceWidth(), crop: 'limit'}) )) == null ? '' : __t) +
+((__t = ( clUrl(p.cloudinary.id + '.' + p.cloudinary.data.format, { height: 675, width: photoWidthLimit, crop: 'limit'}) )) == null ? '' : __t) +
 '"\n                    style="padding-top: ' +
 ((__t = ( height / width * 100 )) == null ? '' : __t) +
 '%">\n                </div>\n            </div>\n            ';

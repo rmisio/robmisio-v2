@@ -8521,12 +8521,12 @@ form .has-error-required .error-msg.error-required {
   }
 }
 @media only screen and (max-width: 80px) {
-  /* line 844, main.scss */
+  /* line 843, main.scss */
   .photo {
     border: #fff 6px solid;
   }
 
-  /* line 850, main.scss */
+  /* line 849, main.scss */
   .album .photos figure {
     margin-bottom: 30px;
   }

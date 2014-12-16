@@ -44,7 +44,14 @@ define([
         },
 
         render: function () {
-            this.$el.html(util.template(this.template, this.model.toJSON()));
+            var context,
+                deviceWidth = util.deviceWidth();
+
+            context = _.extend(this.model.toJSON(), {
+                photoWidthLimit: deviceWidth > 1170 ? 1170 : deviceWidth
+            });
+
+            this.$el.html(util.template(this.template, context));
 
             return this;
         }
