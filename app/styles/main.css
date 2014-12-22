@@ -7926,85 +7926,94 @@ footer {
   display: none;
 }
 
-/* line 269, main.scss */
+/* line 267, main.scss */
+pre.prettyprint, code.prettyprint {
+  width: auto;
+  white-space: pre;
+  overflow: auto;
+  word-wrap: normal;
+  margin: 20px auto;
+}
+
+/* line 277, main.scss */
 .error-msg {
   display: none;
   color: #d9534f;
 }
 
-/* line 274, main.scss */
+/* line 282, main.scss */
 label.required::after {
   content: '*';
   font-weight: lighter;
 }
 
-/* line 280, main.scss */
+/* line 288, main.scss */
 form .control-label, form .error-msg {
   margin-bottom: 5px;
 }
-/* line 285, main.scss */
+/* line 293, main.scss */
 form .has-error-required .error-msg.error-required {
   display: block;
 }
 
-/* line 291, main.scss */
+/* line 299, main.scss */
 .defer-image {
   position: relative;
   /* Image aspect ratios - % is relative to width. */
 }
-/* line 294, main.scss */
+/* line 302, main.scss */
 .defer-image .defer-image > img {
   display: block;
   min-width: 100%;
   max-width: 100%;
 }
-/* line 300, main.scss */
+/* line 308, main.scss */
 .defer-image .defer-image.loading {
   position: relative;
   background: #EEE;
 }
-/* line 306, main.scss */
+/* line 314, main.scss */
 .defer-image.image-ratio\:1x2 > div {
   padding-top: 200%;
 }
-/* line 307, main.scss */
+/* line 315, main.scss */
 .defer-image.image-ratio\:9x16 > div {
   padding-top: 177.777%;
 }
-/* line 308, main.scss */
+/* line 316, main.scss */
 .defer-image.image-ratio\:2x3 > div {
   padding-top: 150%;
 }
-/* line 309, main.scss */
+/* line 317, main.scss */
 .defer-image.image-ratio\:3x4 > div {
   padding-top: 133.333%;
 }
-/* line 310, main.scss */
+/* line 318, main.scss */
 .defer-image.image-ratio\:1x1 > div {
   padding-top: 100%;
 }
-/* line 311, main.scss */
+/* line 319, main.scss */
 .defer-image.image-ratio\:4x3 > div {
   padding-top: 75%;
 }
-/* line 312, main.scss */
+/* line 320, main.scss */
 .defer-image.image-ratio\:3x2 > div {
   padding-top: 66.66%;
 }
-/* line 313, main.scss */
+/* line 321, main.scss */
 .defer-image.image-ratio\:16x9 > div {
   padding-top: 56.25%;
 }
-/* line 314, main.scss */
+/* line 322, main.scss */
 .defer-image.image-ratio\:2x1 > div {
   padding-top: 50%;
 }
-/* line 316, main.scss */
+/* line 324, main.scss */
 .defer-image.loaded img {
   -webkit-animation: fadeIn 2s both;
   animation: fadeIn 2s both;
 }
-/* line 320, main.scss */
+/* line 328, main.scss */
 .defer-image.loading::after {
   content: ' ';
   position: absolute;
@@ -8019,22 +8028,22 @@ form .has-error-required .error-msg.error-required {
   animation: bobble 2s cubic-bezier(0.6, 1, 1, 1) infinite;
 }
 
-/* line 334, main.scss */
+/* line 342, main.scss */
 .photo {
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 4px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 4px;
   border: #fff 10px solid;
 }
 
-/* line 340, main.scss */
+/* line 348, main.scss */
 .album .photos {
   margin-top: 25px;
 }
-/* line 343, main.scss */
+/* line 351, main.scss */
 .album .photos figure {
   margin-bottom: 40px;
 }
-/* line 346, main.scss */
+/* line 354, main.scss */
 .album .photos figure .photo {
   margin: 0 auto 15px;
   max-height: 800px;
@@ -8080,67 +8089,67 @@ form .has-error-required .error-msg.error-required {
     background-position: center;
   }
 }
-/* line 381, main.scss */
+/* line 389, main.scss */
 .blog-page {
   overflow-y: scroll;
 }
 
-/* line 385, main.scss */
+/* line 393, main.scss */
 .blog-list {
   margin-top: 20px;
   font-size: 16px;
 }
-/* line 389, main.scss */
+/* line 397, main.scss */
 .blog-list li {
   position: relative;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
 }
-/* line 394, main.scss */
+/* line 402, main.scss */
 .blog-list li:last-child {
   border-bottom: none;
 }
-/* line 398, main.scss */
+/* line 406, main.scss */
 .blog-list li a {
   display: block;
   padding: 12px 8px;
   outline: none;
 }
-/* line 404, main.scss */
+/* line 412, main.scss */
 .blog-list li h2 {
   margin: 0 0 3px;
   line-height: 18px;
   font-size: 18px;
   color: #010101;
 }
-/* line 411, main.scss */
+/* line 419, main.scss */
 .blog-list li time {
   font-style: italic;
   color: #afafaf;
   margin: 0;
 }
-/* line 418, main.scss */
+/* line 426, main.scss */
 .blog-list li.active:hover a {
   cursor: default;
 }
-/* line 423, main.scss */
+/* line 431, main.scss */
 .blog-list li:hover, .blog-list li.active, .blog-list li a:focus, .blog-list li a:active {
   background-color: #edd1bf;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-/* line 427, main.scss */
+/* line 435, main.scss */
 .blog-list li:hover h2, .blog-list li:hover time, .blog-list li.active h2, .blog-list li.active time, .blog-list li a:focus h2, .blog-list li a:focus time, .blog-list li a:active h2, .blog-list li a:active time {
   color: #fd6500;
 }
-/* line 431, main.scss */
+/* line 439, main.scss */
 .blog-list li:hover time, .blog-list li.active time, .blog-list li a:focus time, .blog-list li a:active time {
   font-weight: lighter;
 }
-/* line 435, main.scss */
+/* line 443, main.scss */
 .blog-list li:hover:not(.active), .blog-list li.active:not(.active), .blog-list li a:focus:not(.active), .blog-list li a:active:not(.active) {
   cursor: pointer;
 }
-/* line 440, main.scss */
+/* line 448, main.scss */
 .blog-list li .spinner {
   display: none;
   position: absolute;
@@ -8151,7 +8160,7 @@ form .has-error-required .error-msg.error-required {
   background-color: white transparent;
   background: rgba(255, 255, 255, 0.2) url(../images/spinner-bar-80-x-10.gif) no-repeat center;
 }
-/* line 451, main.scss */
+/* line 459, main.scss */
 .blog-list li.loading .spinner {
   display: block;
   -ms-animation: blog-list-loading-on ease-in-out 0.2s;
@@ -8161,45 +8170,58 @@ form .has-error-required .error-msg.error-required {
   animation: blog-list-loading-on ease-in-out 0.2s;
 }
 
-/* line 463, main.scss */
+/* line 471, main.scss */
 .blog-entry h1 {
   margin-bottom: 5px;
 }
-/* line 467, main.scss */
+/* line 475, main.scss */
 .blog-entry .author-time-tagline {
   font-size: 15px;
   color: #afafaf;
   font-style: italic;
 }
-/* line 472, main.scss */
+/* line 480, main.scss */
 .blog-entry .author-time-tagline span {
   font-family: "Droid Sans", sans-serif;
   color: #222;
   text-transform: uppercase;
   font-style: normal;
 }
-/* line 480, main.scss */
+/* line 488, main.scss */
 .blog-entry:empty {
   background: white url(../images/spinner-squares.gif) no-repeat center 100px;
   min-height: 250px;
   opacity: 1 !important;
 }
+/* line 494, main.scss */
+.blog-entry img.example {
+  margin-bottom: 20px;
+}
+/* line 500, main.scss */
+.blog-entry .cloudinary-experience .img-responsive.example {
+  width: 75%;
+  margin: 0 auto 20px;
+}
+/* line 505, main.scss */
+.blog-entry .cloudinary-experience ul {
+  margin-bottom: 20px;
+}
 
-/* line 488, main.scss */
+/* line 512, main.scss */
 .about-page #page-container {
   padding-top: 20px;
 }
-/* line 493, main.scss */
+/* line 517, main.scss */
 .about-page .quiz .quiz-results {
   font: normal 28px/28px cursive;
   color: #afafaf;
   margin: 20px 0;
 }
-/* line 498, main.scss */
+/* line 522, main.scss */
 .about-page .quiz .quiz-results span {
   font-size: 32px;
 }
-/* line 502, main.scss */
+/* line 526, main.scss */
 .about-page .quiz .quiz-results a {
   display: inline;
   font-size: 16px;
@@ -8211,157 +8233,157 @@ form .has-error-required .error-msg.error-required {
 .about-page .quiz .quiz-results a:hover {
   border-bottom: 1px solid #fd6500;
 }
-/* line 510, main.scss */
+/* line 534, main.scss */
 .about-page .quiz .main-error, .about-page .quiz .quiz-results {
   display: none;
 }
-/* line 515, main.scss */
+/* line 539, main.scss */
 .about-page .quiz.graded .quiz-results {
   display: block;
 }
-/* line 520, main.scss */
+/* line 544, main.scss */
 .about-page .quiz.graded.correct-on .answer-explain {
   display: block;
 }
-/* line 524, main.scss */
+/* line 548, main.scss */
 .about-page .quiz.graded.correct-on input[data-answer] + label {
   color: #5cb85c;
 }
-/* line 531, main.scss */
+/* line 555, main.scss */
 .about-page .quiz form .radio {
   padding-left: 23px;
 }
-/* line 535, main.scss */
+/* line 559, main.scss */
 .about-page .quiz form label {
   display: block;
 }
-/* line 539, main.scss */
+/* line 563, main.scss */
 .about-page .quiz form .form-group {
   margin-bottom: 20px;
 }
-/* line 543, main.scss */
+/* line 567, main.scss */
 .about-page .quiz form .radio:first-of-type {
   margin-top: 5px;
 }
-/* line 547, main.scss */
+/* line 571, main.scss */
 .about-page .quiz form .glyphicon {
   display: none;
 }
-/* line 551, main.scss */
+/* line 575, main.scss */
 .about-page .quiz form .answer-explain {
   display: none;
   font-weight: 200;
 }
-/* line 557, main.scss */
+/* line 581, main.scss */
 .about-page .quiz form .correct-answer label {
   color: #5cb85c;
 }
-/* line 561, main.scss */
+/* line 585, main.scss */
 .about-page .quiz form .correct-answer .glyphicon-ok {
   display: inline;
   color: #5cb85c;
 }
-/* line 566, main.scss */
+/* line 590, main.scss */
 .about-page .quiz form .correct-answer .answer-explain {
   display: block;
 }
-/* line 570, main.scss */
+/* line 594, main.scss */
 .about-page .quiz form .incorrect-answer label {
   color: #d9534f;
 }
-/* line 574, main.scss */
+/* line 598, main.scss */
 .about-page .quiz form .incorrect-answer .glyphicon-remove {
   display: inline;
   color: #d9534f;
 }
-/* line 583, main.scss */
+/* line 607, main.scss */
 .about-page .photos figure {
   margin: 40px 0;
 }
-/* line 586, main.scss */
+/* line 610, main.scss */
 .about-page .photos figure .defer-image {
   max-width: 96%;
   margin: 0 auto 10px;
   padding: 10px;
   border: 1px solid #ccc;
 }
-/* line 592, main.scss */
+/* line 616, main.scss */
 .about-page .photos figure:first-child {
   margin-top: 25px;
 }
-/* line 595, main.scss */
+/* line 619, main.scss */
 .about-page .photos figure:first-child .defer-image > div {
   padding-top: 75.151%;
 }
-/* line 600, main.scss */
+/* line 624, main.scss */
 .about-page .photos figure:first-child + figure .defer-image > div {
   padding-top: 80%;
 }
-/* line 606, main.scss */
+/* line 630, main.scss */
 .about-page .photos figure:first-child + figure + figure .defer-image > div {
   padding-top: 75.151%;
 }
-/* line 612, main.scss */
+/* line 636, main.scss */
 .about-page .photos figure:nth-child(odd) {
   transform: rotate(6deg);
   -ms-transform: rotate(6deg);
   -webkit-transform: rotate(6deg);
 }
-/* line 618, main.scss */
+/* line 642, main.scss */
 .about-page .photos figure:nth-child(even) {
   transform: rotate(-3deg);
   -ms-transform: rotate(-3deg);
   -webkit-transform: rotate(-3deg);
 }
 
-/* line 627, main.scss */
+/* line 651, main.scss */
 .no-touch .quiz .radio:hover:not(.disabled),
 .touch .quiz .radio:active:not(.disabled) {
   background-color: #edd1bf;
   border-radius: 3px;
 }
 
-/* line 634, main.scss */
+/* line 658, main.scss */
 .album-form-page .album-form {
   margin-bottom: 25px;
 }
-/* line 637, main.scss */
+/* line 661, main.scss */
 .album-form-page .album-form .cloudinary_fileupload {
   margin-bottom: 20px;
 }
-/* line 641, main.scss */
+/* line 665, main.scss */
 .album-form-page .album-form .uploads {
   border-radius: 4px;
   margin-bottom: 20px;
   border: 1px solid #CCC;
 }
-/* line 646, main.scss */
+/* line 670, main.scss */
 .album-form-page .album-form .uploads:empty {
   display: none;
 }
-/* line 648, main.scss */
+/* line 672, main.scss */
 .album-form-page .album-form .uploads p {
   padding: 10px 10px 0;
 }
-/* line 650, main.scss */
+/* line 674, main.scss */
 .album-form-page .album-form .uploads .uploadCount {
   float: right;
 }
-/* line 654, main.scss */
+/* line 678, main.scss */
 .album-form-page .album-form .uploads .progress {
   border-radius: 0 0 4px 4px;
   margin: 0;
 }
-/* line 660, main.scss */
+/* line 684, main.scss */
 .album-form-page .album-form button[type="submit"] {
   float: right;
 }
-/* line 666, main.scss */
+/* line 690, main.scss */
 .album-form-page .album-photo-form textarea {
   height: 100px;
   resize: vertical;
 }
-/* line 673, main.scss */
+/* line 697, main.scss */
 .album-form-page .photo-thumbs .photo-thumb, .album-form-page .photo-thumbs .sortable-placeholder {
   display: inline-block;
   width: 23%;
@@ -8371,11 +8393,11 @@ form .has-error-required .error-msg.error-required {
   border-radius: 3px;
   margin-right: 3px;
 }
-/* line 682, main.scss */
+/* line 706, main.scss */
 .album-form-page .photo-thumbs .photo-thumb.loaded, .album-form-page .photo-thumbs .sortable-placeholder.loaded {
   border: 1px solid transparent;
 }
-/* line 686, main.scss */
+/* line 710, main.scss */
 .album-form-page .photo-thumbs .photo-thumb .remove-thumb, .album-form-page .photo-thumbs .sortable-placeholder .remove-thumb {
   position: absolute;
   right: 5px;
@@ -8383,75 +8405,75 @@ form .has-error-required .error-msg.error-required {
   padding: 3px 7px;
   display: none;
 }
-/* line 694, main.scss */
+/* line 718, main.scss */
 .album-form-page .photo-thumbs .photo-thumb:hover .remove-thumb, .album-form-page .photo-thumbs .sortable-placeholder:hover .remove-thumb {
   display: block;
 }
-/* line 698, main.scss */
+/* line 722, main.scss */
 .album-form-page .photo-thumbs .photo-thumb.loading:hover .remove-thumb, .album-form-page .photo-thumbs .sortable-placeholder.loading:hover .remove-thumb {
   display: none;
 }
-/* line 702, main.scss */
+/* line 726, main.scss */
 .album-form-page .photo-thumbs .photo-thumb .sortable-placeholder, .album-form-page .photo-thumbs .sortable-placeholder .sortable-placeholder {
   background: #F6F6F6;
 }
 
 @media only screen and (max-width: 1200px) {
-  /* line 711, main.scss */
+  /* line 735, main.scss */
   .container {
     width: 100%;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 718, main.scss */
+  /* line 742, main.scss */
   footer {
     display: block;
   }
-  /* line 721, main.scss */
+  /* line 745, main.scss */
   footer .social-links {
     float: none;
     width: 112px;
     margin: 0 auto;
   }
 
-  /* line 728, main.scss */
+  /* line 752, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 732, main.scss */
+  /* line 756, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 738, main.scss */
+  /* line 762, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width 0.2s ease;
     transition: width 0.2s ease;
   }
-  /* line 744, main.scss */
+  /* line 768, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 748, main.scss */
+  /* line 772, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left 0.2s ease;
     transition: left 0.2s ease;
   }
 
-  /* line 754, main.scss */
+  /* line 778, main.scss */
   .photo {
     border: #fff 8px solid;
   }
 
-  /* line 760, main.scss */
+  /* line 784, main.scss */
   .album .photos figure {
     margin-bottom: 35px;
   }
 
-  /* line 767, main.scss */
+  /* line 791, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8461,11 +8483,11 @@ form .has-error-required .error-msg.error-required {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 777, main.scss */
+  /* line 801, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 781, main.scss */
+  /* line 805, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8479,12 +8501,12 @@ form .has-error-required .error-msg.error-required {
     transition: width 0.3s ease;
   }
 
-  /* line 798, main.scss */
+  /* line 822, main.scss */
   .fetching-blog footer {
     display: none;
   }
 
-  /* line 803, main.scss */
+  /* line 827, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8499,21 +8521,25 @@ form .has-error-required .error-msg.error-required {
     transition: left 0.2s ease;
   }
 
-  /* line 817, main.scss */
+  /* line 841, main.scss */
   .blog-entry .jst-example {
     white-space: pre-wrap;
   }
+  /* line 847, main.scss */
+  .blog-entry .cloudinary-experience .img-responsive.example {
+    width: auto;
+  }
 
-  /* line 823, main.scss */
+  /* line 854, main.scss */
   .about-page .photos {
     max-width: 387px;
     margin: 0 auto;
   }
-  /* line 828, main.scss */
+  /* line 859, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 832, main.scss */
+  /* line 863, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;
@@ -8521,12 +8547,12 @@ form .has-error-required .error-msg.error-required {
   }
 }
 @media only screen and (max-width: 80px) {
-  /* line 843, main.scss */
+  /* line 874, main.scss */
   .photo {
     border: #fff 6px solid;
   }
 
-  /* line 849, main.scss */
+  /* line 880, main.scss */
   .album .photos figure {
     margin-bottom: 30px;
   }

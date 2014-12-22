@@ -1,0 +1,219 @@
+<div class="cloudinary-experience">
+    <p>
+        I have a whole lot of interesting photos from some extended time spent abroad this past year. For a long while, it has been brewing in me to share these photos in a photo blog type form, basically a blog entry that has some text and whole lot of photos.
+    </p>
+
+    <h2>The Requirements</h2>
+    <p>
+        After a few sessions of contemplation, I was able to piece together the following requirements:
+    </p>
+
+
+    <h3>Utilize A CDN</h2>
+    <p>
+        Not only is this a very efficient way of delivering the images, I really didn't have much of a choice given how my site is deployed. The site is deployed on the cloud using Heroku. The way Heroku works is all based off of a git repo. Each time you deploy it blows away your existing instance and recreates a new one based off of your repo'd code. In other words, I would have to repo the images for them to have any permanence. I certainly did not want to do that (images aren't small, you know?).
+    </p>
+
+    <h3>Right-Sized Images</h2>
+    <p>
+        The images should <em>pop</em> on HiDPI (e.g. retina) devices. At the same time, devices requiring smaller images should not have to download bloated images designed for the big boys. In other words, don't deliver a 2400 X 1800 image ideal for a 17" Macbook Pro with Retina display to a non-retina 480 X 320 resolution device where an image 5 times smaller would suffice.
+    </p>
+
+    <h3>Easy Admin</h2>
+    <p>
+        The process of creating an album of photos should be simple. Something like: drag and drop photos to upload to the CDN, drag and drop to re-order them within the album, click on a photo to launch a pop-up where I can enter a title and caption for each photo. To include the album in a blog entry (which I create as an EJS template) should be something like:
+    </p>
+
+    <pre>
+&lt;p&gt;These are some fun photos from my adventures on the Hippity Hoppity Islands. Enjoy!&lt;/p&gt;
+
+&lt;% for (var i=0;i &lt; album.photos.length; i++) { %&gt;
+&lt;figure&gt;
+    &lt;img src=&quot;&lt;%= album.photos[i].url %&gt;&quot; /&gt;
+    &lt;figcaption&gt;&lt;%= album.photos[i].caption %&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;% } %&gt;
+    </pre>
+
+    <h2>Enter Cloudinary</h2>
+    <p>
+        First up was finding a CDN. I discovered <a href="http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/n2itxqzhkzk3dcghkbkf" target="_blank">Cloudinary</a> because it's one of the add-on's Heroku offers. As I explored it, I discovered some really cool things.
+    </p>
+
+    <h3>Direct Cloud Upload</h3>
+    <p>
+        Cloudinary offers a <a href="https://github.com/cloudinary/cloudinary_js" target="_blank">jQuery plugin</a> which is based off of the <a href="https://github.com/blueimp/jQuery-File-Upload" target="_blank">blueimp jQuery file upload widget</a>. Using this plugin with a few lines of code, you can upload images <em>directly</em> to the cloud. In other words, you could bypass the process of sending the file to your server and then having your back end upload it to the cloud (cloudinary does offer back end api's for all the major server side players). You're cutting out the middle-man, albeit very possibly at the expense of some flexibility (more on that later). Also, since the plugin is based of the blueimp widget, you get all the goodness it offers, namely cross-browser file-upload, multiple file selection, drag &amp; drop support, progress bars, etc.
+    </p>
+
+    <p>
+        Here's an example of the limited code required on your part to make it all happen:
+    </p>
+
+    <pre>
+&lt;input class=&quot;cloudinary_fileupload&quot; type=&quot;file&quot; name=&quot;file&quot; multiple /&gt;
+    </pre>
+
+    <pre>
+// these two are available from your
+// cloudinary console once you sign up
+$.cloudinary.config().cloud_name = 'blah-blah-blah';
+$.cloudinary.config().upload_preset = 'blah-blah-blah';
+
+$('.cloudinary_fileupload')
+    .unsigned_cloudinary_upload($.cloudinary.config().upload_preset, {}, {})
+    .on('cloudinaryprogressall', function(e, data) {
+        var uploadPercent;
+
+        uploadPercent = Math.round((data.loaded * 100.0) / data.total));
+        // go ahead and update some element with
+        // the upload percent
+    }).on('cloudinarydone', function(e, data) {
+        // a file has been uploaded, check the
+        // data arg for some specifics (url, etc...)
+    });
+    </pre>
+
+    <h3>Url Based Image Transformations</h3>
+    <p>
+        Cloudinary offers a plethora of url based image transformations. For example, let's say you upload the following image (original 3100 X 2448):
+    </p>
+
+    <img class="img-responsive example" src="http://res.cloudinary.com/dabzwws4g/image/upload/c_limit,h_675,w_1170/twnvjpbtedwvwt6na4bi.jpg" />
+
+    <p>
+        Now, would you like it in thumbnail form, say 150 X 150? Just update the url. You could do this manually or take advantage of a couple of helper methods. The jQuery versions are:
+    </p>
+
+    <pre>
+// returns a url
+$.cloudinary.url('sample.jpg', { width: 150, height: 150, crop: 'thumb'});
+
+// returns an image tag
+$.cloudinary.image('sample.jpg', { width: 150, height: 150, crop: 'thumb'});
+    </pre>
+
+    <img class="example" src="http://res.cloudinary.com/dabzwws4g/image/upload/c_fill,h_150,w_150/twnvjpbtedwvwt6na4bi.jpg"  width="150" height="150" />
+
+    <p>But, hey! Wouldn't you rather zero in on the face?</p>
+
+    <pre>
+// Boom!
+$.cloudinary.url('sample.jpg', {
+    width: 150,
+    height: 150,
+    crop: 'thumb',
+    gravity: 'face'
+});
+    </pre>
+
+    <img class="example" src="http://res.cloudinary.com/dabzwws4g/image/upload/c_thumb,g_face,h_150,w_150/twnvjpbtedwvwt6na4bi.jpg"  width="150" height="150" />
+
+    <p>
+        Remember how I wanted to provided hi-res images for HiDPI devices? Cloudinary could not have made it easier!
+    </p>
+
+    <pre>
+$.cloudinary.url('sample.jpg', {
+    width: 150,
+    height: 150,
+    crop: 'thumb',
+    gravity: 'face',
+    // again, Boom!
+    dpr: window.devicePixelRatio
+});
+    </pre>
+
+    <p>
+        Now your device pixel ratio will be taken into account. If you're on a Retina device (dpr of 2), the actual image returned will be 300 X 300 and your device will take care of showing the image in all its HiDPI glory.
+    </p>
+
+    <img class="example" src="http://res.cloudinary.com/dabzwws4g/image/upload/c_thumb,dpr_2.0,h_150,w_150/twnvjpbtedwvwt6na4bi.jpg"  width="150" height="150" />
+
+    <p>
+        Remember how I wanted to serve images rightly sized for each device (i.e. don't deliver a 2500px wide image when a 500px would do)? Once again, it couldn't be much easier:
+    </p>
+
+    <pre>
+$.cloudinary.url('sample.jpg', {
+    width: window.screen.width > 1170 ? 1170 : window.screen.width,
+    crop: 'limit',
+    dpr: window.devicePixelRatio
+});
+    </pre>
+
+    <p>
+        What I am doing is limiting the photo width to 1170 (the max width of my layout) for devices whose resolution is wider than that or, for devices with smaller resolutions, to the maximum width of the device. Of course, this still may result in an image wider than you need, particularly if you want the image to only take up a percentage of the layout. But, it's a big step up from the traditional responsive way of saving out your file to a size tailored for the largest resolution and having all lower resolutions scale it down. Besides, Cloudinary has given you a tremendous amount of flexibility here and you're free to come up with your own algorithm for what size image to request.
+    </p>
+
+    <p>
+        Really, that's just the tip of the iceberg. There are many
+        <a href="http://cloudinary.com/documentation/image_transformations" target="_blank">more transformations</a> available. With direct upload and image transformations provided by Cloudinary, I was able to off-load a significant chunk of development work their way. Thanks, Cloudinary!
+    </p>
+
+    <h2>Lessons Learned</h2>
+
+    <h3>How far will the free plan really go?</h3>
+    <p>
+        At first glance, I thought the free plan (7500 monthly images, 75k total images, 2GB storage, 5GB monthly viewing bandwidth) would be more than enough to satisfy my needs. I'm not so sure now. Out of the four limits, the one I'm most concerned about is the monthly bandwidth. As of this writing, I'm using about 5% of my limit. Doesn't sound like I'm using too much, but I've only posted one photo blog thus far (albeit a bunch of dummy dev albums as well) and I haven't publicized this blog too much (i.e. I doubt more that 10 people have viewed this gosh darn site).
+    </p>
+
+    <h4>A bit of further analysis</h4>
+    <p>
+        When viewing a photo blog at the largest layout (i.e. desktop with a fairly expanded window), the average image size is about 700k. Let's say the amount of photos in the first photo blog entry is accurately representative of what's to come. That works out to about 17mb of photos per photo blog (700k * 25 photos). Since the monthly allowance is 5gb, that means the photo blog (or a combination of photo blogs) could be uniquely viewed about 294 times before my allowance would be reached.
+    </p>
+
+    <p>
+        Hmm... that may very well be enough for me, but depending on your perspective, it   really doesn't sound like a whole lot.
+    </p>
+
+    <h4>Some more points to consider</h4>
+    <ul>
+        <li>
+            The photos are sent with cache headers to cache for an uber long time, so if the same device and browser views a photo-blog multiple times, your bandwidth will only take a hit on the first time (assuming the cache isn't cleared).
+        </li>
+        <li>
+            Remember, these file sizes are for the largest layouts. With the way I'm requesting device sized images, the images on smaller devices (notably phones) will be much smaller and therefore my quota will go that much further.
+        </li>
+        <li>
+            One could always opt for a paid plan. The least expensive one is 49$/month and offers a 10x or more increase on 3 out of the 4 limits (the managed storage only goes up 7.5x to 15GB). Using my formula from above with the increased bandwidth (up to 50GB / month) of this plan, you would be able to serve a photo blog nearly 3000 unique times.
+        </li>
+    </ul>
+
+    <h4>Help a brother out?</h4>
+    <p>
+        If you would like to help me out with some extra cloud quota (No, I'm not going to ask you for cash!) and you have any inclination on giving Cloudinary a try, please sign up after following
+        <a href="http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/n2itxqzhkzk3dcghkbkf" target="_blank">this link</a>. With each sign up, my quotas get raised a little bit.
+    </p>
+
+    <h3>Flexibility loss</h3>
+    <p>
+        By directly uploading the photos to the cloud and subsequently using Cloudinary's image transformation functionality, I was able to save a considerable amount of upfront development time. This, however, was at the expense of flexibility. One shining example of this is when I was looking into ways of stretching my quotas as far as possible, which led me down the avenue of image compression. A free script out there is the
+        <a href="https://github.com/technopagan/adept-jpg-compressor" target="_blank">Adept JPG compressor</a>, which is reputably supposed to be as effective as
+        <a href="http://www.jpegmini.com/" target="_blank">JPEGMini</a>, the latter claiming to compress images up to 5X without any noticeable loss of quality. A big difference between the two is the former is completely free.
+    </p>
+
+    <p>
+        Even if I could reduce file sizes just 2X, that would essentially double my storage and bandwidth capacities. If I were uploading first to my server, then I could easily automate this process. But, since I'm going directly to the cloud, it means I'd have to make this an additional step prior to the upload. Less than ideal, but not the end of the world, until I discovered this in a
+        <a href="http://addyosmani.com/blog/image-optimization-tools/" target="_blank">wonderful article</a> by Addy Osmani:
+    </p>
+
+    <blockquote>
+        <p>
+            Most developers forget that optimizers optimize a particular file rather than the image. This means that it doesn’t make sense to optimize an image file and then resize/crop or convert it as any changes to the file will completely undo lossless optimizations and make lossy ones a lot less effective.
+        </p>
+    </blockquote>
+
+    <p>
+        That basically means that I should be applying compressions <i>after</i> transformations. Since the transformations are being done by Cloudinary on delivery, I really can't do that.
+    </p>
+
+    <p>
+        If I were to do this all over again, especially if under different circumstances (i.e. part of a dev team with more resources), I would have to very strongly consider if the savings in upfront dev time is worth the loss of flexibility. I'm sure there's got to be some mature, open source image transformation libraries out there, right? Then again, if I had more resources, it probably wouldn't be a big deal to pony up for one of the paid plans (you believe those jokers wanting to make a buck for their work?).
+    </p>
+
+    <h2>The Fruits</h2>
+    <p>
+        If you'd like to see the initial fruits of some of my work here, please channel the fun-loving kid within and check out my first
+        <a href="/posts/2014/12/happy-holi">photo blog entry</a>. And, of course, Happy Holi!
+    </p>
+</div>

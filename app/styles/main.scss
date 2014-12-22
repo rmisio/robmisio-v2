@@ -264,6 +264,14 @@ footer {
     display: none;
 }
 
+pre.prettyprint, code.prettyprint {
+    width: auto;
+    white-space: pre;
+    overflow: auto;
+    word-wrap: normal;
+    margin: 20px auto;
+}
+
 // Form stylings
 
 .error-msg {
@@ -481,6 +489,22 @@ form {
         background: $page-bg-color url(../images/spinner-squares.gif) no-repeat center 100px;
         min-height: 250px;
         opacity: 1 !important;
+    }
+
+    img.example {
+        margin-bottom: 20px;
+    }
+
+    // individual blog entries
+    .cloudinary-experience {
+        .img-responsive.example {
+            width: 75%;
+            margin: 0 auto 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+        }
     }
 }
 
@@ -816,6 +840,13 @@ form {
     .blog-entry {
         .jst-example {
             white-space: pre-wrap;
+        }
+
+        // individual blog entries
+        .cloudinary-experience {
+            .img-responsive.example {
+                width: auto;
+            }
         }
     }
 
