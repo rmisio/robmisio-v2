@@ -224,7 +224,7 @@ this["JST"]["app/scripts/templates/social.ejs"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<ul class="social-links list-unstyled">\n    <li>\n        <a href="https://github.com/rmisio" target="_blank" alt="GitHub" class="github"></a>\n    </li>\n    <li>\n        <a href="https://www.linkedin.com/in/robmisio" target="_blank" alt="LinkedIn" class="linkedin"></a>\n    </li>\n    <li>\n        <a href="http://stackoverflow.com/users/632806/robmisio" target="_blank" alt="Stack Overflow" class="stackoverflow"></a>\n    </li>\n</ul>';
+__p += '<ul class="social-links list-unstyled">\n    <li>\n        <a href="https://github.com/rmisio" target="_blank" alt="GitHub" class="github"></a>\n    </li>\n    <li>\n        <a href="https://twitter.com/robmisio" target="_blank" alt="Twitter" class="twitter"></a>\n    </li>\n    <li>\n        <a href="https://www.linkedin.com/in/robmisio" target="_blank" alt="LinkedIn" class="linkedin"></a>\n    </li>\n    <li>\n        <a href="http://stackoverflow.com/users/632806/robmisio" target="_blank" alt="Stack Overflow" class="stackoverflow"></a>\n    </li>\n</ul>\n';
 
 }
 return __p

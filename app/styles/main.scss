@@ -242,12 +242,16 @@ code {
                 background-position: 0 0;
             }
 
-            &.linkedin {
+            &.twitter {
                 background-position: -35px 0;
             }
 
-            &.stackoverflow {
+            &.linkedin {
                 background-position: -70px 0;
+            }
+
+            &.stackoverflow {
+                background-position: -105px 0;
                 width: 32px;
             }
         }
