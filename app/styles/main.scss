@@ -745,11 +745,10 @@ form {
 @media only screen and (max-width : 768px) {
     footer {
         display: block;
+        text-align: center;
 
         .social-links {
             float: none;
-            width: 112px;
-            margin: 0 auto;
         }
     }
 
