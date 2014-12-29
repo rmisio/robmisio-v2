@@ -8432,52 +8432,51 @@ form .has-error-required .error-msg.error-required {
   /* line 746, main.scss */
   footer {
     display: block;
+    text-align: center;
   }
-  /* line 749, main.scss */
+  /* line 750, main.scss */
   footer .social-links {
     float: none;
-    width: 112px;
-    margin: 0 auto;
   }
 
-  /* line 756, main.scss */
+  /* line 755, main.scss */
   header .social-links {
     display: none;
   }
 
-  /* line 760, main.scss */
+  /* line 759, main.scss */
   .mobile-menu-open body {
     overflow: hidden;
   }
 
-  /* line 766, main.scss */
+  /* line 765, main.scss */
   .mobile-menu-open #header-main nav .button-mobile-menu:before {
     width: 13px;
     -webkit-transition: width 0.2s ease;
     transition: width 0.2s ease;
   }
-  /* line 772, main.scss */
+  /* line 771, main.scss */
   .mobile-menu-open #page-overlay {
     display: block;
   }
-  /* line 776, main.scss */
+  /* line 775, main.scss */
   .mobile-menu-open .blog-list {
     left: 0;
     -webkit-transition: left 0.2s ease;
     transition: left 0.2s ease;
   }
 
-  /* line 782, main.scss */
+  /* line 781, main.scss */
   .photo {
     border: #fff 8px solid;
   }
 
-  /* line 788, main.scss */
+  /* line 787, main.scss */
   .album .photos figure {
     margin-bottom: 35px;
   }
 
-  /* line 795, main.scss */
+  /* line 794, main.scss */
   .blog-page #header-main nav .button-mobile-menu {
     display: block;
     position: relative;
@@ -8487,11 +8486,11 @@ form .has-error-required .error-msg.error-required {
     text-indent: -999px;
     margin-right: 14px;
   }
-  /* line 805, main.scss */
+  /* line 804, main.scss */
   .blog-page #header-main nav .button-mobile-menu:active {
     background-color: #DDD;
   }
-  /* line 809, main.scss */
+  /* line 808, main.scss */
   .blog-page #header-main nav .button-mobile-menu:before {
     content: "";
     position: absolute;
@@ -8505,12 +8504,12 @@ form .has-error-required .error-msg.error-required {
     transition: width 0.3s ease;
   }
 
-  /* line 826, main.scss */
+  /* line 825, main.scss */
   .fetching-blog footer {
     display: none;
   }
 
-  /* line 831, main.scss */
+  /* line 830, main.scss */
   .blog-list {
     background-color: white;
     padding-top: 15px;
@@ -8525,25 +8524,25 @@ form .has-error-required .error-msg.error-required {
     transition: left 0.2s ease;
   }
 
-  /* line 845, main.scss */
+  /* line 844, main.scss */
   .blog-entry .jst-example {
     white-space: pre-wrap;
   }
-  /* line 851, main.scss */
+  /* line 850, main.scss */
   .blog-entry .cloudinary-experience .img-responsive.example {
     width: auto;
   }
 
-  /* line 858, main.scss */
+  /* line 857, main.scss */
   .about-page .photos {
     max-width: 387px;
     margin: 0 auto;
   }
-  /* line 863, main.scss */
+  /* line 862, main.scss */
   .about-page .photos figure:first-child {
     margin-top: 40px;
   }
-  /* line 867, main.scss */
+  /* line 866, main.scss */
   .about-page .photos figure:nth-child(odd), .about-page .photos figure:nth-child(even) {
     transform: initial;
     -ms-transform: initial;
@@ -8551,12 +8550,12 @@ form .has-error-required .error-msg.error-required {
   }
 }
 @media only screen and (max-width: 80px) {
-  /* line 878, main.scss */
+  /* line 877, main.scss */
   .photo {
     border: #fff 6px solid;
   }
 
-  /* line 884, main.scss */
+  /* line 883, main.scss */
   .album .photos figure {
     margin-bottom: 30px;
   }

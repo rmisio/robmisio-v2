@@ -16,7 +16,7 @@ define([
                 $.cloudinary.config().upload_preset = 'kbmpfxyu';
             } else {
                 $.cloudinary.config().cloud_name = 'dabzwws4g';
-                $.cloudinary.config().upload_preset = 'ceorfqu2';
+                $.cloudinary.config().upload_preset = 'austuixq';
             }
 
             // bootstrap modal scroll issue fix:
