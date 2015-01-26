@@ -11,8 +11,9 @@ define([
     'util',
     'views/page',
     'views/blog-entries/happy-holi',
+    'views/blog-entries/thangka-pokhara',
     'collections/blog'
-], function (require, app, $, _, Backbone, prettify, JST, util, PageView, HappyHoliView, BlogCollection) {
+], function (require, app, $, _, Backbone, prettify, JST, util, PageView, HappyHoliView, ThangkaPokharaView, BlogCollection) {
     'use strict';
 
     var BlogPageView = PageView.extend({
