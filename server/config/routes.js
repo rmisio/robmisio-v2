@@ -27,7 +27,7 @@ module.exports = function (app, passport) {
     app.post('/api/albums', albums.create);
     app.put('/api/albums/:id', albums.update);
 
-   // Error handling
+    // Error handling
     app.use(function (err, req, res, next) {
         // treat as 404
         if (err.message

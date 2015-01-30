@@ -34,11 +34,14 @@ module.exports = function (app, passport) {
         threshold: 512
     }));
 
+    // Here we require the prerender middleware that will handle requests from Search Engine crawlers
+    if (env === 'production' && process.env.PRERENDER_TOKEN) {
+        app.use(require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN));
+    }
+
     // Static files middleware
     app.use(serveStatic(config.root +
-        (process.env.NODE_ENV === 'production' ?
-            '/dist' : '/app')
-        ));
+        (env === 'production' ? '/dist' : '/app')));
 
     // Use winston on production
     var log;
@@ -67,8 +70,8 @@ module.exports = function (app, passport) {
 
     // set views path, template engine and default layout
     app.engine('html', swig.renderFile);
-    app.set('views', config.root + 
-        (process.env.NODE_ENV === 'production' ?
+    app.set('views', config.root +
+        (env === 'production' ?
             '/server/dist/views' : '/server/app/views'));
     app.set('view engine', 'html');
 

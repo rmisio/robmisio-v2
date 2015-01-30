@@ -49,6 +49,7 @@
     "nodemon": "latest",
     "passport": "latest",
     "passport-local": "latest",
+    "prerender-node": "^1.2.0",
     "serve-static": "latest",
     "should": "latest",
     "supertest": "latest",
