@@ -35,9 +35,9 @@ module.exports = function (app, passport) {
     }));
 
     // Here we require the prerender middleware that will handle requests from Search Engine crawlers
-    if (env === 'production' && process.env.PRERENDER_TOKEN) {
-        app.use(require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN));
-    }
+    // In prod, we are relying on the PRERENDER_TOKEN env var to be set, whereas locally
+    // we will run our own prerender server.
+    app.use(require('prerender-node'));
 
     // Static files middleware
     app.use(serveStatic(config.root +
