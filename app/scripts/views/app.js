@@ -67,25 +67,13 @@ define([
             var options = options || {};
 
             if (this.curPageView) {
-                this.curPageView.cache ?  this.curPageView.detach() :
-                    this.curPageView.remove();
                 this.$html.removeClass(this.curPageView.pageClass);
             }
 
-            if (!options.reAttach) {
-                this.$pageContainer.html(pageView.render().el);
-                pageView.onAttach({});
-            } else {
-                pageView.reAttach(this.$pageContainer);
-                pageView.onAttach({ cache: true });
-            }
-
+            this.$pageContainer.html(pageView.render().el);
+            pageView.onAttach({});
             this.curPageView = pageView;
             this.$html.addClass(pageView.pageClass);
-        },
-
-        getCurPageView: function () {
-            return this.curPageView;
         },
 
         render: function () {
