@@ -8,8 +8,9 @@ define([
     'views/about-page',
     'views/album-form',
     'views/album-page',
-    'models/album'
-], function ($, Backbone, app, BlogPageView, AboutPageView, AlbumFormView, AlbumPageView, AlbumModel) {
+    'models/album',
+    'collections/blog'
+], function ($, Backbone, app, BlogPageView, AboutPageView, AlbumFormView, AlbumPageView, AlbumModel, BlogCollection) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -28,16 +29,23 @@ define([
             return routes;
         },
 
-        index: function () {
-            this.showPage('blog', BlogPageView);
+        index: function (options) {
+            var self = this,
+                options = options || {},
+                collection = new BlogCollection(),
+                viewOptions = _.extend(options.viewOptions || {},
+                    { collection: collection });
+
+            collection.fetch({
+                success: function () {
+                    self.showPage(BlogPageView, viewOptions);
+                }
+            });
         },
 
-        showPage: function (url, View, options) {
-            var view;
+        showPage: function (View, viewOptions) {
+            var view = new View(viewOptions || {});
 
-            options = options || {};
-
-            view = new View(options.viewOptions);
             app.appView.showPage(view);
         },
 
@@ -50,21 +58,15 @@ define([
                     }
                 };
 
-            var url = app.BLOG_ENTRY_URL_PREFIX + year + '/' + month + '/' + slug;
-
-            this.showPage(url, BlogPageView, { viewOptions: opts });
+            this.index({ viewOptions: opts });
         },
 
         about: function () {
-            this.showPage('about', AboutPageView);
+            this.showPage(AboutPageView);
         },
 
         albumCreate: function () {
-            this.showPage('albums/create', AlbumFormView, {
-                viewOptions: {
-                    model: new AlbumModel()
-                }
-            });
+            this.showPage(AlbumFormView, { model: new AlbumModel() });
         },
 
         albumUpdate: function (slug) {
@@ -81,11 +83,7 @@ define([
 
             model.fetch({
                 success: function () {
-                    self.showPage('albums/update/' + slug, AlbumFormView, {
-                        viewOptions: {
-                            model: model
-                        }
-                    });
+                    self.showPage(AlbumFormView, { model: model });
                 }
             });
         },
@@ -104,11 +102,7 @@ define([
 
             model.fetch({
                 success: function () {
-                    self.showPage('albums/' + slug, AlbumPageView, {
-                        viewOptions: {
-                            model: model
-                        }
-                    });
+                    self.showPage(AlbumPageView, { model: model });
                 }
             });
         }

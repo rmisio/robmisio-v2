@@ -27,14 +27,13 @@ define([
 
         pageClass: 'blog-page',
 
-        moduleArgs: arguments,
-
         initialize: function (options) {
             this.options = options || {};
-            this.collection = new BlogCollection();
-            this.listenTo(this.collection, 'reset', this.onBlogListReset);
             this.listenTo(app.eventEmitter, app.e.MQ_CHANGE, this.onMqChange);
-            this.collection.fetch({ reset: true });
+
+            if (!this.options.collection || (!this.options.collection instanceof BlogCollection)) {
+                throw new Error('Please provide a BlogCollection.');
+            }
         },
 
         cacheUrl: function () {
@@ -153,26 +152,11 @@ define([
 
                 if ($li.hasClass('active')) { return };
                 this.blogListItemSelect($li.index());
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 500);
 
                 return false;
-        },
-
-        onBlogListReset: function () {
-            var activeBlog;
-
-            app.appView.showPage(this);
-
-            if (this.collection.length) {
-                if (this.options.urlParams) {
-                    activeBlog = this.collection.findWhere({
-                        url: this.options.urlParams.year + '/' +
-                            this.options.urlParams.month + '/' +
-                            this.options.urlParams.slug
-                    });
-                }
-
-                this.blogListItemSelect(activeBlog || 0);
-            }
         },
 
         onAttach: function (e) {
@@ -201,6 +185,8 @@ define([
         // todo: consider putting this functionality in a
         // view base class
         render: function (context) {
+            var activeBlog;
+
             context = context || {};
             context = _.extend(context, {
                 collection: this.collection.toJSON(),
@@ -210,6 +196,18 @@ define([
 
             // cache selectors
             this.$blogList =  this.$('.blog-list');
+
+            if (this.collection.length) {
+                if (this.options.urlParams) {
+                    activeBlog = this.collection.findWhere({
+                        url: this.options.urlParams.year + '/' +
+                            this.options.urlParams.month + '/' +
+                            this.options.urlParams.slug
+                    });
+                }
+
+                this.blogListItemSelect(activeBlog || 0);
+            }
 
             return this;
         }

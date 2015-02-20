@@ -67,7 +67,9 @@ define([
             var options = options || {};
 
             if (this.curPageView) {
+                this.curPageView.remove();
                 this.$html.removeClass(this.curPageView.pageClass);
+                $('html, body').scrollTop(0);
             }
 
             this.$pageContainer.html(pageView.render().el);
