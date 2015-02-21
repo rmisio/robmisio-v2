@@ -68,10 +68,10 @@ define([
             });
         },
 
-        blogListItemSelect: function (blog) {
+        blogListItemSelect: function (blog, fadeOutScroll) {
             var self = this,
                 index,
-                fadeOut;
+                fadeOutScroll;
 
             // blog arg can arrive as index or model
             if (typeof blog === 'number') {
@@ -83,9 +83,21 @@ define([
 
             this.$blogEntryContainer = this.$blogEntryContainer ||
                 this.$('.blog-entry');
-            fadeOut = this.$blogEntryContainer.animate({ opacity: 0 }, 300, function () {
-                $(this).empty();
-            }).promise();
+
+            if (fadeOutScroll) {
+                fadeOutScroll = $.when(
+                    self.$blogEntryContainer.animate({ opacity: 0 }, 250)
+                ).then(function() {
+                    return $('html, body').animate({
+                        scrollTop: 0
+                    }, 150);
+                }).then(function() {
+                    self.$blogEntryContainer.empty();
+                });
+            } else {
+                fadeOutScroll = $.Deferred().resolve();
+            }
+
             this.$('.blog-list li.active')
                 .removeClass('active');
             this.$('.blog-list li:eq(' + index + ')')
@@ -119,7 +131,7 @@ define([
                             });
                     };
 
-                    fadeOut.done(function () {
+                    fadeOutScroll.done(function () {
                         var View;
 
                         self.$html.removeClass('fetching-blog');
@@ -151,10 +163,7 @@ define([
                     $target : $target.parents('li');
 
                 if ($li.hasClass('active')) { return };
-                this.blogListItemSelect($li.index());
-                $('html, body').animate({
-                    scrollTop: 0
-                }, 500);
+                this.blogListItemSelect($li.index(), true);
 
                 return false;
         },
