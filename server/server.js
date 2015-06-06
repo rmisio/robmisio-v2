@@ -11,7 +11,6 @@ var config = require('config');
 
 var app = express();
 var port = process.env.PORT || 3000;
-var host = process.env.PING_HOSTNAME;
 
 // Connect to mongodb
 var connect = function () {
@@ -39,15 +38,3 @@ require('./config/routes')(app, passport);
 
 app.listen(port);
 console.log('Express app started on port ' + port);
-
-// Keep Heroku awake
-if (host) {
-    setInterval(function () {
-        var http = require('http');
-
-        console.log('=====> pinging ', host);
-        http.get({ host: host }).on('error', function(err) {
-            console.log("Error: " + err.message);
-        });
-    }, 45 * 60 * 1000);
-}
