@@ -303,15 +303,13 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('pingApp', function () {
-        var done = this.async(),
-            host = process.env.PING_HOSTNAME,
+        var host = process.env.PING_HOSTNAME,
             moment = require('moment-timezone'),
             now = moment.tz('America/New_York'),
             start = moment.tz(now.format('YYYY-MM-DD') + ' 01:00', 'America/New_York'),
             end = moment.tz(now.format('YYYY-MM-DD') + ' 08:00', 'America/New_York');
 
         if (!host) {
-            done();
             return;
         }
 
@@ -319,8 +317,6 @@ module.exports = function (grunt) {
             console.log('pinging ' + host);
             http.get(host);
         }
-
-        done();
     });
 
     grunt.registerTask('popBlogEntries', function () {
