@@ -773,8 +773,7 @@ form {
         }
 
         .blog-list {
-            left: 0;
-            @include transition(left .2s ease);
+            @include transform(translateX(0));
         }
     }
 
@@ -836,8 +835,9 @@ form {
         overflow: auto;
         position: absolute;
         top: 62px;
-        left: -100%;
-        @include transition(left .2s ease);
+        left: 0;
+        @include transform(translateX(-100%));
+        @include transition(all .2s ease);
     }
 
     .blog-entry {
