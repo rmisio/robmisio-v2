@@ -1,0 +1,153 @@
+$two-col-bp: 1200px;
+
+.work-page {
+  ul.work-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 50px auto;
+
+    li {
+      float: left;
+      width: 364px;
+      border-radius: 50%;
+      padding: 10px;
+      background: $gray-lighter;
+      border: 1px solid #b9b9b9;      
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 20px;
+
+      &:nth-of-type(3n + 2) {
+        margin-right: 19px;
+        margin-left: 19px;
+      }
+
+      a {
+        .image-wrap {
+          img {
+            border: 1px solid #b9b9b9;
+            border-radius: 50%;
+            width: 100%;
+          }
+        }
+      }
+
+      .content {
+        position: absolute;
+        bottom: -50%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 20px 40px 65px 40px;
+        color: white;
+        background-color: black;
+        background-color: rgba(0, 0, 0, 0.6);
+
+        h2 {
+          margin: 0;
+          font-size: 26px;
+        }
+
+        .tags {
+          display: none;
+        }
+      }
+
+      &:hover {
+        background-color: #6b6b6b;
+
+        a {
+          .image-wrap {
+            img {
+              border-color: #6b6b6b;
+            }
+
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              border: 10px solid #6b6b6b;
+              left: 0;
+              bottom: 0;
+              right: 0;
+              border-radius: 50%;
+              z-index: 100;
+            }            
+          }
+        }
+      }
+    }
+  }
+
+  @include mq($until: $two-col-bp) {
+    ul.work-list {
+      width: 728px;
+
+      li {
+        width: 345px;
+
+        &:nth-of-type(odd) {
+          margin-right: 19px;
+          margin-left: 0;
+        }
+
+        &:nth-of-type(even) {
+          margin-right: 0;
+          margin-left: 19px;
+        }
+      }
+    }
+  }
+
+  @include mq($until: tablet) {
+    ul.work-list {
+      width: auto;
+      margin-top: 35px;
+      margin-bottom: 35px;      
+
+      li {
+        float: none;
+        width: auto;
+        padding: 0;
+        border-radius: 0;
+        border: 0;
+        background: none;
+
+        &:nth-of-type(n) {
+          margin-left: 0;
+          margin-right: 0;
+        }
+
+        .image-wrap {
+          width: 40%;
+          background: $gray-lighter;
+          border-radius: 50%;
+          padding: 5px;
+          float: left;
+          margin: 0 15px 15px 0;
+
+          img {
+            border-radius: 50%;
+          }
+
+        }
+      }
+    }
+
+    .content {
+      position: static;
+      color: $text-color;
+
+      .tags {
+        display: block;
+      }      
+    }
+  }
+
+  @include mq($until: mobile) {
+    ul.work-list {
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+  }  
+}

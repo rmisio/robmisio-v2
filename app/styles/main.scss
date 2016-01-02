@@ -3,6 +3,16 @@ $screen-md: 769px;
 
 @import 'sass-bootstrap/lib/bootstrap';
 
+$mq-breakpoints: (
+    s-mobile:  320px,
+    mobile:  480px,
+    tablet:  768px,
+    desktop: 980px,
+    wide:    1300px
+);
+
+@import 'sass-mq/mq';
+
 // colors
 $gray-dark:  #010101;
 $gray-light:   #afafaf;
@@ -188,7 +198,7 @@ code {
     }
 
     nav {
-        margin: 0 10px 10px;
+        margin-bottom: 10px;
 
         .button-mobile-menu {
             display: none;
@@ -216,6 +226,10 @@ code {
                 margin-left: 10px;
             }
         }
+    }
+
+    .social-links {
+        margin-right: 5px;
     }
 }
 
@@ -752,8 +766,10 @@ form {
         }
     }
 
-    header .social-links {
-        display: none;
+    #header-main {
+        .social-links {
+            display: none;
+        }
     }
 
     .mobile-menu-open body {
@@ -886,3 +902,5 @@ form {
         }
     }
 }
+
+@import 'work';

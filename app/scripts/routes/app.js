@@ -5,12 +5,13 @@ define([
     'backbone',
     'app',
     'views/blog-page',
+    'views/work-page',
     'views/about-page',
     'views/album-form',
     'views/album-page',
     'models/album',
     'collections/blog'
-], function ($, Backbone, app, BlogPageView, AboutPageView, AlbumFormView, AlbumPageView, AlbumModel, BlogCollection) {
+], function ($, Backbone, app, BlogPageView, WorkPageView, AboutPageView, AlbumFormView, AlbumPageView, AlbumModel, BlogCollection) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -19,6 +20,7 @@ define([
                 '': 'index',
                 'blog': 'index',
                 'about': 'about',
+                'work': 'work',
                 'albums/create': 'albumCreate',
                 'albums/update/:slug': 'albumUpdate',
                 'albums/:slug': 'albumRead',
@@ -64,6 +66,10 @@ define([
         about: function () {
             this.showPage(AboutPageView);
         },
+
+        work: function () {
+            this.showPage(WorkPageView);
+        },        
 
         albumCreate: function () {
             this.showPage(AlbumFormView, { model: new AlbumModel() });

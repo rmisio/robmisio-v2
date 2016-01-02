@@ -98,7 +98,7 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<header id="header-main">\n    <nav class="clearfix">\n        <a href="#menu" class="button-mobile-menu">Menu</a>\n        <div class="logo">\n            <a href="/">robmisio.com</a>\n        </div>        \n        <ul class="list-unstyled site-nav">\n            <li>\n                <a href="/blog">blog</a>\n            </li>\n            <li>\n                <a href="/about">about</a>\n            </li>                \n        </ul>\n        ';
+__p += '<header id="header-main">\n    <nav class="clearfix">\n        <a href="#menu" class="button-mobile-menu">Menu</a>\n        <div class="logo">\n            <a href="/">robmisio.com</a>\n        </div>        \n        <ul class="list-unstyled site-nav">\n            <li>\n                <a href="/blog">blog</a>\n            </li>\n            <li>\n                <a href="/about">about</a>\n            </li>\n            <li>\n                <a href="/work">work</a>\n            </li>            \n        </ul>\n        ';
  print(template('app/scripts/templates/social.ejs')) ;
 __p += '\n    </nav>\n</header>\n<div id="page-container"></div>\n<footer>\n    ';
  print(template('app/scripts/templates/social.ejs')) ;
@@ -225,6 +225,16 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
 __p += '<ul class="social-links list-unstyled">\n    <li>\n        <a href="https://github.com/rmisio" target="_blank" alt="GitHub" class="github"></a>\n    </li>\n    <li>\n        <a href="https://twitter.com/robmisio" target="_blank" alt="Twitter" class="twitter"></a>\n    </li>\n    <li>\n        <a href="https://www.linkedin.com/in/robmisio" target="_blank" alt="LinkedIn" class="linkedin"></a>\n    </li>\n    <li>\n        <a href="http://stackoverflow.com/users/632806/robmisio" target="_blank" alt="Stack Overflow" class="stackoverflow"></a>\n    </li>\n</ul>\n';
+
+}
+return __p
+};
+
+this["JST"]["app/scripts/templates/work-page.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape;
+with (obj) {
+__p += '<ul class="work-list clearfix">\n  <li>\n    <a href="/work/lifeforecast">\n      <div class="image-wrap">\n        <img src="images/work/lifeforecast-thumb.jpg" alt="Life Forecast | Get Old" />\n      </div>\n      <div class="content">\n        <h2>Life Forecast</h2>\n        <ul class="tags">\n          <li>responsive</li>\n          <li>sass</li>\n          <li>backbone</li>\n          <li>requirejs</li>\n          <li>ejs</li>\n          <li>grunt</li>\n          <li>jquery</li>\n          <li>velocity.js</li>\n        </ul>\n      </div>\n    </a>\n  </li>\n</ul> ';
 
 }
 return __p
