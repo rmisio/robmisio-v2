@@ -12,7 +12,9 @@ define([
         initialize: function (options) {
         },
 
-        onAttach: function () {},
+        onAttach: function () {
+            app.appView.clearNavBarActivePage();
+        },
 
         remove: function () {
             Backbone.View.prototype.remove.apply(this, arguments);

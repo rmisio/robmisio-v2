@@ -6,12 +6,14 @@ define([
     'app',
     'views/blog-page',
     'views/work-page',
+    'views/work-detail-page',
     'views/about-page',
     'views/album-form',
     'views/album-page',
     'models/album',
-    'collections/blog'
-], function ($, Backbone, app, BlogPageView, WorkPageView, AboutPageView, AlbumFormView, AlbumPageView, AlbumModel, BlogCollection) {
+    'collections/blog',
+    'data/work'
+], function ($, Backbone, app, BlogPageView, WorkPageView, WorkDetailPageView, AboutPageView, AlbumFormView, AlbumPageView, AlbumModel, BlogCollection, workData) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -21,6 +23,7 @@ define([
                 'blog': 'index',
                 'about': 'about',
                 'work': 'work',
+                'work/:slug': 'workDetail',
                 'albums/create': 'albumCreate',
                 'albums/update/:slug': 'albumUpdate',
                 'albums/:slug': 'albumRead',
@@ -69,6 +72,16 @@ define([
 
         work: function () {
             this.showPage(WorkPageView);
+        },
+
+        workDetail: function (slug) {
+            var data;
+
+            if (data = _.findWhere(workData, { slug: slug })) {
+                this.showPage(WorkDetailPageView, { data:  data });
+            } else {
+                // todo: 404
+            }           
         },        
 
         albumCreate: function () {

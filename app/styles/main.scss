@@ -279,7 +279,8 @@ code {
     }
 }
 
-footer {
+#page-footer {
+    margin-top: 25px;
     display: none;
 }
 
@@ -359,7 +360,7 @@ form {
 }
 
 .photo {
-    @include box-shadow(rgba(0,0,0,0.20) 0 1px 4px);
+    @include box-shadow(rgba(0,0,0,0.4) 0 1px 4px);
     border: #fff 10px solid;
 }
 
@@ -758,7 +759,7 @@ form {
 
 // Phone landscape and down
 @media only screen and (max-width : 768px) {
-    footer {
+    #page-footer {
         display: block;
         text-align: center;
 
@@ -838,7 +839,7 @@ form {
     }
 
     .fetching-blog {
-        footer {
+        #page-footer {
             display: none;
         }
     }
@@ -904,4 +905,8 @@ form {
     }
 }
 
+@import 'components/buttons';
+@import 'components/tags';
+
 @import 'work';
+@import 'work-detail';

@@ -100,7 +100,7 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<header id="header-main">\n    <nav class="clearfix">\n        <a href="#menu" class="button-mobile-menu">Menu</a>\n        <div class="logo">\n            <a href="/">robmisio.com</a>\n        </div>        \n        <ul class="list-unstyled site-nav">\n            <li>\n                <a href="/blog">blog</a>\n            </li>\n            <li>\n                <a href="/about">about</a>\n            </li>\n            <li>\n                <a href="/work">work</a>\n            </li>            \n        </ul>\n        ';
  print(template('app/scripts/templates/social.ejs')) ;
-__p += '\n    </nav>\n</header>\n<div id="page-container"></div>\n<footer>\n    ';
+__p += '\n    </nav>\n</header>\n<div id="page-container"></div>\n<footer id="page-footer">\n    ';
  print(template('app/scripts/templates/social.ejs')) ;
 __p += '\n</footer>\n<div id="page-overlay"></div>\n\n';
 
@@ -230,11 +230,66 @@ __p += '<ul class="social-links list-unstyled">\n    <li>\n        <a href="http
 return __p
 };
 
+this["JST"]["app/scripts/templates/work-detail-page.ejs"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<div class="images">\n    ';
+ 
+      for (var i=0; i < images.length; i++) { 
+    ;
+__p += '\n        <img class="photo" src="/images/work/' +
+((__t = ( images[i] )) == null ? '' : __t) +
+'" />\n    ';
+ } ;
+__p += '\n</div>\n\n<div class="content">\n  <h1>' +
+((__t = ( title )) == null ? '' : __t) +
+'</h1>\n  <ul class="tags list-unstyled">\n    ';
+ 
+      for (var j=0; j < tags.length; j++) { 
+    ;
+__p += '\n      <li>' +
+((__t = ( tags[j] )) == null ? '' : __t) +
+'</li>\n    ';
+ } ;
+__p += '\n  </ul>\n  ' +
+((__t = ( description )) == null ? '' : __t) +
+'  \n  <a class="btn" href="' +
+((__t = ( liveUrl )) == null ? '' : __t) +
+'" target="_blank">View Website</a>\n</div>';
+
+}
+return __p
+};
+
 this["JST"]["app/scripts/templates/work-page.ejs"] = function(obj) {
 obj || (obj = {});
-var __t, __p = '', __e = _.escape;
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<ul class="work-list clearfix">\n  <li>\n    <a href="/work/lifeforecast">\n      <div class="image-wrap">\n        <img src="images/work/lifeforecast-thumb.jpg" alt="Life Forecast | Get Old" />\n      </div>\n      <div class="content">\n        <h2>Life Forecast</h2>\n        <ul class="tags">\n          <li>responsive</li>\n          <li>sass</li>\n          <li>backbone</li>\n          <li>requirejs</li>\n          <li>ejs</li>\n          <li>grunt</li>\n          <li>jquery</li>\n          <li>velocity.js</li>\n        </ul>\n      </div>\n    </a>\n  </li>\n\n  <li>\n    <a href="/work/lifeforecast">\n      <div class="image-wrap">\n        <img src="images/work/lifeforecast-thumb.jpg" alt="Life Forecast | Get Old" />\n      </div>\n      <div class="content">\n        <h2>Welcome Home Kader Yo!</h2>\n        <ul class="tags">\n          <li>responsive</li>\n          <li>sass</li>\n          <li>backbone</li>\n          <li>requirejs</li>\n          <li>ejs</li>\n          <li>grunt</li>\n          <li>jquery</li>\n          <li>velocity.js</li>\n          <li>requirejs</li>\n          <li>ejs</li>\n          <li>grunt</li>\n          <li>jquery</li>\n          <li>velocity.js</li>          \n        </ul>\n      </div>\n    </a>\n  </li>\n\n  <li>\n    <a href="/work/lifeforecast">\n      <div class="image-wrap">\n        <img src="images/work/lifeforecast-thumb.jpg" alt="Life Forecast | Get Old" />\n      </div>\n      <div class="content">\n        <h2>Samsung Promotions</h2>\n        <ul class="tags">\n          <li>responsive</li>\n          <li>sass</li>\n          <li>backbone</li>\n        </ul>\n      </div>\n    </a>\n  </li>    \n</ul> ';
+__p += '<ul class="work-list clearfix">\n';
+ for (var i=0; i < work.length; i++) { ;
+__p += '\n  <li>\n    <a href="/work/' +
+((__t = ( work[i].slug )) == null ? '' : __t) +
+'">\n      <div class="image-wrap">\n        <img src="images/work/' +
+((__t = ( work[i].thumb )) == null ? '' : __t) +
+'" alt="' +
+((__t = ( work[i].title )) == null ? '' : __t) +
+'" />\n      </div>\n      <div class="content">\n        <h2>' +
+((__t = ( work[i].title )) == null ? '' : __t) +
+'</h2>\n        <ul class="tags">\n          ';
+ 
+            for (var j=0; j < work[i].tags.length; j++) { 
+              var tag = work[i].tags[j];
+          ;
+__p += '\n            <li>' +
+((__t = ( tag )) == null ? '' : __t) +
+'</li>\n          ';
+ } ;
+__p += '\n        </ul>\n      </div>\n    </a>\n  </li>  \n';
+ } ;
+
 
 }
 return __p

@@ -7,8 +7,9 @@ define([
     'backbone',
     'templates',
     'util',
-    'views/page'
-], function (app, $, _, Backbone, JST, util, PageView) {
+    'views/page',
+    'data/work'
+], function (app, $, _, Backbone, JST, util, PageView, workData) {
     'use strict';
 
     var WorkPageView = PageView.extend({
@@ -28,10 +29,8 @@ define([
             app.appView.navBarActivePage(2);
         },
 
-        render: function (context) {
-            this.$el.html(util.template(this.template, context));
-
-            // cache selectors
+        render: function () {
+            this.$el.html(util.template(this.template, { work: workData }));
 
             return this;
         }

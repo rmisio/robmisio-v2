@@ -48,10 +48,21 @@ define([
         },
 
         navBarActivePage: function (index) {
-            this.$('#header-main nav li a')
-                .removeClass('active')
+            this.$headerLinks = this.$headerLinks ||
+                this.$('#header-main nav li a');
+
+            this.clearNavBarActivePage();
+            this.$headerLinks
                 .eq(index)
                 .addClass('active');
+        },
+
+        clearNavBarActivePage: function () {
+            this.$headerLinks = this.$headerLinks ||
+                this.$('#header-main nav li a');
+                
+            this.$headerLinks
+                .removeClass('active');
         },
 
         toggleMobileNavMenu: function (e) {

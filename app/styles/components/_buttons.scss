@@ -1,0 +1,20 @@
+.btn {
+  font-family: $font-family-droid;
+  text-transform: uppercase;
+  background-color: $brand-primary;
+  color: white;
+  border: 1px solid $brand-primary;
+  border-radius: 5px;
+  padding: 7px 10px;
+  @include transition(all 0.2s ease-in);
+
+  &:hover {
+    background-color: transparent;
+    color: $text-color;
+    border-color: $text-color;
+  }
+
+  &:focus {
+    color: white;
+  }
+}
