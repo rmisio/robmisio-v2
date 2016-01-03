@@ -6,7 +6,7 @@ $two-col-bp: 1200px;
     padding: 0;
     margin: 50px auto;
 
-    li {
+    & > li {
       float: left;
       width: 364px;
       border-radius: 50%;
@@ -29,6 +29,20 @@ $two-col-bp: 1200px;
             border-radius: 50%;
             width: 100%;
           }
+
+          &::after {
+            content: '';
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            border: 11px solid $gray-light;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+            z-index: 100;
+            @include transition(opacity 0.1s ease-in 0.2s);
+          }          
         }
       }
 
@@ -38,10 +52,11 @@ $two-col-bp: 1200px;
         left: 0;
         right: 0;
         text-align: center;
-        padding: 20px 40px 65px 40px;
+        padding: 20px 45px 70px;
         color: white;
         background-color: black;
         background-color: rgba(0, 0, 0, 0.6);
+        @include transition(bottom 0.2s ease-in);
 
         h2 {
           margin: 0;
@@ -50,29 +65,44 @@ $two-col-bp: 1200px;
 
         .tags {
           display: none;
+          padding: 0;
+          line-height: 1.1;
+
+          li {
+            position: relative;
+            display: inline-block;
+            padding-left: 12px;
+            margin-bottom: 0;
+            color: $gray-light;
+            font-size: 16px;
+
+            &::before {
+              content: '#';
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+          }
         }
       }
 
       &:hover {
-        background-color: #6b6b6b;
+        border-color: #969696;
 
         a {
           .image-wrap {
             img {
-              border-color: #6b6b6b;
+              border-color: #969696;
             }
 
             &::after {
-              content: '';
-              position: absolute;
-              top: 0;
-              border: 10px solid #6b6b6b;
-              left: 0;
-              bottom: 0;
-              right: 0;
-              border-radius: 50%;
-              z-index: 100;
+              opacity: 1;
+              @include transition(opacity 0.1s ease-in);
             }            
+          }
+
+          .content {
+            bottom: 0;
           }
         }
       }
@@ -83,7 +113,7 @@ $two-col-bp: 1200px;
     ul.work-list {
       width: 728px;
 
-      li {
+      & > li {
         width: 345px;
 
         &:nth-of-type(odd) {
@@ -105,17 +135,24 @@ $two-col-bp: 1200px;
       margin-top: 35px;
       margin-bottom: 35px;      
 
-      li {
+      & > li {
         float: none;
         width: auto;
         padding: 0;
+        padding-bottom: 30px;
         border-radius: 0;
         border: 0;
         background: none;
+        border-bottom: 1px solid $gray-lighter;
+        border-color: $gray-lighter !important;
 
         &:nth-of-type(n) {
           margin-left: 0;
           margin-right: 0;
+        }
+
+        &:last-child {
+          border: none;
         }
 
         .image-wrap {
@@ -124,23 +161,34 @@ $two-col-bp: 1200px;
           border-radius: 50%;
           padding: 5px;
           float: left;
-          margin: 0 15px 15px 0;
 
           img {
             border-radius: 50%;
           }
 
+          &::after {
+            display: none !important;
+          }
+        }
+  
+        .content {
+          position: static;
+          color: $text-color;
+          background-color: transparent;
+          text-align: left;
+          padding: 35px 20px;
+          padding-bottom: 0;
+          margin-left: 40%;
+
+          h2 {
+            margin-bottom: 5px;
+          }
+
+          .tags {
+            display: block;
+          }      
         }
       }
-    }
-
-    .content {
-      position: static;
-      color: $text-color;
-
-      .tags {
-        display: block;
-      }      
     }
   }
 
@@ -148,6 +196,43 @@ $two-col-bp: 1200px;
     ul.work-list {
       margin-top: 25px;
       margin-bottom: 25px;
+
+      & > li {
+        padding-bottom: 20px;
+
+        .image-wrap {
+          width: 35%;
+        }
+
+        .content {
+          padding: 15px;
+          padding-bottom: 0;
+          margin-left: 35%;
+
+          h2 {
+            font-size: 24px;
+            margin-bottom: 2;
+          }
+
+          .tags {
+            font-size: 14px;
+
+            li {
+              padding-left: 10px;
+            }
+          }
+        }
+      }
     }
   }  
+
+  @include mq($until: s-mobile) {
+    ul.work-list {
+      & > li {
+        .content {
+          padding-top: 10px;
+        }
+      }
+    }
+  }    
 }
