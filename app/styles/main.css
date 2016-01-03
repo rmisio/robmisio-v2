@@ -8682,7 +8682,7 @@ ul.tags li::before {
   left: 0;
   right: 0;
   text-align: center;
-  padding: 20px 45px 70px;
+  padding: 15px 45px 70px;
   color: white;
   background-color: black;
   background-color: rgba(0, 0, 0, 0.6);
@@ -8693,7 +8693,7 @@ ul.tags li::before {
 /* line 61, _work.scss */
 .work-page ul.work-list > li .content h2 {
   margin: 0;
-  font-size: 26px;
+  font-size: 22px;
 }
 /* line 66, _work.scss */
 .work-page ul.work-list > li .content .tags {
@@ -8795,41 +8795,42 @@ ul.tags li::before {
   }
   /* line 166, _work.scss */
   .work-page ul.work-list > li .content h2 {
+    font-size: 24px;
     margin-bottom: 5px;
   }
-  /* line 170, _work.scss */
+  /* line 171, _work.scss */
   .work-page ul.work-list > li .content .tags {
     display: block;
   }
 }
 @media (max-width: 29.99em) {
-  /* line 179, _work.scss */
+  /* line 180, _work.scss */
   .work-page ul.work-list {
     margin-top: 25px;
     margin-bottom: 25px;
   }
-  /* line 183, _work.scss */
+  /* line 184, _work.scss */
   .work-page ul.work-list > li {
     padding-bottom: 20px;
   }
-  /* line 186, _work.scss */
+  /* line 187, _work.scss */
   .work-page ul.work-list > li .image-wrap {
     width: 35%;
   }
-  /* line 190, _work.scss */
+  /* line 191, _work.scss */
   .work-page ul.work-list > li .content {
     padding: 15px;
     padding-bottom: 0;
     margin-left: 35%;
   }
-  /* line 195, _work.scss */
+  /* line 196, _work.scss */
   .work-page ul.work-list > li .content h2 {
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 2;
   }
 }
 @media (max-width: 22.49em) {
-  /* line 207, _work.scss */
+  /* line 208, _work.scss */
   .work-page ul.work-list > li .content {
     padding-top: 10px;
   }

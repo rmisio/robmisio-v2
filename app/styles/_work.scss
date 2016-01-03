@@ -52,7 +52,7 @@ $two-col-bp: 1200px;
         left: 0;
         right: 0;
         text-align: center;
-        padding: 20px 45px 70px;
+        padding: 15px 45px 70px;
         color: white;
         background-color: black;
         background-color: rgba(0, 0, 0, 0.6);
@@ -60,7 +60,7 @@ $two-col-bp: 1200px;
 
         h2 {
           margin: 0;
-          font-size: 26px;
+          font-size: 22px;
         }
 
         .tags {
@@ -164,6 +164,7 @@ $two-col-bp: 1200px;
           margin-left: 40%;
 
           h2 {
+            font-size: 24px;
             margin-bottom: 5px;
           }
 
@@ -193,7 +194,7 @@ $two-col-bp: 1200px;
           margin-left: 35%;
 
           h2 {
-            font-size: 24px;
+            font-size: 22px;
             margin-bottom: 2;
           }
         }
