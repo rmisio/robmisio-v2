@@ -16,5 +16,7 @@
     <% } %>
   </ul>
   <%= description %>  
+  <% if (typeof liveUrl !== 'undefined') { %>
   <a class="btn" href="<%= liveUrl %>" target="_blank">View Website</a>
+  <% } %>
 </div>

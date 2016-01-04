@@ -255,9 +255,13 @@ __p += '\n      <li>' +
  } ;
 __p += '\n  </ul>\n  ' +
 ((__t = ( description )) == null ? '' : __t) +
-'  \n  <a class="btn" href="' +
+'  \n  ';
+ if (typeof liveUrl !== 'undefined') { ;
+__p += '\n  <a class="btn" href="' +
 ((__t = ( liveUrl )) == null ? '' : __t) +
-'" target="_blank">View Website</a>\n</div>';
+'" target="_blank">View Website</a>\n  ';
+ } ;
+__p += '\n</div>';
 
 }
 return __p

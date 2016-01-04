@@ -8841,23 +8841,28 @@ ul.tags li::before {
 /* line 7, _work-detail.scss */
 .work-detail-page .images img {
   width: 100%;
+  margin-bottom: 25px;
 }
-/* line 13, _work-detail.scss */
+/* line 11, _work-detail.scss */
+.work-detail-page .images img:last-child {
+  margin-bottom: 0;
+}
+/* line 18, _work-detail.scss */
 .work-detail-page .content h1 {
   margin-bottom: 5px;
 }
-/* line 19, _work-detail.scss */
+/* line 24, _work-detail.scss */
 .work-detail-page .tags {
   margin-bottom: 20px;
 }
 @media (max-width: 61.24em) {
-  /* line 24, _work-detail.scss */
+  /* line 29, _work-detail.scss */
   .work-detail-page .images {
     margin: 0;
     width: auto;
     float: none;
   }
-  /* line 30, _work-detail.scss */
+  /* line 35, _work-detail.scss */
   .work-detail-page .content {
     margin-top: 40px;
   }
