@@ -8,7 +8,7 @@ $two-col-bp: 1200px;
 
     & > li {
       float: left;
-      width: 364px;
+      width: 348px;
       border-radius: 50%;
       padding: 10px;
       background: $gray-lighter;
@@ -18,8 +18,8 @@ $two-col-bp: 1200px;
       margin-bottom: 20px;
 
       &:nth-of-type(3n + 2) {
-        margin-right: 19px;
-        margin-left: 19px;
+        margin-right: 42px;
+        margin-left: 42px;
       }
 
       a {

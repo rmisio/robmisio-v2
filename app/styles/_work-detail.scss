@@ -1,7 +1,8 @@
 .work-detail-page {
+  $two-col-bp: 800px;
+
   .images {
     float: left;
-    margin-right: 30px;
     width: 60%;
 
     img {
@@ -15,25 +16,32 @@
   }
 
   .content {
+    margin-left: 60%;
+    padding-left: 30px;
+
     h1 {
       margin-bottom: 5px;
     }
-
   }
 
   .tags {
     margin-bottom: 20px;
   }
 
-  @include mq($until: desktop) {
+  @include mq($until: $two-col-bp) {
+    #page-container {
+      padding-top: 15px;
+    }
+
     .images {
-      margin: 0;
       width: auto;
       float: none;
     }
 
     .content {
-      margin-top: 40px;
+      padding: 0;
+      margin: 0;
+      margin-top: 35px;
     }
   }
 }

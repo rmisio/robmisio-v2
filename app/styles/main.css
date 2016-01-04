@@ -8635,7 +8635,7 @@ ul.tags li::before {
 /* line 9, _work.scss */
 .work-page ul.work-list > li {
   float: left;
-  width: 364px;
+  width: 348px;
   border-radius: 50%;
   padding: 10px;
   background: #ccc;
@@ -8646,8 +8646,8 @@ ul.tags li::before {
 }
 /* line 20, _work.scss */
 .work-page ul.work-list > li:nth-of-type(3n + 2) {
-  margin-right: 19px;
-  margin-left: 19px;
+  margin-right: 42px;
+  margin-left: 42px;
 }
 /* line 27, _work.scss */
 .work-page ul.work-list > li a .image-wrap img {
@@ -8832,38 +8832,47 @@ ul.tags li::before {
   }
 }
 
-/* line 2, _work-detail.scss */
+/* line 4, _work-detail.scss */
 .work-detail-page .images {
   float: left;
-  margin-right: 30px;
   width: 60%;
 }
-/* line 7, _work-detail.scss */
+/* line 8, _work-detail.scss */
 .work-detail-page .images img {
   width: 100%;
   margin-bottom: 25px;
 }
-/* line 11, _work-detail.scss */
+/* line 12, _work-detail.scss */
 .work-detail-page .images img:last-child {
   margin-bottom: 0;
 }
 /* line 18, _work-detail.scss */
+.work-detail-page .content {
+  margin-left: 60%;
+  padding-left: 30px;
+}
+/* line 22, _work-detail.scss */
 .work-detail-page .content h1 {
   margin-bottom: 5px;
 }
-/* line 24, _work-detail.scss */
+/* line 27, _work-detail.scss */
 .work-detail-page .tags {
   margin-bottom: 20px;
 }
-@media (max-width: 61.24em) {
-  /* line 29, _work-detail.scss */
+@media (max-width: 50em) {
+  /* line 32, _work-detail.scss */
+  .work-detail-page #page-container {
+    padding-top: 15px;
+  }
+  /* line 36, _work-detail.scss */
   .work-detail-page .images {
-    margin: 0;
     width: auto;
     float: none;
   }
-  /* line 35, _work-detail.scss */
+  /* line 41, _work-detail.scss */
   .work-detail-page .content {
-    margin-top: 40px;
+    padding: 0;
+    margin: 0;
+    margin-top: 35px;
   }
 }
