@@ -8593,10 +8593,6 @@ form .has-error-required .error-msg.error-required {
   color: #222;
   border-color: #222;
 }
-/* line 17, components/_buttons.scss */
-.btn:focus {
-  color: white;
-}
 
 /* line 1, components/_tags.scss */
 ul.tags {
