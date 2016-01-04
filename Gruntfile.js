@@ -203,7 +203,10 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.app %>/images',
-                    src: '{,*/}*.{png,PNG,jpg,JPG,jpeg,JPEG}',
+                    // seems to be hanging on PNGs,
+                    // TODO: investigate
+                    // src: '{,**/}*.{png,PNG,jpg,JPG,jpeg,JPEG}',
+                    src: '{,**/}*.{jpg,JPG,jpeg,JPEG}',
                     dest: '<%= yeoman.dist %>/images'
                 }]
             }
@@ -250,7 +253,8 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
-                        'images/{,*/}*.{webp,gif}',
+                        // 'images/{,*/}*.{webp,gif}',
+                        'images/{,*/}*.{webp,gif,png,PNG}',
                         'styles/fonts/{,*/}*.*',
                         'bower_components/sass-bootstrap/fonts/*.*'
                     ]
@@ -401,7 +405,7 @@ module.exports = function (grunt) {
         'cssmin',
         'uglify',
         'copy',
-        'rev',
+        // 'rev',
         'usemin'
     ]);
 
