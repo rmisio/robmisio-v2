@@ -8636,6 +8636,7 @@ ul.tags li::before {
 .work-page ul.work-list > li {
   float: left;
   width: 348px;
+  height: 348px;
   border-radius: 50%;
   padding: 10px;
   background: #ccc;
@@ -8644,18 +8645,18 @@ ul.tags li::before {
   position: relative;
   margin-bottom: 20px;
 }
-/* line 20, _work.scss */
+/* line 21, _work.scss */
 .work-page ul.work-list > li:nth-of-type(3n + 2) {
   margin-right: 42px;
   margin-left: 42px;
 }
-/* line 27, _work.scss */
+/* line 28, _work.scss */
 .work-page ul.work-list > li a .image-wrap img {
   border: 1px solid #b9b9b9;
   border-radius: 50%;
   width: 100%;
 }
-/* line 33, _work.scss */
+/* line 34, _work.scss */
 .work-page ul.work-list > li a .image-wrap::after {
   content: '';
   opacity: 0;
@@ -8671,7 +8672,7 @@ ul.tags li::before {
   -moz-transition: opacity 0.1s ease-in 0.2s;
   transition: opacity 0.1s ease-in 0.2s;
 }
-/* line 49, _work.scss */
+/* line 50, _work.scss */
 .work-page ul.work-list > li .content {
   position: absolute;
   bottom: -50%;
@@ -8686,65 +8687,67 @@ ul.tags li::before {
   -moz-transition: bottom 0.2s ease-in;
   transition: bottom 0.2s ease-in;
 }
-/* line 61, _work.scss */
+/* line 62, _work.scss */
 .work-page ul.work-list > li .content h2 {
   margin: 0;
   font-size: 22px;
 }
-/* line 66, _work.scss */
+/* line 67, _work.scss */
 .work-page ul.work-list > li .content .tags {
   display: none;
 }
-/* line 71, _work.scss */
+/* line 72, _work.scss */
 .work-page ul.work-list > li:hover {
   border-color: #969696;
 }
-/* line 76, _work.scss */
+/* line 77, _work.scss */
 .work-page ul.work-list > li:hover a .image-wrap img {
   border-color: #969696;
 }
-/* line 80, _work.scss */
+/* line 81, _work.scss */
 .work-page ul.work-list > li:hover a .image-wrap::after {
   opacity: 1;
   -webkit-transition: opacity 0.1s ease-in;
   -moz-transition: opacity 0.1s ease-in;
   transition: opacity 0.1s ease-in;
 }
-/* line 86, _work.scss */
+/* line 87, _work.scss */
 .work-page ul.work-list > li:hover a .content {
   bottom: 0;
 }
 @media (max-width: 75em) {
-  /* line 95, _work.scss */
+  /* line 96, _work.scss */
   .work-page ul.work-list {
     width: 728px;
   }
-  /* line 98, _work.scss */
+  /* line 99, _work.scss */
   .work-page ul.work-list > li {
     width: 345px;
+    height: 345px;
   }
-  /* line 101, _work.scss */
+  /* line 103, _work.scss */
   .work-page ul.work-list > li:nth-of-type(odd) {
     margin-right: 19px;
     margin-left: 0;
   }
-  /* line 106, _work.scss */
+  /* line 108, _work.scss */
   .work-page ul.work-list > li:nth-of-type(even) {
     margin-right: 0;
     margin-left: 19px;
   }
 }
 @media (max-width: 47.99em) {
-  /* line 115, _work.scss */
+  /* line 117, _work.scss */
   .work-page ul.work-list {
     width: auto;
     margin-top: 35px;
     margin-bottom: 35px;
   }
-  /* line 120, _work.scss */
+  /* line 122, _work.scss */
   .work-page ul.work-list > li {
     float: none;
     width: auto;
+    height: auto;
     padding: 0;
     padding-bottom: 30px;
     border-radius: 0;
@@ -8753,17 +8756,17 @@ ul.tags li::before {
     border-bottom: 1px solid #ccc;
     border-color: #ccc !important;
   }
-  /* line 131, _work.scss */
+  /* line 134, _work.scss */
   .work-page ul.work-list > li:nth-of-type(n) {
     margin-left: 0;
     margin-right: 0;
   }
-  /* line 136, _work.scss */
+  /* line 139, _work.scss */
   .work-page ul.work-list > li:last-child {
     border: none;
     margin-bottom: 0;
   }
-  /* line 141, _work.scss */
+  /* line 144, _work.scss */
   .work-page ul.work-list > li .image-wrap {
     width: 40%;
     background: #ccc;
@@ -8771,15 +8774,15 @@ ul.tags li::before {
     padding: 5px;
     float: left;
   }
-  /* line 148, _work.scss */
+  /* line 151, _work.scss */
   .work-page ul.work-list > li .image-wrap img {
     border-radius: 50%;
   }
-  /* line 152, _work.scss */
+  /* line 155, _work.scss */
   .work-page ul.work-list > li .image-wrap::after {
     display: none !important;
   }
-  /* line 157, _work.scss */
+  /* line 160, _work.scss */
   .work-page ul.work-list > li .content {
     position: static;
     color: #222;
@@ -8789,44 +8792,44 @@ ul.tags li::before {
     padding-bottom: 0;
     margin-left: 40%;
   }
-  /* line 166, _work.scss */
+  /* line 169, _work.scss */
   .work-page ul.work-list > li .content h2 {
     font-size: 24px;
     margin-bottom: 5px;
   }
-  /* line 171, _work.scss */
+  /* line 174, _work.scss */
   .work-page ul.work-list > li .content .tags {
     display: block;
   }
 }
 @media (max-width: 29.99em) {
-  /* line 180, _work.scss */
+  /* line 183, _work.scss */
   .work-page ul.work-list {
     margin-top: 25px;
     margin-bottom: 25px;
   }
-  /* line 184, _work.scss */
+  /* line 187, _work.scss */
   .work-page ul.work-list > li {
     padding-bottom: 20px;
   }
-  /* line 187, _work.scss */
+  /* line 190, _work.scss */
   .work-page ul.work-list > li .image-wrap {
     width: 35%;
   }
-  /* line 191, _work.scss */
+  /* line 194, _work.scss */
   .work-page ul.work-list > li .content {
     padding: 15px;
     padding-bottom: 0;
     margin-left: 35%;
   }
-  /* line 196, _work.scss */
+  /* line 199, _work.scss */
   .work-page ul.work-list > li .content h2 {
     font-size: 22px;
     margin-bottom: 2;
   }
 }
 @media (max-width: 22.49em) {
-  /* line 208, _work.scss */
+  /* line 211, _work.scss */
   .work-page ul.work-list > li .content {
     padding-top: 10px;
   }
